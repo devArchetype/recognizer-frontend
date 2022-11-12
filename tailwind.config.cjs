@@ -2,6 +2,9 @@
 module.exports = {
   content: ['./src/**/*.tsx', './index.html'],
   theme: {
+    fontFamily: {
+      sans: ['Ubuntu', 'sans-serif'],
+    },
     extend: {
       colors: {
         'base-900': 'var(--base-900)',

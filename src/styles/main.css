@@ -81,3 +81,7 @@
         --danger-light: #FFF1F2;
     }
 }
+
+body {
+    @apply font-sans font-normal text-base-400 antialiased bg-base-100;
+}
