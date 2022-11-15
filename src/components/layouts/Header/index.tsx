@@ -1,8 +1,9 @@
+import { Logo } from "../../Logo"
 import { HeaderContainer } from "./styles"
 
 export const Header = () => {
   return <HeaderContainer>
-    <h2>Recognizer</h2>
+    <Logo />
 
     <div>
       Maria

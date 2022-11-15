@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { screens } from "../../../styles/global";
 
 export const DefaultLayoutContainer = styled.div`
   width: 100vw;
@@ -8,13 +9,18 @@ export const DefaultLayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
-  background: orange;
 `
 
 export const LayoutSchema = styled.div`
   display: flex;
   flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
   overflow-y: hidden;
+
+  @media ${screens.sm} {
+    flex-direction: row;
+  }
 `
 
 export const PageContainer = styled.div`
@@ -23,5 +29,4 @@ export const PageContainer = styled.div`
   display: flex;
   overflow-y: auto;
   flex-direction: column;
-  background: blue;
 `
