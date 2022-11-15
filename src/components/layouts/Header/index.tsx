@@ -1,12 +1,18 @@
-import { Logo } from "../../Logo"
-import { HeaderContainer } from "./styles"
+import { Avatar } from '../../Avatar'
+import { Logo } from '../../Logo'
+import { HeaderContainer } from './styles'
 
 export const Header = () => {
-  return <HeaderContainer>
-    <Logo />
+  return (
+    <HeaderContainer>
+      <Logo />
 
-    <div>
-      Maria
-    </div>
-  </HeaderContainer>
+      <Avatar
+        email="mariaclara@gmail.com"
+        name="Maria Clara"
+        size="sm"
+        url="/images/favicon.svg"
+      />
+    </HeaderContainer>
+  )
 }

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { screens } from "../../../styles/global";
+import styled from 'styled-components'
+import { screens } from '../../../styles/global'
 
 export const DefaultLayoutContainer = styled.div`
   width: 100vw;

@@ -11,7 +11,7 @@ export const DefaultLayout = () => {
 
       <LayoutSchema>
         <Menu />
-        
+
         <PageContainer>
           <Outlet />
           <Footer />

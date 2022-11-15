@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { screens } from "../../../styles/global";
+import styled from 'styled-components'
+import { screens } from '../../../styles/global'
 
 export const MenuContainer = styled.div`
   display: flex;
@@ -11,8 +11,9 @@ export const NavigationContainer = styled.nav`
   display: flex;
   flex: 1;
   padding: 0;
+  overflow-y: auto;
   box-shadow: var(--shadow-base);
-  background-color: ${props => props.theme["base-light"]};
+  background-color: ${(props) => props.theme['base-light']};
 
   ul {
     flex: 1;
