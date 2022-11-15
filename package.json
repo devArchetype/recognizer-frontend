@@ -16,17 +16,16 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.2",
-    "react-router-dom": "^6.4.3"
+    "react-router-dom": "^6.4.3",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^1.1.3",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "^2.2.0",
-    "autoprefixer": "^10.4.13",
     "eslint": "^8.26.0",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.2.2",
     "typescript": "^4.6.4",
     "vite": "^3.2.0"
   }

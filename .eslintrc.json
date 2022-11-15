@@ -1,6 +1,6 @@
 {
   "extends": "@rocketseat/eslint-config/react",
   "globals": {
-    "JSX": true
+    "JSX": true,
   }
 }

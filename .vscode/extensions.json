@@ -2,8 +2,7 @@
     "recommendations": [
         "dbaeumer.vscode-eslint",
         "ms-vscode.vscode-typescript-next",
-        "csstools.postcss",
         "burkeholland.simple-react-snippets",
-        "bradlc.vscode-tailwindcss"
+        "styled-components.vscode-styled-components"
     ]
 }
