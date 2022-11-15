@@ -1,6 +1,6 @@
-import { css } from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const srOnly = css`
+export const SrOnly = css`
   position: absolute;
   width: 1px;
   height: 1px;
@@ -12,7 +12,7 @@ export const srOnly = css`
   border-width: 0;
 `
 
-export const notSrOnly = css`
+export const NotSrOnly = css`
   position: static;
   width: auto;
   height: auto;
@@ -21,4 +21,9 @@ export const notSrOnly = css`
   overflow: visible;
   clip: auto;
   white-space: normal;
+`
+
+export const BasePage = styled.main`
+  flex: 1;
+  padding: var(--spacing-md);
 `

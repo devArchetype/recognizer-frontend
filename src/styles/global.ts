@@ -32,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
     --text-xl: 1.25rem;
     --text-xxl: 1.875rem;
 
-    --rounded-base: 8px;
+    --rounded-base: 6px;
     --rounded-full: 9999px;
 
     --bg-translucent: rgba(0, 0, 0, 0.1);
@@ -55,6 +55,7 @@ export const GlobalStyle = createGlobalStyle`
 
   :focus {
     outline: transparent;
+    border-radius: var(--rounded-base);
     box-shadow: 0 0 0 2px ${(props) => props.theme['brand-600']};
   }
 

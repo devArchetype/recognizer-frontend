@@ -136,6 +136,6 @@ export const normalize = css`
     margin: 0;
     padding: 0;
     outline: none;
-    border-radius: var(--rounded-base);
+    text-decoration: none;
   }
 `
