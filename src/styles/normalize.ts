@@ -137,5 +137,6 @@ export const normalize = css`
     padding: 0;
     outline: none;
     text-decoration: none;
+    scroll-behavior: smooth;
   }
 `

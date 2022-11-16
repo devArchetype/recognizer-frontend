@@ -17,10 +17,15 @@ export const Avatar = ({
 }: AvatarProps) => {
   return (
     <AvatarContainer orientation={orientation} size={size}>
-      <img src={url} alt={`Foto de perfil de ${name}`} loading="lazy" />
+      <img
+        src={url}
+        alt={`Foto de perfil de ${name}`}
+        title={`Foto de perfil de ${name}`}
+        loading="lazy"
+      />
 
       <AvatarInfo size={size}>
-        <h4>{name}</h4>
+        <strong>{name}</strong>
         <div>{email}</div>
       </AvatarInfo>
     </AvatarContainer>

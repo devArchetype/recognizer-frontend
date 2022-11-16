@@ -23,7 +23,7 @@ export const LayoutSchema = styled.div`
   }
 `
 
-export const PageContainer = styled.div`
+export const PageContainer = styled.main`
   min-height: 0;
   flex: 1;
   display: flex;

@@ -35,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
     --rounded-base: 6px;
     --rounded-full: 9999px;
 
-    --bg-translucent: rgba(0, 0, 0, 0.1);
+    --bg-translucent: rgba(0, 0, 0, 0.4);
 
     --shadow-base: 0px 4px 6px -1px rgba(0, 0, 0, 0.1),
       0px 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -64,12 +64,12 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme['brand-700']};
   }
   ::-webkit-scrollbar {
-    width: 2px;
-    height: 2px;
+    width: 3px;
+    height: 3px;
   }
   
   ::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background-color: ${(props) => props.theme['base-300']};
+    background-color: ${(props) => props.theme['base-400']};
   }
 `

@@ -1,8 +1,8 @@
-import { GroupsPageContainer } from './styles'
+import { BasePage } from '../../components/layouts/BasePage'
 
 export const Groups = () => {
   return (
-    <GroupsPageContainer>
+    <BasePage heading="Grupos">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
         Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
@@ -418,6 +418,6 @@ export const Groups = () => {
         Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
         numquam, iste nostrum provident optio quod vel mollitia unde dolore.
       </p>
-    </GroupsPageContainer>
+    </BasePage>
   )
 }

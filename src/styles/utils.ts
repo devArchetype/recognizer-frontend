@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { css } from 'styled-components'
 
 export const SrOnly = css`
   position: absolute;
@@ -21,9 +21,4 @@ export const NotSrOnly = css`
   overflow: visible;
   clip: auto;
   white-space: normal;
-`
-
-export const BasePage = styled.main`
-  flex: 1;
-  padding: var(--spacing-md);
 `

@@ -4,7 +4,7 @@ export const Logo = () => {
   return (
     <LogoContainer title="Recognizer">
       <ImageContainer>
-        <img src="/images/logo.svg" alt="Recognize 'R' logo" />
+        <img src="/images/logo.svg" alt="Recognize 'R' logo" loading="lazy" />
         <span>R</span>
       </ImageContainer>
 

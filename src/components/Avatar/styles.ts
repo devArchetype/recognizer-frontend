@@ -34,7 +34,7 @@ export const AvatarInfo = styled.div<AvatarInfoProps>`
   flex-direction: column;
   line-height: 100%;
 
-  h4 {
+  strong {
     color: ${(props) => props.theme['base-900']};
     font-weight: var(--font-medium);
   }
@@ -42,5 +42,6 @@ export const AvatarInfo = styled.div<AvatarInfoProps>`
   div {
     line-height: 100%;
     font-size: var(--text-sm);
+    color: ${(props) => props.theme['base-500']};
   }
 `

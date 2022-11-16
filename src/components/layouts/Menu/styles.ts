@@ -7,7 +7,7 @@ export const MenuContainer = styled.div`
 
 export const NavigationContainer = styled.nav`
   width: 100%;
-  min-height: 64px;
+  min-height: 0;
   display: flex;
   flex: 1;
   padding: 0;
@@ -26,6 +26,8 @@ export const NavigationContainer = styled.nav`
   @media ${screens.sm} {
     width: clamp(180px, 20vw, 280px);
     padding: var(--spacing-xxl) var(--spacing-md) var(--spacing-md);
+    position: sticky;
+    inset: auto 0 0 0;
 
     ul {
       align-items: flex-start;
