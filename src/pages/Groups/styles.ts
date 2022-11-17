@@ -1,4 +1,4 @@
-import styled from 'styled-components'
-import { BasePage } from '../../styles/utils'
+import styled from 'styled-components';
+import { BasePage } from '../../components/layouts/BasePage';
 
-export const GroupsPageContainer = styled(BasePage)``
+export const GroupsPageContainer = styled(BasePage)``;

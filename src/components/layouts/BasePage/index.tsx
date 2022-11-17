@@ -1,5 +1,5 @@
-import { ReactNode } from 'react'
-import { BasePageContainer, Breadcrumb, Heading, PageHeader } from './styles'
+import { ReactNode } from 'react';
+import { BasePageContainer, Breadcrumb, Heading, PageHeader } from './styles';
 
 interface BasePageProps {
   children: ReactNode
@@ -25,5 +25,5 @@ export const BasePage = ({ children, heading }: BasePageProps) => {
       </PageHeader>
       <main>{children}</main>
     </BasePageContainer>
-  )
-}
+  );
+};

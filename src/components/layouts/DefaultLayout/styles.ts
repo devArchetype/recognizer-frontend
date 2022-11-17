@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { screens } from '../../../styles/global'
+import styled from 'styled-components';
+import { screens } from '../../../styles/global';
 
 export const DefaultLayoutContainer = styled.div`
   width: 100vw;
@@ -9,7 +9,7 @@ export const DefaultLayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
-`
+`;
 
 export const LayoutSchema = styled.div`
   display: flex;
@@ -21,7 +21,7 @@ export const LayoutSchema = styled.div`
   @media ${screens.sm} {
     flex-direction: row;
   }
-`
+`;
 
 export const PageContainer = styled.main`
   min-height: 0;
@@ -29,4 +29,4 @@ export const PageContainer = styled.main`
   display: flex;
   overflow-y: auto;
   flex-direction: column;
-`
+`;

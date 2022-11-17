@@ -1,6 +1,6 @@
-import { Route, Routes } from 'react-router-dom'
-import { DefaultLayout } from '../components/layouts/DefaultLayout'
-import { Groups } from '../pages/Groups'
+import { Route, Routes } from 'react-router-dom';
+import { DefaultLayout } from '../components/layouts/DefaultLayout';
+import { Groups } from '../pages/Groups';
 
 export const Router = () => {
   return (
@@ -13,5 +13,5 @@ export const Router = () => {
 
       {/* <Route path="*" element={} /> */}
     </Routes>
-  )
-}
+  );
+};

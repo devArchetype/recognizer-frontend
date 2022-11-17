@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const BasePageContainer = styled.section`
   flex: 1;
@@ -7,7 +7,7 @@ export const BasePageContainer = styled.section`
   main {
     flex: 1;
   }
-`
+`;
 
 export const PageHeader = styled.header`
   display: flex;
@@ -16,7 +16,7 @@ export const PageHeader = styled.header`
   padding-bottom: var(--spacing-md);
   margin-bottom: var(--spacing-md);
   border-bottom: solid 2px ${(props) => props.theme['base-200']};
-`
+`;
 
 export const Heading = styled.div`
   h1 {
@@ -24,7 +24,7 @@ export const Heading = styled.div`
     font-weight: var(--font-medium);
     color: ${(props) => props.theme['base-900']};
   }
-`
+`;
 
 export const Breadcrumb = styled.ol`
   display: inline-flex;
@@ -36,4 +36,4 @@ export const Breadcrumb = styled.ol`
   li:last-child {
     font-weight: var(--font-medium);
   }
-`
+`;

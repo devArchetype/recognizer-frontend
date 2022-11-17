@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export const SrOnly = css`
   position: absolute;
@@ -10,7 +10,7 @@ export const SrOnly = css`
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
-`
+`;
 
 export const NotSrOnly = css`
   position: static;
@@ -21,4 +21,4 @@ export const NotSrOnly = css`
   overflow: visible;
   clip: auto;
   white-space: normal;
-`
+`;

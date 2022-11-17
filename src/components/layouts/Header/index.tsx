@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'
-import { Avatar } from '../../Avatar'
-import { Logo } from '../../Logo'
-import { HeaderContainer } from './styles'
+import { Link } from 'react-router-dom';
+import { Avatar } from '../../Avatar';
+import { Logo } from '../../Logo';
+import { HeaderContainer } from './styles';
 
 export const Header = () => {
   return (
@@ -17,5 +17,5 @@ export const Header = () => {
         />
       </Link>
     </HeaderContainer>
-  )
-}
+  );
+};

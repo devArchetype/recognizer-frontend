@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { SrOnly } from '../../styles/utils'
+import styled from 'styled-components';
+import { SrOnly } from '../../styles/utils';
 
 export const LogoContainer = styled.h2`
   display: flex;
@@ -11,7 +11,7 @@ export const LogoContainer = styled.h2`
     font-weight: var(--font-medium);
     font-size: var(--text-xl);
   }
-`
+`;
 
 export const ImageContainer = styled.div`
   width: 32px;
@@ -25,4 +25,4 @@ export const ImageContainer = styled.div`
   span {
     ${SrOnly};
   }
-`
+`;

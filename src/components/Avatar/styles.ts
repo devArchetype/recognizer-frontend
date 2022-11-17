@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 interface AvatarInfoProps {
   size: 'sm' | 'md' | 'lg'
@@ -12,7 +12,7 @@ const sizes = {
   sm: '2rem',
   md: '4rem',
   lg: '6rem',
-}
+};
 
 export const AvatarContainer = styled.article<AvatarContainerProps>`
   display: flex;
@@ -26,7 +26,7 @@ export const AvatarContainer = styled.article<AvatarContainerProps>`
     height: ${(props) => sizes[props.size]};
     border-radius: var(--rounded-full);
   }
-`
+`;
 
 export const AvatarInfo = styled.div<AvatarInfoProps>`
   display: flex;
@@ -44,4 +44,4 @@ export const AvatarInfo = styled.div<AvatarInfoProps>`
     font-size: var(--text-sm);
     color: ${(props) => props.theme['base-500']};
   }
-`
+`;

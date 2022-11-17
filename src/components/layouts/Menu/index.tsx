@@ -1,6 +1,6 @@
-import { Gear, UserCircle, UsersThree } from 'phosphor-react'
-import { MenuLink } from './components/MenuLink'
-import { MenuContainer, NavigationContainer } from './styles'
+import { Gear, UserCircle, UsersThree } from 'phosphor-react';
+import { MenuLink } from './components/MenuLink';
+import { MenuContainer, NavigationContainer } from './styles';
 
 export const Menu = () => {
   return (
@@ -28,5 +28,5 @@ export const Menu = () => {
         </ul>
       </NavigationContainer>
     </MenuContainer>
-  )
-}
+  );
+};

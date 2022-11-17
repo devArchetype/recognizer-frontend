@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
   display: flex;
@@ -12,4 +12,4 @@ export const FooterContainer = styled.footer`
   a {
     color: ${(props) => props.theme['base-400']};
   }
-`
+`;

@@ -1,4 +1,4 @@
-import { BasePage } from '../../components/layouts/BasePage'
+import { BasePage } from '../../components/layouts/BasePage';
 
 export const Groups = () => {
   return (
@@ -419,5 +419,5 @@ export const Groups = () => {
         numquam, iste nostrum provident optio quod vel mollitia unde dolore.
       </p>
     </BasePage>
-  )
-}
+  );
+};

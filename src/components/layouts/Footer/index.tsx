@@ -1,5 +1,5 @@
-import { version } from '../../../../package.json'
-import { FooterContainer } from './styles'
+import { version } from '../../../../package.json';
+import { FooterContainer } from './styles';
 
 export const Footer = () => {
   return (
@@ -18,5 +18,5 @@ export const Footer = () => {
         <span>v{version}</span>
       </div>
     </FooterContainer>
-  )
-}
+  );
+};

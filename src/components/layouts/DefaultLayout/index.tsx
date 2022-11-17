@@ -1,8 +1,8 @@
-import { Outlet } from 'react-router-dom'
-import { Footer } from '../Footer'
-import { Header } from '../Header'
-import { Menu } from '../Menu'
-import { DefaultLayoutContainer, LayoutSchema, PageContainer } from './styles'
+import { Outlet } from 'react-router-dom';
+import { Footer } from '../Footer';
+import { Header } from '../Header';
+import { Menu } from '../Menu';
+import { DefaultLayoutContainer, LayoutSchema, PageContainer } from './styles';
 
 export const DefaultLayout = () => {
   return (
@@ -18,5 +18,5 @@ export const DefaultLayout = () => {
         </PageContainer>
       </LayoutSchema>
     </DefaultLayoutContainer>
-  )
-}
+  );
+};

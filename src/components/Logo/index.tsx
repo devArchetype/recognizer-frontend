@@ -1,4 +1,4 @@
-import { ImageContainer, LogoContainer } from './styles'
+import { ImageContainer, LogoContainer } from './styles';
 
 export const Logo = () => {
   return (
@@ -10,5 +10,5 @@ export const Logo = () => {
 
       <span>ecognizer</span>
     </LogoContainer>
-  )
-}
+  );
+};

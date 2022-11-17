@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import { normalize } from './normalize'
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from './normalize';
 
 export const screens = {
   sm: '(min-width: 640px)',
@@ -7,7 +7,7 @@ export const screens = {
   lg: '(min-width: 1024px)',
   xl: '(min-width: 1280px)',
   xxl: '(min-width: 1536px)',
-}
+};
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -72,4 +72,4 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 6px;
     background-color: ${(props) => props.theme['base-400']};
   }
-`
+`;

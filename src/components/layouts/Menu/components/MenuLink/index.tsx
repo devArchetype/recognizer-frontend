@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom'
-import { NavigationItem } from './styles'
+import { NavLink } from 'react-router-dom';
+import { NavigationItem } from './styles';
 
 interface MenuLinkProps {
   title: string
@@ -16,5 +16,5 @@ export const MenuLink = ({ link, title, label, icon }: MenuLinkProps) => {
         <span>{label}</span>
       </NavLink>
     </NavigationItem>
-  )
-}
+  );
+};

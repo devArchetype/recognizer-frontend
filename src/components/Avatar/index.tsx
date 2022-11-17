@@ -1,4 +1,4 @@
-import { AvatarContainer, AvatarInfo } from './styles'
+import { AvatarContainer, AvatarInfo } from './styles';
 
 interface AvatarProps {
   orientation?: 'row' | 'column'
@@ -29,5 +29,5 @@ export const Avatar = ({
         <div>{email}</div>
       </AvatarInfo>
     </AvatarContainer>
-  )
-}
+  );
+};

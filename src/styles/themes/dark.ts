@@ -36,5 +36,5 @@ export const DarkTheme = {
   'danger-dark': '#E11D48',
   'danger-base': '#FB7185',
   'danger-light': '#FFF1F2',
-}
+};
 // as const
