@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BasePageContainer = styled.section`
   flex: 1;
-  padding: var(--spacing-md);
+  padding: ${(props) => props.theme.spacing.md};
 
   main {
     flex: 1;
@@ -12,28 +12,28 @@ export const BasePageContainer = styled.section`
 export const PageHeader = styled.header`
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
-  padding-bottom: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
-  border-bottom: solid 2px ${(props) => props.theme['base-200']};
+  gap: ${(props) => props.theme.spacing.md};
+  padding-bottom: ${(props) => props.theme.spacing.md};
+  margin-bottom: ${(props) => props.theme.spacing.md};
+  border-bottom: solid 2px ${(props) => props.theme.color['base-200']};
 `;
 
 export const Heading = styled.div`
   h1 {
-    font-size: var(--text-xxl);
-    font-weight: var(--font-medium);
-    color: ${(props) => props.theme['base-900']};
+    font-size: ${(props) => props.theme.text.xxl};
+    font-weight: ${(props) => props.theme.font.medium};
+    color: ${(props) => props.theme.color['base-900']};
   }
 `;
 
 export const Breadcrumb = styled.ol`
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  font-size: var(--text-sm);
-  color: ${(props) => props.theme['base-400']};
+  gap: ${(props) => props.theme.spacing.xs};
+  font-size: ${(props) => props.theme.text.sm};
+  color: ${(props) => props.theme.color['base-400']};
 
   li:last-child {
-    font-weight: var(--font-medium);
+    font-weight: ${(props) => props.theme.font.medium};
   }
 `;

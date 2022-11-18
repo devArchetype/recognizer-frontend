@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { screens } from '../../../styles/global';
 import { NotSrOnly, SrOnly } from '../../../styles/utils';
 
 export const HeaderContainer = styled.header`
@@ -8,15 +7,15 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   position: relative;
   z-index: 20;
-  padding: var(--spacing-md);
-  background-color: ${(props) => props.theme['base-light']};
-  box-shadow: var(--shadow-base);
+  padding: ${(props) => props.theme.spacing.md};
+  background-color: ${(props) => props.theme.color['base-light']};
+  box-shadow: ${(props) => props.theme.shadow.base};
 
   article div {
     ${SrOnly};
   }
 
-  @media ${screens.sm} {
+  @media ${(props) => props.theme.screen.sm} {
     article div {
       ${NotSrOnly};
     }

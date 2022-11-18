@@ -5,11 +5,11 @@ export const LogoContainer = styled.h2`
   display: flex;
   align-items: center;
   gap: 1px;
-  color: ${(props) => props.theme['base-dark']};
+  color: ${(props) => props.theme.color['base-dark']};
 
   span {
-    font-weight: var(--font-medium);
-    font-size: var(--text-xl);
+    font-weight: ${(props) => props.theme.font.medium};
+    font-size: ${(props) => props.theme.text.xl};
   }
 `;
 

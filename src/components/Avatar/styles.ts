@@ -19,12 +19,12 @@ export const AvatarContainer = styled.article<AvatarContainerProps>`
   align-items: center;
   justify-content: center;
   flex-direction: ${(props) => props.orientation};
-  gap: var(--spacing-xs);
+  gap: ${(props) => props.theme.spacing.xs};
 
   img {
     width: ${(props) => sizes[props.size]};
     height: ${(props) => sizes[props.size]};
-    border-radius: var(--rounded-full);
+    border-radius: ${(props) => props.theme.rounded.full};
   }
 `;
 
@@ -35,13 +35,13 @@ export const AvatarInfo = styled.div<AvatarInfoProps>`
   line-height: 100%;
 
   strong {
-    color: ${(props) => props.theme['base-900']};
-    font-weight: var(--font-medium);
+    color: ${(props) => props.theme.color['base-900']};
+    font-weight: ${(props) => props.theme.font.medium};
   }
 
   div {
     line-height: 100%;
-    font-size: var(--text-sm);
-    color: ${(props) => props.theme['base-500']};
+    font-size: ${(props) => props.theme.text.sm};
+    color: ${(props) => props.theme.color['base-500']};
   }
 `;

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { screens } from '../../../styles/global';
 
 export const DefaultLayoutContainer = styled.div`
   width: 100vw;
@@ -18,7 +17,7 @@ export const LayoutSchema = styled.div`
   flex-direction: column-reverse;
   overflow-y: hidden;
 
-  @media ${screens.sm} {
+  @media ${(props) => props.theme.screen.sm} {
     flex-direction: row;
   }
 `;
