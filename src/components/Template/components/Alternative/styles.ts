@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const AltWrapper = styled.ul`
+  max-width: 100%;
   display: flex;
-  justify-content: space-around;
-  width: 12.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: ${(props) => props.theme.spacing.xs};
 `;
 
 export const AltList = styled.li``;

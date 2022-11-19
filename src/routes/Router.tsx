@@ -12,7 +12,7 @@ export const Router = () => {
         {/* for viewing and testing only */}
         <Route
           path="/exam"
-          element={<Exam examName="Exam A" examined="Little John Potato" />}
+          element={<Exam examName="Prova A" examined="Joãozinho Batata" />}
         />
       </Route>
 

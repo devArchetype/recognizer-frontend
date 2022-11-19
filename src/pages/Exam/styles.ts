@@ -7,7 +7,7 @@ export const CardExam = styled.section`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.sm};
-  margin-bottom: ${(props) => props.theme.spacing.sm};
+  margin-bottom: ${(props) => props.theme.spacing.lg};
 
   h2 {
     font-size: ${(props) => props.theme.text.xl};
@@ -21,7 +21,7 @@ export const StatisticsContainer = styled.div`
   justifify-content: center;
   algn-align: center;
   flex-wrap: wrap;
-  gap: ${(props) => props.theme.spacing.lg};
+  gap: ${(props) => props.theme.spacing.md};
   font-size: ${(props) => props.theme.text.md};
 
   p {

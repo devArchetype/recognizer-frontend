@@ -18,23 +18,23 @@ export const Exam = ({ exam, examName, examined }: ExamProps) => {
   return (
     <ExamPageContainer heading={heading}>
       <CardExam>
-        <h2>Result</h2>
+        <h2>Resultado</h2>
 
         <StatisticsContainer>
           <p>
-            Total number of questions: <span>{totalQuestions}</span>
+            Total de questões: &nbsp;<span>{totalQuestions}</span>
           </p>
           <p>
-            Right questions: <span className="right">{right}</span>
+            Acertos: &nbsp;<span className="right">{right}</span>
           </p>
           <p>
-            Wrong questions: <span className="wrong">{wrong}</span>
+            Erros: &nbsp;<span className="wrong">{wrong}</span>
           </p>
         </StatisticsContainer>
       </CardExam>
 
       <CardExam>
-        <h2>Answers</h2>
+        <h2>Gabarito</h2>
 
         <Template empty={false} />
       </CardExam>

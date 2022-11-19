@@ -8,8 +8,10 @@ export const QuestionContainer = styled.div`
   background-color: white;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: ${(props) => props.theme.spacing.sm};
   flex-wrap: wrap;
+  border: 1px solid ${(props) => props.theme.color['brand-500']};
   border-radius: ${(props) => props.theme.rounded.base};
 
   &:before {
@@ -20,8 +22,7 @@ export const QuestionContainer = styled.div`
     bottom: 0;
     left: 0;
     background-color: ${(props) => props.theme.color['brand-500']};
-    border-radius: ${(props) => props.theme.rounded.base} 0 0
-      ${(props) => props.theme.rounded.base};
+    border-radius: 0.2rem 0 0 0.2rem;
   }
 `;
 

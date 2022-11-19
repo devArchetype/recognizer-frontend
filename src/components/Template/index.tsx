@@ -25,6 +25,7 @@ export const Template = ({ data, empty }: TemplateProps) => {
       number: i,
       isRight: 'E',
       marked: 'E',
+      // alternatives: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
       alternatives: ['A', 'B', 'C', 'D', 'E'],
     });
     dataExample.push({

@@ -5,5 +5,5 @@ export const TemplateSection = styled.section`
   user-select: none;
   display: grid;
   grid-gap: ${(props) => props.theme.spacing.sm};
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 `;
