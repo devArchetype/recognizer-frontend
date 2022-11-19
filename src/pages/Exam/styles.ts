@@ -3,7 +3,7 @@ import { BasePage } from '../../components/layouts/BasePage';
 
 export const ExamPageContainer = styled(BasePage)``;
 
-export const StatisticsgContainer = styled.section`
+export const CardExam = styled.section`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.sm};
@@ -11,34 +11,34 @@ export const StatisticsgContainer = styled.section`
 
   h2 {
     font-size: ${(props) => props.theme.text.xl};
-  }
-
-  .statistics {
-    width: 100%;
-    display: flex;
-    justifify-content: center;
-    algn-align: center;
-    flex-wrap: wrap;
-    gap: ${(props) => props.theme.spacing.lg};
-    font-size: ${(props) => props.theme.text.sm};
-
-    span {
-      font-size: ${(props) => props.theme.text.lg};
-      font-weight: ${(props) => props.theme.font.bold};
-    }
-
-    .right {
-      color: #2dd4bf;
-    }
-
-    .wrong {
-      color: #e11d48;
-    }
+    color: ${(props) => props.theme.color['base-600']};
+    font-weight: ${(props) => props.theme.font.medium};
   }
 `;
 
-export const AnswersContainer = styled.section`
-  h2 {
-    font-size: ${(props) => props.theme.text.xl};
+export const StatisticsContainer = styled.div`
+  display: flex;
+  justifify-content: center;
+  algn-align: center;
+  flex-wrap: wrap;
+  gap: ${(props) => props.theme.spacing.lg};
+  font-size: ${(props) => props.theme.text.md};
+
+  p {
+    color: ${(props) => props.theme.color['base-400']};
+    font-weight: ${(props) => props.theme.font.regular};
+  }
+
+  span {
+    font-size: ${(props) => props.theme.text.lg};
+    font-weight: ${(props) => props.theme.font.bold};
+  }
+
+  .right {
+    color: ${(props) => props.theme.color['success-base']};
+  }
+
+  .wrong {
+    color: ${(props) => props.theme.color['danger-dark']};
   }
 `;

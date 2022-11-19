@@ -21,7 +21,7 @@ export const Question = ({ question, empty }: QuestionProps) => {
   return (
     <QuestionContainer>
       <NumberContainer>
-        <NumberText>Questão {question.number}</NumberText>
+        <NumberText>Question {question.number}</NumberText>
         <NumberTextShort>Ex.</NumberTextShort>
       </NumberContainer>
 

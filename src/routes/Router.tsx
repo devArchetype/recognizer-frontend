@@ -8,7 +8,12 @@ export const Router = () => {
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Groups />} />
-        <Route path="/exam" element={<Exam />} />  {/* for viewing and testing only */ }
+
+        {/* for viewing and testing only */}
+        <Route
+          path="/exam"
+          element={<Exam examName="Exam A" examined="Little John Potato" />}
+        />
       </Route>
 
       {/* páginas sem navbar  */}

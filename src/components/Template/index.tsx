@@ -2,39 +2,40 @@ import { TemplateSection } from './styles';
 import { Question } from './components/Question';
 
 interface TemplateProps {
-  exam?: number;
+  data?: object[];
   empty: boolean;
 }
 
-export const Template = ({ exam, empty }: TemplateProps) => {
-  const data = [
-    {
-      number: 1,
-      isRight: 'B',
+export const Template = ({ data, empty }: TemplateProps) => {
+  const dataExample = [];
+  for (let i = 1; i <= 5; i++) {
+    dataExample.push({
+      number: i,
+      isRight: 'A',
       marked: 'A',
       alternatives: ['A', 'B', 'C', 'D', 'E'],
-    },
-    {
-      number: 2,
+    });
+    dataExample.push({
+      number: i,
+      isRight: 'B',
+      marked: 'C',
+      alternatives: ['A', 'B', 'C', 'D', 'E'],
+    });
+    dataExample.push({
+      number: i,
       isRight: 'E',
       marked: 'E',
       alternatives: ['A', 'B', 'C', 'D', 'E'],
-    },
-    {
-      number: 3,
-      isRight: 'A',
+    });
+    dataExample.push({
+      number: i,
+      isRight: 'C',
       marked: 'D',
       alternatives: ['A', 'B', 'C', 'D', 'E'],
-    },
-    {
-      number: 4,
-      isRight: 'E',
-      marked: 'C',
-      alternatives: ['A', 'B', 'C', 'D', 'E'],
-    },
-  ];
+    });
+  }
 
-  const questions = data.map(function (question, index) {
+  const questions = dataExample.map(function (question, index) {
     return <Question question={question} empty={empty} key={index} />;
   });
 

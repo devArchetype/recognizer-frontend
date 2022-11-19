@@ -1,35 +1,43 @@
-import {
-  ExamPageContainer,
-  StatisticsgContainer,
-  AnswersContainer,
-} from './styles';
+import { ExamPageContainer, CardExam, StatisticsContainer } from './styles';
 
 import { Template } from '../../components/Template';
 
-export const Exam = () => {
+interface ExamProps {
+  exam?: number;
+  examName: string;
+  examined: string;
+}
+
+export const Exam = ({ exam, examName, examined }: ExamProps) => {
+  // illustrative data
+  const totalQuestions = 20;
+  const right = 10;
+  const wrong = 10;
+  const heading = examName + ' - ' + examined;
+
   return (
-    <ExamPageContainer heading="Exam">
-      <StatisticsgContainer>
+    <ExamPageContainer heading={heading}>
+      <CardExam>
         <h2>Result</h2>
 
-        <div className="statistics">
+        <StatisticsContainer>
           <p>
-            Total number of questions: <span>12</span>
+            Total number of questions: <span>{totalQuestions}</span>
           </p>
           <p>
-            Right questions: <span className="right">10</span>
+            Right questions: <span className="right">{right}</span>
           </p>
           <p>
-            Wrong questions: <span className="wrong">2</span>
+            Wrong questions: <span className="wrong">{wrong}</span>
           </p>
-        </div>
-      </StatisticsgContainer>
+        </StatisticsContainer>
+      </CardExam>
 
-      <AnswersContainer>
+      <CardExam>
         <h2>Answers</h2>
 
-        <Template exam={13} empty={false} />
-      </AnswersContainer>
+        <Template empty={false} />
+      </CardExam>
     </ExamPageContainer>
   );
 };

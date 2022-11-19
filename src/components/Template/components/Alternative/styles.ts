@@ -45,7 +45,7 @@ export const AltInput =
   }
 
   &:checked + ${AltLabel} {
-    color: ${(props) => props.theme.color['base-200']};
+    color: ${(props) => props.theme.color['base-100']};
     background-color: ${(props) => {
       if (props.isRight) return props.theme.color['success-base'];
       return props.theme.color['danger-dark'];
