@@ -2,5 +2,14 @@
   "extends": "@rocketseat/eslint-config/react",
   "globals": {
     "JSX": true
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true
+        // "parser": "flow"
+      }
+    ]
   }
 }
