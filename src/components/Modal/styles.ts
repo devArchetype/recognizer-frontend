@@ -67,17 +67,12 @@ export const Header = styled.header`
     font-weight: ${(props) => props.theme.font.medium};
     color: ${(props) => props.theme.color['base-900']};
   }
-
-  button {
-    cursor: pointer;
-    line-height: 0;
-    color: ${(props) => props.theme.color['base-400']};
-    font-size: ${(props) => props.theme.text.xl};
-
-    &:hover {
-      color: ${(props) => props.theme.color['base-500']};
-    }
-  }
 `;
 
-export const Footer = styled.footer``;
+export const Footer = styled.footer`
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-wrap: wrap-reverse;
+  gap: ${(props) => props.theme.spacing.xs};
+`;

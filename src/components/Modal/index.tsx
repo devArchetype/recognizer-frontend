@@ -1,5 +1,6 @@
 import { X } from 'phosphor-react';
 import { forwardRef, ReactNode, useImperativeHandle, useState } from 'react';
+import { Button } from '../Button';
 import { Dialog, Footer, Header, Overlay } from './styles';
 
 interface ModalProps {
@@ -10,11 +11,13 @@ interface ModalProps {
 
 const ModalComponent = (
   { isVisible = false, heading, children }: ModalProps,
-  ref: any,
+  ref: any
 ) => {
   const [modalVisibility, setModalVisibility] = useState(isVisible);
 
   const handleModalVisibility = () => {
+    console.log('oi', modalVisibility);
+
     setModalVisibility((prevVisibility) => !prevVisibility);
   };
 
@@ -27,14 +30,28 @@ const ModalComponent = (
       <Dialog>
         <Header>
           <h2>{heading}</h2>
-          <button onClick={handleModalVisibility} title="Fechar">
-            <X />
-          </button>
+          <Button
+            label="Fechar"
+            icon={<X weight="bold" />}
+            onClick={handleModalVisibility}
+            title="Fechar"
+            variant="icon"
+          />
         </Header>
         {children}
         <Footer>
-          <button>Salvar</button>
-          <button>Cancelar</button>
+          <Button
+            label="Cancelar"
+            onClick={handleModalVisibility}
+            title="Cancelar"
+            variant="secondary"
+          />
+          <Button
+            label="Salvar"
+            onClick={handleModalVisibility}
+            title="Salvar"
+            variant="primary"
+          />
         </Footer>
       </Dialog>
     </Overlay>

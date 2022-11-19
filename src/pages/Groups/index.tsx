@@ -1,4 +1,6 @@
+import { MagnifyingGlass } from 'phosphor-react';
 import { useRef } from 'react';
+import { Button } from '../../components/Button';
 import { BasePage } from '../../components/layouts/BasePage';
 import { Modal } from '../../components/Modal';
 
@@ -11,6 +13,13 @@ export const Groups = () => {
 
   return (
     <BasePage heading="Grupos">
+      <div>
+        <Button
+          label="Button"
+          icon={<MagnifyingGlass weight="bold" />}
+          variant="line"
+        />
+      </div>
       <button onClick={handleModalVisibility}>Open modal</button>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?

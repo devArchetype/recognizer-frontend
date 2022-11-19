@@ -1,5 +1,6 @@
 export const Root = {
   spacing: {
+    xxs: '0.25rem',
     xs: ' 0.5rem',
     sm: ' 0.875rem',
     md: ' 1rem',
