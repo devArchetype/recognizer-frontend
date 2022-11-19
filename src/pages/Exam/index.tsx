@@ -4,6 +4,8 @@ import {
   AnswersContainer,
 } from './styles';
 
+import { Template } from '../../components/Template';
+
 export const Exam = () => {
   return (
     <ExamPageContainer heading="Exam">
@@ -25,6 +27,8 @@ export const Exam = () => {
 
       <AnswersContainer>
         <h2>Answers</h2>
+
+        <Template exam={13} empty={false} />
       </AnswersContainer>
     </ExamPageContainer>
   );

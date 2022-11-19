@@ -1,19 +1,31 @@
-import { AltWrapper } from './styles';
+import {
+  QuestionContainer,
+  NumberContainer,
+  NumberText,
+  NumberTextShort,
+} from './styles';
 
-interface QuestionProps {
-  data: object;
+import { Alternative } from '../Alternative';
+
+export interface QuestionProps {
+  question: {
+    number: number,
+    isRight: string,
+    marked: string,
+    alternatives: string[],
+  };
+  empty: boolean;
 }
 
-export const Question = ({ data }: QuestionProps) => {
+export const Question = ({ question, empty }: QuestionProps) => {
   return (
-    <AltWrapper>
-      <div>
-        <div className="space-left">.</div>
+    <QuestionContainer>
+      <NumberContainer>
+        <NumberText>Questão {question.number}</NumberText>
+        <NumberTextShort>Ex.</NumberTextShort>
+      </NumberContainer>
 
-        <h4>data.</h4>
-      </div>
-
-      <div>A - B - C - D</div>
-    </AltWrapper>
+      <Alternative question={question} empty={empty} />
+    </QuestionContainer>
   );
 };
