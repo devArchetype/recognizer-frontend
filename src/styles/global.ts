@@ -16,7 +16,8 @@ export const GlobalStyle = createGlobalStyle`
 
   :focus {
     outline: transparent;
-    border-radius: var(--rounded-base);
+    border-radius: ${(props) => props.theme.rounded.base};
+    overflow: hidden;
     box-shadow: 0 0 0 2px ${(props) => props.theme.color['brand-600']};
   }
 

@@ -1,4 +1,4 @@
-import { Root } from "../root";
+import { Root } from '../root';
 
 export const DarkTheme = {
   ...Root,
@@ -14,7 +14,7 @@ export const DarkTheme = {
     'base-200': '#E5E7EB',
     'base-100': '#F3F4F6',
     'base-50': '#F8FAFC',
-  
+
     'brand-900': '#312E81',
     'brand-800': '#3730A3',
     'brand-700': '#4338CA',
@@ -25,20 +25,20 @@ export const DarkTheme = {
     'brand-200': '#C7D2FE',
     'brand-100': '#E0E7FF',
     'brand-50': '#EEF2FF',
-  
+
     'base-dark': '#000000',
     'base-light': '#FFFFFF',
-  
+
     'success-dark': '#0D9488',
     'success-base': '#2DD4BF',
     'success-light': '#F0FDFA',
-  
+
     'warning-dark': '#D97706',
     'warning-base': '#F59E0B',
     'warning-light': '#FEF3C7',
-  
+
     'danger-dark': '#E11D48',
     'danger-base': '#FB7185',
     'danger-light': '#FFF1F2',
-  }
+  },
 } as const;

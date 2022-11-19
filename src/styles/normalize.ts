@@ -138,5 +138,9 @@ export const normalize = css`
     outline: none;
     text-decoration: none;
     scroll-behavior: smooth;
+    border: none;
+    outline: none;
+    background: none;
+    transition: all 50ms;
   }
 `;

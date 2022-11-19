@@ -22,11 +22,10 @@ export const NavigationContainer = styled.nav`
     justify-content: space-evenly;
   }
 
-
   @media ${(props) => props.theme.screen.sm} {
     width: clamp(180px, 20vw, 280px);
-    padding:  ${({ theme }) => 
-      `${theme.spacing.xxl} ${theme.spacing.md} ${theme.spacing.md}`} ;
+    padding: ${({ theme }) =>
+      `${theme.spacing.xxl} ${theme.spacing.md} ${theme.spacing.md}`};
     position: sticky;
     inset: auto 0 0 0;
 

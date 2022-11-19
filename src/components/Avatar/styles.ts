@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 interface AvatarInfoProps {
-  size: 'sm' | 'md' | 'lg'
+  size: 'sm' | 'md' | 'lg';
 }
 
 interface AvatarContainerProps extends AvatarInfoProps {
-  orientation: 'row' | 'column'
+  orientation: 'row' | 'column';
 }
 
 const sizes = {

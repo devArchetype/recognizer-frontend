@@ -1,11 +1,11 @@
 import { AvatarContainer, AvatarInfo } from './styles';
 
 interface AvatarProps {
-  orientation?: 'row' | 'column'
-  size?: 'sm' | 'md' | 'lg'
-  email: string
-  name: string
-  url: string
+  orientation?: 'row' | 'column';
+  size?: 'sm' | 'md' | 'lg';
+  email: string;
+  name: string;
+  url: string;
 }
 
 export const Avatar = ({

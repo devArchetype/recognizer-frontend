@@ -5,7 +5,7 @@ export const NavigationItem = styled.li`
     display: flex;
     align-items: center;
     gap: ${(props) => props.theme.spacing.xs};
-    padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`} ;
+    padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`};
     line-height: 0;
     color: ${(props) => props.theme.color['base-400']};
     transition: all 0.1s ease-in-out;
