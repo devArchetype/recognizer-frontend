@@ -4,10 +4,12 @@
     "JSX": true
   },
   "rules": {
-    "prettier/prettier": "off",
-    "semi": [
-      2,
-      "always"
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "parser": "flow"
+      }
     ]
   }
 }
