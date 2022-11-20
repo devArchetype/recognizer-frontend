@@ -7,6 +7,7 @@ interface ButtonProps {
 }
 
 export const ButtonContainer = styled.button<ButtonProps>`
+  height: calc(${(props) => props.theme.spacing.lg} + 4px);
   display: flex;
   flex-direction: ${(props) => (props.iconLeft ? 'row' : 'row-reverse')};
   align-items: center;
@@ -90,11 +91,12 @@ export const ButtonContainer = styled.button<ButtonProps>`
 `;
 
 export const Label = styled.span`
-  line-height: min-content;
+  line-height: 0;
   font-weight: ${(props) => props.theme.font.medium};
 `;
 
 export const Icon = styled.span`
+  font-size: ${(props) => props.theme.text.xl};
   line-height: 0;
   font-weight: ${(props) => props.theme.font.medium};
 `;

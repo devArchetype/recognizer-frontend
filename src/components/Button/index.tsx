@@ -2,6 +2,7 @@ import { HTMLAttributes } from 'react';
 import { ButtonContainer, Icon, Label } from './styles';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+  type?: 'button' | 'submit' | 'reset';
   label: string;
   icon?: JSX.Element;
   iconLeft?: boolean;
@@ -9,6 +10,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = ({
+  type = 'button',
   label,
   icon,
   iconLeft = false,
@@ -16,7 +18,12 @@ export const Button = ({
   ...rest
 }: ButtonProps) => {
   return (
-    <ButtonContainer iconLeft={iconLeft} variant={variant} {...rest}>
+    <ButtonContainer
+      type={type}
+      variant={variant}
+      iconLeft={iconLeft}
+      {...rest}
+    >
       {icon && <Icon>{icon}</Icon>}
       <Label>{label}</Label>
     </ButtonContainer>

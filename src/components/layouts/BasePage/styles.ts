@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-export const BasePageContainer = styled.section`
+export const BasePageContainer = styled.main`
   flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: ${(props) => props.theme.spacing.md};
-
-  main {
-    flex: 1;
-  }
 `;
 
 export const PageHeader = styled.header`
@@ -36,4 +34,11 @@ export const Breadcrumb = styled.ol`
   li:last-child {
     font-weight: ${(props) => props.theme.font.medium};
   }
+`;
+
+export const PageContent = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.theme.spacing.md};
 `;
