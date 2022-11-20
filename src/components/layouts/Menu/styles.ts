@@ -9,7 +9,7 @@ export const NavigationContainer = styled.nav`
   min-height: 0;
   display: flex;
   flex: 1;
-  padding: 0;
+  padding: ${({ theme }) => `${theme.spacing.xs} 0`};
   overflow-y: auto;
   box-shadow: ${(props) => props.theme.shadow.base};
   background-color: ${(props) => props.theme.color['base-light']};
