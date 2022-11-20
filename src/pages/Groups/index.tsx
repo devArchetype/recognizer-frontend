@@ -13,9 +13,11 @@ import groupsData from './data.json';
 export const Groups = () => {
   const modalRef = useRef();
 
-  // const handleModalVisibility = () => {
-  //   modalRef.current.handleModalVisibility();
-  // };
+  const handleModalVisibility = () => {
+    console.log('oi');
+
+    modalRef.current.handleModalVisibility();
+  };
 
   return (
     <GroupsPageContainer heading="Grupos">
@@ -29,7 +31,11 @@ export const Groups = () => {
               srLabel
               icon={<MagnifyingGlass />}
             />
-            <Button label={'Novo grupo'} icon={<PlusCircle />} />
+            <Button
+              label={'Novo grupo'}
+              icon={<PlusCircle />}
+              onClick={handleModalVisibility}
+            />
           </>
         }
       >
@@ -57,7 +63,7 @@ export const Groups = () => {
           })}
         </GroupsList>
       </PageSection>
-      <Modal heading="Test modal" ref={modalRef}>
+      <Modal heading="Criar novo grupo" ref={modalRef}>
         <div>
           <strong>Modal</strong>
           <p>

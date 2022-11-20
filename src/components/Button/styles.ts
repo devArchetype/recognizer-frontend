@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 
 export const ButtonContainer = styled.button<ButtonProps>`
-  height: calc(${(props) => props.theme.spacing.lg} + 4px);
+  height: calc(${(props) => props.theme.spacing.lg} + 8px);
   display: flex;
   flex-direction: ${(props) => (props.iconLeft ? 'row' : 'row-reverse')};
   align-items: center;
@@ -47,7 +47,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
       case 'line': {
         return css`
           position: relative;
-          padding: ${({ theme }) => `${theme.spacing.xs} ${0}`};
+          padding: ${({ theme }) => `${theme.spacing.xs} ${0} ${0}`};
           color: ${(props) => props.theme.color['brand-600']};
           background-color: transparent;
 

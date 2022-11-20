@@ -15,7 +15,7 @@ export const InputFieldContainer = styled.label`
 `;
 
 export const Wrapper = styled.div<WrapperProps>`
-  height: calc(${(props) => props.theme.spacing.lg} + 4px);
+  height: calc(${(props) => props.theme.spacing.lg} + 8px);
   flex: 1;
   display: flex;
   align-items: center;

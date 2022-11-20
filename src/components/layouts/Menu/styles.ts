@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 export const MenuContainer = styled.div`
   display: flex;
+  box-shadow: ${(props) => props.theme.shadow.base};
+
+  @media ${(props) => props.theme.screen.sm} {
+    box-shadow: none;
+  }
 `;
 
 export const NavigationContainer = styled.nav`
@@ -11,7 +16,6 @@ export const NavigationContainer = styled.nav`
   flex: 1;
   padding: 0;
   overflow-y: auto;
-  box-shadow: ${(props) => props.theme.shadow.base};
   background-color: ${(props) => props.theme.color['base-light']};
 
   ul {
@@ -20,6 +24,7 @@ export const NavigationContainer = styled.nav`
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    gap: ${(props) => props.theme.spacing.xxs};
   }
 
   @media ${(props) => props.theme.screen.sm} {
@@ -28,6 +33,7 @@ export const NavigationContainer = styled.nav`
       `${theme.spacing.xxl} ${theme.spacing.md} ${theme.spacing.md}`};
     position: sticky;
     inset: auto 0 0 0;
+    box-shadow: ${(props) => props.theme.shadow.base};
 
     ul {
       align-items: flex-start;
