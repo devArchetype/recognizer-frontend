@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { DefaultLayout } from '../components/layouts/DefaultLayout';
-import { Groups } from '../pages/Groups';
 import { Exam } from '../pages/Exam';
+import { Groups } from '../pages/Groups';
+import { NotFound } from '../pages/NotFound';
 
 export const Router = () => {
   return (
@@ -16,9 +17,8 @@ export const Router = () => {
         />
       </Route>
 
+      <Route path="*" element={<NotFound />} />
       {/* páginas sem navbar  */}
-
-      {/* <Route path="*" element={} /> */}
     </Routes>
   );
 };

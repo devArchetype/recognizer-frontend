@@ -18,8 +18,8 @@ export const ImageContainer = styled.div`
   height: 32px;
 
   img {
-    width: inherit;
-    height: inherit;
+    width: 32px;
+    height: 32px;
   }
 
   span {
