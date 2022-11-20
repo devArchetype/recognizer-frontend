@@ -10,11 +10,12 @@ interface WrapperProps {
 }
 
 export const InputFieldContainer = styled.label`
-  width: 100%;
+  /* width: 100%; */
   position: relative;
 `;
 
 export const Wrapper = styled.div<WrapperProps>`
+  height: calc(${(props) => props.theme.spacing.lg} + 4px);
   flex: 1;
   display: flex;
   align-items: center;
@@ -22,6 +23,7 @@ export const Wrapper = styled.div<WrapperProps>`
   padding: ${(props) => props.theme.spacing.xs};
   cursor: text;
   overflow: hidden;
+  font-size: ${(props) => props.theme.text.xl};
   border-radius: ${(props) => props.theme.rounded.base};
   background-color: ${(props) => props.theme.color['base-light']};
   box-shadow: ${(props) =>
