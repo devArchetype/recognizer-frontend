@@ -1,447 +1,62 @@
-import { MagnifyingGlass } from 'phosphor-react';
+import { MagnifyingGlass, PlusCircle, User } from 'phosphor-react';
 import { useRef } from 'react';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
-import { BasePage } from '../../components/layouts/BasePage';
+import { PageSection } from '../../components/layouts/PageSection';
 import { Modal } from '../../components/Modal';
+import { GroupsList, GroupsPageContainer } from './styles';
+
+import { Group } from '../../@types/app';
+import { Card } from '../../components/Card';
+import groupsData from './data.json';
 
 export const Groups = () => {
   const modalRef = useRef();
 
-  const handleModalVisibility = () => {
-    modalRef.current.handleModalVisibility();
-  };
+  // const handleModalVisibility = () => {
+  //   modalRef.current.handleModalVisibility();
+  // };
 
   return (
-    <BasePage heading="Grupos">
-      <div>
-        <InputField label={'Label'} errorMessage={'Error message'} />
-      </div>
-      <br />
-      <div>
-        <Button
-          label="Button"
-          icon={<MagnifyingGlass weight="bold" />}
-          variant="line"
-        />
-      </div>
-      <button onClick={handleModalVisibility}>Open modal</button>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, amet?
-        Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam ratione
-        numquam, iste nostrum provident optio quod vel mollitia unde dolore.
-      </p>
-
+    <GroupsPageContainer heading="Grupos">
+      <PageSection
+        heading="Meus grupos"
+        actions={
+          <>
+            <InputField
+              label={'Filtrar grupos'}
+              placeholder={'Filtrar grupos'}
+              srLabel
+              icon={<MagnifyingGlass />}
+            />
+            <Button label={'Novo grupo'} icon={<PlusCircle />} />
+          </>
+        }
+      >
+        <GroupsList>
+          {groupsData.map(({ id, name, members }: Group) => {
+            return (
+              <Card
+                key={id}
+                id={id}
+                heading={name}
+                content={
+                  <>
+                    <div>
+                      <User />
+                      <span>{members}</span>
+                    </div>
+                    <div>
+                      <User />
+                      <span>{members}</span>
+                    </div>
+                  </>
+                }
+              />
+            );
+          })}
+        </GroupsList>
+      </PageSection>
       <Modal heading="Test modal" ref={modalRef}>
         <div>
           <strong>Modal</strong>
@@ -453,6 +68,6 @@ export const Groups = () => {
           </p>
         </div>
       </Modal>
-    </BasePage>
+    </GroupsPageContainer>
   );
 };
