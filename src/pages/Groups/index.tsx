@@ -14,8 +14,6 @@ export const Groups = () => {
   const modalRef = useRef();
 
   const handleModalVisibility = () => {
-    console.log('oi');
-
     modalRef.current.handleModalVisibility();
   };
 

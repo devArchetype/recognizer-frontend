@@ -1,11 +1,6 @@
 import { ReactNode } from 'react';
-import {
-  BasePageContainer,
-  Breadcrumb,
-  Heading,
-  PageContent,
-  PageHeader,
-} from './styles';
+import { Breadcrumb } from '../../Breadcrumb';
+import { BasePageContainer, Heading, PageContent, PageHeader } from './styles';
 
 interface BasePageProps {
   children: ReactNode;
@@ -16,15 +11,7 @@ export const BasePage = ({ children, heading }: BasePageProps) => {
   return (
     <BasePageContainer>
       <PageHeader>
-        <nav>
-          <Breadcrumb>
-            <li>place</li>
-            <li>/</li>
-            <li>holder</li>
-            <li>/</li>
-            <li>potato</li>
-          </Breadcrumb>
-        </nav>
+        <Breadcrumb />
         <Heading>
           <h1>{heading}</h1>
         </Heading>

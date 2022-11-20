@@ -24,18 +24,6 @@ export const Heading = styled.div`
   }
 `;
 
-export const Breadcrumb = styled.ol`
-  display: inline-flex;
-  align-items: center;
-  gap: ${(props) => props.theme.spacing.xs};
-  font-size: ${(props) => props.theme.text.sm};
-  color: ${(props) => props.theme.color['base-400']};
-
-  li:last-child {
-    font-weight: ${(props) => props.theme.font.medium};
-  }
-`;
-
 export const PageContent = styled.div`
   flex: 1;
   display: flex;

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { DefaultLayout } from '../components/layouts/DefaultLayout';
 import { Exam } from '../pages/Exam';
 import { Groups } from '../pages/Groups';
@@ -8,7 +8,8 @@ export const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
-        <Route path="/" element={<Groups />} />
+        <Route path="/" element={<Navigate to="/grupos" />} />
+        <Route path="/grupos" element={<Groups />} />
 
         {/* for viewing and testing only */}
         <Route
