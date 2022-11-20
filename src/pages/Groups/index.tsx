@@ -1,6 +1,7 @@
 import { MagnifyingGlass } from 'phosphor-react';
 import { useRef } from 'react';
 import { Button } from '../../components/Button';
+import { InputField } from '../../components/InputField';
 import { BasePage } from '../../components/layouts/BasePage';
 import { Modal } from '../../components/Modal';
 
@@ -13,6 +14,10 @@ export const Groups = () => {
 
   return (
     <BasePage heading="Grupos">
+      <div>
+        <InputField label={'Label'} errorMessage={'Error message'} />
+      </div>
+      <br />
       <div>
         <Button
           label="Button"
