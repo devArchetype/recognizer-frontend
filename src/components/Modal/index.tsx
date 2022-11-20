@@ -16,8 +16,6 @@ const ModalComponent = (
   const [modalVisibility, setModalVisibility] = useState(isVisible);
 
   const handleModalVisibility = () => {
-    console.log('oi', modalVisibility);
-
     setModalVisibility((prevVisibility) => !prevVisibility);
   };
 

@@ -8,7 +8,7 @@ export const Menu = () => {
       <NavigationContainer>
         <ul>
           <MenuLink
-            link="/grupos"
+            link="/"
             title="Ir para Grupos"
             label="Grupos"
             icon={<UsersThree />}
