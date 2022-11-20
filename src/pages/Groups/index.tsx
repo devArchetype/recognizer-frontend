@@ -14,7 +14,7 @@ export const Groups = () => {
   const modalRef = useRef();
 
   const handleModalVisibility = () => {
-    modalRef.current.handleModalVisibility();
+    // modalRef.current.handleModalVisibility();
   };
 
   return (

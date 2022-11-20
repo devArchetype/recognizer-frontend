@@ -1,5 +1,6 @@
 import { ArrowUUpLeft } from 'phosphor-react';
 import { Link } from 'react-router-dom';
+import { Breadcrumb } from '../../components/Breadcrumb';
 import { Button } from '../../components/Button';
 import { Logo } from '../../components/Logo';
 import { Column, Dialog, NotFoundPageContainer } from './styles';
@@ -8,6 +9,7 @@ export const NotFound = () => {
   return (
     <NotFoundPageContainer>
       <Dialog>
+        <Breadcrumb />
         <Column>
           <Logo />
           <img src="/images/not-found.svg" alt="Erro 404" />

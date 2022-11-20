@@ -12,11 +12,11 @@ export const Crumb = ({ id, name, paths }: CrumbProps) => {
   const completePath = paths.slice(0, id + 1).join('/');
 
   return (
-    <li title={`Ir para ${crumbName}`}>
-      <CrumbContainer to={`/${completePath}`}>
-        {crumbName}
-        {!pathsToExludeSlash.includes(id) && <span>/</span>}
-      </CrumbContainer>
-    </li>
+    <>
+      <li title={`Ir para ${crumbName}`}>
+        <CrumbContainer to={`/${completePath}`}>{crumbName}</CrumbContainer>
+      </li>
+      <li>{!pathsToExludeSlash.includes(id) && <span>/</span>}</li>
+    </>
   );
 };
