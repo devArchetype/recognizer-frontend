@@ -11,7 +11,7 @@ export const NavigationContainer = styled.nav`
   flex: 1;
   padding: ${({ theme }) => `${theme.spacing.xs} 0`};
   overflow-y: auto;
-  box-shadow: ${(props) => props.theme.shadow.base};
+  box-shadow: ${(props) => props.theme.shadow.top};
   background-color: ${(props) => props.theme.color['base-light']};
 
   ul {
@@ -28,6 +28,8 @@ export const NavigationContainer = styled.nav`
       `${theme.spacing.xxl} ${theme.spacing.md} ${theme.spacing.md}`};
     position: sticky;
     inset: auto 0 0 0;
+
+    box-shadow: none;
 
     ul {
       align-items: flex-start;

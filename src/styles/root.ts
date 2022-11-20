@@ -30,6 +30,7 @@ export const Root = {
     // base: ' 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06)',
     base: ' 0px 2px 4px -1px rgba(0, 0, 0, 0.1)',
     lg: ' 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05)',
+    top: '0px -22px 4px -21px rgba(0, 0, 0, 0.1)',
   },
   screen: {
     xs: '(min-width: 480px)',
