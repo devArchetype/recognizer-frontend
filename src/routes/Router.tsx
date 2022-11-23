@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { DefaultLayout } from '../components/layouts/DefaultLayout';
 import { Exam } from '../pages/Exam';
 import { Groups } from '../pages/Groups';
+import { Exams } from '../pages/Exams';
 import { NotFound } from '../pages/NotFound';
 
 export const Router = () => {
@@ -13,7 +14,11 @@ export const Router = () => {
 
         {/* for viewing and testing only */}
         <Route
-          path="/exam"
+          path="/exams"
+          element={<Exams examName="Prova A" group="Grupo A" />}
+        />
+        <Route
+          path="/exams/exam"
           element={<Exam examName="Prova A" examined="Joãozinho Batata" />}
         />
       </Route>
