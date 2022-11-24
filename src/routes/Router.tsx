@@ -13,14 +13,8 @@ export const Router = () => {
         <Route path="/grupos" element={<Groups />} />
 
         {/* for viewing and testing only */}
-        <Route
-          path="/provas"
-          element={<Exams examName="Prova A" group="Grupo A" />}
-        />
-        <Route
-          path="/provas/prova"
-          element={<Exam examName="Prova A" examined="Joãozinho Batata" />}
-        />
+        <Route path="/grupos/provas" element={<Exams />} />
+        <Route path="/grupos/provas/*" element={<Exam />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />

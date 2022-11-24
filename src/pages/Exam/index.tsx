@@ -2,14 +2,11 @@ import { ExamPageContainer, CardExam, StatisticsContainer } from './styles';
 
 import { Template } from '../../components/Template';
 
-interface ExamProps {
-  exam?: number;
-  examName: string;
-  examined: string;
-}
-
-export const Exam = ({ exam, examName, examined }: ExamProps) => {
+export const Exam = () => {
   // illustrative data
+  const examName = 'Prova A';
+  const examined = 'Joãozinho Batata';
+
   const totalQuestions = 20;
   const right = 10;
   const wrong = 10;
