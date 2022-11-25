@@ -21,7 +21,40 @@ export const Exams = () => {
     'Anotações gerais do professor: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem possimus aliquam deserunt veritatis pariatur inventore, repudiandae veniam! Voluptates nulla tenetur eos optio, iure voluptatibus magnam culpa quisquam dolorem exercitation.'
   );
   const detailsRef = useRef<HTMLTextAreaElement | null>(null);
-  const [disabled, setDisabled] = useState(false);
+  // const [disabled, setDisabled] = useState(true);
+  const [searchExam, setSearchExam] = useState('');
+
+  const fillExams = () => {
+    return examsData.map(({ id, name, registration }: Exam) => {
+      if (!name.toLowerCase().includes(searchExam.toLowerCase())) {
+        if (
+          !String(registration).toLowerCase().includes(searchExam.toLowerCase())
+        ) {
+          return null;
+        }
+      }
+
+      return (
+        <Card
+          key={id}
+          id={id}
+          heading={name}
+          label="Ver Prova"
+          target="/grupos/provas"
+          content={
+            <>
+              <div>
+                <span>{'Matrícula:'}</span>
+              </div>
+              <div>
+                <span>{registration}</span>
+              </div>
+            </>
+          }
+        />
+      );
+    });
+  };
 
   const handleChangeDetails = (value: string) => {
     setDetails(value);
@@ -29,7 +62,7 @@ export const Exams = () => {
   };
 
   const editDetailsEnable = () => {
-    setDisabled(false);
+    // setDisabled(false);
     detailsRef.current?.focus();
   };
 
@@ -61,7 +94,7 @@ export const Exams = () => {
             name="details"
             value={details}
             onChange={(event) => handleChangeDetails(event.target.value)}
-            disabled={disabled}
+            // disabled={disabled}
           />
         </DateDetailsContent>
       </PageSection>
@@ -75,35 +108,14 @@ export const Exams = () => {
               placeholder={'Buscar Integrante'}
               srLabel
               icon={<MagnifyingGlass />}
+              onChange={(event) => setSearchExam(event.target.value)}
             />
             <Button type="button" label={'Ver Gabarito'} />
             <Button type="button" label={'Exportar'} />
           </>
         }
       >
-        <ExamsList>
-          {examsData.map(({ id, name, registration }: Exam) => {
-            return (
-              <Card
-                key={id}
-                id={id}
-                heading={name}
-                label="Ver Prova"
-                target="/grupos/provas"
-                content={
-                  <>
-                    <div>
-                      <span>{'Matrícula:'}</span>
-                    </div>
-                    <div>
-                      <span>{registration}</span>
-                    </div>
-                  </>
-                }
-              />
-            );
-          })}
-        </ExamsList>
+        <ExamsList>{fillExams()}</ExamsList>
       </PageSection>
     </ExamsPageContainer>
   );

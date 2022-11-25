@@ -25,4 +25,5 @@ export const TextareaContent = styled.textarea`
   padding: ${(props) => props.theme.spacing.xs};
   font-family: 'Ubuntu', sans-serif;
   font-size: ${(props) => props.theme.text.sm};
+  color: ${(props) => props.theme.color['base-600']};
 `;
