@@ -11,8 +11,9 @@ export const QuestionContainer = styled.div`
   justify-content: center;
   gap: ${(props) => props.theme.spacing.sm};
   flex-wrap: wrap;
-  border: 1px solid ${(props) => props.theme.color['brand-500']};
+  /* border: 1px solid ${(props) => props.theme.color['brand-500']}; */
   border-radius: 0.6rem;
+  box-shadow: ${(props) => props.theme.shadow.base};
 
   &:before {
     content: '';

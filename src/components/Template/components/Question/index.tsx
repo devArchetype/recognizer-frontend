@@ -9,10 +9,10 @@ import { Alternative } from '../Alternative';
 
 export interface QuestionProps {
   question: {
-    number: number,
-    isRight: string,
-    marked: string,
-    alternatives: string[],
+    number: number;
+    isRight: string;
+    marked: string;
+    alternatives: string[];
   };
   empty: boolean;
 }
