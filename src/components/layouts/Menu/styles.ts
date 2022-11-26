@@ -40,6 +40,10 @@ export const NavigationContainer = styled.nav`
       justify-content: flex-start;
       flex-direction: column;
       padding: 0;
+
+      li:last-child {
+        margin-top: auto;
+      }
     }
   }
 `;
