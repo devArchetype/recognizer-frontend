@@ -26,7 +26,7 @@ export const NavigationContainer = styled.nav`
   }
 
   @media ${(props) => props.theme.screen.sm} {
-    width: clamp(180px, 20vw, 280px);
+    width: clamp(180px, 10vw, 280px);
 
     ul {
       align-items: flex-start;

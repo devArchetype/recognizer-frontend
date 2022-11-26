@@ -1,4 +1,6 @@
+import { useId } from 'react';
 import { PageSection } from '../../../../components/layouts/PageSection';
+import { Switch } from '../../../../components/Switch';
 
 export const General = () => {
   return (
@@ -9,6 +11,7 @@ export const General = () => {
         reiciendis, eligendi molestias inventore eos sapiente voluptate sunt
         quia in.
       </p>
+      <Switch id={useId()} srLabel={'OI'} />
     </PageSection>
   );
 };
