@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { SrOnly } from '../../styles/utils';
 
 export const Checkbox = styled.input`
-  all: unset;
+  ${SrOnly}
 
   &:checked + label {
     border-color: ${(props) => props.theme.color['brand-600']};
@@ -47,7 +47,7 @@ export const Label = styled.label`
     transition: all 0.2s ease-in-out;
     box-shadow: ${(props) => props.theme.shadow.base};
     border-radius: ${(props) => props.theme.rounded.full};
-    background-color: ${(props) => props.theme.color['base-light']};
+    background-color: ${(props) => props.theme.color['base-100']};
   }
 
   span {
