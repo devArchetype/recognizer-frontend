@@ -19,7 +19,7 @@ export const Card = ({ id, heading, content, hideBtn }: CardProps) => {
         <ContentList>{content}</ContentList>
       </ContentWrapper>
       {!hideBtn && (
-        <Link to={`groups/${id}/`}>
+        <Link to={`/grupos/${id}/`}>
           <Button label="Ver grupo" variant="line" icon={<CaretRight />} />
         </Link>
       )}
