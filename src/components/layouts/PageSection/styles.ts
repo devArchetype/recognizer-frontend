@@ -6,7 +6,7 @@ interface ActionsProps {
 }
 
 export const PageSectionContainer = styled.div`
-  /* flex: 1; */
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.md};
