@@ -11,18 +11,17 @@ import { Button } from '../../components/Button';
 import { PageSection } from '../../components/layouts/PageSection';
 import { InputField } from '../../components/InputField';
 import { MagnifyingGlass } from 'phosphor-react';
+import { Modal } from '../../components/Modal';
 
 import { Exam } from '../../@types/app';
 import { Card } from '../../components/Card';
 import examsData from './data.json';
 
 export const Exams = () => {
-  const [details, setDetails] = useState(
-    'Anotações gerais do professor: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem possimus aliquam deserunt veritatis pariatur inventore, repudiandae veniam! Voluptates nulla tenetur eos optio, iure voluptatibus magnam culpa quisquam dolorem exercitation.'
-  );
+  const [details, setDetails] = useState('Anotações gerais ...');
   const detailsRef = useRef<HTMLTextAreaElement | null>(null);
-  // const [disabled, setDisabled] = useState(true);
   const [searchExam, setSearchExam] = useState('');
+  const modalInsertExamRef = useRef();
 
   const fillExams = () => {
     return examsData.map(({ id, name, registration }: Exam) => {
@@ -62,8 +61,11 @@ export const Exams = () => {
   };
 
   const editDetailsEnable = () => {
-    // setDisabled(false);
     detailsRef.current?.focus();
+  };
+
+  const handleModalInsertExamVisibility = () => {
+    // modalInsertExamRef.current.handleModalVisibility();
   };
 
   // illustrative data
@@ -72,7 +74,19 @@ export const Exams = () => {
   const dateDetails = '11 de Novembro de 2022';
 
   return (
-    <ExamsPageContainer heading={examName + ' - ' + group}>
+    <ExamsPageContainer
+      heading={examName + ' - ' + group}
+      actions={
+        <>
+          <Button type="button" label={'Imprimir provas'} />
+          <Button
+            type="button"
+            label={'Inserir provas'}
+            onClick={handleModalInsertExamVisibility}
+          />
+        </>
+      }
+    >
       <PageSection
         heading="Detalhes"
         actions={
@@ -117,6 +131,18 @@ export const Exams = () => {
       >
         <ExamsList>{fillExams()}</ExamsList>
       </PageSection>
+
+      <Modal heading="Inserir provas" ref={modalInsertExamRef}>
+        <div>
+          <strong>Modal</strong>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta,
+            amet? Sequi ullam dolorum cumque amet ipsum quos! Nam, laborios
+            ratione numquam, iste nostrum provident optio quod vel mollitia
+            dolore.
+          </p>
+        </div>
+      </Modal>
     </ExamsPageContainer>
   );
 };

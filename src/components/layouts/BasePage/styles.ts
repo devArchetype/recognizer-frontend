@@ -30,3 +30,19 @@ export const PageContent = styled.div`
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.md};
 `;
+
+export const PageHeaderContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: ${(props) => props.theme.spacing.sm};
+  margin-bottom: 2px;
+
+  div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: ${(props) => props.theme.spacing.sm};
+  }
+`;

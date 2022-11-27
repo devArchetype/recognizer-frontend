@@ -1,17 +1,27 @@
 import { ReactNode } from 'react';
 import { Breadcrumb } from '../../Breadcrumb';
-import { BasePageContainer, Heading, PageContent, PageHeader } from './styles';
+import {
+  BasePageContainer,
+  Heading,
+  PageContent,
+  PageHeader,
+  PageHeaderContent,
+} from './styles';
 
 interface BasePageProps {
   children: ReactNode;
   heading: string;
+  actions?: ReactNode;
 }
 
-export const BasePage = ({ children, heading }: BasePageProps) => {
+export const BasePage = ({ children, heading, actions }: BasePageProps) => {
   return (
     <BasePageContainer>
       <PageHeader>
-        <Breadcrumb />
+        <PageHeaderContent>
+          <Breadcrumb />
+          <div>{actions}</div>
+        </PageHeaderContent>
         <Heading>
           <h1>{heading}</h1>
         </Heading>
