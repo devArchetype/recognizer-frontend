@@ -2,6 +2,7 @@ import { ExamPageContainer, StatisticsContainer } from './styles';
 
 import { Template } from '../../components/Template';
 import { PageSection } from '../../components/layouts/PageSection';
+import { Button } from '../../components/Button';
 
 export const Exam = () => {
   // illustrative data
@@ -14,7 +15,14 @@ export const Exam = () => {
   const heading = examName + ' - ' + examined;
 
   return (
-    <ExamPageContainer heading={heading}>
+    <ExamPageContainer
+      heading={heading}
+      actions={
+        <>
+          <Button type="button" label={'Imprimir prova'} />
+        </>
+      }
+    >
       <PageSection heading="Resultado">
         <StatisticsContainer>
           <p>
