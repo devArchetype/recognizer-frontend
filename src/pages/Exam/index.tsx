@@ -1,6 +1,7 @@
-import { ExamPageContainer, CardExam, StatisticsContainer } from './styles';
+import { ExamPageContainer, StatisticsContainer } from './styles';
 
 import { Template } from '../../components/Template';
+import { PageSection } from '../../components/layouts/PageSection';
 
 export const Exam = () => {
   // illustrative data
@@ -14,9 +15,7 @@ export const Exam = () => {
 
   return (
     <ExamPageContainer heading={heading}>
-      <CardExam>
-        <h2>Resultado</h2>
-
+      <PageSection heading="Resultado">
         <StatisticsContainer>
           <p>
             Total de questões: &nbsp;<span>{totalQuestions}</span>
@@ -28,13 +27,11 @@ export const Exam = () => {
             Erros: &nbsp;<span className="wrong">{wrong}</span>
           </p>
         </StatisticsContainer>
-      </CardExam>
+      </PageSection>
 
-      <CardExam>
-        <h2>Gabarito</h2>
-
+      <PageSection heading="Gabarito">
         <Template empty={false} />
-      </CardExam>
+      </PageSection>
     </ExamPageContainer>
   );
 };
