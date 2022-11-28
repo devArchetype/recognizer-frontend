@@ -5,19 +5,27 @@ import {
   InputGroup,
   ButtonGroups,
 } from './styles';
-import { Logo } from '../Logo';
-import { Button } from '../Button';
+import { Logo } from '../../components/Logo';
+import { Button } from '../../components/Button';
 
-export const AuthentificationContainer = () => {
+interface Authentication {
+  page: string;
+}
+
+export const Authentication = ({page}: Authentication) => {
   return (
     <AuthenticationMain>
       <AuthenticationSection>
         <AuthenticationHeader>
           <Logo />
-          <p>Seja bem-vindo</p>
+          <h2>
+            {page == 'login' && 'Seja bem-vindo!'}
+            {page == 'cadastro' && 'Cadastre-se!'}
+            {page == 'recuperacao' && 'Alterar senha?'}
+          </h2>
         </AuthenticationHeader>
-
-        <InputGroup>
+        
+        {/*<InputGroup>
           <div>
             <label htmlFor="">Usuario </label>
             <input type="text" placeholder="Digite o nome do usuario" />
@@ -42,8 +50,9 @@ export const AuthentificationContainer = () => {
             <p>Não possui cadastro?</p>
             <a href="/potato"> Registre-se</a>
           </div>
-        </ButtonGroups>
+        </ButtonGroups> */}
       </AuthenticationSection>
     </AuthenticationMain>
   );
 };
+

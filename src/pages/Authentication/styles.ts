@@ -13,6 +13,8 @@ export const AuthenticationMain = styled.main`
 `;
 
 export const AuthenticationSection = styled.section`
+  width: 35%;
+  min-width: 250px;
   display: flex;
   gap: ${(props) => props.theme.spacing.lg};
   flex-direction: column;
@@ -23,7 +25,17 @@ export const AuthenticationSection = styled.section`
 export const AuthenticationHeader = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${(props) => props.theme.spacing.xs};
+  gap: ${(props) => props.theme.spacing.lg};
+  
+  h2 {
+    font-size: ${(props) => props.theme.text.xxl};
+    color: ${(props) => props.theme.color['base-dark']};
+    font-weight: ${(props) => props.theme.font.medium};
+  }
+  
+  div {
+    font-size: ${(props) => props.theme.text.xxl};
+  }
 `;
 
 export const InputGroup = styled.div`
