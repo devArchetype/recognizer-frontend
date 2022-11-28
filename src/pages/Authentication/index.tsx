@@ -8,11 +8,73 @@ import {
 import { Logo } from '../../components/Logo';
 import { Button } from '../../components/Button';
 
+import { Link } from 'react-router-dom';
+
 interface Authentication {
   page: string;
 }
 
 export const Authentication = ({page}: Authentication) => {
+  const renderExactContent = () => {
+    switch (page) {
+      case 'login':
+          return (
+            <>
+              <Button label="Login" title="Login" type="submit" />
+              <div>
+                <p>Não possui cadastro?</p>
+                <Link to="/cadastro"> Registre-se</Link>
+              </div>
+            </>
+          );
+
+      case 'cadastro':  
+        return (
+            <>
+              <Button label="Cadastrar" title="Cadastrar" type="submit" />
+              <div>
+                <p>Já possui cadastro?</p>
+                <Link to="/login"> Login</Link>
+              </div>
+            </>
+          );
+      
+      case 'recuperacao':  
+        return (
+            <>
+              <Button label="Confirmar" title="Confirmar" type="submit" />
+              <div>
+                <p>Não possui cadastro?</p>
+                <Link to="/cadastro"> Registre-se</Link>
+              </div>
+            </>
+          );    
+    }
+  };
+
+  const renderExactInputs = () => {
+    switch (page) {
+      case 'login':
+          return (
+            <>
+              <div>
+                <label htmlFor="">Usuário </label>
+                <input type="text" placeholder="Digite o nome do usuário" />
+              </div>
+
+              <div>
+                <label htmlFor="">Senha </label>
+                <div>
+                  <input type="password" placeholder="Digite a senha do usuário" />
+                  <Link to="/recupercao" className="anchor" > Esqueceu a senha? </Link>
+                </div>
+              </div>
+            </>
+          );
+    }
+  };
+
+
   return (
     <AuthenticationMain>
       <AuthenticationSection>
@@ -25,32 +87,13 @@ export const Authentication = ({page}: Authentication) => {
           </h2>
         </AuthenticationHeader>
         
-        {/*<InputGroup>
-          <div>
-            <label htmlFor="">Usuario </label>
-            <input type="text" placeholder="Digite o nome do usuario" />
-          </div>
-
-          <div>
-            <label htmlFor="">Senha </label>
-            <div>
-              <input type="password" placeholder="Digite a senha do usuario" />
-              <a href="/potato" className="end-align">
-                {' '}
-                Esqueceu a senha?
-              </a>
-            </div>
-          </div>
+        <InputGroup>
+          {renderExactInputs()} 
         </InputGroup>
 
         <ButtonGroups>
-          <Button label="Login" title="Login" type="submit" />
-
-          <div>
-            <p>Não possui cadastro?</p>
-            <a href="/potato"> Registre-se</a>
-          </div>
-        </ButtonGroups> */}
+          {renderExactContent()}
+        </ButtonGroups> 
       </AuthenticationSection>
     </AuthenticationMain>
   );

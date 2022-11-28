@@ -54,8 +54,8 @@ export const InputGroup = styled.div`
       border-radius: ${(props) => props.theme.rounded.base};
     }
   }
-
-  .end-align {
+  
+  .anchor {
     display: flex;
     justify-content: flex-end;
   }
@@ -66,7 +66,7 @@ export const ButtonGroups = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: ${(props) => props.theme.spacing.xs};
+  gap: ${(props) => props.theme.spacing.xl};
 
   button {
     width: 80%;
