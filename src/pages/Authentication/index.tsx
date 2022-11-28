@@ -55,22 +55,67 @@ export const Authentication = ({page}: Authentication) => {
   const renderExactInputs = () => {
     switch (page) {
       case 'login':
-          return (
-            <>
-              <div>
-                <label htmlFor="">Usuário </label>
-                <input type="text" placeholder="Digite o nome do usuário" />
-              </div>
+        return (
+          <>
+            <div>
+              <label htmlFor="">Usuário </label>
+              <input name="name" type="text" placeholder="Digite o nome do usuário" />
+            </div>
 
+            <div>
+              <label htmlFor="">Senha </label>
               <div>
-                <label htmlFor="">Senha </label>
-                <div>
-                  <input type="password" placeholder="Digite a senha do usuário" />
-                  <Link to="/recupercao" className="anchor" > Esqueceu a senha? </Link>
-                </div>
+                <input name="password" type="password" placeholder="Digite a senha do usuário" />
+                <Link to="/recuperacao" className="anchor" > Esqueceu a senha? </Link>
               </div>
-            </>
-          );
+            </div>
+          </>
+        );
+
+      case 'cadastro':
+        return (
+          <>
+            <div>
+              <label htmlFor="">Nome </label>
+              <input name="name" type="text" placeholder="Digite o nome do usuário" />
+            </div>
+
+            <div>
+              <label htmlFor="">Email </label>
+              <input name="email" type="email" placeholder="Digite o email do usuário" />
+            </div>
+
+            <div>
+              <label htmlFor="">Senha </label>
+              <input name="password" type="password" placeholder="Digite a senha do usuário" />
+            </div>
+
+            <div>
+              <label htmlFor="">Confirmar senha </label>
+              <input name="new_password" type="password" placeholder="Confirme a senha do usuário" />
+            </div>
+          </>
+        );
+
+      case 'recuperacao':
+        return (
+          <>
+            <div>
+              <label htmlFor="">Email </label>
+              <input name="email" type="email" placeholder="Digite o email do usuário" />
+            </div>
+
+            <div>
+              <label htmlFor="">Nova senha </label>
+              <input name="password" type="password" placeholder="Digite a nova senha do usuário" />
+            </div>
+
+            <div>
+              <label htmlFor="">Confirmar nova senha </label>
+              <input name="new_password" type="password" placeholder="Confirme a nova senha do usuário" />
+            </div>
+          </>
+        );
     }
   };
 

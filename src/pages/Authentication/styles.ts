@@ -6,20 +6,18 @@ export const AuthenticationMain = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* display: flex;
-  gap: ${(props) => props.theme.spacing.xs};
-  flex-direction: column; */
 `;
 
 export const AuthenticationSection = styled.section`
-  width: 35%;
+  width: 30%;
   min-width: 250px;
   display: flex;
   gap: ${(props) => props.theme.spacing.lg};
   flex-direction: column;
   background-color: ${(props) => props.theme.color['base-50']};
   padding: ${(props) => props.theme.spacing.lg};
+  border-radius: ${(props) => props.theme.rounded.base};
+  box-shadow: ${(props) => props.theme.shadow.lg};
 `;
 
 export const AuthenticationHeader = styled.div`
@@ -41,7 +39,7 @@ export const AuthenticationHeader = styled.div`
 export const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${(props) => props.theme.spacing.xs};
+  gap: ${(props) => props.theme.spacing.sm};
 
   div {
     display: flex;
@@ -49,12 +47,25 @@ export const InputGroup = styled.div`
     gap: ${(props) => props.theme.spacing.xxs};
 
     input {
-      border: 1px solid ${(props) => props.theme.color['base-500']};
-      padding: ${(props) => props.theme.spacing.xs};
+      border: 1px solid ${(props) => props.theme.color['base-400']};
+      box-shadow: ${(props) => props.theme.shadow.base};
+      padding: 0.6rem;
       border-radius: ${(props) => props.theme.rounded.base};
     }
   }
-  
+  input::placeholder {
+    color: ${(props) => props.theme.color['base-400']};
+  }
+
+  label {
+    color: ${(props) => props.theme.color['base-600']};
+    font-weight: ${(props) => props.theme.font.medium};
+  }
+
+  a {
+    font-weight: ${(props) => props.theme.font.medium};
+  }
+
   .anchor {
     display: flex;
     justify-content: flex-end;
