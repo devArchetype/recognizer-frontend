@@ -24,13 +24,13 @@ export const AuthenticationHeader = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.lg};
-  
+
   h2 {
     font-size: ${(props) => props.theme.text.xxl};
     color: ${(props) => props.theme.color['base-dark']};
     font-weight: ${(props) => props.theme.font.medium};
   }
-  
+
   div {
     font-size: ${(props) => props.theme.text.xxl};
   }
