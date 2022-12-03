@@ -1,14 +1,231 @@
-import { HomeContainer, HeaderContainer, MainContainer } from './styles';
+import { HomeContainer, MainContainer } from './styles';
 
-import { Link } from 'react-router-dom';
-import { Logo } from '../../components/Logo';
+import { Header } from './components/Header';
 
 export const Home = () => {
   return (
     <HomeContainer>
-      <HeaderContainer></HeaderContainer>
+      <Header />
 
-      <MainContainer>dsdsd</MainContainer>
+      <MainContainer>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim id omnis
+        error nihil maiores accusamus provident, ratione vero ipsa placeat
+        recusandae, alias in sint quo possimus nemo. Amet, provident dolor?
+        <div id="contact">sfdsafadsf</div>
+      </MainContainer>
     </HomeContainer>
   );
 };
