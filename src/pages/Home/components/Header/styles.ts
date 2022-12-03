@@ -11,7 +11,7 @@ export const HeaderContainer = styled.header`
   box-shadow: ${(props) => props.theme.shadow.base};
   padding: ${(props) => props.theme.spacing.md}
     ${(props) => props.theme.spacing.xxl};
-  background-color: ${(props) => props.theme.color['base-light']};
+  /* background-color: ${(props) => props.theme.color['base-light']}; */
 
   &.sticky {
     background-color: ${(props) => props.theme.color['base-light']};

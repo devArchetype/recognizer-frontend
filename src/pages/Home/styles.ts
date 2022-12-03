@@ -17,3 +17,19 @@ export const MainContainer = styled.main`
   overflow-y: auto;
   flex-direction: column;
 `;
+
+export const SectionContainer = styled.section`
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: ${`${window.innerHeight}px`};
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+
+  &#top {
+    background-image: url('../.././../public/images/bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+`;
