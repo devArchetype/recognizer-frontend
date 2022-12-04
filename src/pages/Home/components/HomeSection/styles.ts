@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HomeContainer = styled.div`
+export const SectionContainer = styled.section`
   width: 100vw;
   max-width: 100vw;
   height: 100vh;
@@ -8,12 +8,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
-`;
-
-export const MainContainer = styled.main`
-  min-height: 0;
-  flex: 1;
-  display: flex;
-  overflow-y: auto;
-  flex-direction: column;
+  background-image: url('/images/bg.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 `;

@@ -24,7 +24,7 @@ export const Header = () => {
       <NavContainer className={navBar ? 'sticky' : ''}>
         <ListContainer>
           <li>
-            <a href="#top">Início</a>
+            <a href="#home">Início</a>
           </li>
           <li>
             <a href="#about">Sobre</a>

@@ -8,9 +8,9 @@ export const HeaderContainer = styled.header`
   position: fixed;
   z-index: 20;
   padding: ${(props) => props.theme.spacing.md};
-  box-shadow: ${(props) => props.theme.shadow.base};
   padding: ${(props) => props.theme.spacing.md}
     ${(props) => props.theme.spacing.xxl};
+  /* box-shadow: ${(props) => props.theme.shadow.base}; */
   /* background-color: ${(props) => props.theme.color['base-light']}; */
 
   &.sticky {
