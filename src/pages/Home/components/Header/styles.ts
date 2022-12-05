@@ -34,6 +34,12 @@ export const NavContainer = styled.nav`
   justify-content: center;
   position: relative;
   gap: ${(props) => props.theme.spacing.xxl};
+
+  @media (min-width: 700px) {
+    .menu {
+      display: none;
+    }
+  }
 `;
 
 export const ListContainer = styled.ul`

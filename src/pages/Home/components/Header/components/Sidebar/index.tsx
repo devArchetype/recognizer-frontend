@@ -18,14 +18,26 @@ export const Sidebar = ({ active, activated }: SidebarProps) => {
       <X color="black" onClick={closeSidebar} />
 
       <Content>
-        <SidebarItem icon={<House />} text="Início" anchor="#home" />
         <SidebarItem
-          icon={<NewspaperClipping />}
+          icon={<House onClick={closeSidebar} />}
+          text="Início"
+          anchor="#home"
+        />
+        <SidebarItem
+          icon={<NewspaperClipping onClick={closeSidebar} />}
           text="Sobre"
           anchor="#about"
         />
-        <SidebarItem icon={<Pen />} text="Assinatura" anchor="#subscription" />
-        <SidebarItem icon={<At />} text="Contato" anchor="#contact" />
+        <SidebarItem
+          icon={<Pen onClick={closeSidebar} />}
+          text="Assinatura"
+          anchor="#subscription"
+        />
+        <SidebarItem
+          icon={<At onClick={closeSidebar} />}
+          text="Contato"
+          anchor="#contact"
+        />
       </Content>
     </Container>
   );

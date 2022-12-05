@@ -24,7 +24,7 @@ export const Header = () => {
       <Logo />
 
       <NavContainer>
-        {/* <List size={22} onClick={showSiderbar} /> */}
+        <List size={22} onClick={showSiderbar} className="menu" />
         {sidebar && <Sidebar active={setSidebar} activated={sidebar} />}
 
         <ListContainer>
