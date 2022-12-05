@@ -26,10 +26,6 @@ export const HeaderContainer = styled.header`
     box-shadow: none;
     font-weight: ${(props) => props.theme.font.medium};
   }
-
-  @media (max-width: 450px) {
-    padding: ${(props) => props.theme.spacing.md};
-  }
 `;
 
 export const NavContainer = styled.nav`
