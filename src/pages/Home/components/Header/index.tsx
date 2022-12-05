@@ -9,19 +9,17 @@ export const Header = () => {
   const [navBar, setNavBar] = useState(false);
 
   const changeBackg = (event: Event) => {
-    console.log(window.scrollY);
-
-    if (window.scrollY >= 80) setNavBar(true);
+    if (window.scrollY >= 55) setNavBar(true);
     else setNavBar(false);
   };
 
   window.addEventListener('scroll', changeBackg);
 
   return (
-    <HeaderContainer>
+    <HeaderContainer className={navBar ? 'sticky' : ''}>
       <Logo />
 
-      <NavContainer className={navBar ? 'sticky' : ''}>
+      <NavContainer>
         <ListContainer>
           <li>
             <a href="#home">Início</a>

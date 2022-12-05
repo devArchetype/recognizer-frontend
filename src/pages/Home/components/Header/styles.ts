@@ -7,13 +7,11 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   position: fixed;
   z-index: 20;
-  padding: ${(props) => props.theme.spacing.md};
   padding: ${(props) => props.theme.spacing.md}
-    ${(props) => props.theme.spacing.xxl};
-  /* box-shadow: ${(props) => props.theme.shadow.base}; */
-  /* background-color: ${(props) => props.theme.color['base-light']}; */
+    ${(props) => props.theme.spacing.xl};
 
   &.sticky {
+    box-shadow: ${(props) => props.theme.shadow.base};
     background-color: ${(props) => props.theme.color['base-light']};
   }
 
@@ -26,7 +24,11 @@ export const HeaderContainer = styled.header`
     position: relative;
     color: ${(props) => props.theme.color['base-dark']};
     box-shadow: none;
-    font-weight: ${(props) => props.theme.font.regular};
+    font-weight: ${(props) => props.theme.font.medium};
+  }
+
+  @media (max-width: 450px) {
+    padding: ${(props) => props.theme.spacing.md};
   }
 `;
 
@@ -61,7 +63,7 @@ export const ListContainer = styled.ul`
     left: 25%;
   }
 
-  :focus {
-    box-shadow: 0 0 0 2px red;
+  @media (max-width: 700px) {
+    display: none;
   }
 `;
