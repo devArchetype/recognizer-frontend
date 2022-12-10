@@ -9,7 +9,7 @@ export const SectionContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: ${(props) => props.theme.spacing.xl};
+  gap: ${(props) => props.theme.spacing.xxl};
   overflow-y: hidden;
 `;
 
@@ -18,7 +18,7 @@ export const HeadingContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: ${(props) => props.theme.spacing.md};
+  gap: ${(props) => props.theme.spacing.lg};
 
   h1,
   p {
@@ -36,35 +36,59 @@ export const HeadingContainer = styled.div`
 `;
 
 export const SectionContent = styled.div`
-  display: grid;
-  grid-gap: ${(props) => props.theme.spacing.md};
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-`;
-
-export const FormContact = styled.form`
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: ${(props) => props.theme.spacing.md};
 `;
 
-export const ImageContainer = styled.div`
+export const FormContact = styled.form`
+  height: 100%;
+  width: 22rem;
   display: flex;
-  border-radius: ${(props) => props.theme.rounded.base};
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: ${(props) => props.theme.spacing.md};
 
-  img {
-    width: clamp(15rem, 70vw, 45rem);
-    height: 100%;
-    object-fit: cover;
+  input,
+  textarea {
+    width: 100%;
+    padding: ${(props) => props.theme.spacing.xs};
+    border: 1px solid ${(props) => props.theme.color['base-400']};
     border-radius: ${(props) => props.theme.rounded.base};
   }
 
-  @media (max-width: 450px) {
-    img {
-      display: none;
-    }
+  textarea {
+    height: 48%;
+    min-height: 10rem;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: ${(props) => props.theme.spacing.sm};
+    width: 100%;
+  }
+
+  @media (max-width: 880px) {
+    width: 80%;
+  }
+`;
+
+export const ImageContainer = styled.div`
+  display: flex;
+  height: 100%;
+  img {
+    ob
+    width: 100%;
+    height: 100%;
+    border-radius: ${(props) => props.theme.rounded.base};
+  }
+
+  @media (max-width: 880px) {
+    display: none;
   }
 `;

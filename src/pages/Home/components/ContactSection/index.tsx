@@ -6,6 +6,9 @@ import {
   ImageContainer,
 } from './styles';
 
+import { PaperPlaneTilt } from 'phosphor-react';
+import { Button } from '../../../../components/Button';
+
 export const ContactSection = () => {
   return (
     <SectionContainer id="contact">
@@ -23,8 +26,20 @@ export const ContactSection = () => {
           <input type="text" name="name" placeholder="Nome" />
           <input type="email" name="email" placeholder="Email" />
           <textarea name="message" placeholder="Mensagem"></textarea>
+          <Button
+            type="submit"
+            label="Enviar Mensagem"
+            title="Enviar Mensagem"
+            icon={<PaperPlaneTilt />}
+          />
         </FormContact>
-        <ImageContainer></ImageContainer>
+
+        <ImageContainer>
+          <img
+            src="/images/saly-16.svg"
+            alt="Garota sentada de baixo de uma árvore com passaros à volta lendo um livro"
+          />
+        </ImageContainer>
       </SectionContent>
     </SectionContainer>
   );

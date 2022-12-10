@@ -21,7 +21,7 @@ export const HeadingContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: ${(props) => props.theme.spacing.md};
+  gap: ${(props) => props.theme.spacing.lg};
 
   h1,
   p {
