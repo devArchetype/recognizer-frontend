@@ -38,7 +38,7 @@ export const Header = () => {
             <a href="#subscription">Assinatura</a>
           </li>
           <li>
-            <a href="#contact">Contato</a>
+            <a href="#contact">Fale Conosco</a>
           </li>
         </ListContainer>
 
