@@ -1,4 +1,6 @@
-import { SectionContainer, HeadingContainer, ImageContainer } from './styles';
+import * as Dialog from '@radix-ui/react-dialog';
+import { BaseModal } from '../../../../components/layouts/BaseModal';
+import { HeadingContainer, ImageContainer, SectionContainer } from './styles';
 
 export const HomeSection = () => {
   return (
@@ -17,6 +19,16 @@ export const HomeSection = () => {
           alt="Demonstração em imagem do visual da aplicação Recognizer"
         />
       </ImageContainer>
+
+      <Dialog.Root>
+        <Dialog.Trigger asChild>
+          <button>modal</button>
+        </Dialog.Trigger>
+
+        <BaseModal heading="Titulo modal">
+          <>conteudo</>
+        </BaseModal>
+      </Dialog.Root>
     </SectionContainer>
   );
 };

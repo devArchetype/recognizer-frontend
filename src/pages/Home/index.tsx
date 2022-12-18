@@ -1,8 +1,7 @@
-import { HomeContainer, MainContainer } from './styles';
-
+import { ContactSection } from './components/ContactSection';
 import { Header } from './components/Header';
 import { HomeSection } from './components/HomeSection';
-import { ContactSection } from './components/ContactSection';
+import { HomeContainer, MainContainer } from './styles';
 
 export const Home = () => {
   return (

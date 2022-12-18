@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import {
   PreferencesContext,
-  PreferencesContextProvider
+  PreferencesContextProvider,
 } from './contexts/PreferencesContext';
 import { Router } from './routes/Router';
 import { queryClient } from './services/reactQuery/client';

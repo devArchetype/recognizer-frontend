@@ -30,10 +30,7 @@ interface AltInputProps {
   correctOption: boolean;
 }
 
-export const AltInput =
-  styled.input <
-  AltInputProps >
-  `
+export const AltInput = styled.input<AltInputProps>`
   appearance: none;
   display: none;
 

@@ -11,7 +11,7 @@ import { Button } from '../../components/Button';
 import { PageSection } from '../../components/layouts/PageSection';
 import { InputField } from '../../components/InputField';
 import { MagnifyingGlass } from 'phosphor-react';
-import { Modal } from '../../components/Modal';
+import { Modal } from '../../components/layouts/BaseModal';
 
 import { Exam } from '../../@types/app';
 import { Card } from '../../components/Card';

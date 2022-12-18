@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { GithubLogo, MoonStars, List } from 'phosphor-react';
-import { HeaderContainer, NavContainer, ListContainer } from './styles';
+import { GithubLogo, List, MoonStars } from 'phosphor-react';
+import { HeaderContainer, ListContainer, NavContainer } from './styles';
 
 import { Logo } from '../../../../components/Logo';
 import { Sidebar } from './components/Sidebar';
@@ -22,7 +22,6 @@ export const Header = () => {
   return (
     <HeaderContainer className={navBar ? 'sticky' : ''}>
       <Logo />
-
       <NavContainer>
         <List size={22} onClick={showSiderbar} className="menu" />
         {sidebar && <Sidebar active={setSidebar} activated={sidebar} />}

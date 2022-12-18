@@ -3,7 +3,7 @@ import { PreferencesMenu } from './components/PreferencesMenu';
 import {
   LayoutContainer,
   PageContainer,
-  PreferencesPageContainer
+  PreferencesPageContainer,
 } from './styles';
 
 export const PreferencesDefaultLayout = () => {

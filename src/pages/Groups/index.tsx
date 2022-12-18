@@ -1,9 +1,7 @@
 import { MagnifyingGlass, PlusCircle, User } from 'phosphor-react';
-import { useRef } from 'react';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 import { PageSection } from '../../components/layouts/PageSection';
-import { Modal } from '../../components/Modal';
 import { GroupsList, GroupsPageContainer } from './styles';
 
 import { Group } from '../../@types/app';
@@ -11,12 +9,6 @@ import { Card } from '../../components/Card';
 import groupsData from './data.json';
 
 export const Groups = () => {
-  const modalRef = useRef();
-
-  const handleModalVisibility = () => {
-    // modalRef.current.handleModalVisibility();
-  };
-
   return (
     <GroupsPageContainer heading="Grupos">
       <PageSection
@@ -29,11 +21,7 @@ export const Groups = () => {
               srLabel
               icon={<MagnifyingGlass />}
             />
-            <Button
-              label={'Novo grupo'}
-              icon={<PlusCircle />}
-              onClick={handleModalVisibility}
-            />
+            <Button label={'Novo grupo'} icon={<PlusCircle />} />
           </>
         }
       >
@@ -61,17 +49,6 @@ export const Groups = () => {
           })}
         </GroupsList>
       </PageSection>
-      <Modal heading="Criar novo grupo" ref={modalRef}>
-        <div>
-          <strong>Modal</strong>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta,
-            amet? Sequi ullam dolorum cumque amet ipsum quos! Nam, laboriosam
-            ratione numquam, iste nostrum provident optio quod vel mollitia unde
-            dolore.
-          </p>
-        </div>
-      </Modal>
     </GroupsPageContainer>
   );
 };
