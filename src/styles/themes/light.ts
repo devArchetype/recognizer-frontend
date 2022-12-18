@@ -2,7 +2,6 @@ import { Root } from '../root';
 
 export const LightTheme = {
   ...Root,
-  name: 'lightTheme',
   color: {
     'base-900': '#111827',
     'base-800': '#1F2937',
@@ -42,4 +41,4 @@ export const LightTheme = {
     'danger-base': '#FB7185',
     'danger-light': '#FFF1F2',
   },
-} as const;
+};

@@ -1,8 +1,8 @@
 import { ExamPageContainer, StatisticsContainer } from './styles';
 
+import { Button } from '../../components/Button';
 import { Template } from '../../components/Template';
 import { PageSection } from '../../components/layouts/PageSection';
-import { Button } from '../../components/Button';
 
 export const Exam = () => {
   // illustrative data

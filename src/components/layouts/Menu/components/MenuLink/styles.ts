@@ -31,10 +31,6 @@ export const NavigationItem = styled.li`
   @media ${(props) => props.theme.screen.sm} {
     width: 100%;
 
-    &:last-child {
-      margin-top: auto;
-    }
-
     a {
       span:last-child {
         display: block;
