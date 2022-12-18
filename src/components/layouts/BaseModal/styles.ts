@@ -8,18 +8,29 @@ export const Overlay = styled(Dialog.Overlay)`
   background-color: ${(props) => props.theme.color['base-dark-translucent']};
 `;
 
+export const OverlayContainer = styled.div`
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 60;
+  padding: ${(props) => props.theme.spacing.xs};
+
+  @media ${(props) => props.theme.screen.sm} {
+    padding: ${(props) => props.theme.spacing.md};
+  }
+`;
+
 export const Container = styled(Dialog.Content)`
   width: 100%;
   max-width: 768px;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
+  margin: auto;
   gap: ${(props) => props.theme.spacing.md};
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 60;
-  transform: translate(-50%, -50%);
-  padding: ${(props) => props.theme.spacing.md};
+  padding: inherit;
   border-radius: ${(props) => props.theme.rounded.base};
   box-shadow: ${(props) => props.theme.shadow.base};
   background-color: ${(props) => props.theme.color['base-light']};
@@ -40,6 +51,7 @@ export const Title = styled(Dialog.Title)`
 
 export const Content = styled.div`
   flex: 1;
+  overflow-y: auto;
 `;
 
 export const Footer = styled.footer`

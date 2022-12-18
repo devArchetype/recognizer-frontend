@@ -1,5 +1,6 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import { BaseModal } from '../../../../components/layouts/BaseModal';
+import { Button } from '../../../../components/Button';
+import { SampleModal } from '../../../../components/Modals/SampleModal';
+import { ModalTrigger } from '../../../../components/layouts/BaseModal';
 import { HeadingContainer, ImageContainer, SectionContainer } from './styles';
 
 export const HomeSection = () => {
@@ -19,16 +20,16 @@ export const HomeSection = () => {
           alt="Demonstração em imagem do visual da aplicação Recognizer"
         />
       </ImageContainer>
-
-      <Dialog.Root>
-        <Dialog.Trigger asChild>
-          <button>modal</button>
-        </Dialog.Trigger>
-
-        <BaseModal heading="Titulo modal">
-          <>conteudo</>
-        </BaseModal>
-      </Dialog.Root>
+      <ModalTrigger
+        trigger={
+          <Button
+            label="Abrir modal de exemplo"
+            title="Abrir modal de exemplo"
+            variant="primary"
+          />
+        }
+        modal={<SampleModal />}
+      />
     </SectionContainer>
   );
 };
