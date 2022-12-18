@@ -33,6 +33,7 @@ export const Root = {
     top: '0px -22px 4px -21px rgba(0, 0, 0, 0.1)',
   },
   screen: {
+    xxs: '(min-width: 330px)',
     xs: '(min-width: 480px)',
     sm: '(min-width: 640px)',
     md: '(min-width: 768px)',

@@ -34,5 +34,5 @@ export const ActionsWrapper = styled.div`
   align-items: center;
   justify-content: end;
   flex-wrap: wrap-reverse;
-  gap: ${(props) => props.theme.spacing.xs};
+  gap: ${(props) => props.theme.spacing.sm};
 `;

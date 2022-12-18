@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     outline: transparent;
     border-radius: ${(props) => props.theme.rounded.base};
     overflow: hidden;
-    box-shadow: 0 0 0 2px ${(props) => props.theme.color['brand-600']};
+    /* box-shadow: 0 0 0 2px ${(props) => props.theme.color['brand-600']}; */
   }
 
   ::selection {
@@ -26,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.color['brand-700']};
   }
   ::-webkit-scrollbar {
-    width: 3px;
+    width: 6px;
     height: 3px;
   }
   

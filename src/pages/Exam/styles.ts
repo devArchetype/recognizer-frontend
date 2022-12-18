@@ -3,19 +3,6 @@ import { BasePage } from '../../components/layouts/BasePage';
 
 export const ExamPageContainer = styled(BasePage)``;
 
-export const CardExam = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: ${(props) => props.theme.spacing.sm};
-  margin-bottom: ${(props) => props.theme.spacing.lg};
-
-  h2 {
-    font-size: ${(props) => props.theme.text.xl};
-    color: ${(props) => props.theme.color['base-600']};
-    font-weight: ${(props) => props.theme.font.medium};
-  }
-`;
-
 export const StatisticsContainer = styled.div`
   display: flex;
   justifify-content: center;

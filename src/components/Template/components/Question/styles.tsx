@@ -11,18 +11,19 @@ export const QuestionContainer = styled.div`
   justify-content: center;
   gap: ${(props) => props.theme.spacing.sm};
   flex-wrap: wrap;
-  border: 1px solid ${(props) => props.theme.color['brand-500']};
-  border-radius: ${(props) => props.theme.rounded.base};
+  /* border: 1px solid ${(props) => props.theme.color['brand-500']}; */
+  border-radius: 0.6rem;
+  box-shadow: ${(props) => props.theme.shadow.base};
 
   &:before {
     content: '';
     width: 4%;
     position: absolute;
     top: 0;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     background-color: ${(props) => props.theme.color['brand-500']};
-    border-radius: 0.2rem 0 0 0.2rem;
+    border-radius: 0.5rem 0 0 0.6rem;
   }
 `;
 

@@ -1,25 +1,29 @@
-import { ExamPageContainer, CardExam, StatisticsContainer } from './styles';
+import { ExamPageContainer, StatisticsContainer } from './styles';
 
 import { Template } from '../../components/Template';
+import { PageSection } from '../../components/layouts/PageSection';
+import { Button } from '../../components/Button';
 
-interface ExamProps {
-  exam?: number;
-  examName: string;
-  examined: string;
-}
-
-export const Exam = ({ exam, examName, examined }: ExamProps) => {
+export const Exam = () => {
   // illustrative data
+  const examName = 'Prova A';
+  const examined = 'Joãozinho Batata';
+
   const totalQuestions = 20;
   const right = 10;
   const wrong = 10;
   const heading = examName + ' - ' + examined;
 
   return (
-    <ExamPageContainer heading={heading}>
-      <CardExam>
-        <h2>Resultado</h2>
-
+    <ExamPageContainer
+      heading={heading}
+      actions={
+        <>
+          <Button type="button" label={'Imprimir prova'} />
+        </>
+      }
+    >
+      <PageSection heading="Resultado">
         <StatisticsContainer>
           <p>
             Total de questões: &nbsp;<span>{totalQuestions}</span>
@@ -31,13 +35,11 @@ export const Exam = ({ exam, examName, examined }: ExamProps) => {
             Erros: &nbsp;<span className="wrong">{wrong}</span>
           </p>
         </StatisticsContainer>
-      </CardExam>
+      </PageSection>
 
-      <CardExam>
-        <h2>Gabarito</h2>
-
+      <PageSection heading="Gabarito">
         <Template empty={false} />
-      </CardExam>
+      </PageSection>
     </ExamPageContainer>
   );
 };
