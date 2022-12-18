@@ -1,17 +1,16 @@
 import {
-  ExamsPageContainer,
-  ExamsList,
-  TextareaContent,
   DateDetailsContent,
+  ExamsList,
+  ExamsPageContainer,
+  TextareaContent,
 } from './styles';
 
 import { useRef, useState } from 'react';
 
-import { Button } from '../../components/Button';
-import { PageSection } from '../../components/layouts/PageSection';
-import { InputField } from '../../components/InputField';
 import { MagnifyingGlass } from 'phosphor-react';
-import { Modal } from '../../components/layouts/BaseModal';
+import { Button } from '../../components/Button';
+import { InputField } from '../../components/InputField';
+import { PageSection } from '../../components/layouts/PageSection';
 
 import { Exam } from '../../@types/app';
 import { Card } from '../../components/Card';
@@ -131,18 +130,6 @@ export const Exams = () => {
       >
         <ExamsList>{fillExams()}</ExamsList>
       </PageSection>
-
-      <Modal heading="Inserir provas" ref={modalInsertExamRef}>
-        <div>
-          <strong>Modal</strong>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta,
-            amet? Sequi ullam dolorum cumque amet ipsum quos! Nam, laborios
-            ratione numquam, iste nostrum provident optio quod vel mollitia
-            dolore.
-          </p>
-        </div>
-      </Modal>
     </ExamsPageContainer>
   );
 };
