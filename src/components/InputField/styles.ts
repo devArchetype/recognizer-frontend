@@ -31,7 +31,9 @@ export const Wrapper = styled.div<WrapperProps>`
     props.hasError && `0 0 0 1px ${props.theme.color['danger-dark']}`};
   border: 1px solid
     ${(props) =>
-      props.border ? `${props.theme.color['base-400']}` : 'transparent'};
+    props.border ? `${props.theme.color['base-400']}` : 'transparent'};
+  border-color: ${(props) =>
+    props.hasError && props.theme.color['danger-dark']};
 
   svg {
     color: ${(props) => props.theme.color['base-400']};
@@ -70,5 +72,7 @@ export const Label = styled.span<LabelProps>`
 export const ErrorMessage = styled.span`
   position: absolute;
   font-size: ${(props) => props.theme.text.sm};
+  line-height: 100%;
   color: ${(props) => props.theme.color['danger-dark']};
+  margin-top: 2px;
 `;

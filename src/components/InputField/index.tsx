@@ -1,4 +1,5 @@
 import { InputHTMLAttributes } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import { ErrorMessage, InputFieldContainer, Label, Wrapper } from './styles';
 
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -8,6 +9,7 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: JSX.Element;
   errorMessage?: string;
   border?: boolean;
+  register?: UseFormRegisterReturn<string>;
 }
 
 export const InputField = ({
@@ -17,6 +19,7 @@ export const InputField = ({
   errorMessage,
   icon,
   border = false,
+  register,
   ...rest
 }: InputFieldProps) => {
   const hasError = Boolean(errorMessage);
@@ -26,7 +29,7 @@ export const InputField = ({
       <Label srLabel={srLabel}>{label}</Label>
       <Wrapper hasError={hasError} border={border}>
         {icon}
-        <input type={type} {...rest} />
+        <input type={type} {...register} {...rest} />
       </Wrapper>
       <ErrorMessage>{errorMessage}</ErrorMessage>
     </InputFieldContainer>
