@@ -2,7 +2,7 @@ import { ExamPageContainer, StatisticsContainer } from './styles';
 
 import { Button } from '../../components/Button';
 import { Template } from '../../components/Template';
-import { PageSection } from '../../components/layouts/PageSection';
+import { PageSection } from '../../layouts/PageSection';
 
 export const Exam = () => {
   // illustrative data

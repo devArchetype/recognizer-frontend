@@ -2,16 +2,20 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   width: 100%;
+  height: 100%;
   max-width: 500px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: ${(props) => props.theme.spacing.md};
   padding: ${(props) => props.theme.spacing.md};
   border-radius: ${(props) => props.theme.rounded.base};
   background-color: ${(props) => props.theme.color['base-light']};
+  box-shadow: ${(props) => props.theme.shadow.base};
 
   @media ${(props) => props.theme.screen.sm} {
     gap: ${(props) => props.theme.spacing.xxl};
+    height: auto;
   }
 `;
 
@@ -27,6 +31,8 @@ export const Header = styled.header`
   }
 
   @media ${(props) => props.theme.screen.sm} {
+    gap: ${(props) => props.theme.spacing.lg};
+
     h2 {
       font-size: ${(props) => props.theme.text.xxl};
     }
@@ -34,10 +40,7 @@ export const Header = styled.header`
 `;
 
 export const FormContainer = styled.div`
-  flex: 1;
-
   form {
-    flex: 1;
     display: flex;
     flex-direction: column;
     gap: ${(props) => props.theme.spacing.md};

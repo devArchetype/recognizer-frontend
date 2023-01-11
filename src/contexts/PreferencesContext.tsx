@@ -1,10 +1,11 @@
 import { ReactNode, createContext } from 'react';
 import { DefaultTheme } from 'styled-components';
-import { useTheme } from '../hooks/useTheme';
+import { Themes, useTheme } from '../hooks/useTheme';
 import { DarkTheme } from '../styles/themes/dark';
 import { LightTheme } from '../styles/themes/light';
 
 interface PreferencesContextTypes {
+  themeName: Themes;
   currentTheme: DefaultTheme;
   isDark: boolean;
   toggleTheme: () => void;
@@ -26,9 +27,12 @@ export const PreferencesContextProvider = ({
     dark: DarkTheme,
   };
   const currentTheme = appThemes[theme];
+  const themeName = theme;
 
   return (
-    <PreferencesContext.Provider value={{ currentTheme, isDark, toggleTheme }}>
+    <PreferencesContext.Provider
+      value={{ currentTheme, themeName, isDark, toggleTheme }}
+    >
       {children}
     </PreferencesContext.Provider>
   );

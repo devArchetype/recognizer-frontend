@@ -1,10 +1,13 @@
 import { useContext, useId } from 'react';
-import { PageSection } from '../../../../components/layouts/PageSection';
 import { Switch } from '../../../../components/Switch';
 import { PreferencesContext } from '../../../../contexts/PreferencesContext';
+import { PageSection } from '../../../../layouts/PageSection';
 
 export const General = () => {
-  const { toggleTheme } = useContext(PreferencesContext);
+  const { isDark, toggleTheme } = useContext(PreferencesContext);
+  const themeSwitchId = useId();
+
+  const label = isDark ? 'Alterar para tema claro' : 'Alterar para tema escuro';
 
   return (
     <PageSection heading="Geral">
@@ -14,7 +17,13 @@ export const General = () => {
         reiciendis, eligendi molestias inventore eos sapiente voluptate sunt
         quia in.
       </p>
-      <Switch id={useId()} srLabel={'OI'} onChange={toggleTheme} />
+      <Switch
+        id={themeSwitchId}
+        srLabel={label}
+        title={label}
+        onChange={toggleTheme}
+        checked={isDark}
+      />
     </PageSection>
   );
 };

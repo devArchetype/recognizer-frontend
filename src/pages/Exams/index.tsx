@@ -10,7 +10,7 @@ import { useRef, useState } from 'react';
 import { MagnifyingGlass } from 'phosphor-react';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
-import { PageSection } from '../../components/layouts/PageSection';
+import { PageSection } from '../../layouts/PageSection';
 
 import { Exam } from '../../@types/app';
 import { Card } from '../../components/Card';

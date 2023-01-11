@@ -1,5 +1,5 @@
 import { SlidersHorizontal } from 'phosphor-react';
-import { MenuLink } from '../../../../components/layouts/Menu/components/MenuLink';
+import { MenuLink } from '../../../../layouts/Menu/components/MenuLink';
 import { NavigationContainer, PreferencesMenuContainer } from './styles';
 
 export const PreferencesMenu = () => {

@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
-import { Breadcrumb } from '../../Breadcrumb';
+import { Breadcrumb } from '../../components/Breadcrumb';
 import {
-  BasePageContainer,
-  Heading,
-  PageContent,
-  PageHeader,
-  PageHeaderContent,
+    BasePageContainer,
+    Heading,
+    PageContent,
+    PageHeader,
+    PageHeaderContent,
 } from './styles';
 
 interface BasePageProps {

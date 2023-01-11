@@ -9,9 +9,9 @@ import {
 import { Router } from './routes/Router';
 import { queryClient } from './services/reactQuery/client';
 import { GlobalStyle } from './styles/global';
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import { AuthContextProvider } from './contexts/AuthContext';
 
 interface ThemeContextProviderProps {
   children: ReactNode;
@@ -23,18 +23,24 @@ const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
 };
 
 export const App = () => {
+  const { themeName } = useContext(PreferencesContext);
   return (
-    <PreferencesContextProvider>
-      <ThemeContextProvider>
-        <GlobalStyle />
-
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
-          <ToastContainer position="top-right" pauseOnHover={false} />
-        </QueryClientProvider>
-      </ThemeContextProvider>
-    </PreferencesContextProvider>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <PreferencesContextProvider>
+          <ThemeContextProvider>
+            <GlobalStyle />
+            <QueryClientProvider client={queryClient}>
+              <Router />
+              <ToastContainer
+                position="top-right"
+                pauseOnHover={false}
+                theme={themeName}
+              />
+            </QueryClientProvider>
+          </ThemeContextProvider>
+        </PreferencesContextProvider>
+      </AuthContextProvider>
+    </BrowserRouter>
   );
 };

@@ -1,4 +1,4 @@
-import { version } from '../../../../package.json';
+import { version } from '../../../package.json';
 import { FooterContainer } from './styles';
 
 export const Footer = () => {

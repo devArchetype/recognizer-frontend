@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { BasePage } from '../../components/layouts/BasePage';
-import { PageSection } from '../../components/layouts/PageSection';
+import { BasePage } from '../../layouts/BasePage';
+import { PageSection } from '../../layouts/PageSection';
 
 export const GroupPageContainer = styled(BasePage)``;
 

@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { DefaultLayout } from '../components/layouts/DefaultLayout';
-import { SessionDefaultLayout } from '../components/layouts/SessionDefaultLayout';
+import { DefaultLayout } from '../layouts/DefaultLayout';
+import { SessionDefaultLayout } from '../layouts/SessionDefaultLayout';
 import { Exam } from '../pages/Exam';
 import { Group } from '../pages/Group';
 import { Groups } from '../pages/Groups';

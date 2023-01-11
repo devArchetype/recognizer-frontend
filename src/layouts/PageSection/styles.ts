@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SrOnly } from '../../../styles/utils';
+import { SrOnly } from '../../styles/utils';
 
 interface ActionsProps {
   srHeading: boolean;

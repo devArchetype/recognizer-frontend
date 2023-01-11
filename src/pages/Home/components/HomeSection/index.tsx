@@ -1,6 +1,6 @@
 import { Button } from '../../../../components/Button';
 import { SampleModal } from '../../../../components/Modals/SampleModal';
-import { ModalTrigger } from '../../../../components/layouts/BaseModal';
+import { ModalTrigger } from '../../../../layouts/BaseModal';
 import { HeadingContainer, ImageContainer, SectionContainer } from './styles';
 
 export const HomeSection = () => {

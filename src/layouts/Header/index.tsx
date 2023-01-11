@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Avatar } from '../../Avatar';
-import { Logo } from '../../Logo';
+import { Avatar } from '../../components/Avatar';
+import { Logo } from '../../components/Logo';
 import { HeaderContainer } from './styles';
 
 export const Header = () => {

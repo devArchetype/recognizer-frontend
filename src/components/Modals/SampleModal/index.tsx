@@ -1,4 +1,4 @@
-import { BaseModal } from '../../layouts/BaseModal';
+import { BaseModal } from '../../../layouts/BaseModal';
 
 export const SampleModal = () => {
   return (

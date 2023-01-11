@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Logo } from '../../../../Logo';
+import { Logo } from '../../../../components/Logo';
 import { Container, FormContainer, Header } from './styles';
 
 interface SessionContainerProps {

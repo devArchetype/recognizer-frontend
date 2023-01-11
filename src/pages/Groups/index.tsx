@@ -1,7 +1,7 @@
 import { MagnifyingGlass, PlusCircle, User } from 'phosphor-react';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
-import { PageSection } from '../../components/layouts/PageSection';
+import { PageSection } from '../../layouts/PageSection';
 import { GroupsList, GroupsPageContainer } from './styles';
 
 import { Group } from '../../@types/app';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NotSrOnly, SrOnly } from '../../../styles/utils';
+import { NotSrOnly, SrOnly } from '../../styles/utils';
 
 export const HeaderContainer = styled.header`
   display: flex;

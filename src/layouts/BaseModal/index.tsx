@@ -1,15 +1,15 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'phosphor-react';
 import { ReactNode } from 'react';
-import { Button } from '../../Button';
+import { Button } from '../../components/Button';
 import {
-  Container,
-  Content,
-  Footer,
-  Header,
-  Overlay,
-  OverlayContainer,
-  Title,
+    Container,
+    Content,
+    Footer,
+    Header,
+    Overlay,
+    OverlayContainer,
+    Title,
 } from './styles';
 
 interface ModalProps {

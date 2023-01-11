@@ -19,7 +19,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   border-radius: ${(props) => props.theme.rounded.base};
 
   span {
-    font-weight: ${(props) => props.theme.font.medium};
+    font-weight: ${(props) => props.theme.font.bold};
   }
 
   ${({ variant, iconLeft }) => {

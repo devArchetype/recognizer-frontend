@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import * as zod from 'zod';
 import { Button } from '../../../components/Button';
 import { InputField } from '../../../components/InputField';
-import { SessionContainer } from '../../../components/layouts/SessionDefaultLayout/components/SessionContainer';
+import { SessionContainer } from '../../../layouts/SessionDefaultLayout/components/SessionContainer';
 import {
   ContentContainer,
   Footer,
-} from '../../../components/layouts/SessionDefaultLayout/components/SessionContainer/styles';
+} from '../../../layouts/SessionDefaultLayout/components/SessionContainer/styles';
 
 export const Registration = () => {
   const RegistrationFormSchema = zod

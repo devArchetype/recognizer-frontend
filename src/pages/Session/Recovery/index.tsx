@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 import * as zod from 'zod';
 import { Button } from '../../../components/Button';
 import { InputField } from '../../../components/InputField';
-import { SessionContainer } from '../../../components/layouts/SessionDefaultLayout/components/SessionContainer';
-import { ContentContainer } from '../../../components/layouts/SessionDefaultLayout/components/SessionContainer/styles';
+import { SessionContainer } from '../../../layouts/SessionDefaultLayout/components/SessionContainer';
+import { ContentContainer } from '../../../layouts/SessionDefaultLayout/components/SessionContainer/styles';
 
 export const Recovery = () => {
   const RecoveryFormSchema = zod

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-type Themes = 'light' | 'dark';
+export type Themes = 'light' | 'dark';
 
 interface useThemeProps {
   theme: Themes;

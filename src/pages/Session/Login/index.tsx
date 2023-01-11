@@ -1,14 +1,15 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import * as zod from 'zod';
 import { Button } from '../../../components/Button';
 import { InputField } from '../../../components/InputField';
-import { SessionContainer } from '../../../components/layouts/SessionDefaultLayout/components/SessionContainer';
+import { SessionContainer } from '../../../layouts/SessionDefaultLayout/components/SessionContainer';
 import {
   ContentContainer,
   Footer,
-} from '../../../components/layouts/SessionDefaultLayout/components/SessionContainer/styles';
+} from '../../../layouts/SessionDefaultLayout/components/SessionContainer/styles';
 
 export const Login = () => {
   const LoginFormSchema = zod.object({
@@ -29,6 +30,8 @@ export const Login = () => {
 
   const handleLoginSubmit = ({ email, password }: LoginFormFormData) => {
     reset();
+
+    toast.info('bnvasuisdbvuiads');
   };
 
   return (
