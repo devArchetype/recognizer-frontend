@@ -10,6 +10,9 @@ import { Router } from './routes/Router';
 import { queryClient } from './services/reactQuery/client';
 import { GlobalStyle } from './styles/global';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
 interface ThemeContextProviderProps {
   children: ReactNode;
 }
@@ -29,6 +32,7 @@ export const App = () => {
           <BrowserRouter>
             <Router />
           </BrowserRouter>
+          <ToastContainer position="top-right" pauseOnHover={false} />
         </QueryClientProvider>
       </ThemeContextProvider>
     </PreferencesContextProvider>

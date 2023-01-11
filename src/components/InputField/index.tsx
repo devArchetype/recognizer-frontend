@@ -7,6 +7,7 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   srLabel?: boolean;
   icon?: JSX.Element;
   errorMessage?: string;
+  border?: boolean;
 }
 
 export const InputField = ({
@@ -15,6 +16,7 @@ export const InputField = ({
   srLabel = false,
   errorMessage,
   icon,
+  border = false,
   ...rest
 }: InputFieldProps) => {
   const hasError = Boolean(errorMessage);
@@ -22,7 +24,7 @@ export const InputField = ({
   return (
     <InputFieldContainer>
       <Label srLabel={srLabel}>{label}</Label>
-      <Wrapper hasError={hasError}>
+      <Wrapper hasError={hasError} border={border}>
         {icon}
         <input type={type} {...rest} />
       </Wrapper>

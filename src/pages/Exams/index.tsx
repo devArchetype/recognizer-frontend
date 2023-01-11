@@ -20,7 +20,6 @@ export const Exams = () => {
   const [details, setDetails] = useState('Anotações gerais ...');
   const detailsRef = useRef<HTMLTextAreaElement | null>(null);
   const [searchExam, setSearchExam] = useState('');
-  const modalInsertExamRef = useRef();
 
   const fillExams = () => {
     return examsData.map(({ id, name, registration }: Exam) => {

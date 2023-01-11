@@ -7,6 +7,7 @@ interface LabelProps {
 
 interface WrapperProps {
   hasError: boolean;
+  border: boolean;
 }
 
 export const InputFieldContainer = styled.label`
@@ -28,6 +29,9 @@ export const Wrapper = styled.div<WrapperProps>`
   background-color: ${(props) => props.theme.color['base-light']};
   box-shadow: ${(props) =>
     props.hasError && `0 0 0 1px ${props.theme.color['danger-dark']}`};
+  border: 1px solid
+    ${(props) =>
+      props.border ? `${props.theme.color['base-400']}` : 'transparent'};
 
   svg {
     color: ${(props) => props.theme.color['base-400']};
