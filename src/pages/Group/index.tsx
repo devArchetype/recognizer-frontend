@@ -1,10 +1,13 @@
 import { MagnifyingGlass, PlusCircle } from 'phosphor-react';
+import { useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 import { PageSection } from '../../layouts/PageSection';
 import { ExamSection, GroupPageContainer } from './styles';
 
 export const Group = () => {
+  const { groupId } = useParams();
+
   return (
     <GroupPageContainer heading="Grupo A">
       <ExamSection
@@ -21,7 +24,7 @@ export const Group = () => {
           </>
         }
       >
-        cdsavc
+        {groupId}
       </ExamSection>
       <PageSection
         heading="Integrantes"
@@ -37,8 +40,10 @@ export const Group = () => {
           </>
         }
       >
-        cdsavc
+        {groupId}
       </PageSection>
     </GroupPageContainer>
   );
 };
+
+

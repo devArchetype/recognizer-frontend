@@ -11,7 +11,6 @@ export const PreferencesDefaultLayout = () => {
     <PreferencesPageContainer heading="Preferências">
       <LayoutContainer>
         <PreferencesMenu />
-
         <PageContainer>
           <Outlet />
         </PageContainer>

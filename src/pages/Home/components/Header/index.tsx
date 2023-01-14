@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { GithubLogo, List, MoonStars } from 'phosphor-react';
 import { HeaderContainer, ListContainer, NavContainer } from './styles';
 
+import { Link } from 'react-router-dom';
 import { Logo } from '../../../../components/Logo';
+import { AuthContext } from '../../../../contexts/AuthContext';
 import { Sidebar } from './components/Sidebar';
 
 export const Header = () => {
+  const { authenticated } = useContext(AuthContext);
+
   const [navBar, setNavBar] = useState(false);
   const [sidebar, setSidebar] = useState(false);
 
@@ -38,6 +42,9 @@ export const Header = () => {
           </li>
           <li>
             <a href="#contact">Fale Conosco</a>
+          </li>
+          <li>
+            <Link to={authenticated ? '/grupos' : '/session/login'}>Login</Link>
           </li>
         </ListContainer>
 

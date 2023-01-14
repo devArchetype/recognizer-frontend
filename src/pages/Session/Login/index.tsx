@@ -1,10 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import * as zod from 'zod';
 import { Button } from '../../../components/Button';
 import { InputField } from '../../../components/InputField';
+import { AuthContext } from '../../../contexts/AuthContext';
 import { SessionContainer } from '../../../layouts/SessionDefaultLayout/components/SessionContainer';
 import {
   ContentContainer,
@@ -12,6 +13,8 @@ import {
 } from '../../../layouts/SessionDefaultLayout/components/SessionContainer/styles';
 
 export const Login = () => {
+  const { login } = useContext(AuthContext);
+
   const LoginFormSchema = zod.object({
     email: zod.string().email({ message: 'Formato de email inválido!' }),
     password: zod
@@ -29,9 +32,8 @@ export const Login = () => {
   const { errors } = formState;
 
   const handleLoginSubmit = ({ email, password }: LoginFormFormData) => {
-    reset();
-
-    toast.info('bnvasuisdbvuiads');
+    login({ email, password });
+    // reset();
   };
 
   return (

@@ -1,9 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import * as zod from 'zod';
 import { Button } from '../../../components/Button';
 import { InputField } from '../../../components/InputField';
+import { AuthContext } from '../../../contexts/AuthContext';
 import { SessionContainer } from '../../../layouts/SessionDefaultLayout/components/SessionContainer';
 import {
   ContentContainer,
@@ -11,6 +13,8 @@ import {
 } from '../../../layouts/SessionDefaultLayout/components/SessionContainer/styles';
 
 export const Registration = () => {
+  const { registerUser } = useContext(AuthContext);
+
   const RegistrationFormSchema = zod
     .object({
       name: zod.string().min(3, { message: 'Insira um nome válido!' }),
@@ -42,6 +46,13 @@ export const Registration = () => {
     password,
     confirmPassword,
   }: RegistrationFormFormData) => {
+    registerUser({
+      name,
+      email,
+      password,
+      confirmPassword,
+    });
+
     reset();
   };
 

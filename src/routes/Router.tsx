@@ -11,6 +11,7 @@ import { General } from '../pages/Preferences/pages/General';
 import { Login } from '../pages/Session/Login';
 import { Recovery } from '../pages/Session/Recovery';
 import { Registration } from '../pages/Session/Registration';
+import { PrivateRoutes } from './PrivateRoutes';
 
 export const Router = () => {
   return (
@@ -18,24 +19,26 @@ export const Router = () => {
       <Route path="/session" element={<SessionDefaultLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="registration" element={<Registration />} />
-        <Route path="recovery" element={<Recovery />} />
       </Route>
 
       <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/home" element={<Home />} />
 
-      <Route path="/" element={<DefaultLayout />}>
-        <Route path="/grupos" element={<Groups />} />
-        <Route path="/grupos/0000000" element={<Group />} />
+      <Route element={<PrivateRoutes />}>
+        <Route path="/" element={<DefaultLayout />}>
+          <Route path="/grupos" element={<Groups />} />
+          <Route path="/grupos/:groupId/" element={<Group />} />
 
-        <Route path="/exam" element={<Exam />} />
+          <Route path="/exam" element={<Exam />} />
 
-        <Route path="/preferencias" element={<PreferencesDefaultLayout />}>
-          <Route
-            path="/preferencias"
-            element={<Navigate to="/preferencias/geral" />}
-          />
-          <Route path="/preferencias/geral" element={<General />} />
+          <Route path="/preferencias" element={<PreferencesDefaultLayout />}>
+            <Route path="/preferencias" element={<Navigate to="geral" />} />
+            <Route path="geral" element={<General />} />
+          </Route>
+        </Route>
+
+        <Route path="/session" element={<SessionDefaultLayout />}>
+          <Route path="recovery" element={<Recovery />} />
         </Route>
       </Route>
 

@@ -21,3 +21,9 @@ export const HeaderContainer = styled.header`
     }
   }
 `;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${(props) => props.theme.spacing.sm};
+`;
