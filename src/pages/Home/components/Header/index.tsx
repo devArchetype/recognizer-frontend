@@ -1,15 +1,18 @@
 import { useContext, useState } from 'react';
 
-import { GithubLogo, List, MoonStars } from 'phosphor-react';
+import { GithubLogo, List, MoonStars, Sun } from 'phosphor-react';
 import { HeaderContainer, ListContainer, NavContainer } from './styles';
 
 import { Link } from 'react-router-dom';
+import { Button } from '../../../../components/Button';
 import { Logo } from '../../../../components/Logo';
 import { AuthContext } from '../../../../contexts/AuthContext';
+import { PreferencesContext } from '../../../../contexts/PreferencesContext';
 import { Sidebar } from './components/Sidebar';
 
 export const Header = () => {
   const { authenticated } = useContext(AuthContext);
+  const { isDark, toggleTheme } = useContext(PreferencesContext);
 
   const [navBar, setNavBar] = useState(false);
   const [sidebar, setSidebar] = useState(false);
@@ -22,6 +25,10 @@ export const Header = () => {
   };
 
   window.addEventListener('scroll', changeBackg);
+
+  const handleToggleTheme = () => {
+    toggleTheme();
+  };
 
   return (
     <HeaderContainer className={navBar ? 'sticky' : ''}>
@@ -50,9 +57,12 @@ export const Header = () => {
 
         <ListContainer>
           <li>
-            <button>
-              <MoonStars size={22} />
-            </button>
+            <Button
+              label="Alterar tema"
+              variant="icon"
+              icon={isDark ? <Sun size={22} /> : <MoonStars size={22} />}
+              onClick={handleToggleTheme}
+            />
           </li>
           <li>
             <a
@@ -60,7 +70,11 @@ export const Header = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <GithubLogo size={22} />
+              <Button
+                label="Acessar repositório do projeto"
+                variant="icon"
+                icon={<GithubLogo size={22} />}
+              />
             </a>
           </li>
         </ListContainer>

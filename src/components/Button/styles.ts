@@ -58,7 +58,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
             position: absolute;
             inset: ${iconLeft ? 'auto 0 0 auto' : 'auto auto 0 0'};
             transition: 0.2s;
-            background-color: ${(props) => props.theme.color['brand-700']};
+            background-color: ${(props) => props.theme.color['brand-600']};
           }
 
           &:hover {

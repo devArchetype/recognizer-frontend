@@ -25,7 +25,6 @@ export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [authenticated, setAuthenticated] = useState(false);
-
   const [registeredUsers, setRegisteredUsers] =
     useLocalStorage<RegisteredUsers>('registeredUsers', {});
 

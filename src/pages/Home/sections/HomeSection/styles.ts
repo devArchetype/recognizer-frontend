@@ -11,9 +11,9 @@ export const SectionContainer = styled.section`
   align-items: center;
   gap: ${(props) => props.theme.spacing.xl};
   overflow-y: hidden;
-  background-image: url('/images/bg.svg');
+  /* background-image: url('/images/bg.svg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 `;
 
 export const HeadingContainer = styled.div`
@@ -21,7 +21,7 @@ export const HeadingContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: ${(props) => props.theme.spacing.lg};
+  gap: ${(props) => props.theme.spacing.md};
 
   h1,
   p {
@@ -32,17 +32,16 @@ export const HeadingContainer = styled.div`
   h1 {
     font-size: ${(props) => props.theme.text.xxl};
     font-weight: ${(props) => props.theme.font.bold};
-    color: ${(props) => props.theme.color['base-dark']};
+    color: ${(props) => props.theme.color['base-900']};
     line-height: 2rem;
-    text-shadow: 0.5px 0.5px 1px #000000;
+    text-shadow: ${(props) => props.theme.shadow.lg};
   }
 `;
 
 export const ImageContainer = styled.div`
   display: flex;
   border-radius: ${(props) => props.theme.rounded.base};
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  box-shadow: ${(props) => props.theme.shadow.lg};
 
   img {
     width: clamp(15rem, 70vw, 45rem);

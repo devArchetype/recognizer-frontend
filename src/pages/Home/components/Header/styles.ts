@@ -7,9 +7,7 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   position: fixed;
   z-index: 20;
-  padding: ${(props) => props.theme.spacing.md}
-    ${(props) => props.theme.spacing.xl};
-
+  padding: ${(props) => props.theme.spacing.md};
   &.sticky {
     box-shadow: ${(props) => props.theme.shadow.base};
     background-color: ${(props) => props.theme.color['base-light']};

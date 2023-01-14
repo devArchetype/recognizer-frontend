@@ -8,5 +8,5 @@ export interface RegisterProps {
 export interface LoginProps {
   email: string;
   password: string;
-  isNew?: boolean
+  isNew?: boolean;
 }
