@@ -4,7 +4,7 @@ export const DefaultLayoutContainer = styled.div`
   width: 100vw;
   max-width: 100vw;
   height: 100vh;
-  max-height: ${`${window.innerHeight}px`};
+  /* max-height: ${`${window.innerHeight}px`}; */
   display: flex;
   flex-direction: column;
   overflow-y: hidden;

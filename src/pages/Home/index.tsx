@@ -7,6 +7,7 @@ export const Home = () => {
   return (
     <HomeContainer>
       <Header />
+
       <MainContainer>
         <HomeSection />
         <ContactSection />

@@ -1,40 +1,5 @@
 import styled from 'styled-components';
 
-export const SectionContainer = styled.section`
-  width: 100vw;
-  max-width: 100vw;
-  height: 100vh;
-  max-height: ${`${window.innerHeight}px`};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: ${(props) => props.theme.spacing.xxl};
-  overflow-y: hidden;
-`;
-
-export const HeadingContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: ${(props) => props.theme.spacing.lg};
-
-  h1,
-  p {
-    width: clamp(15rem, 70vw, 35rem);
-    text-align: center;
-  }
-
-  h1 {
-    font-size: ${(props) => props.theme.text.xxl};
-    font-weight: ${(props) => props.theme.font.bold};
-    color: ${(props) => props.theme.color['base-dark']};
-    line-height: 2rem;
-    text-shadow: 0.5px 0.5px 1px #000000;
-  }
-`;
-
 export const SectionContent = styled.div`
   width: 100%;
   display: flex;

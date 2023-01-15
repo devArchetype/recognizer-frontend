@@ -1,26 +1,18 @@
-import {
-  SectionContainer,
-  HeadingContainer,
-  SectionContent,
-  FormContact,
-  ImageContainer,
-} from './styles';
+import { FormContact, ImageContainer, SectionContent } from './styles';
 
 import { PaperPlaneTilt } from 'phosphor-react';
 import { Button } from '../../../../components/Button';
+import { HomeBaseSection } from '../../../../layouts/HomeBaseSection';
 
 export const ContactSection = () => {
   return (
-    <SectionContainer id="contact">
-      <HeadingContainer>
-        <h1>Fale Conosco</h1>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-          laborum magnam ab placeat vero dicta omnis quia quibusdam culpa
-          dfjsodcw dsadsads fdf figa
-        </p>
-      </HeadingContainer>
-
+    <HomeBaseSection
+      id="contact"
+      heading="Fale conosco"
+      description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci
+    laborum magnam ab placeat vero dicta omnis quia quibusdam culpa
+    dfjsodcw dsadsads fdf figa"
+    >
       <SectionContent>
         <FormContact>
           <input type="text" name="name" placeholder="Nome" />
@@ -33,7 +25,6 @@ export const ContactSection = () => {
             icon={<PaperPlaneTilt />}
           />
         </FormContact>
-
         <ImageContainer>
           <img
             src="/images/saly-16.svg"
@@ -41,6 +32,6 @@ export const ContactSection = () => {
           />
         </ImageContainer>
       </SectionContent>
-    </SectionContainer>
+    </HomeBaseSection>
   );
 };
