@@ -3,7 +3,7 @@ import { SrOnly } from '../../styles/utils';
 
 interface ButtonProps {
   iconLeft: boolean;
-  variant: 'primary' | 'secondary' | 'line' | 'icon';
+  variant: 'primary' | 'secondary' | 'tertiary' | 'line' | 'icon';
 }
 
 export const ButtonContainer = styled.button<ButtonProps>`
@@ -41,6 +41,17 @@ export const ButtonContainer = styled.button<ButtonProps>`
 
           &:hover {
             background-color: ${(props) => props.theme.color['base-300']};
+          }
+        `;
+      }
+      case 'tertiary': {
+        return css`
+          color: ${(props) => props.theme.color['brand-600']};
+          background-color: trasnsparent;
+          border: solid 1px ${(props) => props.theme.color['brand-600']};
+
+          &:hover {
+            background-color: ${(props) => props.theme.color['base-200']};
           }
         `;
       }
@@ -90,9 +101,14 @@ export const ButtonContainer = styled.button<ButtonProps>`
   }}
 `;
 
-export const Label = styled.span`
+interface LabelProps {
+  srLabel: boolean;
+}
+
+export const Label = styled.span<LabelProps>`
   line-height: 0;
   font-weight: ${(props) => props.theme.font.medium};
+  ${(props) => props.srLabel && SrOnly}
 `;
 
 export const Icon = styled.span`

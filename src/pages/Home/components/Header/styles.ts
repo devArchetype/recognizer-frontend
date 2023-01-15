@@ -1,69 +1,36 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.header`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  z-index: 20;
-  padding: ${(props) => props.theme.spacing.md};
-  &.sticky {
-    box-shadow: ${(props) => props.theme.shadow.base};
-    background-color: ${(props) => props.theme.color['base-light']};
-  }
+interface HeaderContainerProps {
+  isScrolling: boolean;
+}
 
-  li,
-  button,
-  a,
-  a:visited,
-  a:link {
-    cursor: pointer;
-    position: relative;
-    color: ${(props) => props.theme.color['base-dark']};
-    box-shadow: none;
-    font-weight: ${(props) => props.theme.font.medium};
-  }
+export const HeaderContainer = styled.header<HeaderContainerProps>`
+  position: fixed;
+  inset: 0 0 auto 0;
+  transition: all 200ms;
+  background-color: ${({ theme, isScrolling }) =>
+    isScrolling ? theme.color['base-light'] : 'transparent'};
+  box-shadow: ${({ theme, isScrolling }) =>
+    isScrolling ? theme.shadow.base : 'none'};
 `;
 
-export const NavContainer = styled.nav`
+export const HeaderWrapper = styled.div`
+  width: 100%;
+  max-width: 1024px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  gap: ${(props) => props.theme.spacing.xxl};
+  padding: ${(props) => props.theme.spacing.md};
+  margin: 0 auto;
 
-  @media (min-width: 700px) {
-    .menu {
+  button {
+    position: relative;
+    z-index: 30;
+  }
+
+  @media ${(props) => props.theme.screen.md} {
+    button {
       display: none;
     }
-  }
-`;
-
-export const ListContainer = styled.ul`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  gap: ${(props) => props.theme.spacing.lg};
-
-  li::after {
-    content: '';
-    position: absolute;
-    bottom: -0.3rem;
-    left: 50%;
-    width: 0;
-    height: 0.2rem;
-    background-color: ${(props) => props.theme.color['brand-600']};
-    transition: all 300ms ease-in-out;
-  }
-
-  li:hover::after {
-    width: 50%;
-    left: 25%;
-  }
-
-  @media (max-width: 700px) {
-    display: none;
   }
 `;

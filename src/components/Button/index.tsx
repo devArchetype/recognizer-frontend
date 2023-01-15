@@ -4,14 +4,16 @@ import { ButtonContainer, Icon, Label } from './styles';
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
   label: string;
+  srLabel?: boolean;
   icon?: JSX.Element;
   iconLeft?: boolean;
-  variant?: 'primary' | 'secondary' | 'line' | 'icon';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'line' | 'icon';
 }
 
 export const Button = ({
   type = 'button',
   label,
+  srLabel = false,
   icon,
   iconLeft = false,
   variant = 'primary',
@@ -25,7 +27,7 @@ export const Button = ({
       {...rest}
     >
       {icon && <Icon>{icon}</Icon>}
-      <Label>{label}</Label>
+      <Label srLabel={srLabel}>{label}</Label>
     </ButtonContainer>
   );
 };

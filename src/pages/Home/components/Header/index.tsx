@@ -1,84 +1,43 @@
-import { useContext, useState } from 'react';
-
-import { GithubLogo, List, MoonStars, Sun } from 'phosphor-react';
-import { HeaderContainer, ListContainer, NavContainer } from './styles';
-
-import { Link } from 'react-router-dom';
+import { List, X } from 'phosphor-react';
+import { useEffect, useState } from 'react';
 import { Button } from '../../../../components/Button';
 import { Logo } from '../../../../components/Logo';
-import { AuthContext } from '../../../../contexts/AuthContext';
-import { PreferencesContext } from '../../../../contexts/PreferencesContext';
-import { Sidebar } from './components/Sidebar';
+import { Menu } from './components/Menu';
+import { HeaderContainer, HeaderWrapper } from './styles';
 
 export const Header = () => {
-  const { authenticated } = useContext(AuthContext);
-  const { isDark, toggleTheme } = useContext(PreferencesContext);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [displayMenu, setDisplayMenu] = useState(false);
 
-  const [navBar, setNavBar] = useState(false);
-  const [sidebar, setSidebar] = useState(false);
+  const handleDisplayMenu = () => {
+    setDisplayMenu((prevState) => !prevState);
 
-  const showSiderbar = () => setSidebar(!sidebar);
-
-  const changeBackg = (event: Event) => {
-    if (window.scrollY >= 55) setNavBar(true);
-    else setNavBar(false);
+    if (window.innerWidth <= 768) {
+      document.body.style.overflow = displayMenu ? 'auto' : 'hidden';
+    }
   };
 
-  window.addEventListener('scroll', changeBackg);
-
-  const handleToggleTheme = () => {
-    toggleTheme();
-  };
+  useEffect(() => {
+    window.onscroll = () => setIsScrolling(window.pageYOffset > 0);
+  }, []);
 
   return (
-    <HeaderContainer className={navBar ? 'sticky' : ''}>
-      <Logo />
-      <NavContainer>
-        <List size={22} onClick={showSiderbar} className="menu" />
-        {sidebar && <Sidebar active={setSidebar} activated={sidebar} />}
+    <HeaderContainer isScrolling={isScrolling}>
+      <HeaderWrapper>
+        <Logo />
 
-        <ListContainer>
-          <li>
-            <a href="#home">Início</a>
-          </li>
-          <li>
-            <a href="#about">Sobre</a>
-          </li>
-          <li>
-            <a href="#subscription">Assinatura</a>
-          </li>
-          <li>
-            <a href="#contact">Fale Conosco</a>
-          </li>
-          <li>
-            <Link to={authenticated ? '/grupos' : '/session/login'}>Login</Link>
-          </li>
-        </ListContainer>
+        <nav>
+          <Menu display={displayMenu} onItemClick={handleDisplayMenu} />
 
-        <ListContainer>
-          <li>
-            <Button
-              label="Alterar tema"
-              variant="icon"
-              icon={isDark ? <Sun size={22} /> : <MoonStars size={22} />}
-              onClick={handleToggleTheme}
-            />
-          </li>
-          <li>
-            <a
-              href="https://github.com/devArchetype/recognizer-frontend"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Button
-                label="Acessar repositório do projeto"
-                variant="icon"
-                icon={<GithubLogo size={22} />}
-              />
-            </a>
-          </li>
-        </ListContainer>
-      </NavContainer>
+          <Button
+            label={displayMenu ? 'Fechar menu' : 'Abrir menu'}
+            srLabel
+            variant="icon"
+            icon={displayMenu ? <X size={24} /> : <List size={24} />}
+            onClick={handleDisplayMenu}
+          />
+        </nav>
+      </HeaderWrapper>
     </HeaderContainer>
   );
 };
