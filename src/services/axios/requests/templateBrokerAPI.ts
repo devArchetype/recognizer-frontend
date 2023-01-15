@@ -1,2 +1,2 @@
 // eslint-disable-next-line no-unused-vars
-import { templateBrokerAPIInstance } from '../instances'
+import { templateBrokerAPIInstance } from '../instances';

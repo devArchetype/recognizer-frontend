@@ -1,5 +1,5 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export const templateBrokerAPIInstance = axios.create({
   baseURL: '',
-})
+});
