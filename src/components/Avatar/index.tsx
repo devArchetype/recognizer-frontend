@@ -2,7 +2,7 @@ import { AvatarContainer, AvatarInfo } from './styles';
 
 interface AvatarProps {
   orientation?: 'row' | 'column';
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   email: string;
   name: string;
   url: string;

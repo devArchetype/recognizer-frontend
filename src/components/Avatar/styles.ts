@@ -12,6 +12,7 @@ const sizes = {
   sm: '2rem',
   md: '4rem',
   lg: '6rem',
+  xl: '8rem'
 };
 
 export const AvatarContainer = styled.article<AvatarContainerProps>`

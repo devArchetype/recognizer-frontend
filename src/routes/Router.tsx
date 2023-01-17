@@ -8,6 +8,7 @@ import { Home } from '../pages/Home';
 import { NotFound } from '../pages/NotFound';
 import { PreferencesDefaultLayout } from '../pages/Preferences';
 import { General } from '../pages/Preferences/pages/General';
+import { Profile } from '../pages/Profile';
 import { Login } from '../pages/Session/Login';
 import { Recovery } from '../pages/Session/Recovery';
 import { Registration } from '../pages/Session/Registration';
@@ -26,6 +27,7 @@ export const Router = () => {
 
       <Route element={<PrivateRoutes />}>
         <Route path="/" element={<DefaultLayout />}>
+          <Route path="/perfil" element={<Profile />} />
           <Route path="/grupos" element={<Groups />} />
           <Route path="/grupos/:groupId/" element={<Group />} />
 

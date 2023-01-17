@@ -14,12 +14,12 @@ interface BasePageProps {
   actions?: ReactNode;
 }
 
-export const BasePage = ({ children, heading, actions }: BasePageProps) => {
+export const BasePage = ({ children, heading, actions,BreadCrumb = true }: BasePageProps) => {
   return (
     <BasePageContainer>
       <PageHeader>
         <PageHeaderContent>
-          <Breadcrumb />
+          {BreadCrumb ? <Breadcrumb /> : null}
           <div>{actions}</div>
         </PageHeaderContent>
         <Heading>
