@@ -14,14 +14,13 @@ interface ContainerProps {
   full: boolean;
 }
 
-export const InputFieldContainer = styled.label<ContainerProps>`
+export const TextareaFieldContainer = styled.label<ContainerProps>`
   width: ${(props) => (props.full ? '100%' : 'auto')};
   position: relative;
   z-index: 1;
 `;
 
 export const Wrapper = styled.div<WrapperProps>`
-  height: calc(${(props) => props.theme.spacing.lg} + 8px);
   flex: 1;
   display: flex;
   align-items: center;
@@ -52,9 +51,9 @@ export const Wrapper = styled.div<WrapperProps>`
     }
   }
 
-  input {
-    all: unset;
-    width: 100%;
+  textarea {
+    /* all: unset; */
+    flex: 1;
     position: relative;
     font-size: ${(props) => props.theme.text.md};
     color: ${(props) => props.theme.color['base-900']};

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const MenuContainer = styled.div`
   display: flex;
   box-shadow: ${(props) => props.theme.shadow.top};
+  z-index: 30;
 
   @media ${(props) => props.theme.screen.sm} {
     box-shadow: none;

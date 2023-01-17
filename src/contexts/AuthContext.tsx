@@ -24,7 +24,7 @@ interface AuthContextProviderProps {
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true);
   const [registeredUsers, setRegisteredUsers] =
     useLocalStorage<RegisteredUsers>('registeredUsers', {});
 

@@ -64,6 +64,7 @@ export const Registration = () => {
             label="Nome"
             register={register('name', { required: true })}
             errorMessage={errors.name && errors.name.message}
+            placeholder="Ex: Joãozinho Batata"
             border
           />
           <InputField

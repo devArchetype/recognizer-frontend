@@ -1,9 +1,9 @@
-import { InputHTMLAttributes } from 'react';
+import { TextareaHTMLAttributes } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
-import { ErrorMessage, InputFieldContainer, Label, Wrapper } from './styles';
+import { ErrorMessage, Label, TextareaFieldContainer, Wrapper } from './styles';
 
-interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
-  type?: string;
+interface TextareaFieldProps
+  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;
   srLabel?: boolean;
   icon?: JSX.Element;
@@ -13,27 +13,26 @@ interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   register?: UseFormRegisterReturn<string>;
 }
 
-export const InputField = ({
-  type = 'text',
+export const TextareaField = ({
   label,
   srLabel = false,
-  errorMessage,
   icon,
+  errorMessage,
   border = false,
   full = false,
   register,
   ...rest
-}: InputFieldProps) => {
+}: TextareaFieldProps) => {
   const hasError = !!errorMessage;
 
   return (
-    <InputFieldContainer full={full}>
+    <TextareaFieldContainer full={full}>
       <Label srLabel={srLabel}>{label}</Label>
       <Wrapper hasError={hasError} border={border}>
         {icon}
-        <input type={type} {...register} {...rest} />
+        <textarea {...register} {...rest} />
       </Wrapper>
       <ErrorMessage>{errorMessage}</ErrorMessage>
-    </InputFieldContainer>
+    </TextareaFieldContainer>
   );
 };
