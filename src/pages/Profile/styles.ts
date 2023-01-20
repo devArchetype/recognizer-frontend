@@ -1,61 +1,73 @@
-import { ReactFragment } from 'react';
 import styled from 'styled-components';
+
 import { BasePage } from '../../layouts/BasePage';
 
-
-export const ProfilePageContainer = styled(BasePage)` `;
+export const ProfilePageContainer = styled(BasePage)``;
 
 export const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: ${props => (props.proporcion === '1/2' ? '1fr 2fr' : '1fr 1fr')};
-`
-export const LeftDiv = styled.div``
-export const RightDiv = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.theme.spacing.md};
+  padding: ${(props) => props.theme.spacing.md} 0;
 
-`
-export const Text = styled.div`
+  @media ${(props) => props.theme.screen.md} {
+    padding: ${(props) => props.theme.spacing.xl} 0;
+    flex-direction: row;
+  }
+`;
+
+export const ContentSection = styled.section`
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: ${(props) => props.theme.spacing.lg};
+
+  @media ${(props) => props.theme.screen.md} {
+    gap: ${(props) => props.theme.spacing.xxl};
+  }
+`;
+
+export const StatisticsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${(props) => props.theme.spacing.md};
+`;
+
+export const StatisticContainer = styled.div`
   text-align: center;
-  font-weight: 600;
-  font-size: 29px;
-  margin-top: 10px;
-`
-export const CenteredContainer = styled.div`
+
+  strong {
+    font-size: ${(props) => props.theme.text.xl};
+    font-weight: ${(props) => props.theme.font.bold};
+    color: ${(props) => props.theme.color['base-900']};
+  }
+
+  div {
+    font-weight: ${(props) => props.theme.font.medium};
+  }
+
+  @media ${(props) => props.theme.screen.md} {
+    strong {
+      font-size: ${(props) => props.theme.text.xxl};
+    }
+  }
+`;
+
+export const InformatiosWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-top: 25px;
-  font-size: ${props => props.bigText ? '24px' : '16px'};
+  gap: ${(props) => props.theme.spacing.xs};
+`;
 
-  .bigText {
-    font-size: 24px;
-    font-weight: bold;
+export const Information = styled.div`
+  strong {
+    color: ${(props) => props.theme.color['base-600']};
+    font-weight: ${(props) => props.theme.font.medium};
   }
 
-  .smallText {
-    font-size: 12px;
-    margin-top: 10px;
+  div {
+    color: ${(props) => props.theme.color['base-800']};
   }
-`
-
-export const RigthButtons = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: right;
-  justify-content: right;
-  text-align: center;
-  font-size: 16px;
-  margin-top: 20px;
-  
-  button{
-    margin-left: 10px;
-  }
-`
-
-
-
+`;

@@ -22,10 +22,15 @@ export const Actions = styled.div<ActionsProps>`
 
   h2 {
     ${(props) => props.srHeading && SrOnly};
-
-    font-size: ${(props) => props.theme.text.xl};
+    font-size: ${(props) => props.theme.text.lg};
     font-weight: ${(props) => props.theme.font.medium};
     color: ${(props) => props.theme.color['base-800']};
+  }
+
+  @media ${(props) => props.theme.screen.md} {
+    h2 {
+      font-size: ${(props) => props.theme.text.xl};
+    }
   }
 `;
 

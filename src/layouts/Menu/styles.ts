@@ -16,7 +16,7 @@ export const NavigationContainer = styled.nav`
   display: flex;
   flex: 1;
   padding: ${({ theme }) => `${theme.spacing.xs} 0`};
-  overflow-y: auto;
+  overflow: hidden auto;
   background-color: ${(props) => props.theme.color['base-light']};
 
   ul {

@@ -73,6 +73,7 @@ export const ContactSection = () => {
             border
             srLabel
             full
+            rows={8}
           />
           <Button
             type="submit"

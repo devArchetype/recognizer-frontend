@@ -11,16 +11,27 @@ export const PageHeader = styled.header`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.md};
-  padding-bottom: ${(props) => props.theme.spacing.md};
-  margin-bottom: ${(props) => props.theme.spacing.md};
+  padding-bottom: ${(props) => props.theme.spacing.xs};
+  margin-bottom: ${(props) => props.theme.spacing.xs};
   border-bottom: solid 2px ${(props) => props.theme.color['base-200']};
+
+  @media ${(props) => props.theme.screen.md} {
+    padding-bottom: ${(props) => props.theme.spacing.md};
+    margin-bottom: ${(props) => props.theme.spacing.md};
+  }
 `;
 
 export const Heading = styled.div`
   h1 {
-    font-size: ${(props) => props.theme.text.xxl};
+    font-size: ${(props) => props.theme.text.xl};
     font-weight: ${(props) => props.theme.font.medium};
     color: ${(props) => props.theme.color['base-900']};
+  }
+
+  @media ${(props) => props.theme.screen.md} {
+    h1 {
+      font-size: ${(props) => props.theme.text.xxl};
+    }
   }
 `;
 

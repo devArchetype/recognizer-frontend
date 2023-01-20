@@ -9,7 +9,6 @@ export const ExamSection = styled(PageSection)``;
 
 export const MembersSection = styled(PageSection)``;
 
-
 export const GroupsTest = styled.ul`
   display: flex;
   flex-direction: column;

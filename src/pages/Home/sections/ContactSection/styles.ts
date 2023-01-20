@@ -15,7 +15,11 @@ export const ContactFormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${(props) => props.theme.spacing.lg};
+  gap: ${(props) => props.theme.spacing.md};
+
+  label {
+    margin: 0.2rem 0;
+  }
 `;
 
 export const ImageContainer = styled.div`

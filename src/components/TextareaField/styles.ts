@@ -57,9 +57,16 @@ export const Wrapper = styled.div<WrapperProps>`
     position: relative;
     font-size: ${(props) => props.theme.text.md};
     color: ${(props) => props.theme.color['base-900']};
+    resize: none;
 
     &::placeholder {
       color: ${(props) => props.theme.color['base-400']};
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+      box-shadow: none;
     }
   }
 `;

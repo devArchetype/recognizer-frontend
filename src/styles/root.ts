@@ -23,7 +23,7 @@ export const Root = {
     xxl: '1.875rem',
   },
   rounded: {
-    base: '6px',
+    base: '4px',
     full: '9999px',
   },
   shadow: {

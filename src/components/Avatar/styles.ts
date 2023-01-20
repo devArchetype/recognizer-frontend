@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface AvatarInfoProps {
-  size: 'sm' | 'md' | 'lg';
+  size: 'sm' | 'md' | 'lg' | 'xl';
 }
 
 interface AvatarContainerProps extends AvatarInfoProps {
@@ -12,7 +12,7 @@ const sizes = {
   sm: '2rem',
   md: '4rem',
   lg: '6rem',
-  xl: '8rem'
+  xl: '8rem',
 };
 
 export const AvatarContainer = styled.article<AvatarContainerProps>`
