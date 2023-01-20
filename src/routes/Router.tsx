@@ -13,6 +13,7 @@ import { Login } from '../pages/Session/Login';
 import { Recovery } from '../pages/Session/Recovery';
 import { Registration } from '../pages/Session/Registration';
 import { PrivateRoutes } from './PrivateRoutes';
+import { PrintExam } from '../pages/PrintExam';
 
 export const Router = () => {
   return (
@@ -44,6 +45,7 @@ export const Router = () => {
         </Route>
       </Route>
 
+      <Route path="/print" element={<PrintExam />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
