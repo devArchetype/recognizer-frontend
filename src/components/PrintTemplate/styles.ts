@@ -66,31 +66,22 @@ export const HeaderRow = styled.div`
 `;
 
 export const TemplateBody = styled.div`
-  display: grid;
-  grid-auto-rows: min-content;
-  gap: ${(props) => props.theme.spacing.md};
   flex: 1;
-
-  @media print, ${(props) => props.theme.screen.md} {
-    grid-auto-flow: column;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(15, auto);
-  }
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(15, auto);
+  gap: ${(props) => props.theme.spacing.md};
 `;
 
 export const QuestionContainer = styled.ul`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.md};
-  flex-wrap: wrap;
 
   strong {
     font-weight: ${(props) => props.theme.font.bold};
     font-size: ${(props) => props.theme.text.xl};
-  }
-
-  @media print, ${(props) => props.theme.screen.md} {
-    flex-wrap: nowrap;
   }
 `;
 

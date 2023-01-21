@@ -15,7 +15,7 @@ export const PrintContainer = styled.div`
     position: absolute;
     inset: 0;
     z-index: 99;
-    background-color: ${(props) => props.theme.color['base-light']};
+    background-color: ${(props) => props.theme.color.white};
   }
 `;
 
@@ -24,6 +24,7 @@ export const PrintMessage = styled.article`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   gap: ${(props) => props.theme.spacing.md};
   color: ${(props) => props.theme.color['base-400']};
 `;
