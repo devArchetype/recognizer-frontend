@@ -1,8 +1,19 @@
 import { CaretRight } from 'phosphor-react';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { CardContainer, ContentList, ContentWrapper } from './styles';
 import { Button } from '../../Button';
+import {
+  CardContainer,
+  ContentItemContainer,
+  ContentList,
+  ContentWrapper,
+} from './styles';
+
+interface CardContentItemProps {
+  title: string;
+  label: string | JSX.Element;
+  value: string | number;
+}
 
 export interface BaseCardProps {
   label: string;
@@ -10,6 +21,19 @@ export interface BaseCardProps {
   buttonLabel?: string;
   children: ReactNode;
 }
+
+export const CardContentItem = ({
+  title,
+  label,
+  value,
+}: CardContentItemProps) => {
+  return (
+    <ContentItemContainer title={title}>
+      <div>{label}</div>
+      <div>{value}</div>
+    </ContentItemContainer>
+  );
+};
 
 export const BaseCard = ({
   label,

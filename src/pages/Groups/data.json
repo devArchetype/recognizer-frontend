@@ -2,26 +2,31 @@
     {
         "id": "0000000",
         "name": "Geometria Analítica",
-        "members": 25
+        "members": 53,
+        "exams": 3
     },
     {
         "id": "0000001",
         "name": "Matemática Discreta",
-        "members": 25
+        "members": 39,
+        "exams": 2
     },
     {
         "id": "0000002",
         "name": "Programação web",
-        "members": 25
+        "members": 44,
+        "exams": 1
     },
     {
         "id": "0000003",
         "name": "Sistemas Operacionais",
-        "members": 25
+        "members": 19,
+        "exams": 4
     },
     {
         "id": "0000004",
         "name": "Programação Orientada a Objetos",
-        "members": 25
+        "members": 21,
+        "exams": 0
     }
 ]

@@ -40,6 +40,7 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: ${(props) => props.theme.spacing.xs};
   border-bottom: solid 1px ${(props) => props.theme.color['base-200']};
 `;
 

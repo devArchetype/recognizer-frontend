@@ -5,6 +5,7 @@ import { Button } from '../../components/Button';
 import { MemberCard } from '../../components/Cards/MemberCard';
 import { FilterField } from '../../components/FilterField';
 import { CheckExamTemplateModal } from '../../components/Modals/CheckExamTemplateModal';
+import { UploadExamsModal } from '../../components/Modals/UploadExamsModal';
 import { ModalTrigger } from '../../components/base/BaseModal';
 import { PageSection } from '../../layouts/PageSection';
 import examsData from './data.json';
@@ -27,18 +28,21 @@ export const GroupExam = () => {
   const dateDetails = '11 de Novembro de 2022';
 
   return (
-    <ExamsPageContainer
-      heading={examName + ' - ' + group}
-      actions={
-        <>
-          <Link to={`/grupos/${groupId}/${examId}/imprimir`}>
-            <Button type="button" label={'Imprimir provas'} />
-          </Link>
-          <Button type="button" label={'Inserir provas'} />
-        </>
-      }
-    >
-      <PageSection heading="Detalhes">
+    <ExamsPageContainer heading={`${group} - ${examName}`}>
+      <PageSection
+        heading="Detalhes"
+        actions={
+          <>
+            <Link to={`/grupos/${groupId}/${examId}/imprimir`}>
+              <Button type="button" label={'Imprimir provas'} />
+            </Link>
+            <ModalTrigger
+              trigger={<Button type="button" label={'Inserir provas'} />}
+              modal={<UploadExamsModal />}
+            />
+          </>
+        }
+      >
         <DateDetailsContent>
           <h3>{dateDetails}</h3>
           <p>

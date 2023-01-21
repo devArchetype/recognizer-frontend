@@ -1,4 +1,4 @@
-import { BaseCard } from '../../base/BaseCard';
+import { BaseCard, CardContentItem } from '../../base/BaseCard';
 
 interface MemberCardProps {
   target?: string;
@@ -13,12 +13,7 @@ export const MemberCard = ({
 }: MemberCardProps) => {
   return (
     <BaseCard label={name} buttonLabel="Ver prova" target={target}>
-      <div>
-        <span>{'Matrícula:'}</span>
-      </div>
-      <div>
-        <span>{memberId}</span>
-      </div>
+      <CardContentItem title="Membros" label="Matrícula:" value={memberId} />
     </BaseCard>
   );
 };

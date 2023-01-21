@@ -61,14 +61,28 @@ export const Group = () => {
       >
         <GroupsTest ref={examsListRef}>
           {hasFilteredExams
-            ? filteredExams.map(({ id, name, test }) => {
+            ? filteredExams.map(({ id, name, members, date }) => {
                 return (
-                  <ExamCard key={id} id={id} groupId={groupId!} name={name} />
+                  <ExamCard
+                    key={id}
+                    id={id}
+                    groupId={groupId!}
+                    name={name}
+                    membersAmount={members}
+                    examDate={date}
+                  />
                 );
               })
-            : provas.map(({ id, name, test }) => {
+            : provas.map(({ id, name, members, date }) => {
                 return (
-                  <ExamCard key={id} id={id} groupId={groupId!} name={name} />
+                  <ExamCard
+                    key={id}
+                    id={id}
+                    groupId={groupId!}
+                    name={name}
+                    membersAmount={members}
+                    examDate={date}
+                  />
                 );
               })}
         </GroupsTest>

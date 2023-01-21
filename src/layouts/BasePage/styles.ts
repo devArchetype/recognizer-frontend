@@ -39,7 +39,7 @@ export const PageContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: ${(props) => props.theme.spacing.md};
+  gap: ${(props) => props.theme.spacing.lg};
 `;
 
 export const PageHeaderContent = styled.div`

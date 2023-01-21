@@ -3,27 +3,32 @@
         {
             "id": "15235123890",
             "name": "Prova A",
-            "test": 25
+            "date": "Sat Jan 21 2023 11:46:15 GMT-0300 (Brasilia Standard Time)",
+            "members": 25
         },
         {
             "id": "09238129034",
             "name": "Prova B",
-            "test": 25
+            "date": "Sat Jan 21 2023 11:46:15 GMT-0300 (Brasilia Standard Time)",
+            "members": 25
         },
         {
             "id": "89374523",
             "name": "Prova C",
-            "test": 25
+            "date": "Sat Jan 21 2023 11:46:15 GMT-0300 (Brasilia Standard Time)",
+            "members": 25
         },
         {
             "id": "903812213",
             "name": "Prova D",
-            "test": 25
+            "date": "Sat Jan 21 2023 11:46:15 GMT-0300 (Brasilia Standard Time)",
+            "members": 25
         },
         {
             "id": "447895534",
             "name": "Prova E",
-            "test": 25
+            "date": "Sat Jan 21 2023 11:46:15 GMT-0300 (Brasilia Standard Time)",
+            "members": 25
         }
     ],
     "integrantes": [

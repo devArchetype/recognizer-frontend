@@ -23,9 +23,25 @@ export const ContentWrapper = styled.article`
   }
 `;
 
-export const ContentList = styled.div`
+export const ContentList = styled.ul`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.xs};
   font-size: ${(props) => props.theme.text.sm};
+`;
+
+export const ContentItemContainer = styled.li`
+  display: flex;
+  align-items: center;
+  line-height: min-content;
+  gap: ${(props) => props.theme.spacing.xxs};
+
+  div:first-child:has(svg) {
+    line-height: 0;
+    font-size: ${(props) => props.theme.text.md};
+  }
+
+  div:first-child {
+    color: ${(props) => props.theme.color['base-600']};
+  }
 `;

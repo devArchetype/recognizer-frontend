@@ -11,23 +11,18 @@ import {
 interface BasePageProps {
   children: ReactNode;
   heading: string;
-  actions?: ReactNode;
   breadCrumb?: boolean;
 }
 
 export const BasePage = ({
   children,
   heading,
-  actions,
   breadCrumb = true,
 }: BasePageProps) => {
   return (
     <BasePageContainer>
       <PageHeader>
-        <PageHeaderContent>
-          {breadCrumb && <Breadcrumb />}
-          <div>{actions}</div>
-        </PageHeaderContent>
+        <PageHeaderContent>{breadCrumb && <Breadcrumb />}</PageHeaderContent>
         <Heading>
           <h1>{heading}</h1>
         </Heading>
