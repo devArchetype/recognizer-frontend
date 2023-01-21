@@ -2,8 +2,8 @@ import { css } from 'styled-components';
 
 export const SrOnly = css`
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0.1px;
+  height: 0.1px;
   padding: 0;
   margin: -1px;
   overflow: hidden;

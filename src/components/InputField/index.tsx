@@ -37,6 +37,7 @@ export const InputField = ({
 
   const hasPasswordButton = passwordButton && type === 'password';
   const hasError = !!errorMessage;
+  const hasIcon = !!icon
 
   const passwordInputType = hasPasswordButton
     ? displayPassword
@@ -51,7 +52,7 @@ export const InputField = ({
   return (
     <InputFieldContainer full={full}>
       <Label srLabel={srLabel}>{label}</Label>
-      <Wrapper hasError={hasError} border={border}>
+      <Wrapper hasError={hasError} hasIcon={hasIcon} border={border}>
         {icon}
         <input type={passwordInputType} {...register} {...rest} />
         {hasPasswordButton && (

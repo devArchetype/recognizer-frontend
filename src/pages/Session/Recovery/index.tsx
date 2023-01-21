@@ -56,6 +56,7 @@ export const Recovery = () => {
             register={register('password', { required: true })}
             errorMessage={errors.password && errors.password.message}
             type="password"
+            passwordButton
             border
           />
           <InputField
@@ -63,6 +64,7 @@ export const Recovery = () => {
             register={register('newPassword', { required: true })}
             errorMessage={errors.newPassword && errors.newPassword.message}
             type="password"
+            passwordButton
             border
           />
 

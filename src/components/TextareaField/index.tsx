@@ -24,11 +24,12 @@ export const TextareaField = ({
   ...rest
 }: TextareaFieldProps) => {
   const hasError = !!errorMessage;
+  const hasIcon = !!icon;
 
   return (
     <TextareaFieldContainer full={full}>
       <Label srLabel={srLabel}>{label}</Label>
-      <Wrapper hasError={hasError} border={border}>
+      <Wrapper hasError={hasError} hasIcon={hasIcon} border={border}>
         {icon}
         <textarea {...register} {...rest} />
       </Wrapper>

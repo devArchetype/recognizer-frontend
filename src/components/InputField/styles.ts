@@ -8,6 +8,7 @@ interface LabelProps {
 
 interface WrapperProps {
   hasError: boolean;
+  hasIcon: boolean;
   border: boolean;
 }
 
@@ -27,6 +28,7 @@ export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.xs};
+  padding: ${({ hasIcon, theme }) => hasIcon && `0 ${theme.spacing.xs}`};
   cursor: text;
   overflow: hidden;
   font-size: ${(props) => props.theme.text.xl};

@@ -79,6 +79,7 @@ export const Registration = () => {
             register={register('password', { required: true })}
             errorMessage={errors.password && errors.password.message}
             type="password"
+            passwordButton
             border
           />
           <InputField
@@ -88,6 +89,7 @@ export const Registration = () => {
               errors.confirmPassword && errors.confirmPassword.message
             }
             type="password"
+            passwordButton
             border
           />
 
