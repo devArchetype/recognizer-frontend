@@ -19,7 +19,7 @@ export const Login = () => {
   const { login } = useContext(AuthContext);
   const { themeName } = useContext(PreferencesContext);
 
-  const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+  // const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
   const LoginFormSchema = zod.object({
     email: zod.string().email({ message: 'Formato de email inválido!' }),
@@ -38,25 +38,21 @@ export const Login = () => {
   const { formState, register, handleSubmit, reset } = LoginForm;
   const { errors } = formState;
 
-  const handleLoginSubmit = ({
-    email,
-    password,
-    keepSession,
-  }: LoginFormFormData) => {
-    login({ email, password, keepSession });
-    // reset();
+  const handleLoginSubmit = ({ email, password }: LoginFormFormData) => {
+    login({ email, password });
   };
 
   return (
     <SessionContainer heading="Seja bem vindo!">
       <ContentContainer>
-        <form onSubmit={handleSubmit(handleLoginSubmit)}>
+        <form onSubmit={handleSubmit(handleLoginSubmit)} id="loginForm">
           <InputField
             label="Email"
             register={register('email', { required: true })}
             errorMessage={errors.email && errors.email.message}
             placeholder="exemplo@recognizer.com"
             border
+            name="email"
           />
           <InputField
             label="Senha"
@@ -65,6 +61,7 @@ export const Login = () => {
             type="password"
             passwordButton
             border
+            name="password"
           />
           <Switch
             label="Continuar conectado?"
@@ -72,11 +69,11 @@ export const Login = () => {
             leftLabel
             register={register('keepSession')}
           />
-          <ReCAPTCHA
+          {/* <ReCAPTCHA
             sitekey={RECAPTCHA_SITE_KEY}
             theme={themeName}
             type="image"
-          />
+          /> */}
           <Button label="Acessar" type="submit" />
         </form>
 

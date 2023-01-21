@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { RegisteredUsers } from '../@types/app';
 import { LoginProps, RegisterProps } from '../@types/auth';
 import { useLocalStorage } from '../hooks/useStorage';
+import { recognizerApi } from '../services/axios/instances';
 
 interface AuthContextType {
   authenticated: boolean;
@@ -13,7 +14,7 @@ interface AuthContextType {
     password,
     confirmPassword,
   }: RegisterProps) => void;
-  login: ({ email, password, keepSession, isNew }: LoginProps) => boolean;
+  login: ({ email, password }: LoginProps) => boolean;
   logout: () => void;
 }
 
@@ -50,25 +51,41 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
           password,
         },
       }));
-      login({ email, password, keepSession: false, isNew: true });
+      navigate('/sessao/cadastrar');
+      toast.info('Usuário Cadastrado!');
+      // login({ email, password, keepSession: false, isNew: true });
     }
   };
 
-  const login = ({ email, password, isNew }: LoginProps) => {
-    const registered = registeredUsers[email];
+  const login = ({ email, password }: LoginProps) => {
+    (async () => {
+      const {
+        data: { user, token, message },
+      } = await recognizerApi.post('/user/login', { email, password });
 
-    if ((registered && registered.password === password) || isNew) {
-      setAuthenticated(true);
-      navigate('/grupos');
-      toast.info('Bem vindo!');
-    } else {
-      toast.error('Insira email e senha válidos');
-    }
+      if (message) {
+        toast.error(
+          message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
+        );
+      } else {
+        localStorage.setItem('token', JSON.stringify(token));
+        localStorage.setItem('user', JSON.stringify(user));
+        recognizerApi.defaults.headers.Authorization = `Bearer ${token}`;
+        setAuthenticated(true);
+
+        navigate('/grupos');
+        toast.info('Bem vindo!');
+      }
+    })();
+
     return authenticated;
   };
 
   const logout = () => {
     setAuthenticated(false);
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    recognizerApi.defaults.headers.Authorization = null;
     navigate('/');
   };
 

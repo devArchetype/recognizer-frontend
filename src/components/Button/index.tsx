@@ -18,7 +18,7 @@ export const Button = ({
   icon,
   iconLeft = false,
   variant = 'primary',
-  form = '',
+  form = undefined,
   ...rest
 }: ButtonProps) => {
   return (
