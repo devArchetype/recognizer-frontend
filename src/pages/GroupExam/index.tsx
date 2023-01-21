@@ -1,22 +1,26 @@
-import { DateDetailsContent, ExamsList, ExamsPageContainer } from './styles';
-
-import { useState } from 'react';
-
-import { Button } from '../../components/Button';
-import { PageSection } from '../../layouts/PageSection';
-
+import autoAnimate from '@formkit/auto-animate';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Button } from '../../components/Button';
 import { MemberCard } from '../../components/Cards/MemberCard';
 import { FilterField } from '../../components/FilterField';
 import { CheckExamTemplateModal } from '../../components/Modals/CheckExamTemplateModal';
 import { ModalTrigger } from '../../components/base/BaseModal';
+import { PageSection } from '../../layouts/PageSection';
 import examsData from './data.json';
+import { DateDetailsContent, ExamsList, ExamsPageContainer } from './styles';
 
 export const GroupExam = () => {
   const { groupId, examId } = useParams();
 
   const [filteredMembers, setFilteredMembers] = useState<typeof examsData>([]);
   const hasFilteredMembers = filteredMembers.length !== 0;
+
+  const membersListRef = useRef(null);
+
+  useEffect(() => {
+    membersListRef.current && autoAnimate(membersListRef.current);
+  }, [membersListRef]);
 
   const examName = 'Prova A';
   const group = 'Grupo A';
@@ -69,7 +73,7 @@ export const GroupExam = () => {
           </>
         }
       >
-        <ExamsList>
+        <ExamsList ref={membersListRef}>
           {hasFilteredMembers
             ? filteredMembers.map(({ id, name, registration }) => {
                 return (

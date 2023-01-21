@@ -1,22 +1,22 @@
+import autoAnimate from '@formkit/auto-animate';
 import { FilePlus, UserPlus } from 'phosphor-react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
-import { PageSection } from '../../layouts/PageSection';
-import {
-  ExamSection,
-  GroupPageContainer,
-  GroupsMembers,
-  GroupsTest,
-} from './styles';
-
-import { useState } from 'react';
 import { ExamCard } from '../../components/Cards/ExamCard';
 import { MemberCard } from '../../components/Cards/MemberCard';
 import { FilterField } from '../../components/FilterField';
 import { AddMemberModal } from '../../components/Modals/AddMemberModal';
 import { CreateExamModal } from '../../components/Modals/CreateExamModal';
 import { ModalTrigger } from '../../components/base/BaseModal';
+import { PageSection } from '../../layouts/PageSection';
 import { integrantes, provas } from './data.json';
+import {
+  ExamSection,
+  GroupPageContainer,
+  GroupsMembers,
+  GroupsTest,
+} from './styles';
 
 export const Group = () => {
   const { groupId } = useParams();
@@ -27,6 +27,17 @@ export const Group = () => {
 
   const hasFilteredMembers = filteredMembers.length !== 0;
   const hasFilteredExams = filteredExams.length !== 0;
+
+  const membersListRef = useRef(null);
+  const examsListRef = useRef(null);
+
+  useEffect(() => {
+    membersListRef.current && autoAnimate(membersListRef.current);
+  }, [membersListRef]);
+
+  useEffect(() => {
+    examsListRef.current && autoAnimate(examsListRef.current);
+  }, [examsListRef]);
 
   return (
     <GroupPageContainer heading="Grupo A">
@@ -48,7 +59,7 @@ export const Group = () => {
           </>
         }
       >
-        <GroupsTest>
+        <GroupsTest ref={examsListRef}>
           {hasFilteredExams
             ? filteredExams.map(({ id, name, test }) => {
                 return (
@@ -80,7 +91,7 @@ export const Group = () => {
           </>
         }
       >
-        <GroupsMembers>
+        <GroupsMembers ref={membersListRef}>
           {hasFilteredMembers
             ? filteredMembers.map(({ id, name, registration }) => {
                 return (
