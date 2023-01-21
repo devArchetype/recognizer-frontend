@@ -9,19 +9,19 @@ import {
 import { InputField } from '../InputField';
 import { FilterFieldContainer } from './styles';
 
-interface FilterFieldProps<T> {
+interface FilterFieldProps {
   placeholder: string;
-  itemsList: T[];
-  onFilter: Dispatch<SetStateAction<T>>;
+  itemsList: any[];
+  onFilter: Dispatch<SetStateAction<any>>;
   filter: string;
 }
 
-export const FilterField = <T,>({
+export const FilterField = ({
   placeholder,
   itemsList,
   filter,
   onFilter,
-}: FilterFieldProps<T>) => {
+}: FilterFieldProps) => {
   const [filterSearch, setFilterSearch] = useState('');
 
   const filteredPosts = itemsList?.filter((item) =>

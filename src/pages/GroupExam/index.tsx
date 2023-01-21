@@ -2,13 +2,12 @@ import { DateDetailsContent, ExamsList, ExamsPageContainer } from './styles';
 
 import { useState } from 'react';
 
-import { MagnifyingGlass } from 'phosphor-react';
 import { Button } from '../../components/Button';
-import { InputField } from '../../components/InputField';
 import { PageSection } from '../../layouts/PageSection';
 
 import { Link, useParams } from 'react-router-dom';
 import { MemberCard } from '../../components/Cards/MemberCard';
+import { FilterField } from '../../components/FilterField';
 import { CheckExamTemplateModal } from '../../components/Modals/CheckExamTemplateModal';
 import { ModalTrigger } from '../../components/base/BaseModal';
 import examsData from './data.json';
@@ -16,7 +15,8 @@ import examsData from './data.json';
 export const GroupExam = () => {
   const { groupId, examId } = useParams();
 
-  const [searchExam, setSearchExam] = useState('');
+  const [filteredMembers, setFilteredMembers] = useState<typeof examsData>([]);
+  const hasFilteredMembers = filteredMembers.length !== 0;
 
   const examName = 'Prova A';
   const group = 'Grupo A';
@@ -54,12 +54,11 @@ export const GroupExam = () => {
         heading="Resultados"
         actions={
           <>
-            <InputField
-              label="Integrante"
-              placeholder="Buscar Integrante"
-              icon={<MagnifyingGlass />}
-              onChange={(event) => setSearchExam(event.target.value)}
-              srLabel
+            <FilterField
+              placeholder="Filtrar integrantes"
+              itemsList={examsData}
+              onFilter={setFilteredMembers}
+              filter="name"
             />
             <ModalTrigger
               trigger={<Button type="button" label={'Ver Gabarito'} />}
@@ -71,16 +70,27 @@ export const GroupExam = () => {
         }
       >
         <ExamsList>
-          {examsData.map(({ id, name, registration }) => {
-            return (
-              <MemberCard
-                key={id}
-                name={name}
-                memberId={registration}
-                target={`/grupos/${groupId}/${examId}/${registration}/`}
-              />
-            );
-          })}
+          {hasFilteredMembers
+            ? filteredMembers.map(({ id, name, registration }) => {
+                return (
+                  <MemberCard
+                    key={id}
+                    name={name}
+                    memberId={registration}
+                    target={`/grupos/${groupId}/${examId}/${registration}/`}
+                  />
+                );
+              })
+            : examsData.map(({ id, name, registration }) => {
+                return (
+                  <MemberCard
+                    key={id}
+                    name={name}
+                    memberId={registration}
+                    target={`/grupos/${groupId}/${examId}/${registration}/`}
+                  />
+                );
+              })}
         </ExamsList>
       </PageSection>
     </ExamsPageContainer>
