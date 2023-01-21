@@ -28,4 +28,8 @@ export const PageContainer = styled.main`
   display: flex;
   overflow-y: auto;
   flex-direction: column;
+
+  @print {
+    position: relative;
+  }
 `;

@@ -33,6 +33,7 @@ export const Router = () => {
           <Route path="/grupos/:groupId/" element={<Group />} />
 
           <Route path="/exam" element={<Exam />} />
+          <Route path="/print" element={<PrintExam />} />
 
           <Route path="/preferencias" element={<PreferencesDefaultLayout />}>
             <Route path="/preferencias" element={<Navigate to="geral" />} />
@@ -45,7 +46,6 @@ export const Router = () => {
         </Route>
       </Route>
 
-      <Route path="/print" element={<PrintExam />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

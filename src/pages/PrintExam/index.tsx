@@ -1,5 +1,12 @@
+import { Printer } from 'phosphor-react';
+import { Button } from '../../components/Button';
 import { PrintTemplate } from '../../components/PrintTemplate';
-import { Container } from './styles';
+import {
+  Container,
+  PrintContainer,
+  PrintExamContainer,
+  PrintMessage,
+} from './styles';
 
 export const PrintExam = () => {
   const data = {
@@ -24,22 +31,41 @@ export const PrintExam = () => {
     ],
   };
 
+  const handleDisplayPrintScreen = () => {
+    window.print();
+  };
+
   return (
-    <Container>
-      {data.members.map(({ id, name }) => {
-        return (
-          <PrintTemplate
-            key={id}
-            memberId={id}
-            memberName={name}
-            questionsAmount={data.questionsAmount}
-            answersAmount={data.answersAmount}
-            examDate={data.examDate}
-            examName={data.examName}
-            userName={data.userName}
+    <PrintExamContainer heading="Imprimir prova">
+      <Container>
+        <PrintMessage>
+          <Printer size={72} weight="thin" />
+          <div>
+            <p>Os gabaritos estão prontos para impressão!</p>
+          </div>
+          <Button
+            label="Imprimir"
+            variant="tertiary"
+            onClick={handleDisplayPrintScreen}
           />
-        );
-      })}
-    </Container>
+        </PrintMessage>
+      </Container>
+      <PrintContainer>
+        {data.members.map(({ id, name }) => {
+          return (
+            <PrintTemplate
+              key={id}
+              memberId={id}
+              memberName={name}
+              questionsAmount={data.questionsAmount}
+              answersAmount={data.answersAmount}
+              examDate={data.examDate}
+              examName={data.examName}
+              userName={data.userName}
+            />
+          );
+        })}
+      </PrintContainer>
+    </PrintExamContainer>
   );
 };

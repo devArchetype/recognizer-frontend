@@ -1,20 +1,22 @@
 import styled from 'styled-components';
 
 export const PrintTemplateContainer = styled.article`
-  min-height: 100vh;
-  max-width: 720px;
-  display: flex;
-  flex-direction: column;
-  gap: ${(props) => props.theme.spacing.md};
+  display: none;
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
   padding: ${(props) => props.theme.spacing.md};
-  color: ${(props) => props.theme.color['base-dark']};
-  background-color: ${(props) => props.theme.color['base-light']};
+  color: ${(props) => props.theme.color.black};
+  background-color: ${(props) => props.theme.color.white};
 
-  @media print, ${(props) => props.theme.screen.md} {
+  @media print {
     /* height: 100vh; */
     /* max-height: 100vh; */
+    min-height: 100vh;
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: ${(props) => props.theme.spacing.md};
     background-color: transparent;
   }
 `;
@@ -26,12 +28,12 @@ export const AIContainer = styled.div`
   align-items: stretch;
   gap: ${(props) => props.theme.spacing.lg};
   padding: ${(props) => props.theme.spacing.md};
-  border: 3px solid ${(props) => props.theme.color['base-dark']};
+  border: 3px solid ${(props) => props.theme.color.black};
 
   h2 {
     font-weight: ${(props) => props.theme.font.bold};
     font-size: ${(props) => props.theme.text.xxl};
-    color: ${(props) => props.theme.color['base-dark']};
+    color: ${(props) => props.theme.color.black};
   }
 `;
 
@@ -39,7 +41,7 @@ export const TemplateHeader = styled.header`
   display: flex;
   flex-direction: column;
   padding: ${(props) => props.theme.spacing.md};
-  border: 3px solid ${(props) => props.theme.color['base-dark']};
+  border: 3px solid ${(props) => props.theme.color.black};
 `;
 
 export const HeaderRow = styled.div`
@@ -59,7 +61,7 @@ export const HeaderRow = styled.div`
 
   div {
     width: 100%;
-    border-bottom: 2px solid ${(props) => props.theme.color['base-dark']};
+    border-bottom: 2px solid ${(props) => props.theme.color.black};
   }
 `;
 
@@ -98,6 +100,6 @@ export const QuestionItem = styled.li`
   display: grid;
   place-items: center;
   text-transform: uppercase;
-  border: 2px solid ${(props) => props.theme.color['base-dark']};
+  border: 2px solid ${(props) => props.theme.color.black};
   border-radius: ${(props) => props.theme.rounded.full};
 `;
