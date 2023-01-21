@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import * as zod from 'zod';
@@ -7,6 +8,7 @@ import { Button } from '../../../components/Button';
 import { InputField } from '../../../components/InputField';
 import { Switch } from '../../../components/Switch';
 import { AuthContext } from '../../../contexts/AuthContext';
+import { PreferencesContext } from '../../../contexts/PreferencesContext';
 import { SessionContainer } from '../../../layouts/SessionDefaultLayout/components/SessionContainer';
 import {
   ContentContainer,
@@ -15,6 +17,9 @@ import {
 
 export const Login = () => {
   const { login } = useContext(AuthContext);
+  const { themeName } = useContext(PreferencesContext);
+
+  const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
   const LoginFormSchema = zod.object({
     email: zod.string().email({ message: 'Formato de email inválido!' }),
@@ -39,7 +44,6 @@ export const Login = () => {
     keepSession,
   }: LoginFormFormData) => {
     login({ email, password, keepSession });
-
     // reset();
   };
 
@@ -68,7 +72,7 @@ export const Login = () => {
             leftLabel
             register={register('keepSession')}
           />
-
+          <ReCAPTCHA sitekey={RECAPTCHA_SITE_KEY} theme={themeName} />
           <Button label="Acessar" type="submit" />
         </form>
 

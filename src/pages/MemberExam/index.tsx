@@ -1,7 +1,7 @@
-import { ExamPageContainer, StatisticsContainer } from './styles';
 import { Button } from '../../components/Button';
 import { Template } from '../../components/Template';
 import { PageSection } from '../../layouts/PageSection';
+import { ExamPageContainer, StatisticsContainer } from './styles';
 
 export const MemberExam = () => {
   const examName = 'Prova A';
@@ -13,15 +13,11 @@ export const MemberExam = () => {
   const heading = examName + ' - ' + examined;
 
   return (
-    <ExamPageContainer
-      heading={heading}
-      actions={
-        <>
-          <Button type="button" label={'Conferir prova'} />
-        </>
-      }
-    >
-      <PageSection heading="Resultado">
+    <ExamPageContainer heading={heading}>
+      <PageSection
+        heading="Resultado"
+        actions={<Button type="button" label={'Conferir prova'} />}
+      >
         <StatisticsContainer>
           <p>
             Total de questões: &nbsp;<span>{totalQuestions}</span>
