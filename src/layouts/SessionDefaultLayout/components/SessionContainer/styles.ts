@@ -49,7 +49,7 @@ export const FormContainer = styled.div`
       border: ${(props) => props.theme.color['base-400']};
     }
 
-    button {
+    button[type='submit'] {
       width: 100%;
       margin: ${(props) => props.theme.spacing.md} auto;
       justify-content: center;

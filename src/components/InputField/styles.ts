@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { SrOnly } from '../../styles/utils';
+import { Button } from '../Button';
 
 interface LabelProps {
   srLabel: boolean;
@@ -26,7 +27,6 @@ export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.xs};
-  padding: ${(props) => props.theme.spacing.xs};
   cursor: text;
   overflow: hidden;
   font-size: ${(props) => props.theme.text.xl};
@@ -36,7 +36,7 @@ export const Wrapper = styled.div<WrapperProps>`
     props.hasError && `0 0 0 1px ${props.theme.color['danger-dark']}`};
   border: 1px solid
     ${(props) =>
-      props.border ? `${props.theme.color['base-400']}` : 'transparent'};
+    props.border ? `${props.theme.color['base-400']}` : 'transparent'};
   border-color: ${(props) =>
     props.hasError && props.theme.color['danger-dark']};
 
@@ -56,6 +56,7 @@ export const Wrapper = styled.div<WrapperProps>`
     all: unset;
     width: 100%;
     position: relative;
+    padding: ${(props) => props.theme.spacing.xs};
     font-size: ${(props) => props.theme.text.md};
     color: ${(props) => props.theme.color['base-900']};
 
@@ -72,6 +73,11 @@ export const Label = styled.span<LabelProps>`
   margin: ${({ theme }) => `0 0 ${theme.spacing.xxs} ${theme.spacing.xxs}`};
   font-weight: ${(props) => props.theme.font.medium};
   color: ${(props) => props.theme.color['base-600']};
+`;
+
+export const PasswordButton = styled(Button)`
+  position: relative;
+  right: ${(props) => props.theme.spacing.xs};
 `;
 
 export const ErrorMessage = styled.span`

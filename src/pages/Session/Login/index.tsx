@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import * as zod from 'zod';
 import { Button } from '../../../components/Button';
 import { InputField } from '../../../components/InputField';
+import { Switch } from '../../../components/Switch';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { SessionContainer } from '../../../layouts/SessionDefaultLayout/components/SessionContainer';
 import {
@@ -20,6 +21,7 @@ export const Login = () => {
     password: zod
       .string()
       .min(8, { message: 'A senha deve ter no mínimo 8 caracteres!' }),
+    keepSession: zod.boolean(),
   });
 
   type LoginFormFormData = zod.infer<typeof LoginFormSchema>;
@@ -31,8 +33,13 @@ export const Login = () => {
   const { formState, register, handleSubmit, reset } = LoginForm;
   const { errors } = formState;
 
-  const handleLoginSubmit = ({ email, password }: LoginFormFormData) => {
-    login({ email, password });
+  const handleLoginSubmit = ({
+    email,
+    password,
+    keepSession,
+  }: LoginFormFormData) => {
+    login({ email, password, keepSession });
+
     // reset();
   };
 
@@ -52,7 +59,14 @@ export const Login = () => {
             register={register('password', { required: true })}
             errorMessage={errors.password && errors.password.message}
             type="password"
+            passwordButton
             border
+          />
+          <Switch
+            label="Continuar conectado?"
+            srLabel={false}
+            leftLabel
+            register={register('keepSession')}
           />
 
           <Button label="Acessar" type="submit" />
@@ -60,7 +74,7 @@ export const Login = () => {
 
         <Footer>
           <div>Não possui cadastro?</div>
-          <Link to="/session/registration">Cadastre-se</Link>
+          <Link to="/sessao/cadastrar">Cadastre-se</Link>
         </Footer>
       </ContentContainer>
     </SessionContainer>

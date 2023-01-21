@@ -95,7 +95,7 @@ export const Registration = () => {
         </form>
         <Footer>
           <div>Já possui cadastro?</div>
-          <Link to="/session/login">Acessar</Link>
+          <Link to="/sessao/acessar">Acessar</Link>
         </Footer>
       </ContentContainer>
     </SessionContainer>

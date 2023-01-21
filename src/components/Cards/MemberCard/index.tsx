@@ -13,7 +13,7 @@ export const MemberCard = ({
 }: MemberCardProps) => {
   return (
     <BaseCard label={name} buttonLabel="Ver prova" target={target}>
-      <CardContentItem title="Membros" label="Matrícula:" value={memberId} />
+      <CardContentItem title="Matrícula" label="Matrícula:" value={memberId} />
     </BaseCard>
   );
 };

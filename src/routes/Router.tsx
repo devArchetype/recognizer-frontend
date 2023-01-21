@@ -19,9 +19,9 @@ import { PrivateRoutes } from './PrivateRoutes';
 export const Router = () => {
   return (
     <Routes>
-      <Route path="/session" element={<SessionDefaultLayout />}>
-        <Route path="login" element={<Login />} />
-        <Route path="registration" element={<Registration />} />
+      <Route path="/sessao" element={<SessionDefaultLayout />}>
+        <Route path="acessar" element={<Login />} />
+        <Route path="cadastrar" element={<Registration />} />
       </Route>
 
       <Route path="/" element={<Navigate to="/home" />} />
@@ -51,8 +51,8 @@ export const Router = () => {
           </Route>
         </Route>
 
-        <Route path="/session" element={<SessionDefaultLayout />}>
-          <Route path="recovery" element={<Recovery />} />
+        <Route path="/sessao" element={<SessionDefaultLayout />}>
+          <Route path="recuperar" element={<Recovery />} />
         </Route>
       </Route>
 

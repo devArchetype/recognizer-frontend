@@ -13,7 +13,7 @@ interface AuthContextType {
     password,
     confirmPassword,
   }: RegisterProps) => void;
-  login: ({ email, password, isNew }: LoginProps) => boolean;
+  login: ({ email, password, keepSession, isNew }: LoginProps) => boolean;
   logout: () => void;
 }
 
@@ -50,7 +50,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
           password,
         },
       }));
-      login({ email, password, isNew: true });
+      login({ email, password, keepSession: false, isNew: true });
     }
   };
 

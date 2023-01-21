@@ -1,18 +1,27 @@
 import { InputHTMLAttributes } from 'react';
-import { Checkbox, Label } from './styles';
+import { UseFormRegisterReturn } from 'react-hook-form';
+import { Checkbox, Label, SwitchContainer } from './styles';
 
 interface SwitchProps extends InputHTMLAttributes<HTMLInputElement> {
-  id: string;
-  srLabel: string;
+  label: string;
+  srLabel?: boolean;
+  leftLabel?: boolean;
+  register?: UseFormRegisterReturn<string>;
 }
 
-export const Switch = ({ id, srLabel, title, ...props }: SwitchProps) => {
+export const Switch = ({
+  label,
+  srLabel = true,
+  leftLabel = false,
+  title,
+  register,
+  ...props
+}: SwitchProps) => {
   return (
-    <>
-      <Checkbox type="checkbox" id={id} {...props} />
-      <Label htmlFor={id} title={title}>
-        <span>{srLabel}</span>
-      </Label>
-    </>
+    <SwitchContainer srLabel={srLabel} leftLabel={leftLabel}>
+      <Checkbox type="checkbox" {...register} {...props} />
+      <Label title={title} />
+      <span>{label}</span>
+    </SwitchContainer>
   );
 };

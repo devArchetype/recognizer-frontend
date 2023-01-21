@@ -1,11 +1,10 @@
-import { useContext, useId } from 'react';
+import { useContext } from 'react';
 import { Switch } from '../../../../components/Switch';
 import { PreferencesContext } from '../../../../contexts/PreferencesContext';
 import { PageSection } from '../../../../layouts/PageSection';
 
 export const General = () => {
   const { isDark, toggleTheme } = useContext(PreferencesContext);
-  const themeSwitchId = useId();
 
   const label = isDark ? 'Alterar para tema claro' : 'Alterar para tema escuro';
 
@@ -18,8 +17,8 @@ export const General = () => {
         quia in.
       </p>
       <Switch
-        id={themeSwitchId}
-        srLabel={label}
+        label={label}
+        srLabel
         title={label}
         onChange={toggleTheme}
         checked={isDark}

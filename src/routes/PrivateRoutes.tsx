@@ -8,5 +8,5 @@ export const PrivateRoutes = () => {
 
   !authenticated && toast.error('Efetue o login!');
 
-  return authenticated ? <Outlet /> : <Navigate to="/session/login" />;
+  return authenticated ? <Outlet /> : <Navigate to="/sessao/acessar" />;
 };

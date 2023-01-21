@@ -25,7 +25,6 @@ export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.xs};
-  padding: ${(props) => props.theme.spacing.xs};
   cursor: text;
   overflow: hidden;
   font-size: ${(props) => props.theme.text.xl};
@@ -35,7 +34,7 @@ export const Wrapper = styled.div<WrapperProps>`
     props.hasError && `0 0 0 1px ${props.theme.color['danger-dark']}`};
   border: 1px solid
     ${(props) =>
-      props.border ? `${props.theme.color['base-400']}` : 'transparent'};
+    props.border ? `${props.theme.color['base-400']}` : 'transparent'};
   border-color: ${(props) =>
     props.hasError && props.theme.color['danger-dark']};
 
@@ -55,6 +54,7 @@ export const Wrapper = styled.div<WrapperProps>`
     /* all: unset; */
     flex: 1;
     position: relative;
+    padding: ${(props) => props.theme.spacing.xs};
     font-size: ${(props) => props.theme.text.md};
     color: ${(props) => props.theme.color['base-900']};
     resize: none;
