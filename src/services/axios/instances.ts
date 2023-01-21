@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const templateBrokerAPIInstance = axios.create({
-  baseURL: '',
+export const recognizerApi = axios.create({
+  baseURL: 'http://localhost:3000', // development
 });
