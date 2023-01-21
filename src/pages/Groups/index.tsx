@@ -32,6 +32,8 @@ export const Groups = () => {
                 key={id}
                 id={id}
                 heading={name}
+                target={`/grupos/${id}/`}
+                label="Ver grupo"
                 content={
                   <>
                     <div>

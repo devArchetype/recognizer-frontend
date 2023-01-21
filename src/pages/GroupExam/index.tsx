@@ -12,46 +12,16 @@ import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 import { PageSection } from '../../layouts/PageSection';
 
-import { Exam } from '../../@types/app';
+import { useParams } from 'react-router-dom';
 import { Card } from '../../components/Card';
 import examsData from './data.json';
 
-export const Exams = () => {
+export const GroupExam = () => {
+  const { groupId, examId } = useParams();
+
   const [details, setDetails] = useState('Anotações gerais ...');
   const detailsRef = useRef<HTMLTextAreaElement | null>(null);
   const [searchExam, setSearchExam] = useState('');
-
-  const fillExams = () => {
-    return examsData.map(({ id, name, registration }: Exam) => {
-      if (!name.toLowerCase().includes(searchExam.toLowerCase())) {
-        if (
-          !String(registration).toLowerCase().includes(searchExam.toLowerCase())
-        ) {
-          return null;
-        }
-      }
-
-      return (
-        <Card
-          key={id}
-          id={id}
-          heading={name}
-          label="Ver Prova"
-          target="/grupos/provas"
-          content={
-            <>
-              <div>
-                <span>{'Matrícula:'}</span>
-              </div>
-              <div>
-                <span>{registration}</span>
-              </div>
-            </>
-          }
-        />
-      );
-    });
-  };
 
   const handleChangeDetails = (value: string) => {
     setDetails(value);
@@ -127,7 +97,29 @@ export const Exams = () => {
           </>
         }
       >
-        <ExamsList>{fillExams()}</ExamsList>
+        <ExamsList>
+          {examsData.map(({ id, name, registration }) => {
+            return (
+              <Card
+                key={id}
+                id={id}
+                heading={name}
+                label="Ver Prova"
+                target={`/grupos/${groupId}/provas/${examId}/${registration}/`}
+                content={
+                  <>
+                    <div>
+                      <span>{'Matrícula:'}</span>
+                    </div>
+                    <div>
+                      <span>{registration}</span>
+                    </div>
+                  </>
+                }
+              />
+            );
+          })}
+        </ExamsList>
       </PageSection>
     </ExamsPageContainer>
   );

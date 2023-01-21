@@ -1,11 +1,9 @@
 import { ExamPageContainer, StatisticsContainer } from './styles';
-
 import { Button } from '../../components/Button';
 import { Template } from '../../components/Template';
 import { PageSection } from '../../layouts/PageSection';
 
-export const Exam = () => {
-  // illustrative data
+export const MemberExam = () => {
   const examName = 'Prova A';
   const examined = 'Joãozinho Batata';
 

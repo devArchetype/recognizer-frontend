@@ -9,8 +9,8 @@ interface CardProps {
   heading: string;
   content?: ReactNode | string;
   hideBtn?: boolean;
-  label?: string;
-  target?: string;
+  label: string;
+  target: string;
 }
 
 export const Card = ({
@@ -28,12 +28,8 @@ export const Card = ({
         <ContentList>{content}</ContentList>
       </ContentWrapper>
       {!hideBtn && (
-        <Link to={target ? target + `/${id}` : `/grupos/${id}/`}>
-          <Button
-            label={label || 'Ver grupo'}
-            variant="line"
-            icon={<CaretRight />}
-          />
+        <Link to={target}>
+          <Button label={label} variant="line" icon={<CaretRight />} />
         </Link>
       )}
     </CardContainer>

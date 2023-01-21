@@ -40,7 +40,7 @@ export const Group = () => {
                 id={id}
                 heading={name}
                 label="Ver prova"
-                target="/grupos/provas"
+                target={`/grupos/${groupId}/provas/${id}/`}
                 content={
                   <>
                     <div>
