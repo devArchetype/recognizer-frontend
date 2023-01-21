@@ -72,7 +72,11 @@ export const Login = () => {
             leftLabel
             register={register('keepSession')}
           />
-          <ReCAPTCHA sitekey={RECAPTCHA_SITE_KEY} theme={themeName} />
+          <ReCAPTCHA
+            sitekey={RECAPTCHA_SITE_KEY}
+            theme={themeName}
+            type="image"
+          />
           <Button label="Acessar" type="submit" />
         </form>
 

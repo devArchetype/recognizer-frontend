@@ -37,12 +37,12 @@ export const InputField = ({
 
   const hasPasswordButton = passwordButton && type === 'password';
   const hasError = !!errorMessage;
-  const hasIcon = !!icon
+  const hasIcon = !!icon;
 
   const passwordInputType = hasPasswordButton
     ? displayPassword
-      ? 'password'
-      : 'text'
+      ? 'text'
+      : 'password'
     : type;
 
   const handleDisplayPassword = () => {
