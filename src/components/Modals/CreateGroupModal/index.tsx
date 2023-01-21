@@ -1,4 +1,4 @@
-import { BaseModal } from '../../../layouts/BaseModal';
+import { BaseModal } from '../../base/BaseModal';
 import { InputField } from '../../InputField';
 
 export const CreateGroupModal = () => {

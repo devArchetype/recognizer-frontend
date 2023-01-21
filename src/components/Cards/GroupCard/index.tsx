@@ -1,4 +1,4 @@
-import { BaseCard } from '../../../layouts/BaseCard';
+import { BaseCard } from '../../base/BaseCard';
 
 interface GroupCardProps {
   id: string;

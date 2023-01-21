@@ -13,9 +13,9 @@ import {
 import { ExamCard } from '../../components/Cards/ExamCard';
 import { AddMemberModal } from '../../components/Modals/AddMemberModal';
 import { CreateExamModal } from '../../components/Modals/CreateExamModal';
-import { ModalTrigger } from '../../layouts/BaseModal';
 import { integrantes, provas } from './data.json';
 import { MemberCard } from '../../components/Cards/MemberCard';
+import { ModalTrigger } from '../../components/base/BaseModal';
 
 export const Group = () => {
   const { groupId } = useParams();

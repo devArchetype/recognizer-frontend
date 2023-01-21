@@ -1,8 +1,8 @@
 import { CaretRight } from 'phosphor-react';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '../../components/Button';
 import { CardContainer, ContentList, ContentWrapper } from './styles';
+import { Button } from '../../Button';
 
 export interface BaseCardProps {
   label: string;

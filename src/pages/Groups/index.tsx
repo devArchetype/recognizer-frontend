@@ -7,7 +7,7 @@ import { GroupsList, GroupsPageContainer } from './styles';
 import { Group } from '../../@types/app';
 import { GroupCard } from '../../components/Cards/GroupCard';
 import { CreateGroupModal } from '../../components/Modals/CreateGroupModal';
-import { ModalTrigger } from '../../layouts/BaseModal';
+import { ModalTrigger } from '../../components/base/BaseModal';
 import groupsData from './data.json';
 
 export const Groups = () => {

@@ -1,7 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'phosphor-react';
 import { ReactNode } from 'react';
-import { Button } from '../../components/Button';
+import { Button } from '../../Button';
 import {
   Container,
   Content,

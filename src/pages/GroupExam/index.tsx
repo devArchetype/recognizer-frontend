@@ -10,7 +10,7 @@ import { PageSection } from '../../layouts/PageSection';
 import { Link, useParams } from 'react-router-dom';
 import { MemberCard } from '../../components/Cards/MemberCard';
 import { CheckExamTemplateModal } from '../../components/Modals/CheckExamTemplateModal';
-import { ModalTrigger } from '../../layouts/BaseModal';
+import { ModalTrigger } from '../../components/base/BaseModal';
 import examsData from './data.json';
 
 export const GroupExam = () => {
