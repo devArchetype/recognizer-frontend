@@ -1,27 +1,27 @@
 [
     {
         "id": "0000000",
-        "name": "Grupo A",
+        "name": "Geometria Analítica",
         "members": 25
     },
     {
         "id": "0000001",
-        "name": "Grupo B",
+        "name": "Matemática Discreta",
         "members": 25
     },
     {
         "id": "0000002",
-        "name": "Grupo C",
+        "name": "Programação web",
         "members": 25
     },
     {
         "id": "0000003",
-        "name": "Grupo D",
+        "name": "Sistemas Operacionais",
         "members": 25
     },
     {
         "id": "0000004",
-        "name": "Grupo E",
+        "name": "Programação Orientada a Objetos",
         "members": 25
     }
 ]
