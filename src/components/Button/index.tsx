@@ -8,6 +8,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   icon?: JSX.Element;
   iconLeft?: boolean;
   variant?: 'primary' | 'secondary' | 'tertiary' | 'line' | 'icon';
+  form?: string;
 }
 
 export const Button = ({
@@ -17,6 +18,7 @@ export const Button = ({
   icon,
   iconLeft = false,
   variant = 'primary',
+  form = '',
   ...rest
 }: ButtonProps) => {
   return (
@@ -24,6 +26,7 @@ export const Button = ({
       type={type}
       variant={variant}
       iconLeft={iconLeft}
+      form={form}
       {...rest}
     >
       {icon && <Icon>{icon}</Icon>}

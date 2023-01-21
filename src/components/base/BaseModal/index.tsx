@@ -15,6 +15,7 @@ import {
 interface ModalProps {
   heading: string;
   children: ReactNode;
+  formId?: string;
   onCancel?: () => void;
   onSave?: () => void;
 }
@@ -36,9 +37,12 @@ export const ModalTrigger = ({ trigger, modal }: ModalTriggerProps) => {
 export const BaseModal = ({
   heading,
   children,
+  formId,
   onCancel,
   onSave,
 }: ModalProps) => {
+  const hasForm = !!formId;
+
   const handleCancel = () => {
     onCancel && onCancel();
   };
@@ -72,14 +76,14 @@ export const BaseModal = ({
                 onClick={handleCancel}
               />
             </Dialog.Close>
-            <Dialog.Close asChild>
-              <Button
-                label="Salvar"
-                title="Salvar"
-                variant="primary"
-                onClick={handleSave}
-              />
-            </Dialog.Close>
+            <Button
+              type={hasForm ? 'submit' : 'button'}
+              form={hasForm ? formId : ''}
+              label="Salvar"
+              title="Salvar"
+              variant="primary"
+              onClick={handleSave}
+            />
           </Footer>
         </Container>
       </OverlayContainer>

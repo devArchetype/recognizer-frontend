@@ -25,7 +25,8 @@ export const OverlayContainer = styled.div`
 export const Container = styled(Dialog.Content)`
   width: 100%;
   max-width: 768px;
-  max-height: 100%;
+  max-height: calc(100vh - ${(props) => props.theme.spacing.md});
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -52,7 +53,6 @@ export const Title = styled(Dialog.Title)`
 
 export const Content = styled.div`
   flex: 1;
-  overflow-y: auto;
 `;
 
 export const Footer = styled.footer`
@@ -61,4 +61,31 @@ export const Footer = styled.footer`
   justify-content: end;
   flex-wrap: wrap-reverse;
   gap: ${(props) => props.theme.spacing.xs};
+`;
+
+export const ModalFormContainer = styled.div`
+  height: 100%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: ${(props) => props.theme.spacing.md};
+    padding: 2px;
+
+    input {
+      border: ${(props) => props.theme.color['base-400']};
+    }
+
+    button[type='submit'] {
+      width: 100%;
+      margin: ${(props) => props.theme.spacing.md} auto;
+      justify-content: center;
+    }
+  }
+
+  @media ${(props) => props.theme.screen.sm} {
+    button {
+      max-width: 50%;
+    }
+  }
 `;
