@@ -7,11 +7,11 @@ interface ButtonProps {
 }
 
 export const ButtonContainer = styled.button<ButtonProps>`
-  height: calc(${(props) => props.theme.spacing.lg} + 8px);
+  height: min-content;
   display: flex;
   flex-direction: ${(props) => (props.iconLeft ? 'row' : 'row-reverse')};
   align-items: center;
-  gap: ${(props) => props.theme.spacing.xs};
+  gap: ${(props) => props.theme.spacing.xxs};
   padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.md}`};
   white-space: nowrap;
   font-size: ${(props) => props.theme.text.md};
@@ -26,6 +26,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
     switch (variant) {
       case 'primary': {
         return css`
+          height: calc(${(props) => props.theme.spacing.lg} + 8px);
           color: ${(props) => props.theme.color['base-light']};
           background-color: ${(props) => props.theme.color['brand-600']};
 
@@ -36,6 +37,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
       }
       case 'secondary': {
         return css`
+          height: calc(${(props) => props.theme.spacing.lg} + 8px);
           color: ${(props) => props.theme.color['base-dark']};
           background-color: ${(props) => props.theme.color['base-200']};
 
@@ -46,9 +48,14 @@ export const ButtonContainer = styled.button<ButtonProps>`
       }
       case 'tertiary': {
         return css`
+          height: calc(${(props) => props.theme.spacing.lg} + 8px);
           color: ${(props) => props.theme.color['brand-600']};
-          background-color: trasnsparent;
           border: solid 1px ${(props) => props.theme.color['brand-600']};
+          background-color: trasnsparent;
+
+          span {
+            font-weight: ${(props) => props.theme.font.regular};
+          }
 
           &:hover {
             background-color: ${(props) => props.theme.color['base-200']};
@@ -58,7 +65,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
       case 'line': {
         return css`
           position: relative;
-          padding: ${({ theme }) => `${theme.spacing.xs} ${0} ${0}`};
+          padding: ${(props) => props.theme.spacing.xxs};
           color: ${(props) => props.theme.color['brand-600']};
           background-color: transparent;
 
