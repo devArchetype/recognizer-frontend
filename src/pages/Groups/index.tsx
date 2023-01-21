@@ -6,6 +6,8 @@ import { GroupsList, GroupsPageContainer } from './styles';
 
 import { Group } from '../../@types/app';
 import { Card } from '../../components/Card';
+import { ModalTrigger } from '../../layouts/BaseModal';
+import { CreateGroupModal } from '../../layouts/Modals/CreateGroupModal';
 import groupsData from './data.json';
 
 export const Groups = () => {
@@ -21,7 +23,10 @@ export const Groups = () => {
               srLabel
               icon={<MagnifyingGlass />}
             />
-            <Button label={'Novo grupo'} icon={<PlusCircle />} />
+            <ModalTrigger
+              trigger={<Button label={'Novo grupo'} icon={<PlusCircle />} />}
+              modal={<CreateGroupModal />}
+            />
           </>
         }
       >
@@ -30,7 +35,6 @@ export const Groups = () => {
             return (
               <Card
                 key={id}
-                id={id}
                 heading={name}
                 target={`/grupos/${id}/`}
                 label="Ver grupo"

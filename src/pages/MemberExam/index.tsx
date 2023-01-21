@@ -17,7 +17,7 @@ export const MemberExam = () => {
       heading={heading}
       actions={
         <>
-          <Button type="button" label={'Imprimir prova'} />
+          <Button type="button" label={'Conferir prova'} />
         </>
       }
     >

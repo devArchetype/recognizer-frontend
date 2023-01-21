@@ -33,7 +33,7 @@ export const Container = styled(Dialog.Content)`
   padding: inherit;
   border-radius: ${(props) => props.theme.rounded.base};
   box-shadow: ${(props) => props.theme.shadow.base};
-  background-color: ${(props) => props.theme.color['base-light']};
+  background-color: ${(props) => props.theme.color['base-100']};
 `;
 
 export const Header = styled.header`

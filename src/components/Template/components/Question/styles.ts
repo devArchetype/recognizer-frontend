@@ -4,26 +4,23 @@ export const QuestionContainer = styled.div`
   position: relative;
   cursor: default;
   width: 100%;
-  padding: 0.8rem 1rem;
-  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: ${(props) => props.theme.spacing.sm};
   flex-wrap: wrap;
-  /* border: 1px solid ${(props) => props.theme.color['brand-500']}; */
-  border-radius: 0.6rem;
+  overflow: hidden;
+  padding: ${(props) => props.theme.spacing.xs};
+  border-radius: ${(props) => props.theme.rounded.base};
   box-shadow: ${(props) => props.theme.shadow.base};
+  background-color: ${(props) => props.theme.color['base-light']};
 
   &:before {
     content: '';
-    width: 4%;
+    width: 3%;
     position: absolute;
-    top: 0;
-    bottom: -1px;
-    left: 0;
+    inset: 0 auto 0 0;
     background-color: ${(props) => props.theme.color['brand-500']};
-    border-radius: 0.5rem 0 0 0.6rem;
   }
 `;
 

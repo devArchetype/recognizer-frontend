@@ -4,13 +4,16 @@ import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 import { PageSection } from '../../layouts/PageSection';
 import {
-  ExamSection,
-  GroupPageContainer,
-  GroupsMembers,
-  GroupsTest,
+    ExamSection,
+    GroupPageContainer,
+    GroupsMembers,
+    GroupsTest,
 } from './styles';
 
 import { Card } from '../../components/Card';
+import { ModalTrigger } from '../../layouts/BaseModal';
+import { AddMemberModal } from '../../layouts/Modals/AddMemberModal';
+import { CreateExamModal } from '../../layouts/Modals/CreateExamModal';
 import { integrantes, provas } from './data.json';
 
 export const Group = () => {
@@ -28,7 +31,11 @@ export const Group = () => {
               srLabel
               icon={<MagnifyingGlass />}
             />
-            <Button label={'Criar Prova'} icon={<PlusCircle />} />
+
+            <ModalTrigger
+              trigger={<Button label={'Criar Prova'} icon={<PlusCircle />} />}
+              modal={<CreateExamModal />}
+            />
           </>
         }
       >
@@ -37,10 +44,9 @@ export const Group = () => {
             return (
               <Card
                 key={id}
-                id={id}
                 heading={name}
                 label="Ver prova"
-                target={`/grupos/${groupId}/provas/${id}/`}
+                target={`/grupos/${groupId}/${id}/`}
                 content={
                   <>
                     <div>
@@ -68,7 +74,13 @@ export const Group = () => {
               srLabel
               icon={<MagnifyingGlass />}
             />
-            <Button label={'Novo integrante'} icon={<PlusCircle />} />
+
+            <ModalTrigger
+              trigger={
+                <Button label={'Novo integrante'} icon={<PlusCircle />} />
+              }
+              modal={<AddMemberModal />}
+            />
           </>
         }
       >
@@ -77,7 +89,6 @@ export const Group = () => {
             return (
               <Card
                 key={id}
-                id={id}
                 hideBtn={true}
                 heading={name}
                 content={

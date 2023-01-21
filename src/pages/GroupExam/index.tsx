@@ -1,42 +1,23 @@
-import {
-  DateDetailsContent,
-  ExamsList,
-  ExamsPageContainer,
-  TextareaContent,
-} from './styles';
+import { DateDetailsContent, ExamsList, ExamsPageContainer } from './styles';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import { MagnifyingGlass } from 'phosphor-react';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 import { PageSection } from '../../layouts/PageSection';
 
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Card } from '../../components/Card';
+import { ModalTrigger } from '../../layouts/BaseModal';
+import { CheckExamTemplateModal } from '../../layouts/Modals/CheckExamTemplateModal';
 import examsData from './data.json';
 
 export const GroupExam = () => {
   const { groupId, examId } = useParams();
 
-  const [details, setDetails] = useState('Anotações gerais ...');
-  const detailsRef = useRef<HTMLTextAreaElement | null>(null);
   const [searchExam, setSearchExam] = useState('');
 
-  const handleChangeDetails = (value: string) => {
-    setDetails(value);
-    // save data in database later
-  };
-
-  const editDetailsEnable = () => {
-    detailsRef.current?.focus();
-  };
-
-  const handleModalInsertExamVisibility = () => {
-    // modalInsertExamRef.current.handleModalVisibility();
-  };
-
-  // illustrative data
   const examName = 'Prova A';
   const group = 'Grupo A';
   const dateDetails = '11 de Novembro de 2022';
@@ -46,38 +27,26 @@ export const GroupExam = () => {
       heading={examName + ' - ' + group}
       actions={
         <>
-          <Button type="button" label={'Imprimir provas'} />
-          <Button
-            type="button"
-            label={'Inserir provas'}
-            onClick={handleModalInsertExamVisibility}
-          />
+          <Link to={`/grupos/${groupId}/${examId}/imprimir`}>
+            <Button type="button" label={'Imprimir provas'} />
+          </Link>
+          <Button type="button" label={'Inserir provas'} />
         </>
       }
     >
-      <PageSection
-        heading="Detalhes"
-        actions={
-          <>
-            <Button
-              onClick={editDetailsEnable}
-              type="button"
-              label={'Editar'}
-              variant="line"
-            />
-          </>
-        }
-      >
+      <PageSection heading="Detalhes">
         <DateDetailsContent>
           <h3>{dateDetails}</h3>
-
-          <TextareaContent
-            ref={detailsRef}
-            name="details"
-            value={details}
-            onChange={(event) => handleChangeDetails(event.target.value)}
-            // disabled={disabled}
-          />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+            corporis quibusdam, quis quia iste aspernatur id eveniet nam quaerat
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+            temporibus ratione odio, magni voluptatum rem suscipit pariatur
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+            temporibus ratione odio, magni voluptatum rem suscipit pariatur
+            corporis quibusdam, quis quia iste aspernatur id eveniet nam quaerat
+            ipsam placeat sit.
+          </p>
         </DateDetailsContent>
       </PageSection>
 
@@ -86,13 +55,17 @@ export const GroupExam = () => {
         actions={
           <>
             <InputField
-              label={'integrant'}
-              placeholder={'Buscar Integrante'}
-              srLabel
+              label="Integrante"
+              placeholder="Buscar Integrante"
               icon={<MagnifyingGlass />}
               onChange={(event) => setSearchExam(event.target.value)}
+              srLabel
             />
-            <Button type="button" label={'Ver Gabarito'} />
+            <ModalTrigger
+              trigger={<Button type="button" label={'Ver Gabarito'} />}
+              modal={<CheckExamTemplateModal />}
+            />
+
             <Button type="button" label={'Exportar'} />
           </>
         }
@@ -102,10 +75,9 @@ export const GroupExam = () => {
             return (
               <Card
                 key={id}
-                id={id}
                 heading={name}
                 label="Ver Prova"
-                target={`/grupos/${groupId}/provas/${examId}/${registration}/`}
+                target={`/grupos/${groupId}/${examId}/${registration}/`}
                 content={
                   <>
                     <div>

@@ -34,16 +34,16 @@ export const Router = () => {
           <Route path="/grupos" element={<Groups />} />
           <Route path="/grupos/:groupId/" element={<Group />} />
 
+          <Route path="/grupos/:groupId/:examId/" element={<GroupExam />} />
           <Route
-            path="/grupos/:groupId/provas/:examId/"
-            element={<GroupExam />}
-          />
-          <Route
-            path="/grupos/:groupId/provas/:examId/:memberId/"
+            path="/grupos/:groupId/:examId/:memberId/"
             element={<MemberExam />}
           />
 
-          <Route path="/impressao" element={<PrintExam />} />
+          <Route
+            path="/grupos/:groupId/:examId/imprimir"
+            element={<PrintExam />}
+          />
 
           <Route path="/preferencias" element={<PreferencesDefaultLayout />}>
             <Route path="/preferencias" element={<Navigate to="geral" />} />

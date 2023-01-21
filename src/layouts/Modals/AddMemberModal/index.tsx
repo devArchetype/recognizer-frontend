@@ -1,9 +1,9 @@
-import { BaseModal } from '../../../layouts/BaseModal';
+import { BaseModal } from '../../BaseModal';
 
-export const SampleModal = () => {
+export const AddMemberModal = () => {
   return (
-    <BaseModal heading="Titulo de Exemplo">
-      <h1>Exemplo de conteudo</h1>
+    <BaseModal heading="Adicionar novo membro">
+      <h1>Adicionar novo membro</h1>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem impedit
         libero amet ipsam quo. Commodi consectetur laborum quae itaque, eos

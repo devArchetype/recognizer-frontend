@@ -1,4 +1,5 @@
 import { Printer } from 'phosphor-react';
+import { useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { PrintTemplate } from '../../components/PrintTemplate';
 import {
@@ -9,6 +10,8 @@ import {
 } from './styles';
 
 export const PrintExam = () => {
+  const { groupId, examId } = useParams();
+
   const data = {
     questionsAmount: 20,
     answersAmount: 5,

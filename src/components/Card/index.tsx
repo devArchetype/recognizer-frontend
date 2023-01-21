@@ -5,21 +5,19 @@ import { Button } from '../Button';
 import { CardContainer, ContentList, ContentWrapper } from './styles';
 
 interface CardProps {
-  id: string;
   heading: string;
   content?: ReactNode | string;
   hideBtn?: boolean;
-  label: string;
-  target: string;
+  label?: string;
+  target?: string;
 }
 
 export const Card = ({
-  id,
   heading,
   content,
   hideBtn,
-  label,
-  target,
+  label = '',
+  target = '',
 }: CardProps) => {
   return (
     <CardContainer>
