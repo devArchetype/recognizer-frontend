@@ -1,20 +1,21 @@
-import { MagnifyingGlass, PlusCircle, User } from 'phosphor-react';
+import { MagnifyingGlass, PlusCircle } from 'phosphor-react';
 import { useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 import { PageSection } from '../../layouts/PageSection';
 import {
-    ExamSection,
-    GroupPageContainer,
-    GroupsMembers,
-    GroupsTest,
+  ExamSection,
+  GroupPageContainer,
+  GroupsMembers,
+  GroupsTest,
 } from './styles';
 
-import { Card } from '../../components/Card';
+import { ExamCard } from '../../components/Cards/ExamCard';
+import { AddMemberModal } from '../../components/Modals/AddMemberModal';
+import { CreateExamModal } from '../../components/Modals/CreateExamModal';
 import { ModalTrigger } from '../../layouts/BaseModal';
-import { AddMemberModal } from '../../layouts/Modals/AddMemberModal';
-import { CreateExamModal } from '../../layouts/Modals/CreateExamModal';
 import { integrantes, provas } from './data.json';
+import { MemberCard } from '../../components/Cards/MemberCard';
 
 export const Group = () => {
   const { groupId } = useParams();
@@ -41,26 +42,7 @@ export const Group = () => {
       >
         <GroupsTest>
           {provas.map(({ id, name, test }) => {
-            return (
-              <Card
-                key={id}
-                heading={name}
-                label="Ver prova"
-                target={`/grupos/${groupId}/${id}/`}
-                content={
-                  <>
-                    <div>
-                      <User />
-                      <span>{test}</span>
-                    </div>
-                    <div>
-                      <User />
-                      <span>{test}</span>
-                    </div>
-                  </>
-                }
-              />
-            );
+            return <ExamCard key={id} id={id} groupId={groupId!} name={name} />;
           })}
         </GroupsTest>
       </ExamSection>
@@ -86,23 +68,7 @@ export const Group = () => {
       >
         <GroupsMembers>
           {integrantes.map(({ id, name, registration }) => {
-            return (
-              <Card
-                key={id}
-                hideBtn={true}
-                heading={name}
-                content={
-                  <>
-                    <div>
-                      <span>{'Matrícula:'}</span>
-                    </div>
-                    <div>
-                      <span>{registration}</span>
-                    </div>
-                  </>
-                }
-              />
-            );
+            return <MemberCard key={id} name={name} memberId={registration} />;
           })}
         </GroupsMembers>
       </PageSection>

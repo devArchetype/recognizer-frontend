@@ -8,9 +8,9 @@ import { InputField } from '../../components/InputField';
 import { PageSection } from '../../layouts/PageSection';
 
 import { Link, useParams } from 'react-router-dom';
-import { Card } from '../../components/Card';
+import { MemberCard } from '../../components/Cards/MemberCard';
+import { CheckExamTemplateModal } from '../../components/Modals/CheckExamTemplateModal';
 import { ModalTrigger } from '../../layouts/BaseModal';
-import { CheckExamTemplateModal } from '../../layouts/Modals/CheckExamTemplateModal';
 import examsData from './data.json';
 
 export const GroupExam = () => {
@@ -73,21 +73,11 @@ export const GroupExam = () => {
         <ExamsList>
           {examsData.map(({ id, name, registration }) => {
             return (
-              <Card
+              <MemberCard
                 key={id}
-                heading={name}
-                label="Ver Prova"
+                name={name}
+                memberId={registration}
                 target={`/grupos/${groupId}/${examId}/${registration}/`}
-                content={
-                  <>
-                    <div>
-                      <span>{'Matrícula:'}</span>
-                    </div>
-                    <div>
-                      <span>{registration}</span>
-                    </div>
-                  </>
-                }
               />
             );
           })}

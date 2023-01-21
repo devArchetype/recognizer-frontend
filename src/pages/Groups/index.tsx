@@ -1,13 +1,13 @@
-import { MagnifyingGlass, PlusCircle, User } from 'phosphor-react';
+import { MagnifyingGlass, PlusCircle } from 'phosphor-react';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 import { PageSection } from '../../layouts/PageSection';
 import { GroupsList, GroupsPageContainer } from './styles';
 
 import { Group } from '../../@types/app';
-import { Card } from '../../components/Card';
+import { GroupCard } from '../../components/Cards/GroupCard';
+import { CreateGroupModal } from '../../components/Modals/CreateGroupModal';
 import { ModalTrigger } from '../../layouts/BaseModal';
-import { CreateGroupModal } from '../../layouts/Modals/CreateGroupModal';
 import groupsData from './data.json';
 
 export const Groups = () => {
@@ -32,26 +32,7 @@ export const Groups = () => {
       >
         <GroupsList>
           {groupsData.map(({ id, name, members }: Group) => {
-            return (
-              <Card
-                key={id}
-                heading={name}
-                target={`/grupos/${id}/`}
-                label="Ver grupo"
-                content={
-                  <>
-                    <div>
-                      <User />
-                      <span>{members}</span>
-                    </div>
-                    <div>
-                      <User />
-                      <span>{members}</span>
-                    </div>
-                  </>
-                }
-              />
-            );
+            return <GroupCard key={id} id={id} name={name} />;
           })}
         </GroupsList>
       </PageSection>

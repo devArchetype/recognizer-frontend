@@ -1,5 +1,5 @@
-import { InputField } from '../../../components/InputField';
-import { BaseModal } from '../../BaseModal';
+import { BaseModal } from '../../../layouts/BaseModal';
+import { InputField } from '../../InputField';
 
 export const CreateGroupModal = () => {
   return (
