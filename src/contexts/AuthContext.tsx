@@ -29,7 +29,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     'authenticated',
     false
   );
-  const [user, setrUser] = useLocalStorage('user', {});
+  const [user, setrUser] = useLocalStorage('user', {} as User);
   const [token, setToken] = useLocalStorage('token', '');
   // const [hashKeepSession, sethashKeepSession] = useLocalStorage(
   //   'hashKeepSession',
@@ -106,7 +106,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const logout = () => {
     setToken('');
     // sethashKeepSession('');
-    setrUser({});
+    setrUser({} as User);
     setAuthenticated(false);
 
     navigate('/');
