@@ -1,7 +1,6 @@
-import { ReactNode, createContext, useState, useEffect } from 'react';
+import { ReactNode, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { RegisteredUsers } from '../@types/app';
 import { LoginProps, RegisterProps } from '../@types/auth';
 import { useLocalStorage } from '../hooks/useStorage';
 import { recognizerApi } from '../services/axios/instances';
@@ -30,9 +29,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     'authenticated',
     false
   );
-  const [registeredUsers, setRegisteredUsers] =
-    useLocalStorage<RegisteredUsers>('registeredUsers', {});
-
   const [user, setrUser] = useLocalStorage('user', {});
   const [token, setToken] = useLocalStorage('token', '');
   // const [hashKeepSession, sethashKeepSession] = useLocalStorage(
@@ -45,28 +41,32 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   const navigate = useNavigate();
 
-  const registerUser = ({
+  const registerUser = async ({
     name,
     email,
     password,
     confirmPassword,
   }: RegisterProps) => {
-    const registered = registeredUsers[email];
+    if (password !== confirmPassword) {
+      toast.error('Senhas incompatíveis!');
+      return;
+    }
 
-    if (registered) {
-      toast.error('O email inserido já está em uso!');
-    } else {
-      setRegisteredUsers((prevState) => ({
-        ...prevState,
-        [email]: {
-          id: '',
-          name,
-          email,
-          password,
-        },
-      }));
+    const {
+      data: { sucess, message },
+    } = await recognizerApi.post('/user/store', {
+      name,
+      email,
+      password,
+    });
+
+    if (message) {
+      toast.error(
+        message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
+      );
+    } else if (sucess) {
       navigate('/sessao/acessar');
-      toast.info('Usuário Cadastrado!');
+      toast.info(sucess);
     }
   };
 
