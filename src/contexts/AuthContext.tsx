@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { RegisteredUsers } from '../@types/app';
@@ -7,6 +7,7 @@ import { useLocalStorage } from '../hooks/useStorage';
 import { recognizerApi } from '../services/axios/instances';
 
 interface AuthContextType {
+  user: object;
   authenticated: boolean;
   registerUser: ({
     name,
@@ -25,9 +26,22 @@ interface AuthContextProviderProps {
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useLocalStorage(
+    'authenticated',
+    false
+  );
   const [registeredUsers, setRegisteredUsers] =
     useLocalStorage<RegisteredUsers>('registeredUsers', {});
+
+  const [user, setrUser] = useLocalStorage('user', {});
+  const [token, setToken] = useLocalStorage('token', '');
+  // const [hashKeepSession, sethashKeepSession] = useLocalStorage(
+  //   'hashKeepSession',
+  //   ''
+  // );
+
+  recognizerApi.defaults.headers.Authorization = `Bearer ${token}`;
+  // recognizerApi.defaults.headers.hashKeepSession = hashKeepSession;
 
   const navigate = useNavigate();
 
@@ -73,9 +87,9 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
             message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
           );
         } else {
-          localStorage.setItem('token', JSON.stringify(token));
-          localStorage.setItem('user', JSON.stringify(user));
-          recognizerApi.defaults.headers.Authorization = `Bearer ${token}`;
+          setToken(token);
+          // sethashKeepSession(hashKeepSession);
+          setrUser(user);
           setAuthenticated(true);
 
           navigate('/grupos');
@@ -90,16 +104,17 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   };
 
   const logout = () => {
+    setToken('');
+    // sethashKeepSession('');
+    setrUser({});
     setAuthenticated(false);
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    recognizerApi.defaults.headers.Authorization = null;
+
     navigate('/');
   };
 
   return (
     <AuthContext.Provider
-      value={{ authenticated, registerUser, login, logout }}
+      value={{ user, authenticated, registerUser, login, logout }}
     >
       {children}
     </AuthContext.Provider>
