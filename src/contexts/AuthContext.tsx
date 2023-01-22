@@ -61,7 +61,11 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       (async () => {
         const {
           data: { user, token, message },
-        } = await recognizerApi.post('/user/login', { email, password });
+        } = await recognizerApi.post('/user/login', {
+          email,
+          password,
+          recaptcha,
+        });
 
         if (message) {
           toast.error(
