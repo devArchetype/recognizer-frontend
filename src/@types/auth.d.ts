@@ -9,5 +9,5 @@ export interface LoginProps {
   email: string;
   password: string;
   keepSession: boolean;
-  isNew?: boolean;
+  recaptcha: string | null;
 }

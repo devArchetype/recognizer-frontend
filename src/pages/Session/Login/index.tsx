@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
@@ -16,6 +16,7 @@ import {
 } from '../../../layouts/SessionDefaultLayout/components/SessionContainer/styles';
 
 export const Login = () => {
+  const captchaRef = useRef(null);
   const { login } = useContext(AuthContext);
   const { themeName } = useContext(PreferencesContext);
 
@@ -43,20 +44,21 @@ export const Login = () => {
     password,
     keepSession,
   }: LoginFormFormData) => {
-    login({ email, password, keepSession });
-    // reset();
+    const recaptcha = captchaRef.current ? captchaRef.current.getValue() : null;
+    login({ email, password, keepSession, recaptcha });
   };
 
   return (
     <SessionContainer heading="Seja bem vindo!">
       <ContentContainer>
-        <form onSubmit={handleSubmit(handleLoginSubmit)}>
+        <form onSubmit={handleSubmit(handleLoginSubmit)} id="loginForm">
           <InputField
             label="Email"
             register={register('email', { required: true })}
             errorMessage={errors.email && errors.email.message}
             placeholder="exemplo@recognizer.com"
             border
+            name="email"
           />
           <InputField
             label="Senha"
@@ -65,17 +67,20 @@ export const Login = () => {
             type="password"
             passwordButton
             border
+            name="password"
+          />
+          <ReCAPTCHA
+            sitekey={RECAPTCHA_SITE_KEY}
+            theme={themeName}
+            type="image"
+            ref={captchaRef}
+            className="reCAPTCHA"
           />
           <Switch
             label="Continuar conectado?"
             srLabel={false}
             leftLabel
             register={register('keepSession')}
-          />
-          <ReCAPTCHA
-            sitekey={RECAPTCHA_SITE_KEY}
-            theme={themeName}
-            type="image"
           />
           <Button label="Acessar" type="submit" />
         </form>

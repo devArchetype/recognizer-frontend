@@ -25,11 +25,15 @@ export const Button = ({
   srLabel = false,
   iconLeft = false,
   variant = 'primary',
+<<<<<<< HEAD
   form,
   confirm,
   confirmMessage = 'Confirmar?',
   confirmIcon = <Warning />,
   onClick,
+=======
+  form = undefined,
+>>>>>>> page/authentication
   ...rest
 }: ButtonProps) => {
   const [confirmStep, setConfirmStep] = useState(0);
