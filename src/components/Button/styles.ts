@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 
 export const ButtonContainer = styled.button<ButtonProps>`
-  height: min-content;
+  height: calc(${(props) => props.theme.spacing.lg} + 4px);
   display: flex;
   flex-direction: ${(props) => (props.iconLeft ? 'row' : 'row-reverse')};
   align-items: center;
@@ -90,6 +90,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
       }
       case 'icon': {
         return css`
+          height: min-content;
           padding: ${({ theme }) => theme.spacing.xxs};
           font-size: ${(props) => props.theme.text.xl};
           color: ${(props) => props.theme.color['base-400']};
