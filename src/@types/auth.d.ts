@@ -8,4 +8,6 @@ export interface RegisterProps {
 export interface LoginProps {
   email: string;
   password: string;
+  keepSession: boolean;
+  recaptcha: string | null;
 }

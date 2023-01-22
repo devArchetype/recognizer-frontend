@@ -14,7 +14,7 @@ interface AuthContextType {
     password,
     confirmPassword,
   }: RegisterProps) => void;
-  login: ({ email, password }: LoginProps) => boolean;
+  login: ({ email, password, keepSession, recaptcha }: LoginProps) => boolean;
   logout: () => void;
 }
 
@@ -25,7 +25,7 @@ interface AuthContextProviderProps {
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
-  const [authenticated, setAuthenticated] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
   const [registeredUsers, setRegisteredUsers] =
     useLocalStorage<RegisteredUsers>('registeredUsers', {});
 
@@ -51,32 +51,35 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
           password,
         },
       }));
-      navigate('/sessao/cadastrar');
+      navigate('/sessao/acessar');
       toast.info('Usuário Cadastrado!');
-      // login({ email, password, keepSession: false, isNew: true });
     }
   };
 
-  const login = ({ email, password }: LoginProps) => {
-    (async () => {
-      const {
-        data: { user, token, message },
-      } = await recognizerApi.post('/user/login', { email, password });
+  const login = ({ email, password, keepSession, recaptcha }: LoginProps) => {
+    if (recaptcha) {
+      (async () => {
+        const {
+          data: { user, token, message },
+        } = await recognizerApi.post('/user/login', { email, password });
 
-      if (message) {
-        toast.error(
-          message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
-        );
-      } else {
-        localStorage.setItem('token', JSON.stringify(token));
-        localStorage.setItem('user', JSON.stringify(user));
-        recognizerApi.defaults.headers.Authorization = `Bearer ${token}`;
-        setAuthenticated(true);
+        if (message) {
+          toast.error(
+            message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
+          );
+        } else {
+          localStorage.setItem('token', JSON.stringify(token));
+          localStorage.setItem('user', JSON.stringify(user));
+          recognizerApi.defaults.headers.Authorization = `Bearer ${token}`;
+          setAuthenticated(true);
 
-        navigate('/grupos');
-        toast.info('Bem vindo!');
-      }
-    })();
+          navigate('/grupos');
+          toast.info('Bem vindo!');
+        }
+      })();
+    } else {
+      toast.error('ReCAPTCHA inválido');
+    }
 
     return authenticated;
   };

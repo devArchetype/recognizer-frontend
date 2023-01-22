@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
@@ -16,10 +16,11 @@ import {
 } from '../../../layouts/SessionDefaultLayout/components/SessionContainer/styles';
 
 export const Login = () => {
+  const captchaRef = useRef(null);
   const { login } = useContext(AuthContext);
   const { themeName } = useContext(PreferencesContext);
 
-  // const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+  const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
   const LoginFormSchema = zod.object({
     email: zod.string().email({ message: 'Formato de email inválido!' }),
@@ -38,8 +39,13 @@ export const Login = () => {
   const { formState, register, handleSubmit, reset } = LoginForm;
   const { errors } = formState;
 
-  const handleLoginSubmit = ({ email, password }: LoginFormFormData) => {
-    login({ email, password });
+  const handleLoginSubmit = ({
+    email,
+    password,
+    keepSession,
+  }: LoginFormFormData) => {
+    const recaptcha = captchaRef.current ? captchaRef.current.getValue() : null;
+    login({ email, password, keepSession, recaptcha });
   };
 
   return (
@@ -63,17 +69,19 @@ export const Login = () => {
             border
             name="password"
           />
+          <ReCAPTCHA
+            sitekey={RECAPTCHA_SITE_KEY}
+            theme={themeName}
+            type="image"
+            ref={captchaRef}
+            className="reCAPTCHA"
+          />
           <Switch
             label="Continuar conectado?"
             srLabel={false}
             leftLabel
             register={register('keepSession')}
           />
-          {/* <ReCAPTCHA
-            sitekey={RECAPTCHA_SITE_KEY}
-            theme={themeName}
-            type="image"
-          /> */}
           <Button label="Acessar" type="submit" />
         </form>
 
