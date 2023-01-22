@@ -1,12 +1,12 @@
 import { ReactNode, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { LoginProps, RegisterProps } from '../@types/auth';
+import { LoginProps, RegisterProps, User } from '../@types/auth';
 import { useLocalStorage } from '../hooks/useStorage';
 import { recognizerApi } from '../services/axios/instances';
 
 interface AuthContextType {
-  user: object;
+  user: User;
   authenticated: boolean;
   registerUser: ({
     name,

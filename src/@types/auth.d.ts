@@ -11,3 +11,10 @@ export interface LoginProps {
   keepSession: boolean;
   recaptcha: string | null;
 }
+
+export interface User {
+  name: string;
+  email: string;
+  password: string;
+  avatar: string | null;
+}

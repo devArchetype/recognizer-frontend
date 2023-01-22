@@ -1,19 +1,24 @@
+import { useContext } from 'react';
+
 import { Link } from 'react-router-dom';
 import { Avatar } from '../../components/Avatar';
 import { Logo } from '../../components/Logo';
 import { HeaderContainer, Wrapper } from './styles';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const Header = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <HeaderContainer>
       <Logo />
       <Wrapper>
         <Link to="/perfil">
           <Avatar
-            email="mariaclara@gmail.com"
-            name="Maria Clara"
+            email={user.email || ''}
+            name={user.name || ''}
             size="sm"
-            url="/images/favicon.svg"
+            url={user.avatar || '/images/favicon.svg'}
           />
         </Link>
       </Wrapper>
