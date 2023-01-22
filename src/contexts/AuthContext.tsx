@@ -64,6 +64,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         } = await recognizerApi.post('/user/login', {
           email,
           password,
+          keepSession,
           recaptcha,
         });
 
