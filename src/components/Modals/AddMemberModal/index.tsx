@@ -34,7 +34,7 @@ export const AddMemberModal = ({ handleModalDisplay }: ModalProps) => {
 
   return (
     <BaseModal
-      heading="Adicionar novo membro"
+      heading="Adicionar novo integrante"
       formId={ADD_MEMBER_FORM_ID}
       onCancel={handleClearForm}
     >
@@ -44,13 +44,13 @@ export const AddMemberModal = ({ handleModalDisplay }: ModalProps) => {
           onSubmit={handleSubmit(handleAddFormSubmit)}
         >
           <InputField
-            label="Nome do membro"
+            label="Nome do integrante: "
             name="name"
             register={register('name', { required: true })}
             errorMessage={errors.name && errors.name.message}
           />
           <InputField
-            label="Matrícula"
+            label="Matrícula: "
             name="memberId"
             register={register('memberId', { required: true })}
           />
