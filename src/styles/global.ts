@@ -22,16 +22,17 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::selection {
-		color: ${(props) => props.theme.color['base-200']};
+    color: ${(props) => props.theme.color['base-200']};
     background-color: ${(props) => props.theme.color['brand-700']};
   }
+
   ::-webkit-scrollbar {
     width: 2px;
     height: 2px;
   }
   
   ::-webkit-scrollbar-thumb {
-    border-radius: 6px;
+    border-radius: ${(props) => props.theme.rounded.base};
     background-color: ${(props) => props.theme.color['base-400']};
   }
 `;
