@@ -4,7 +4,7 @@ import { ButtonContainer, Icon, Label } from './styles';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
-  label: string;
+  label?: string;
   title?: string;
   srLabel?: boolean;
   icon?: JSX.Element;
@@ -19,7 +19,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
 
 export const Button = ({
   type = 'button',
-  label,
+  label = undefined,
   icon,
   title = '',
   srLabel = false,
@@ -74,7 +74,7 @@ export const Button = ({
       {...rest}
     >
       <Icon>{displayIcon}</Icon>
-      <Label srLabel={srLabel}>{displayLabel}</Label>
+      {label && <Label srLabel={srLabel}>{displayLabel}</Label>}
     </ButtonContainer>
   );
 };

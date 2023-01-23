@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface AvatarInfoProps {
   size: 'sm' | 'md' | 'lg' | 'xl';
+  align?: string;
 }
 
 interface AvatarContainerProps extends AvatarInfoProps {
@@ -31,7 +32,7 @@ export const AvatarContainer = styled.article<AvatarContainerProps>`
 
 export const AvatarInfo = styled.div<AvatarInfoProps>`
   display: flex;
-  align-items: start;
+  align-items: ${(props) => props.align};
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.xxs};
   line-height: 100%;
