@@ -25,7 +25,7 @@ export const Button = ({
   srLabel = false,
   iconLeft = false,
   variant = 'primary',
-  form,
+  form = undefined,
   confirm,
   confirmMessage = 'Confirmar?',
   confirmIcon = <Warning />,

@@ -1,11 +1,12 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { RegisteredUsers } from '../@types/app';
-import { LoginProps, RegisterProps } from '../@types/auth';
+import { LoginProps, RegisterProps, User } from '../@types/auth';
 import { useLocalStorage } from '../hooks/useStorage';
+import { recognizerApi } from '../services/axios/instances';
 
 interface AuthContextType {
+  user: User;
   authenticated: boolean;
   registerUser: ({
     name,
@@ -13,7 +14,7 @@ interface AuthContextType {
     password,
     confirmPassword,
   }: RegisterProps) => void;
-  login: ({ email, password, keepSession, isNew }: LoginProps) => boolean;
+  login: ({ email, password, keepSession, recaptcha }: LoginProps) => boolean;
   logout: () => void;
 }
 
@@ -24,57 +25,96 @@ interface AuthContextProviderProps {
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
-  const [authenticated, setAuthenticated] = useState(true);
-  const [registeredUsers, setRegisteredUsers] =
-    useLocalStorage<RegisteredUsers>('registeredUsers', {});
+  const [authenticated, setAuthenticated] = useLocalStorage(
+    'authenticated',
+    false
+  );
+  const [user, setrUser] = useLocalStorage('user', {} as User);
+  const [token, setToken] = useLocalStorage('token', '');
+  // const [hashKeepSession, sethashKeepSession] = useLocalStorage(
+  //   'hashKeepSession',
+  //   ''
+  // );
+
+  recognizerApi.defaults.headers.Authorization = `Bearer ${token}`;
+  // recognizerApi.defaults.headers.hashKeepSession = hashKeepSession;
 
   const navigate = useNavigate();
 
-  const registerUser = ({
+  const registerUser = async ({
     name,
     email,
     password,
     confirmPassword,
   }: RegisterProps) => {
-    const registered = registeredUsers[email];
+    if (password !== confirmPassword) {
+      toast.error('Senhas incompatíveis!');
+      return;
+    }
 
-    if (registered) {
-      toast.error('O email inserido já está em uso!');
-    } else {
-      setRegisteredUsers((prevState) => ({
-        ...prevState,
-        [email]: {
-          id: '',
-          name,
-          email,
-          password,
-        },
-      }));
-      login({ email, password, keepSession: false, isNew: true });
+    const {
+      data: { sucess, message },
+    } = await recognizerApi.post('/user/store', {
+      name,
+      email,
+      password,
+    });
+
+    if (message) {
+      toast.error(
+        message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
+      );
+    } else if (sucess) {
+      navigate('/sessao/acessar');
+      toast.info(sucess);
     }
   };
 
-  const login = ({ email, password, isNew }: LoginProps) => {
-    const registered = registeredUsers[email];
+  const login = ({ email, password, keepSession, recaptcha }: LoginProps) => {
+    if (recaptcha) {
+      (async () => {
+        const {
+          data: { user, token, message },
+        } = await recognizerApi.post('/user/login', {
+          email,
+          password,
+          keepSession,
+          recaptcha,
+        });
 
-    if ((registered && registered.password === password) || isNew) {
-      setAuthenticated(true);
-      navigate('/grupos');
-      toast.info('Bem vindo!');
+        if (message) {
+          toast.error(
+            message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
+          );
+        } else {
+          setToken(token);
+          // sethashKeepSession(hashKeepSession);
+          setrUser(user);
+          setAuthenticated(true);
+
+          navigate('/grupos');
+          toast.info('Bem vindo!');
+        }
+      })();
     } else {
-      toast.error('Insira email e senha válidos');
+      toast.error('ReCAPTCHA inválido');
     }
+
     return authenticated;
   };
 
   const logout = () => {
+    setToken('');
+    // sethashKeepSession('');
+    setrUser({} as User);
     setAuthenticated(false);
+
     navigate('/');
   };
 
   return (
     <AuthContext.Provider
-      value={{ authenticated, registerUser, login, logout }}
+      value={{ user, authenticated, registerUser, login, logout }}
     >
       {children}
     </AuthContext.Provider>
