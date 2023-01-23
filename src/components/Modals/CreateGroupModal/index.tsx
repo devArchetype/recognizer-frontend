@@ -3,10 +3,10 @@ import { useId } from 'react';
 import { useForm } from 'react-hook-form';
 import * as zod from 'zod';
 import { InputField } from '../../InputField';
-import { BaseModal } from '../../base/BaseModal';
+import { BaseModal, ModalProps } from '../../base/BaseModal';
 import { ModalFormContainer } from '../../base/BaseModal/styles';
 
-export const CreateGroupModal = () => {
+export const CreateGroupModal = ({ handleModalDisplay }: ModalProps) => {
   const CreateGroupSchema = zod.object({
     name: zod.string().min(3, { message: 'Insira um nome válido!' }),
   });
@@ -23,10 +23,12 @@ export const CreateGroupModal = () => {
 
   const handleClearForm = () => {
     reset();
+    handleModalDisplay!();
   };
 
   const handleCreateFormSubmit = ({ name }: CreateGroupFormData) => {
     console.log(name);
+    handleClearForm();
   };
 
   return (

@@ -1,5 +1,5 @@
 import autoAnimate from '@formkit/auto-animate';
-import { FilePlus, UserPlus } from 'phosphor-react';
+import { FilePlus, Trash, UserPlus } from 'phosphor-react';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
@@ -39,6 +39,10 @@ export const Group = () => {
     examsListRef.current && autoAnimate(examsListRef.current);
   }, [examsListRef]);
 
+  const handleDeleteGroup = () => {
+    console.log('group deleted');
+  };
+
   return (
     <GroupPageContainer heading="Grupo A">
       <ExamSection
@@ -55,6 +59,12 @@ export const Group = () => {
             <ModalTrigger
               trigger={<Button label={'Criar Prova'} icon={<FilePlus />} />}
               modal={<CreateExamModal />}
+            />
+            <Button
+              label={'Apagar grupo'}
+              icon={<Trash />}
+              onClick={handleDeleteGroup}
+              confirm
             />
           </>
         }

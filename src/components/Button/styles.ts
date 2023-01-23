@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 
 export const ButtonContainer = styled.button<ButtonProps>`
-  height: min-content;
+  height: calc(${(props) => props.theme.spacing.lg} + 8px);
   display: flex;
   flex-direction: ${(props) => (props.iconLeft ? 'row' : 'row-reverse')};
   align-items: center;
@@ -26,7 +26,6 @@ export const ButtonContainer = styled.button<ButtonProps>`
     switch (variant) {
       case 'primary': {
         return css`
-          height: calc(${(props) => props.theme.spacing.lg} + 8px);
           color: ${(props) => props.theme.color['base-light']};
           background-color: ${(props) => props.theme.color['brand-600']};
 
@@ -37,7 +36,6 @@ export const ButtonContainer = styled.button<ButtonProps>`
       }
       case 'secondary': {
         return css`
-          height: calc(${(props) => props.theme.spacing.lg} + 8px);
           color: ${(props) => props.theme.color['base-dark']};
           background-color: ${(props) => props.theme.color['base-200']};
 
@@ -48,7 +46,6 @@ export const ButtonContainer = styled.button<ButtonProps>`
       }
       case 'tertiary': {
         return css`
-          height: calc(${(props) => props.theme.spacing.lg} + 8px);
           color: ${(props) => props.theme.color['brand-600']};
           border: solid 1px ${(props) => props.theme.color['brand-600']};
           background-color: trasnsparent;
@@ -90,6 +87,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
       }
       case 'icon': {
         return css`
+          height: min-content;
           padding: ${({ theme }) => theme.spacing.xxs};
           font-size: ${(props) => props.theme.text.xl};
           color: ${(props) => props.theme.color['base-400']};

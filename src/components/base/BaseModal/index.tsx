@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'phosphor-react';
-import { ReactNode } from 'react';
+import { ReactNode, cloneElement, useState } from 'react';
 import { Button } from '../../Button';
 import {
   Container,
@@ -12,10 +12,12 @@ import {
   Title,
 } from './styles';
 
-interface ModalProps {
+interface BaseModalProps {
   heading: string;
   children: ReactNode;
   formId?: string;
+  saveButtonLabel?: string;
+  cancelButtonLabel?: string;
   onCancel?: () => void;
   onSave?: () => void;
 }
@@ -25,11 +27,29 @@ interface ModalTriggerProps {
   modal: JSX.Element;
 }
 
+export interface ModalProps {
+  handleModalDisplay?: () => void;
+}
+
 export const ModalTrigger = ({ trigger, modal }: ModalTriggerProps) => {
+  const [displayModal, setDisplayModal] = useState(false);
+
+  const handleDisplayModal = () => {
+    setDisplayModal((prevState) => !prevState);
+  };
+
   return (
-    <Dialog.Root>
+    <Dialog.Root open={displayModal} onOpenChange={handleDisplayModal}>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
-      {modal}
+
+      <Dialog.Portal>
+        <OverlayContainer>
+          {cloneElement<ModalProps>(modal, {
+            handleModalDisplay: handleDisplayModal,
+          })}
+        </OverlayContainer>
+        <Overlay />
+      </Dialog.Portal>
     </Dialog.Root>
   );
 };
@@ -38,9 +58,11 @@ export const BaseModal = ({
   heading,
   children,
   formId,
+  saveButtonLabel = 'Salvar',
+  cancelButtonLabel = 'Cancelar',
   onCancel,
   onSave,
-}: ModalProps) => {
+}: BaseModalProps) => {
   const hasForm = !!formId;
 
   const handleCancel = () => {
@@ -52,42 +74,35 @@ export const BaseModal = ({
   };
 
   return (
-    <Dialog.Portal>
-      <OverlayContainer>
-        <Container>
-          <Header>
-            <Title>{heading}</Title>
-            <Dialog.Close asChild>
-              <Button
-                label="Fechar"
-                icon={<X weight="bold" />}
-                title="Fechar"
-                variant="icon"
-              />
-            </Dialog.Close>
-          </Header>
-          <Content>{children}</Content>
-          <Footer>
-            <Dialog.Close asChild>
-              <Button
-                label="Cancelar"
-                title="Cancelar"
-                variant="secondary"
-                onClick={handleCancel}
-              />
-            </Dialog.Close>
-            <Button
-              type={hasForm ? 'submit' : 'button'}
-              form={hasForm ? formId : ''}
-              label="Salvar"
-              title="Salvar"
-              variant="primary"
-              onClick={handleSave}
-            />
-          </Footer>
-        </Container>
-      </OverlayContainer>
-      <Overlay />
-    </Dialog.Portal>
+    <Container>
+      <Header>
+        <Title>{heading}</Title>
+        <Dialog.Close asChild>
+          <Button
+            label="Fechar"
+            icon={<X weight="bold" />}
+            title="Fechar"
+            variant="icon"
+          />
+        </Dialog.Close>
+      </Header>
+      <Content>{children}</Content>
+      <Footer>
+        <Button
+          label={cancelButtonLabel}
+          title={cancelButtonLabel}
+          variant="secondary"
+          onClick={handleCancel}
+        />
+        <Button
+          type={hasForm ? 'submit' : 'button'}
+          form={hasForm ? formId : undefined}
+          label={saveButtonLabel}
+          title={saveButtonLabel}
+          variant="primary"
+          onClick={handleSave}
+        />
+      </Footer>
+    </Container>
   );
 };

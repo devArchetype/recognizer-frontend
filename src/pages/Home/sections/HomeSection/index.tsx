@@ -23,10 +23,10 @@ export const HomeSection = () => {
       </ImageContainer>
 
       <ButtonsWrapper>
-        <Link to={authenticated ? '/grupos' : '/session/registration'}>
+        <Link to={authenticated ? '/grupos' : '/sessao/cadastrar'}>
           <Button label="Registre-se gratuitamente" />
         </Link>
-        <Link to={authenticated ? '/grupos' : '/session/login'}>
+        <Link to={authenticated ? '/grupos' : '/sessao/acessar'}>
           <Button label="Entrar" variant="tertiary" />
         </Link>
       </ButtonsWrapper>

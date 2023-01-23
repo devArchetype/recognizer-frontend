@@ -33,6 +33,7 @@ export const AvatarInfo = styled.div<AvatarInfoProps>`
   display: flex;
   align-items: start;
   flex-direction: column;
+  gap: ${(props) => props.theme.spacing.xxs};
   line-height: 100%;
 
   strong {
