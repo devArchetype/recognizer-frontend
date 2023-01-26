@@ -1,16 +1,17 @@
 {
-    "extends": "@rocketseat/eslint-config/react",
-    "globals": {
-        "JSX": true
-    },
-    "rules": {
-        "prettier/prettier": [
-            "error",
-            {
-                "singleQuote": true
-                // "parser": "flow"
-            }
-        ],
-        "no-use-before-define": "off"
-    }
+  "extends": "@rocketseat/eslint-config/react",
+  "globals": {
+    "JSX": true
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true
+        // "parser": "flow"
+      }
+    ],
+    "no-use-before-define": "off",
+    "react-hooks/exhaustive-deps": "off"
+  }
 }

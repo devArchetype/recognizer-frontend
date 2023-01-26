@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
 import { Avatar } from '../../components/Avatar';
@@ -26,11 +26,17 @@ import { recognizerApi } from '../../services/axios/instances';
 import { toast } from 'react-toastify';
 import { User } from '../../@types/auth';
 
+type Statistics = {
+  groups: number;
+  members: number;
+};
+
 export const Profile = () => {
   const { user, setUser } = useContext(AuthContext);
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [avatar, setAvatar] = useState(user.avatar || '/images/favicon.svg');
+  const [statistics, setStatistics] = useState({} as Statistics);
 
   const UpdateFormSchema = zod.object({
     name: zod.string().min(3, { message: 'Insira um nome válido!' }),
@@ -47,26 +53,22 @@ export const Profile = () => {
   const { formState, register, handleSubmit } = UpdatedForm;
   const { errors } = formState;
 
-  const handleUpdateSubmit = async ({
-    name,
-    email,
-    avatar,
-  }: UpdateFormFormData) => {
+  const handleUpdateSubmit = async () => {
     const {
       data: { user, sucess, message },
-    } = await recognizerApi.post('/user/update', {
+    } = await recognizerApi.put('/user/update', {
       name,
       email,
       avatar,
     });
 
-    if (message) {
+    if (sucess) {
+      setUser(user as User);
+      toast.info(sucess);
+    } else {
       toast.error(
         message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
       );
-    } else if (sucess) {
-      toast.info(sucess);
-      setUser(user as User);
     }
   };
 
@@ -92,6 +94,13 @@ export const Profile = () => {
       setAvatar(base64 as string);
     }
   };
+
+  (async () => {
+    const {
+      data: { groups = 0, members = 0 },
+    } = await recognizerApi.get('/user/statistics');
+    setStatistics({ groups, members });
+  })();
 
   return (
     <ProfilePageContainer heading="Seu perfil">
@@ -123,11 +132,11 @@ export const Profile = () => {
 
           <StatisticsWrapper>
             <StatisticContainer>
-              <strong>85</strong>
+              <strong>{statistics.groups ?? 0}</strong>
               <div>grupos</div>
             </StatisticContainer>
             <StatisticContainer>
-              <strong>215</strong>
+              <strong>{statistics.members ?? 0}</strong>
               <div>alunos</div>
             </StatisticContainer>
           </StatisticsWrapper>
@@ -138,7 +147,6 @@ export const Profile = () => {
             <InputField
               label="Nome:"
               border
-              name="name"
               value={name}
               onChange={(event) => setName(event.target.value)}
               register={register('name', { required: true })}
@@ -148,14 +156,20 @@ export const Profile = () => {
             <InputField
               label="Email:"
               border
-              name="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               register={register('email', { required: true })}
               errorMessage={errors.email && errors.email.message}
             />
 
-            <input type="hidden" name="avatar" value={avatar} />
+            <InputField
+              label=""
+              type="hidden"
+              value={avatar}
+              onChange={(event) => setEmail(event.target.value)}
+              register={register('avatar', { required: true })}
+              errorMessage={errors.email && errors.email.message}
+            />
 
             <ButtonsContainer>
               <Link to="/sessao/recuperar">
