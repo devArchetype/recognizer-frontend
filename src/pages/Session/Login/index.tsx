@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useEffect } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
@@ -36,7 +36,7 @@ export const Login = () => {
     resolver: zodResolver(LoginFormSchema),
   });
 
-  const { formState, register, handleSubmit, reset } = LoginForm;
+  const { formState, register, handleSubmit } = LoginForm;
   const { errors } = formState;
 
   const handleLoginSubmit = ({
@@ -69,6 +69,7 @@ export const Login = () => {
             border
             name="password"
           />
+
           <ReCAPTCHA
             sitekey={RECAPTCHA_SITE_KEY}
             theme={themeName}
@@ -76,6 +77,7 @@ export const Login = () => {
             ref={captchaRef}
             className="reCAPTCHA"
           />
+
           <Switch
             label="Continuar conectado?"
             srLabel={false}
