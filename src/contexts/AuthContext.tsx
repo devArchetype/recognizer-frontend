@@ -1,4 +1,5 @@
 import { ReactNode, createContext, useEffect } from 'react';
+import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { LoginProps, RegisterProps, User } from '../@types/auth';
@@ -23,6 +24,10 @@ interface AuthContextProviderProps {
   children: ReactNode;
 }
 
+type DecodedToken = {
+  exp: number;
+};
+
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
@@ -41,8 +46,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   // recognizerApi.defaults.headers.hashKeepSession = hashKeepSession;
 
   const navigate = useNavigate();
-
-  useEffect(() => {});
 
   const registerUser = async ({
     name,
@@ -115,6 +118,20 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     toast.warning('Sessão Encerrada!');
     navigate('/');
   };
+
+  // checks if the token has expired
+  useEffect(() => {
+    const JWT_PASS = import.meta.env.VITE_JWT_PASS;
+
+    if (authenticated && JWT_PASS) {
+      const decodedToken: DecodedToken = jwt_decode(token);
+      const currentDate = new Date();
+
+      if (decodedToken.exp * 1000 < currentDate.getTime()) {
+        logout();
+      }
+    }
+  });
 
   return (
     <AuthContext.Provider
