@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useContext, useRef, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
@@ -20,6 +20,13 @@ export const Login = () => {
   const { login } = useContext(AuthContext);
   const { themeName } = useContext(PreferencesContext);
 
+  useEffect(() => {
+    const recaptchaAnchor = document.querySelector('.reCAPTCHA');
+    if (recaptchaAnchor && recaptchaAnchor.hasChildNodes()) {
+      window.location.reload();
+    }
+  }, []);
+
   const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
   const LoginFormSchema = zod.object({
@@ -36,7 +43,7 @@ export const Login = () => {
     resolver: zodResolver(LoginFormSchema),
   });
 
-  const { formState, register, handleSubmit } = LoginForm;
+  const { formState, register, handleSubmit, reset } = LoginForm;
   const { errors } = formState;
 
   const handleLoginSubmit = ({
@@ -45,7 +52,9 @@ export const Login = () => {
     keepSession,
   }: LoginFormFormData) => {
     const recaptcha = captchaRef.current ? captchaRef.current.getValue() : null;
+
     login({ email, password, keepSession, recaptcha });
+    reset();
   };
 
   return (
@@ -69,20 +78,18 @@ export const Login = () => {
             border
             name="password"
           />
-
+          <Switch
+            label="Continuar conectado?"
+            srLabel={false}
+            leftLabel
+            register={register('keepSession')}
+          />
           <ReCAPTCHA
             sitekey={RECAPTCHA_SITE_KEY}
             theme={themeName}
             type="image"
             ref={captchaRef}
             className="reCAPTCHA"
-          />
-
-          <Switch
-            label="Continuar conectado?"
-            srLabel={false}
-            leftLabel
-            register={register('keepSession')}
           />
           <Button label="Acessar" type="submit" />
         </form>
