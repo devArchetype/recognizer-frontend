@@ -1,4 +1,4 @@
-import { ReactNode, createContext } from 'react';
+import { ReactNode, createContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { LoginProps, RegisterProps, User } from '../@types/auth';
@@ -41,6 +41,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   // recognizerApi.defaults.headers.hashKeepSession = hashKeepSession;
 
   const navigate = useNavigate();
+
+  useEffect(() => {});
 
   const registerUser = async ({
     name,
