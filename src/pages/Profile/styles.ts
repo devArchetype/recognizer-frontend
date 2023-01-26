@@ -40,7 +40,6 @@ export const StatisticsWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.md};
-  padding-right: 2.4rem;
 `;
 
 export const StatisticContainer = styled.div`
@@ -66,7 +65,7 @@ export const StatisticContainer = styled.div`
 export const InformatiosWrapper = styled.form`
   display: flex;
   flex-direction: column;
-  gap: ${(props) => props.theme.spacing.sm};
+  gap: ${(props) => props.theme.spacing.xs};
 
   button {
     display: flex;
@@ -76,18 +75,6 @@ export const InformatiosWrapper = styled.form`
 
   @media ${(props) => props.theme.screen.md} {
     width: 70%;
-    gap: ${(props) => props.theme.spacing.lg};
-  }
-`;
-
-export const Information = styled.div`
-  strong {
-    color: ${(props) => props.theme.color['base-600']};
-    font-weight: ${(props) => props.theme.font.medium};
-  }
-
-  div {
-    color: ${(props) => props.theme.color['base-800']};
   }
 `;
 
@@ -98,5 +85,43 @@ export const AvatarContainer = styled.div`
 
   button {
     padding: 0.5rem;
+  }
+
+  input {
+    display: none;
+  }
+
+  .label-click {
+    color: #46b033;
+  }
+
+  .label-click:hover {
+    color: #388d29;
+    border: 2px solid #388d29;
+    border-radius: ${(props) => props.theme.rounded.base};
+    cursor: pointer;
+  }
+
+  .label-delete {
+    color: #ff0000;
+  }
+
+  .label-delete:hover {
+    color: #ff4500;
+    border: 2px solid #ff4500;
+    border-radius: ${(props) => props.theme.rounded.base};
+    cursor: pointer;
+  }
+`;
+
+export const ButtonsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: ${(props) => props.theme.spacing.xs};
+
+  .large {
+    width: 100%;
   }
 `;

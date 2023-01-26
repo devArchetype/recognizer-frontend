@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
 import { Avatar } from '../../components/Avatar';
@@ -7,23 +7,27 @@ import { InputField } from '../../components/InputField';
 import { Button } from '../../components/Button';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Link } from 'react-router-dom';
 
-import { Pencil } from 'phosphor-react';
+import { Pencil, Password, Trash } from 'phosphor-react';
 import {
   ContentSection,
-  Information,
   InformatiosWrapper,
   ProfilePageContainer,
   StatisticContainer,
   StatisticsWrapper,
   Wrapper,
   AvatarContainer,
+  ButtonsContainer,
 } from './styles';
 
 import * as zod from 'zod';
+import { recognizerApi } from '../../services/axios/instances';
+import { toast } from 'react-toastify';
+import { User } from '../../@types/auth';
 
 export const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [avatar, setAvatar] = useState(user.avatar || '/images/favicon.svg');
@@ -31,6 +35,7 @@ export const Profile = () => {
   const UpdateFormSchema = zod.object({
     name: zod.string().min(3, { message: 'Insira um nome válido!' }),
     email: zod.string().email({ message: 'Insira um email válido!' }),
+    avatar: zod.string(),
   });
 
   type UpdateFormFormData = zod.infer<typeof UpdateFormSchema>;
@@ -42,22 +47,78 @@ export const Profile = () => {
   const { formState, register, handleSubmit } = UpdatedForm;
   const { errors } = formState;
 
-  const handleUpdateSubmit = ({ name, email }: UpdateFormFormData) => {};
+  const handleUpdateSubmit = async ({
+    name,
+    email,
+    avatar,
+  }: UpdateFormFormData) => {
+    const {
+      data: { user, sucess, message },
+    } = await recognizerApi.post('/user/update', {
+      name,
+      email,
+      avatar,
+    });
+
+    if (message) {
+      toast.error(
+        message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
+      );
+    } else if (sucess) {
+      toast.info(sucess);
+      setUser(user as User);
+    }
+  };
+
+  const convertBase64 = (file: Blob) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleFileRead = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files ? event.target.files[0] : null;
+    if (file) {
+      const base64 = await convertBase64(file);
+      setAvatar(base64 as string);
+    }
+  };
 
   return (
     <ProfilePageContainer heading="Seu perfil">
       <Wrapper>
         <ContentSection>
           <AvatarContainer>
+            <span onClick={() => setAvatar('/images/favicon.svg')}>
+              <Trash className="label-delete" size={30} />
+            </span>
+
             <Avatar
               email=""
               name=""
-              url={user.avatar || '/images/favicon.svg'}
+              url={avatar}
               size="xl"
               orientation="column"
               align="center"
             />
-            <Button label="" type="button" icon={<Pencil />} />
+
+            <label>
+              <Pencil className="label-click" size={30} />
+              <input
+                id="file"
+                type="file"
+                onChange={(event) => handleFileRead(event)}
+              />
+            </label>
           </AvatarContainer>
 
           <StatisticsWrapper>
@@ -94,9 +155,25 @@ export const Profile = () => {
               errorMessage={errors.email && errors.email.message}
             />
 
-            <input type="hidden" name="avalar" />
+            <input type="hidden" name="avatar" value={avatar} />
 
-            <Button label="Atualizar Dados" type="submit" icon={<Pencil />} />
+            <ButtonsContainer>
+              <Link to="/sessao/recuperar">
+                <Button
+                  label="Atualizar Senha"
+                  type="button"
+                  variant="line"
+                  icon={<Password />}
+                />
+              </Link>
+
+              <Button
+                className="large"
+                label="Atualizar Dados"
+                type="submit"
+                icon={<Pencil />}
+              />
+            </ButtonsContainer>
           </InformatiosWrapper>
         </PageSection>
       </Wrapper>
