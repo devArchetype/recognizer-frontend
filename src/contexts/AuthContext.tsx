@@ -7,6 +7,7 @@ import { recognizerApi } from '../services/axios/instances';
 
 interface AuthContextType {
   user: User;
+  setUser: (user: User) => void;
   authenticated: boolean;
   registerUser: ({
     name,
@@ -29,7 +30,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     'authenticated',
     false
   );
-  const [user, setrUser] = useLocalStorage('user', {} as User);
+  const [user, setUser] = useLocalStorage('user', {} as User);
   const [token, setToken] = useLocalStorage('token', '');
   // const [hashKeepSession, sethashKeepSession] = useLocalStorage(
   //   'hashKeepSession',
@@ -89,7 +90,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         } else {
           setToken(token);
           // sethashKeepSession(hashKeepSession);
-          setrUser(user);
+          setUser(user);
           setAuthenticated(true);
 
           navigate('/grupos');
@@ -106,7 +107,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const logout = () => {
     setToken('');
     // sethashKeepSession('');
-    setrUser({} as User);
+    setUser({} as User);
     setAuthenticated(false);
 
     navigate('/');
@@ -114,7 +115,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, authenticated, registerUser, login, logout }}
+      value={{ user, setUser, authenticated, registerUser, login, logout }}
     >
       {children}
     </AuthContext.Provider>

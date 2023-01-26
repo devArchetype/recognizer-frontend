@@ -15,7 +15,7 @@ export const PageSection = ({
   actions,
 }: PageSectionProps) => {
   return (
-    <PageSectionContainer>
+    <PageSectionContainer className="page-section">
       <Actions srHeading={srHeading}>
         <h2>{heading}</h2>
 

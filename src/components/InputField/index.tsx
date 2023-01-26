@@ -50,23 +50,29 @@ export const InputField = ({
   };
 
   return (
-    <InputFieldContainer full={full}>
-      <Label srLabel={srLabel}>{label}</Label>
-      <Wrapper hasError={hasError} hasIcon={hasIcon} border={border}>
-        {icon}
+    <>
+      {type === 'hidden' ? (
         <input type={passwordInputType} {...register} {...rest} />
-        {hasPasswordButton && (
-          <PasswordButton
-            type="button"
-            label={displayPassword ? 'Ocultar senha' : 'Exibir senha'}
-            title={displayPassword ? 'Ocultar senha' : 'Exibir senha'}
-            icon={displayPassword ? <EyeSlash /> : <Eye />}
-            variant="icon"
-            onClick={handleDisplayPassword}
-          />
-        )}
-      </Wrapper>
-      <ErrorMessage>{errorMessage}</ErrorMessage>
-    </InputFieldContainer>
+      ) : (
+        <InputFieldContainer full={full}>
+          <Label srLabel={srLabel}>{label}</Label>
+          <Wrapper hasError={hasError} hasIcon={hasIcon} border={border}>
+            {icon}
+            <input type={passwordInputType} {...register} {...rest} />
+            {hasPasswordButton && (
+              <PasswordButton
+                type="button"
+                label={displayPassword ? 'Ocultar senha' : 'Exibir senha'}
+                title={displayPassword ? 'Ocultar senha' : 'Exibir senha'}
+                icon={displayPassword ? <EyeSlash /> : <Eye />}
+                variant="icon"
+                onClick={handleDisplayPassword}
+              />
+            )}
+          </Wrapper>
+          <ErrorMessage>{errorMessage}</ErrorMessage>
+        </InputFieldContainer>
+      )}
+    </>
   );
 };

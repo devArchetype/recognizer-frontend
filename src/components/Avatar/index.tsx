@@ -6,6 +6,7 @@ interface AvatarProps {
   email: string;
   name: string;
   url: string;
+  align?: string;
 }
 
 export const Avatar = ({
@@ -14,6 +15,7 @@ export const Avatar = ({
   email,
   name,
   url,
+  align,
 }: AvatarProps) => {
   return (
     <AvatarContainer orientation={orientation} size={size}>
@@ -24,7 +26,7 @@ export const Avatar = ({
         loading="lazy"
       />
 
-      <AvatarInfo size={size}>
+      <AvatarInfo size={size} align={align || 'start'}>
         <strong>{name}</strong>
         <div>{email}</div>
       </AvatarInfo>
