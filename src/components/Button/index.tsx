@@ -9,7 +9,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   srLabel?: boolean;
   icon?: JSX.Element;
   iconLeft?: boolean;
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'line' | 'icon';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'line' | 'icon' | 'danger';
   form?: string | undefined;
   confirm?: boolean;
   confirmMessage?: string;

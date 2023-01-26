@@ -110,6 +110,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     setUser({} as User);
     setAuthenticated(false);
 
+    toast.warning('Sessão Encerrada!');
     navigate('/');
   };
 
