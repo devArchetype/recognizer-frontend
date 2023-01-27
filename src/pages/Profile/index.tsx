@@ -54,21 +54,26 @@ export const Profile = () => {
   const { errors } = formState;
 
   const handleUpdateSubmit = async () => {
-    const {
-      data: { user, sucess, message },
-    } = await recognizerApi.put('/user/update', {
-      name,
-      email,
-      avatar,
-    });
+    try {
+      const {
+        data: { user, sucess, message },
+      } = await recognizerApi.post('/user/update', {
+        name,
+        email,
+        avatar,
+      });
 
-    if (sucess) {
-      setUser(user as User);
-      toast.info(sucess);
-    } else {
-      toast.error(
-        message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
-      );
+      if (sucess) {
+        setUser(user as User);
+        toast.info(sucess);
+      } else {
+        toast.error(
+          message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
+        );
+      }
+    } catch (error) {
+      toast.error('Tamanho máximo de imagem exedito: 60kB');
+      setAvatar('/images/favicon.svg');
     }
   };
 
