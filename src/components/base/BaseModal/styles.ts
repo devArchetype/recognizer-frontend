@@ -70,7 +70,6 @@ export const ModalFormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${(props) => props.theme.spacing.md};
-    padding: 2px;
 
     input {
       border: ${(props) => props.theme.color['base-400']};
@@ -88,4 +87,12 @@ export const ModalFormContainer = styled.div`
       max-width: 50%;
     }
   }
+`;
+
+export const InputWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: ${(props) => props.theme.spacing.md};
+  flex-wrap: wrap;
 `;
