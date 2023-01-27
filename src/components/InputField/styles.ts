@@ -38,7 +38,7 @@ export const Wrapper = styled.div<WrapperProps>`
     props.hasError && `0 0 0 1px ${props.theme.color['danger-dark']}`};
   border: 1px solid
     ${(props) =>
-    props.border ? `${props.theme.color['base-400']}` : 'transparent'};
+      props.border ? `${props.theme.color['base-400']}` : 'transparent'};
   border-color: ${(props) =>
     props.hasError && props.theme.color['danger-dark']};
 
