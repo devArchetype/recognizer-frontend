@@ -1,30 +1,30 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
-import { AuthContext } from '../../contexts/AuthContext';
-import { Avatar } from '../../components/Avatar';
-import { PageSection } from '../../layouts/PageSection';
-import { InputField } from '../../components/InputField';
-import { Button } from '../../components/Button';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { Avatar } from '../../components/Avatar';
+import { Button } from '../../components/Button';
+import { InputField } from '../../components/InputField';
+import { AuthContext } from '../../contexts/AuthContext';
+import { PageSection } from '../../layouts/PageSection';
 
-import { Pencil, Password, Trash } from 'phosphor-react';
+import { Password, Pencil, Trash } from 'phosphor-react';
 import {
+  AvatarContainer,
+  ButtonsContainer,
   ContentSection,
   InformatiosWrapper,
   ProfilePageContainer,
   StatisticContainer,
   StatisticsWrapper,
   Wrapper,
-  AvatarContainer,
-  ButtonsContainer,
 } from './styles';
 
-import * as zod from 'zod';
-import { recognizerApi } from '../../services/axios/instances';
 import { toast } from 'react-toastify';
+import * as zod from 'zod';
 import { User } from '../../@types/auth';
+import { recognizerApi } from '../../services/axios/instances';
 
 type Statistics = {
   groups: number;
@@ -95,12 +95,14 @@ export const Profile = () => {
     }
   };
 
-  (async () => {
-    const {
-      data: { groups = 0, members = 0 },
-    } = await recognizerApi.get('/user/statistics');
-    setStatistics({ groups, members });
-  })();
+  useEffect(() => {
+    (async () => {
+      const {
+        data: { groups = 0, members = 0 },
+      } = await recognizerApi.get('/user/statistics');
+      setStatistics({ groups, members });
+    })();
+  }, []);
 
   return (
     <ProfilePageContainer heading="Seu perfil">
