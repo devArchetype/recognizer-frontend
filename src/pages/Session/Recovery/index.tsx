@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as zod from 'zod';
@@ -5,11 +6,16 @@ import { Button } from '../../../components/Button';
 import { InputField } from '../../../components/InputField';
 import { SessionContainer } from '../../../layouts/SessionDefaultLayout/components/SessionContainer';
 import { ContentContainer } from '../../../layouts/SessionDefaultLayout/components/SessionContainer/styles';
+import { toast } from 'react-toastify';
+import { recognizerApi } from '../../../services/axios/instances';
+import { useNavigate } from 'react-router-dom';
 
 export const Recovery = () => {
+  const navigate = useNavigate();
+
   const RecoveryFormSchema = zod
     .object({
-      email: zod.string().email({ message: 'Formato de email inválido!' }),
+      code: zod.string(),
       password: zod
         .string()
         .min(8, { message: 'A senha deve ter no mínimo 8 caracteres!' }),
@@ -31,12 +37,44 @@ export const Recovery = () => {
   const { formState, register, handleSubmit, reset } = RecoveryForm;
   const { errors } = formState;
 
-  const handleRecoverySubmit = ({
-    email,
+  useEffect(() => {
+    (async () => {
+      const {
+        data: { sucess, message },
+      } = await recognizerApi.get('/user/verification-code');
+
+      if (sucess) {
+        toast.info(sucess);
+      } else {
+        toast.error(
+          message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
+        );
+      }
+    })();
+  }, []);
+
+  const handleRecoverySubmit = async ({
+    code,
     password,
     newPassword,
   }: RecoveryFormFormData) => {
-    console.log(email, password, newPassword);
+    const {
+      data: { sucess, message },
+    } = await recognizerApi.patch('/user/recovery', {
+      code,
+      password,
+    });
+
+    navigate('/perfil');
+
+    if (sucess) {
+      toast.info(sucess);
+    } else {
+      toast.error(
+        message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
+      );
+    }
+
     reset();
   };
 
@@ -45,12 +83,14 @@ export const Recovery = () => {
       <ContentContainer>
         <form onSubmit={handleSubmit(handleRecoverySubmit)}>
           <InputField
-            label="Email"
-            register={register('email', { required: true })}
-            errorMessage={errors.email && errors.email.message}
-            placeholder="exemplo@recognizer.com"
+            label="Código de Verificação"
+            register={register('code', { required: true })}
+            errorMessage={errors.code && errors.code.message}
+            type="number"
+            placeholder="XXXXXXXXXXXXXXXXXX"
             border
           />
+
           <InputField
             label="Nova senha"
             register={register('password', { required: true })}
@@ -59,6 +99,7 @@ export const Recovery = () => {
             passwordButton
             border
           />
+
           <InputField
             label="Confirmar nova senha"
             register={register('newPassword', { required: true })}
