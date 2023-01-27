@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as zod from 'zod';
@@ -9,9 +9,11 @@ import { ContentContainer } from '../../../layouts/SessionDefaultLayout/componen
 import { toast } from 'react-toastify';
 import { recognizerApi } from '../../../services/axios/instances';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 export const Recovery = () => {
   const navigate = useNavigate();
+  const { authenticated } = useContext(AuthContext);
 
   const RecoveryFormSchema = zod
     .object({
@@ -39,6 +41,8 @@ export const Recovery = () => {
 
   useEffect(() => {
     (async () => {
+      if (!authenticated) return;
+
       const {
         data: { sucess, message },
       } = await recognizerApi.get('/user/verification-code');

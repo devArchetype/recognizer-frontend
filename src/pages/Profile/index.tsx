@@ -57,7 +57,7 @@ export const Profile = () => {
     try {
       const {
         data: { user, sucess, message },
-      } = await recognizerApi.post('/user/update', {
+      } = await recognizerApi.put('/user/update', {
         name,
         email,
         avatar,

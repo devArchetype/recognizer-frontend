@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as zod from 'zod';
 import { Button } from '../../../components/Button';
 import { InputField } from '../../../components/InputField';
@@ -10,9 +10,13 @@ import { Switch } from '../../../components/Switch';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { PreferencesContext } from '../../../contexts/PreferencesContext';
 import { SessionContainer } from '../../../layouts/SessionDefaultLayout/components/SessionContainer';
+import { Password } from 'phosphor-react';
+import { ModalTrigger } from '../../../components/base/BaseModal';
+import { CreateRecoveryModal } from '../../../components/Modals/CreateRecoveryModal';
 import {
   ContentContainer,
   Footer,
+  RecoveryPasswordContent,
 } from '../../../layouts/SessionDefaultLayout/components/SessionContainer/styles';
 
 type CurrentNode = {
@@ -84,12 +88,28 @@ export const Login = () => {
             border
             name="password"
           />
+
+          <RecoveryPasswordContent>
+            <ModalTrigger
+              trigger={
+                <Button
+                  className="large"
+                  label="Recuperar Senha"
+                  icon={<Password />}
+                  variant="line"
+                />
+              }
+              modal={<CreateRecoveryModal />}
+            />
+          </RecoveryPasswordContent>
+
           <Switch
             label="Continuar conectado?"
             srLabel={false}
             leftLabel
             register={register('keepSession')}
           />
+
           <ReCAPTCHA
             sitekey={RECAPTCHA_SITE_KEY}
             theme={themeName}
