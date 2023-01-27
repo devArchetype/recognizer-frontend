@@ -86,7 +86,7 @@ export const Recovery = () => {
             label="Código de Verificação"
             register={register('code', { required: true })}
             errorMessage={errors.code && errors.code.message}
-            type="number"
+            type="text"
             placeholder="XXXXXXXXXXXXXXXXXX"
             border
           />
