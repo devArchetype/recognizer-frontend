@@ -82,6 +82,16 @@ export const ModalFormContainer = styled.div`
     }
   }
 
+  .infor-content {
+    margin-top: 1.5rem;
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-contene: center;
+    }
+  }
+
   @media ${(props) => props.theme.screen.sm} {
     button {
       max-width: 50%;

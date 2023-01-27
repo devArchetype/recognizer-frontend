@@ -78,3 +78,10 @@ export const Footer = styled.footer`
     color: ${(props) => props.theme.color['brand-600']};
   }
 `;
+
+export const RecoveryPasswordContent = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;

@@ -22,6 +22,7 @@ export const Router = () => {
       <Route path="/sessao" element={<SessionDefaultLayout />}>
         <Route path="acessar" element={<Login />} />
         <Route path="cadastrar" element={<Registration />} />
+        <Route path="recuperar" element={<Recovery />} />
       </Route>
 
       <Route path="/" element={<Navigate to="/home" />} />
@@ -49,10 +50,6 @@ export const Router = () => {
             <Route path="/preferencias" element={<Navigate to="geral" />} />
             <Route path="geral" element={<General />} />
           </Route>
-        </Route>
-
-        <Route path="/sessao" element={<SessionDefaultLayout />}>
-          <Route path="recuperar" element={<Recovery />} />
         </Route>
       </Route>
 

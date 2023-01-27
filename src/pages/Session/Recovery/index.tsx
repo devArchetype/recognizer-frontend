@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as zod from 'zod';
@@ -9,9 +9,11 @@ import { ContentContainer } from '../../../layouts/SessionDefaultLayout/componen
 import { toast } from 'react-toastify';
 import { recognizerApi } from '../../../services/axios/instances';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 export const Recovery = () => {
   const navigate = useNavigate();
+  const { authenticated } = useContext(AuthContext);
 
   const RecoveryFormSchema = zod
     .object({
@@ -39,6 +41,8 @@ export const Recovery = () => {
 
   useEffect(() => {
     (async () => {
+      if (!authenticated) return;
+
       const {
         data: { sucess, message },
       } = await recognizerApi.get('/user/verification-code');
@@ -58,17 +62,20 @@ export const Recovery = () => {
     password,
     newPassword,
   }: RecoveryFormFormData) => {
+    const url = authenticated ? '/user/recovery' : '/user/recovery-logged-out';
+
     const {
       data: { sucess, message },
-    } = await recognizerApi.patch('/user/recovery', {
+    } = await recognizerApi.patch(url, {
       code,
       password,
     });
 
-    navigate('/perfil');
-
     if (sucess) {
       toast.info(sucess);
+
+      if (!authenticated) navigate('/sessao/acessar');
+      else navigate('/perfil');
     } else {
       toast.error(
         message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
