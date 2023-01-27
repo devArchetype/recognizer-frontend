@@ -15,6 +15,10 @@ import {
   Footer,
 } from '../../../layouts/SessionDefaultLayout/components/SessionContainer/styles';
 
+type CurrentNode = {
+  getValue: () => string;
+};
+
 export const Login = () => {
   const captchaRef = useRef(null);
   const { login } = useContext(AuthContext);
@@ -43,7 +47,7 @@ export const Login = () => {
     resolver: zodResolver(LoginFormSchema),
   });
 
-  const { formState, register, handleSubmit, reset } = LoginForm;
+  const { formState, register, handleSubmit } = LoginForm;
   const { errors } = formState;
 
   const handleLoginSubmit = ({
@@ -51,10 +55,12 @@ export const Login = () => {
     password,
     keepSession,
   }: LoginFormFormData) => {
-    const recaptcha = captchaRef.current ? captchaRef.current.getValue() : null;
+    const recaptchaNode = captchaRef.current
+      ? (captchaRef.current as CurrentNode)
+      : null;
+    const recaptcha = recaptchaNode ? recaptchaNode.getValue() : '';
 
     login({ email, password, keepSession, recaptcha });
-    reset();
   };
 
   return (
