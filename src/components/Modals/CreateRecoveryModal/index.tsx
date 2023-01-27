@@ -43,9 +43,7 @@ export const CreateRecoveryModal = ({ handleModalDisplay }: ModalProps) => {
       toast.error(
         message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
       );
-      handleModalDisplay!();
     }
-    handleClearForm();
   };
 
   return (

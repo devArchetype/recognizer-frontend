@@ -62,17 +62,20 @@ export const Recovery = () => {
     password,
     newPassword,
   }: RecoveryFormFormData) => {
+    const url = authenticated ? '/user/recovery' : '/user/recovery-logged-out';
+
     const {
       data: { sucess, message },
-    } = await recognizerApi.patch('/user/recovery', {
+    } = await recognizerApi.patch(url, {
       code,
       password,
     });
 
-    navigate('/perfil');
-
     if (sucess) {
       toast.info(sucess);
+
+      if (!authenticated) navigate('/sessao/acessar');
+      else navigate('/perfil');
     } else {
       toast.error(
         message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
