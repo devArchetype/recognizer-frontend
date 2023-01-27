@@ -37,7 +37,6 @@ export const CreateGroupModal = ({ handleModalDisplay }: ModalProps) => {
       formId={CREATE_GROUP_FORM_ID}
       onCancel={handleClearForm}
     >
-      <h1>Criar novo grupo</h1>
       <ModalFormContainer>
         <form
           id={CREATE_GROUP_FORM_ID}
