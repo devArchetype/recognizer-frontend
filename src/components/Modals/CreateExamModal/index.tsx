@@ -10,12 +10,17 @@ import { BaseModal, ModalProps } from '../../base/BaseModal';
 import { ModalFormContainer } from '../../base/BaseModal/styles';
 import { NewAnswerField } from './components/NewAnswerField';
 import { NewAnswersList, NewAnswersListLimiter } from './styles';
+import { useParams } from 'react-router-dom';
+import { createExam } from '../../../services/axios/requests/exams';
 
 export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
+  const { groupId } = useParams();
+
   const answersAmount = {
     min: 3,
     max: 10,
   };
+
   const answers = Array.from(Array(answersAmount.min).keys());
 
   const CreateExamSchema = zod.object({
@@ -85,12 +90,8 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
       number: String(index),
     }));
 
-    console.log({
-      name,
-      date,
-      description,
-      updatedAnsers,
-    });
+    console.log(updatedAnsers);
+    createExam(name, date, description, updatedAnsers, groupId);
     handleClearForm();
   };
 

@@ -1,7 +1,10 @@
 export interface Group {
   id: string;
   name: string;
-  // members: number;
+  _count: {
+    Exams: number;
+    GroupsHasMembers: number;
+  };
 }
 
 export interface Exam {
