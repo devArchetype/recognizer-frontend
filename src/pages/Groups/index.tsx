@@ -20,7 +20,7 @@ export const Groups = () => {
   const {
     data: groupsList,
     isFetching,
-    isError,
+    // isError,
   } = useQuery<Group[]>('GROUPS_LIST', getGroups);
 
   const hasGroupsList = !isFetching && groupsList;
@@ -51,26 +51,26 @@ export const Groups = () => {
       >
         <GroupsList ref={goupsListRef}>
           {hasFilteredGroups ? (
-            filteredGroups.map(({ id, name }) => {
+            filteredGroups.map(({ id, name, _count }) => {
               return (
                 <GroupCard
                   key={id}
                   id={id}
                   name={name}
-                  membersAmount={1}
-                  examsAmount={1}
+                  membersAmount={_count.GroupsHasMembers}
+                  examsAmount={_count.Exams}
                 />
               );
             })
           ) : hasGroupsList ? (
-            groupsList.map(({ id, name }) => {
+            groupsList.map(({ id, name, _count }) => {
               return (
                 <GroupCard
                   key={id}
                   id={id}
                   name={name}
-                  membersAmount={1}
-                  examsAmount={1}
+                  membersAmount={_count.GroupsHasMembers}
+                  examsAmount={_count.Exams}
                 />
               );
             })
