@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NewMemberFieldContainer = styled.li`
+export const NewAnswerFieldContainer = styled.li`
   width: 100%;
   display: flex;
   align-items: center;

@@ -1,4 +1,4 @@
-import { Hash, IdentificationCard, Plus, X } from 'phosphor-react';
+import { Hash, Plus, X } from 'phosphor-react';
 import {
   FieldValues,
   UseFieldArrayAppend,
@@ -8,28 +8,34 @@ import {
 import { FieldErrors } from '../../../../../@types/form';
 import { Button } from '../../../../Button';
 import { InputField } from '../../../../InputField';
-import { NewMemberFieldContainer } from './styles';
 import { InputWrapper } from '../../../../base/BaseModal/styles';
+import { NewAnswerFieldContainer } from './styles';
 
-interface NewMemberFieldProps {
+interface NewAnswerFieldProps {
   index: number;
   isLast: boolean;
+  maxSize: number;
   errors: FieldErrors;
   add: UseFieldArrayAppend<FieldValues, string>;
   remove: UseFieldArrayRemove;
   register: UseFormRegister<FieldValues>;
 }
 
-export const NewMemberField = ({
+export const NewAnswerField = ({
   index,
   isLast,
+  maxSize,
   errors,
   add,
   remove,
   register,
-}: NewMemberFieldProps) => {
+}: NewAnswerFieldProps) => {
+  const isOnMaxSize = index < maxSize - 1;
+
   const handleAddParticipant = () => {
-    add({ name: '', externalId: '' });
+    if (isOnMaxSize) {
+      add({ number: index, answer: '' });
+    }
   };
 
   const handleRemoveParticipant = () => {
@@ -37,36 +43,22 @@ export const NewMemberField = ({
   };
 
   return (
-    <NewMemberFieldContainer>
+    <NewAnswerFieldContainer>
       <InputWrapper>
+        <div {...register(`newAnswers[${index}].number`)}>
+          {String(index + 1).padStart(2, '0')}
+        </div>
         <InputField
-          label="Name"
-          srLabel
-          icon={<IdentificationCard weight="bold" />}
-          placeholder="Nome"
-          register={register(`newMembers[${index}].name`, {
-            required: true,
-          })}
-          full
-          errorMessage={
-            errors.newMembers &&
-            errors.newMembers[index] &&
-            errors.newMembers[index].name &&
-            errors?.newMembers[index]?.name?.message
-          }
-        />
-        <InputField
-          label="externalId"
+          label="Resposta"
           srLabel
           icon={<Hash weight="bold" />}
-          placeholder="Matrícula"
-          register={register(`newMembers[${index}].externalId`)}
+          register={register(`newAnswers[${index}].answer`)}
           full
           errorMessage={
-            errors.newMembers &&
-            errors.newMembers[index] &&
-            errors.newMembers[index].externalId &&
-            errors.newMembers[index].externalId.message
+            errors.newAnswers &&
+            errors.newAnswers[index] &&
+            errors.newAnswers[index].answer &&
+            errors.newAnswers[index].answer.message
           }
         />
       </InputWrapper>
@@ -93,6 +85,6 @@ export const NewMemberField = ({
           />
         )}
       </>
-    </NewMemberFieldContainer>
+    </NewAnswerFieldContainer>
   );
 };

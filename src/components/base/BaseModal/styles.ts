@@ -92,7 +92,11 @@ export const ModalFormContainer = styled.div`
 export const InputWrapper = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: ${(props) => props.theme.spacing.md};
-  flex-wrap: wrap;
+
+  @media ${(props) => props.theme.screen.sm} {
+    flex-direction: row;
+  }
 `;

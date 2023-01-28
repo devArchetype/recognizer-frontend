@@ -38,7 +38,7 @@ export const Wrapper = styled.div<WrapperProps>`
     props.hasError && `0 0 0 1px ${props.theme.color['danger-dark']}`};
   border: 1px solid
     ${(props) =>
-      props.border ? `${props.theme.color['base-400']}` : 'transparent'};
+    props.border ? `${props.theme.color['base-400']}` : 'transparent'};
   border-color: ${(props) =>
     props.hasError && props.theme.color['danger-dark']};
 
@@ -61,6 +61,10 @@ export const Wrapper = styled.div<WrapperProps>`
     padding: ${(props) => props.theme.spacing.xs};
     font-size: ${(props) => props.theme.text.md};
     color: ${(props) => props.theme.color['base-900']};
+
+    &[type='date']::-webkit-calendar-picker-indicator {
+      margin: auto;
+    }
 
     &::placeholder {
       color: ${(props) => props.theme.color['base-400']};

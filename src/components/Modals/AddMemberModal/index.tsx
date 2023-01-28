@@ -66,7 +66,6 @@ export const AddMemberModal = ({ handleModalDisplay }: ModalProps) => {
                 return (
                   <NewMemberField
                     key={id}
-                    id={id}
                     index={index}
                     isLast={isLast}
                     errors={errors}
