@@ -1,5 +1,6 @@
+import autoAnimate from '@formkit/auto-animate';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useId } from 'react';
+import { useEffect, useId, useRef } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import * as zod from 'zod';
 import { BaseModal, ModalProps } from '../../base/BaseModal';
@@ -37,6 +38,12 @@ export const AddMemberModal = ({ handleModalDisplay }: ModalProps) => {
   const { errors } = formState;
   const ADD_MEMBER_FORM_ID = useId();
 
+  const membersListRef = useRef(null);
+
+  useEffect(() => {
+    membersListRef.current && autoAnimate(membersListRef.current);
+  }, [membersListRef]);
+
   const handleClearForm = () => {
     reset();
     handleModalDisplay!();
@@ -59,7 +66,7 @@ export const AddMemberModal = ({ handleModalDisplay }: ModalProps) => {
           onSubmit={handleSubmit(handleCreateFormSubmit)}
         >
           <NewMemberListLimiter>
-            <NewMembersList>
+            <NewMembersList ref={membersListRef}>
               {fields.map(({ id }, index) => {
                 const isLast = index === newMembersAmount - 1;
 

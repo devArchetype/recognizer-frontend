@@ -8,8 +8,7 @@ import {
 import { FieldErrors } from '../../../../../@types/form';
 import { Button } from '../../../../Button';
 import { InputField } from '../../../../InputField';
-import { InputWrapper } from '../../../../base/BaseModal/styles';
-import { NewAnswerFieldContainer } from './styles';
+import { AnswerInputWrapper, NewAnswerFieldContainer } from './styles';
 
 interface NewAnswerFieldProps {
   index: number;
@@ -30,11 +29,11 @@ export const NewAnswerField = ({
   remove,
   register,
 }: NewAnswerFieldProps) => {
-  const isOnMaxSize = index < maxSize - 1;
+  const isOnMaxSize = index === maxSize - 1;
 
   const handleAddParticipant = () => {
-    if (isOnMaxSize) {
-      add({ number: index, answer: '' });
+    if (!isOnMaxSize) {
+      add({ number: String(index), answer: '' });
     }
   };
 
@@ -44,7 +43,7 @@ export const NewAnswerField = ({
 
   return (
     <NewAnswerFieldContainer>
-      <InputWrapper>
+      <AnswerInputWrapper>
         <div {...register(`newAnswers[${index}].number`)}>
           {String(index + 1).padStart(2, '0')}
         </div>
@@ -61,7 +60,7 @@ export const NewAnswerField = ({
             errors.newAnswers[index].answer.message
           }
         />
-      </InputWrapper>
+      </AnswerInputWrapper>
       <>
         {isLast ? (
           <Button

@@ -1,3 +1,4 @@
+import autoAnimate from '@formkit/auto-animate';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Article,
@@ -5,7 +6,7 @@ import {
   CheckCircle,
   TextAlignLeft,
 } from 'phosphor-react';
-import { useId } from 'react';
+import { useEffect, useId, useRef } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import * as zod from 'zod';
 import { InputField } from '../../InputField';
@@ -21,7 +22,6 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
     max: 30,
   };
   const answers = Array.from(Array(answersAmount.min).keys());
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
   const CreateExamSchema = zod.object({
     name: zod.string().min(3, { message: 'Insira um nome válido!' }),
@@ -42,11 +42,11 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
     description: zod.string(),
     newAnswers: zod
       .object({
-        number: zod.number(),
+        number: zod.string(),
         answer: zod
           .string()
-          .min(1, { message: 'Selecione 1 alternativa' })
-          .max(1, { message: 'Selecione 1 alternativa' }),
+          .min(1, { message: 'Selecione a alternativa' })
+          .max(1, { message: 'Alternativa inválida' }),
       })
       .array()
       .min(
@@ -62,7 +62,7 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
     resolver: zodResolver(CreateExamSchema),
     defaultValues: {
       newAnswers: answers.map((_, i) => ({
-        number: i,
+        number: String(i),
         answer: '',
       })),
     },
@@ -90,9 +90,26 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
     description,
     newAnswers,
   }: CreateExamFormData) => {
-    console.log(name, date, answersAmount, description, newAnswers);
+    const updatedAnsers = newAnswers.map((answer, index) => ({
+      ...answer,
+      number: `${index}`,
+    }));
+
+    console.log({
+      name,
+      date,
+      answersAmount,
+      description,
+      updatedAnsers,
+    });
     handleClearForm();
   };
+
+  const answersListRef = useRef(null);
+
+  useEffect(() => {
+    answersListRef.current && autoAnimate(answersListRef.current);
+  }, [answersListRef]);
 
   return (
     <BaseModal
@@ -145,7 +162,7 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
             errorMessage={errors.description && errors.description.message}
           />
           <NewAnswersListLimiter>
-            <NewAnswersList>
+            <NewAnswersList ref={answersListRef}>
               {fields.map(({ id }, index) => {
                 const isLast = index === newAnswersAmount - 1;
                 return (
