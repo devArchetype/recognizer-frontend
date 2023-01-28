@@ -8,10 +8,10 @@ import {
 import { FieldErrors } from '../../../../../@types/form';
 import { Button } from '../../../../Button';
 import { InputField } from '../../../../InputField';
-import { InputWrapper, NewMemberFieldContainer } from './styles';
+import { NewMemberFieldContainer } from './styles';
+import { InputWrapper } from '../../../../base/BaseModal/styles';
 
 interface NewMemberFieldProps {
-  id: string;
   index: number;
   isLast: boolean;
   errors: FieldErrors;
@@ -47,6 +47,7 @@ export const NewMemberField = ({
           register={register(`newMembers[${index}].name`, {
             required: true,
           })}
+          full
           errorMessage={
             errors.newMembers &&
             errors.newMembers[index] &&
@@ -60,6 +61,7 @@ export const NewMemberField = ({
           icon={<Hash weight="bold" />}
           placeholder="Matrícula"
           register={register(`newMembers[${index}].externalId`)}
+          full
           errorMessage={
             errors.newMembers &&
             errors.newMembers[index] &&

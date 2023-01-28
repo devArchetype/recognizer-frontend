@@ -1,3 +1,4 @@
+import { getAnserwersLetters } from '../../utils/getAnswersLetters';
 import {
   AIContainer,
   HeaderRow,
@@ -28,8 +29,7 @@ export const PrintTemplate = ({
   userName,
 }: PrintTemplateProps) => {
   const questions = Array.from(Array(questionsAmount).keys(), (n) => n + 1);
-  const answers = Array.from(Array(answersAmount).keys());
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  const answers = getAnserwersLetters(answersAmount);
 
   return (
     <PrintTemplateContainer>
@@ -66,9 +66,7 @@ export const PrintTemplate = ({
               <QuestionContainer key={question}>
                 <strong>{`${String(question).padStart(2, '0')}.`}</strong>
                 {answers.map((answer) => {
-                  return (
-                    <QuestionItem key={answer}>{alphabet[answer]}</QuestionItem>
-                  );
+                  return <QuestionItem key={answer}>{answer}</QuestionItem>;
                 })}
               </QuestionContainer>
             );

@@ -10,10 +10,3 @@ export const NewMemberFieldContainer = styled.li`
     width: min-content;
   }
 `;
-
-export const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${(props) => props.theme.spacing.md};
-  flex-wrap: wrap;
-`;
