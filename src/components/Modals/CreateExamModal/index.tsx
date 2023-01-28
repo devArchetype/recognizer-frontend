@@ -99,7 +99,7 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
 
   useEffect(() => {
     answersListRef.current && autoAnimate(answersListRef.current);
-  }, [answersListRef]);
+  }, [answersListRef]);p
 
   return (
     <BaseModal

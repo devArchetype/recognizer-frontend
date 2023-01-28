@@ -34,13 +34,11 @@ interface Users {
 interface Exams {
   id: string;
   name: string;
-  description?: string;
-  examDate?: Date;
+  description: string | null;
+  examDate: Date | null;
   template: string;
-  group: Groups;
   groupId: string;
-  members: Members[];
-  answers: Answers[];
+  _count: { Answers: number; MembersHasExams: number };
 }
 
 interface Answers {

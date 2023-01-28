@@ -11,21 +11,31 @@ import { CreateExamModal } from '../../components/Modals/CreateExamModal';
 import { ModalTrigger } from '../../components/base/BaseModal';
 import { PageSection } from '../../layouts/PageSection';
 import { deleteGroup } from '../../services/axios/requests/groups';
-import { integrantes, provas } from './data.json';
+
 import {
   ExamSection,
   GroupPageContainer,
   GroupsMembers,
   GroupsTest,
 } from './styles';
+import { getExams } from '../../services/axios/requests/group';
+import { Exams, Members } from '../../@types/app';
 
 export const Group = () => {
   const navigate = useNavigate();
   const { groupId } = useParams();
-  const [filteredExams, setFilteredExams] = useState<typeof provas>([]);
-  const [filteredMembers, setFilteredMembers] = useState<typeof integrantes>(
-    []
-  );
+
+  const [members, setMembers] = useState<Members[]>([]);
+  const [exams, setExams] = useState<Exams[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      setExams(await getExams(groupId));
+    })();
+  }, []);
+
+  const [filteredExams, setFilteredExams] = useState<Exams[]>([]);
+  const [filteredMembers, setFilteredMembers] = useState<Members[]>([]);
 
   const hasFilteredMembers = filteredMembers.length !== 0;
   const hasFilteredExams = filteredExams.length !== 0;
@@ -55,7 +65,7 @@ export const Group = () => {
           <>
             <FilterField
               placeholder="Filtrar provas"
-              itemsList={provas}
+              itemsList={exams}
               onFilter={setFilteredExams}
               filter="name"
             />
@@ -75,39 +85,39 @@ export const Group = () => {
       >
         <GroupsTest ref={examsListRef}>
           {hasFilteredExams
-            ? filteredExams.map(({ id, name, members, date }) => {
+            ? filteredExams.map(({ id, name, groupId, _count, examDate }) => {
                 return (
                   <ExamCard
                     key={id}
                     id={id}
                     groupId={groupId!}
                     name={name}
-                    membersAmount={members}
-                    examDate={date}
+                    membersAmount={_count.MembersHasExams}
+                    examDate={String(examDate)}
                   />
                 );
               })
-            : provas.map(({ id, name, members, date }) => {
+            : exams.map(({ id, name, groupId, _count, examDate }) => {
                 return (
                   <ExamCard
                     key={id}
                     id={id}
                     groupId={groupId!}
                     name={name}
-                    membersAmount={members}
-                    examDate={date}
+                    membersAmount={_count.MembersHasExams}
+                    examDate={String(examDate)}
                   />
                 );
               })}
         </GroupsTest>
       </ExamSection>
-      <PageSection
+      {/* <PageSection
         heading="Integrantes"
         actions={
           <>
             <FilterField
               placeholder="Filtrar integrantes"
-              itemsList={integrantes}
+              itemsList={members}
               onFilter={setFilteredMembers}
               filter="name"
             />
@@ -126,13 +136,13 @@ export const Group = () => {
                   <MemberCard key={id} name={name} memberId={registration} />
                 );
               })
-            : integrantes.map(({ id, name, registration }) => {
+            : members.map(({ id, name, registration }) => {
                 return (
                   <MemberCard key={id} name={name} memberId={registration} />
                 );
               })}
         </GroupsMembers>
-      </PageSection>
+      </PageSection> */}
     </GroupPageContainer>
   );
 };
