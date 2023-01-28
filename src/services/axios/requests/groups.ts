@@ -21,5 +21,6 @@ export const deleteGroup = async (groupId: string) => {
     },
   });
   const { success } = response.data;
+
   return success;
 };

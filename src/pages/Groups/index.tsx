@@ -6,6 +6,7 @@ import { Group } from '../../@types/app';
 import { Button } from '../../components/Button';
 import { GroupCard } from '../../components/Cards/GroupCard';
 import { FilterField } from '../../components/FilterField';
+import { Loading } from '../../components/Loading';
 import { CreateGroupModal } from '../../components/Modals/CreateGroupModal';
 import { ModalTrigger } from '../../components/base/BaseModal';
 import { PageSection } from '../../layouts/PageSection';
@@ -74,7 +75,7 @@ export const Groups = () => {
               );
             })
           ) : (
-            <>waw</>
+            <Loading />
           )}
         </GroupsList>
       </PageSection>
