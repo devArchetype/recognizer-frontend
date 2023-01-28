@@ -14,7 +14,7 @@ import { recognizerApi } from '../../../services/axios/instances';
 import { toast } from 'react-toastify';
 
 import { SwitchContainer } from './styles';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 type Member = {
   id: string;
@@ -23,35 +23,36 @@ type Member = {
 };
 
 export const PrintExamsMembersModal = ({ handleModalDisplay }: ModalProps) => {
-  const { groupId } = useParams();
-  const [checked, setChecked] = useState([]);
+  const { groupId, examId } = useParams();
+  const navigate = useNavigate();
+
+  const [checked, setChecked] = useState([] as Member[]);
   const [markAllIMembers, setMarkAllMembers] = useState(false);
   const { membersExamPrint, setMembersExamPrint } = useContext(AuthContext);
-  const [members, setMembers] = useState([
-    { id: '12', name: 'Riquelme', externalId: '00064016' },
-    { id: '16', name: 'Latrel', externalId: '00054016' },
-    { id: '22', name: 'Junior', externalId: '00064616' },
-  ] as Member[]);
+  const [members, setMembers] = useState([] as Member[]);
 
   useEffect(() => {
+    setMembersExamPrint([]);
+
     (async () => {
       const {
-        data: { sucess, groups, message },
-      } = await recognizerApi.post(`/members/show/${groupId}`);
+        data: { sucess, members, message },
+      } = await recognizerApi.get(
+        `/members/show/${'ffa8f1d6-4563-4d67-ab40-5ce48d4c0f98'}`
+      );
       if (message) {
         toast.error(
           message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
         );
       } else {
-        setMembers(groups);
+        setMembers(members);
         toast.info(sucess);
-        handleClearList();
       }
     })();
   }, []);
 
   const handleToggle = (member: Member) => () => {
-    const currentIndex = checked.indexOf(member as never);
+    const currentIndex = checked.indexOf(member);
     const newChecked = [...checked];
 
     if (currentIndex === -1) {
@@ -64,8 +65,14 @@ export const PrintExamsMembersModal = ({ handleModalDisplay }: ModalProps) => {
   };
 
   const handleMembers = async () => {
-    setMembersExamPrint(checked);
-    console.log(membersExamPrint);
+    if (!markAllIMembers) setMembersExamPrint(checked);
+    else setMembersExamPrint(members);
+
+    if (membersExamPrint.length > 0) {
+      navigate(`/grupos/${groupId}/${examId}/imprimir`);
+    } else {
+      toast.error('Selecione pelo menos um integrante para prosseguir');
+    }
   };
 
   const handleClearList = () => {
@@ -97,9 +104,7 @@ export const PrintExamsMembersModal = ({ handleModalDisplay }: ModalProps) => {
                 <Checkbox
                   edge="end"
                   onChange={handleToggle(member)}
-                  checked={
-                    checked.indexOf(member as never) !== -1 || markAllIMembers
-                  }
+                  checked={checked.indexOf(member) !== -1 || markAllIMembers}
                   inputProps={{ 'aria-labelledby': labelId }}
                   className="check-item"
                 />

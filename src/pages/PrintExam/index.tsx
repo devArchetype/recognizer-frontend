@@ -1,5 +1,4 @@
 import { Printer } from 'phosphor-react';
-import { useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { PrintTemplate } from '../../components/PrintTemplate';
 import {
@@ -8,30 +7,18 @@ import {
   PrintExamContainer,
   PrintMessage,
 } from './styles';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const PrintExam = () => {
-  const { groupId, examId } = useParams();
+  const { membersExamPrint } = useContext(AuthContext);
 
   const data = {
     questionsAmount: 20,
     answersAmount: 5,
     examDate: new Date(),
     examName: 'II Prova GAAL',
-    userName: 'Joãozinho Batata',
-    members: [
-      {
-        id: '0000001',
-        name: 'Aluno A',
-      },
-      {
-        id: '0000002',
-        name: 'Aluno B',
-      },
-      {
-        id: '0000003',
-        name: 'Aluno C',
-      },
-    ],
+    members: membersExamPrint,
   };
 
   const handleDisplayPrintScreen = () => {
@@ -54,17 +41,17 @@ export const PrintExam = () => {
         </PrintMessage>
       </Container>
       <PrintContainer>
-        {data.members.map(({ id, name }) => {
+        {data.members.map(({ id, name, externalId = id }) => {
           return (
             <PrintTemplate
               key={id}
-              memberId={id}
+              memberId={externalId}
               memberName={name}
               questionsAmount={data.questionsAmount}
               answersAmount={data.answersAmount}
               examDate={data.examDate}
               examName={data.examName}
-              userName={data.userName}
+              userName={name}
             />
           );
         })}
