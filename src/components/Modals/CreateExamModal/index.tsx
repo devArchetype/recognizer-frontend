@@ -1,25 +1,20 @@
 import autoAnimate from '@formkit/auto-animate';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  Article,
-  CalendarPlus,
-  CheckCircle,
-  TextAlignLeft,
-} from 'phosphor-react';
+import { Article, CalendarPlus, TextAlignLeft } from 'phosphor-react';
 import { useEffect, useId, useRef } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import * as zod from 'zod';
 import { InputField } from '../../InputField';
 import { TextareaField } from '../../TextareaField';
 import { BaseModal, ModalProps } from '../../base/BaseModal';
-import { InputWrapper, ModalFormContainer } from '../../base/BaseModal/styles';
+import { ModalFormContainer } from '../../base/BaseModal/styles';
 import { NewAnswerField } from './components/NewAnswerField';
 import { NewAnswersList, NewAnswersListLimiter } from './styles';
 
 export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
   const answersAmount = {
     min: 3,
-    max: 30,
+    max: 10,
   };
   const answers = Array.from(Array(answersAmount.min).keys());
 
@@ -35,10 +30,6 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
         }),
       })
       .min(new Date(), { message: 'A data deve ser posterior a hoje!' }),
-    answersAmount: zod
-      .number({ invalid_type_error: 'Insira uma quantidade válida!' })
-      .min(2, { message: 'Mínimo de 2 alternativas' })
-      .max(5, { message: 'Máximo de 5 alternativas' }),
     description: zod.string(),
     newAnswers: zod
       .object({
@@ -86,19 +77,17 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
   const handleCreateFormSubmit = ({
     name,
     date,
-    answersAmount,
     description,
     newAnswers,
   }: CreateExamFormData) => {
-    const updatedAnsers = newAnswers.map((answer, index) => ({
-      ...answer,
-      number: `${index}`,
+    const updatedAnsers = newAnswers.map(({ answer, number }, index) => ({
+      answer: answer.toUpperCase(),
+      number: String(index),
     }));
 
     console.log({
       name,
       date,
-      answersAmount,
       description,
       updatedAnsers,
     });
@@ -128,32 +117,17 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
             register={register('name', { required: true })}
             errorMessage={errors.name && errors.name.message}
           />
-          <InputWrapper>
-            <InputField
-              label="Data"
-              type="date"
-              icon={<CalendarPlus />}
-              register={register('date', {
-                required: false,
-                valueAsDate: true,
-              })}
-              full
-              errorMessage={errors.date && errors.date.message}
-            />
-            <InputField
-              label="Alternativas"
-              type="number"
-              icon={<CheckCircle />}
-              register={register('answersAmount', {
-                required: true,
-                valueAsNumber: true,
-              })}
-              full
-              errorMessage={
-                errors.answersAmount && errors.answersAmount.message
-              }
-            />
-          </InputWrapper>
+          <InputField
+            label="Data"
+            type="date"
+            icon={<CalendarPlus />}
+            register={register('date', {
+              required: false,
+              valueAsDate: true,
+            })}
+            full
+            errorMessage={errors.date && errors.date.message}
+          />
           <TextareaField
             label="Descrição"
             icon={<TextAlignLeft />}
@@ -171,6 +145,7 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
                     index={index}
                     maxSize={answersAmount.max}
                     isLast={isLast}
+                    control={control}
                     errors={errors}
                     add={append}
                     remove={remove}

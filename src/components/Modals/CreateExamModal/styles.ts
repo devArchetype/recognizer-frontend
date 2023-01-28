@@ -13,5 +13,5 @@ export const NewAnswersList = styled.ul`
 export const NewAnswersListLimiter = styled.div`
   flex: 1;
   max-height: 400px;
-  overflow-y: auto;
+  overflow: hidden auto;
 `;

@@ -1,21 +1,29 @@
-import { Hash, Plus, X } from 'phosphor-react';
+import { Plus, X } from 'phosphor-react';
 import {
+  Control,
+  Controller,
   FieldValues,
   UseFieldArrayAppend,
   UseFieldArrayRemove,
   UseFormRegister,
 } from 'react-hook-form';
 import { FieldErrors } from '../../../../../@types/form';
+import { getAnserwersLetters } from '../../../../../utils/getAnswersLetters';
 import { Button } from '../../../../Button';
-import { InputField } from '../../../../InputField';
-import { AnswerInputWrapper, NewAnswerFieldContainer } from './styles';
+import { ToggleGroup } from '../../../../ToggleGroup';
+import {
+  AnswerInputWrapper,
+  AnswerNumber,
+  NewAnswerFieldContainer,
+} from './styles';
 
 interface NewAnswerFieldProps {
   index: number;
   isLast: boolean;
   maxSize: number;
   errors: FieldErrors;
-  add: UseFieldArrayAppend<FieldValues, string>;
+  control: Control<FieldValues, 'newAnswers'>;
+  add: UseFieldArrayAppend<FieldValues, 'newAnswers'>;
   remove: UseFieldArrayRemove;
   register: UseFormRegister<FieldValues>;
 }
@@ -24,12 +32,22 @@ export const NewAnswerField = ({
   index,
   isLast,
   maxSize,
+  control,
   errors,
   add,
   remove,
   register,
 }: NewAnswerFieldProps) => {
   const isOnMaxSize = index === maxSize - 1;
+  const ANSWERS_AMOUNT = 5;
+
+  const answers = getAnserwersLetters(ANSWERS_AMOUNT);
+  const answersList = answers.map((answer) => {
+    return {
+      label: answer.toUpperCase(),
+      value: answer.toUpperCase(),
+    };
+  });
 
   const handleAddParticipant = () => {
     if (!isOnMaxSize) {
@@ -44,21 +62,20 @@ export const NewAnswerField = ({
   return (
     <NewAnswerFieldContainer>
       <AnswerInputWrapper>
-        <div {...register(`newAnswers[${index}].number`)}>
+        <AnswerNumber {...register(`newAnswers[${index}].number`)}>
           {String(index + 1).padStart(2, '0')}
-        </div>
-        <InputField
-          label="Resposta"
-          srLabel
-          icon={<Hash weight="bold" />}
-          register={register(`newAnswers[${index}].answer`)}
-          full
-          errorMessage={
-            errors.newAnswers &&
-            errors.newAnswers[index] &&
-            errors.newAnswers[index].answer &&
-            errors.newAnswers[index].answer.message
-          }
+        </AnswerNumber>
+        <Controller
+          control={control}
+          name={`newAnswers[${index}].answer`}
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <ToggleGroup
+              items={answersList}
+              value={value}
+              onValueChange={onChange}
+              errorMessage={error && error.message}
+            />
+          )}
         />
       </AnswerInputWrapper>
       <>
