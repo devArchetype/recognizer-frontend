@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const NavigationItem = styled.li`
   a {
+    height: calc(${(props) => props.theme.spacing.lg} + 8px);
     display: flex;
     align-items: center;
     gap: ${(props) => props.theme.spacing.xs};

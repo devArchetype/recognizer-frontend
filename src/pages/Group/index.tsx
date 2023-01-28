@@ -2,7 +2,6 @@ import autoAnimate from '@formkit/auto-animate';
 import { FilePlus, Trash, UserPlus } from 'phosphor-react';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { Button } from '../../components/Button';
 import { ExamCard } from '../../components/Cards/ExamCard';
 import { MemberCard } from '../../components/Cards/MemberCard';
@@ -43,13 +42,8 @@ export const Group = () => {
   }, [examsListRef]);
 
   const handleDeleteGroup = () => {
-    deleteGroup(groupId!).then((response) => {
-      if (response) {
-        navigate('/grupos');
-        toast.success(response);
-      } else {
-        toast.error('Não foi possível deletar o grupo!');
-      }
+    deleteGroup(groupId!).then((deleted) => {
+      deleted && navigate('/grupos');
     });
   };
 
