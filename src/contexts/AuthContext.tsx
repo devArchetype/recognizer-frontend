@@ -10,6 +10,8 @@ interface AuthContextType {
   user: User;
   setUser: (user: User) => void;
   authenticated: boolean;
+  membersExamPrint: Member[];
+  setMembersExamPrint: (members: Member[]) => void;
   registerUser: ({
     name,
     email,
@@ -28,6 +30,12 @@ type DecodedToken = {
   exp: number;
 };
 
+type Member = {
+  id: string;
+  name: string;
+  externalId?: string;
+};
+
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
@@ -37,6 +45,11 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   );
   const [user, setUser] = useLocalStorage('user', {} as User);
   const [token, setToken] = useLocalStorage('token', '');
+  const [membersExamPrint, setMembersExamPrint] = useLocalStorage(
+    'membersExamPrint',
+    [] as Member[]
+  );
+
   // const [hashKeepSession, sethashKeepSession] = useLocalStorage(
   //   'hashKeepSession',
   //   ''
@@ -135,7 +148,16 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, setUser, authenticated, registerUser, login, logout }}
+      value={{
+        user,
+        setUser,
+        authenticated,
+        registerUser,
+        login,
+        logout,
+        membersExamPrint,
+        setMembersExamPrint,
+      }}
     >
       {children}
     </AuthContext.Provider>

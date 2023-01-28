@@ -20,6 +20,7 @@ interface BaseModalProps {
   cancelButtonLabel?: string;
   onCancel?: () => void;
   onSave?: () => void;
+  onClickButton?: () => void;
 }
 
 interface ModalTriggerProps {
@@ -62,6 +63,7 @@ export const BaseModal = ({
   cancelButtonLabel = 'Cancelar',
   onCancel,
   onSave,
+  onClickButton,
 }: BaseModalProps) => {
   const hasForm = !!formId;
 
@@ -100,7 +102,7 @@ export const BaseModal = ({
           label={saveButtonLabel}
           title={saveButtonLabel}
           variant="primary"
-          onClick={handleSave}
+          onClick={onClickButton || handleSave}
         />
       </Footer>
     </Container>
