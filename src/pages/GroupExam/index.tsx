@@ -1,11 +1,12 @@
 import autoAnimate from '@formkit/auto-animate';
 import { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { MemberCard } from '../../components/Cards/MemberCard';
 import { FilterField } from '../../components/FilterField';
 import { CheckExamTemplateModal } from '../../components/Modals/CheckExamTemplateModal';
 import { UploadExamsModal } from '../../components/Modals/UploadExamsModal';
+import { PrintExamsMembersModal } from '../../components/Modals/PrintExamsMembersModal';
 import { ModalTrigger } from '../../components/base/BaseModal';
 import { PageSection } from '../../layouts/PageSection';
 import examsData from './data.json';
@@ -33,9 +34,10 @@ export const GroupExam = () => {
         heading="Detalhes"
         actions={
           <>
-            <Link to={`/grupos/${groupId}/${examId}/imprimir`}>
-              <Button type="button" label={'Imprimir provas'} />
-            </Link>
+            <ModalTrigger
+              trigger={<Button type="button" label={'Imprimir provas'} />}
+              modal={<PrintExamsMembersModal />}
+            />
             <ModalTrigger
               trigger={<Button type="button" label={'Inserir provas'} />}
               modal={<UploadExamsModal />}

@@ -68,7 +68,7 @@ export const CreateRecoveryModal = ({ handleModalDisplay }: ModalProps) => {
         <div className="infor-content">
           <p>
             <Info size={23} />
-            &nbsp; Assim que cliclar em &apos;enviar&apos;, um código de
+            &nbsp; Assim que cliclar em &apos;salvar&apos;, um código de
             verificação será enviado para o seu email.
           </p>
           <p>
