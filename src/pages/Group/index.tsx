@@ -1,7 +1,8 @@
 import autoAnimate from '@formkit/auto-animate';
 import { FilePlus, Trash, UserPlus } from 'phosphor-react';
 import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Button } from '../../components/Button';
 import { ExamCard } from '../../components/Cards/ExamCard';
 import { MemberCard } from '../../components/Cards/MemberCard';
@@ -10,6 +11,7 @@ import { AddMemberModal } from '../../components/Modals/AddMemberModal';
 import { CreateExamModal } from '../../components/Modals/CreateExamModal';
 import { ModalTrigger } from '../../components/base/BaseModal';
 import { PageSection } from '../../layouts/PageSection';
+import { deleteGroup } from '../../services/axios/requests/groups';
 import { integrantes, provas } from './data.json';
 import {
   ExamSection,
@@ -19,6 +21,7 @@ import {
 } from './styles';
 
 export const Group = () => {
+  const navigate = useNavigate();
   const { groupId } = useParams();
   const [filteredExams, setFilteredExams] = useState<typeof provas>([]);
   const [filteredMembers, setFilteredMembers] = useState<typeof integrantes>(
@@ -40,7 +43,14 @@ export const Group = () => {
   }, [examsListRef]);
 
   const handleDeleteGroup = () => {
-    console.log('group deleted');
+    deleteGroup(groupId!).then((response) => {
+      if (response) {
+        navigate('/grupos');
+        toast.success(response);
+      } else {
+        toast.error('Não foi possível deletar o grupo!');
+      }
+    });
   };
 
   return (

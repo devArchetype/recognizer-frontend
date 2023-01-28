@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useId } from 'react';
 import { useForm } from 'react-hook-form';
 import * as zod from 'zod';
+import { createGroup } from '../../../services/axios/requests/groups';
 import { InputField } from '../../InputField';
 import { BaseModal, ModalProps } from '../../base/BaseModal';
 import { ModalFormContainer } from '../../base/BaseModal/styles';
@@ -27,7 +28,7 @@ export const CreateGroupModal = ({ handleModalDisplay }: ModalProps) => {
   };
 
   const handleCreateFormSubmit = ({ name }: CreateGroupFormData) => {
-    console.log(name);
+    createGroup(name);
     handleClearForm();
   };
 
