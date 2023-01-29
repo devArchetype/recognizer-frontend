@@ -28,7 +28,7 @@ export const PrintExamsMembersModal = ({ handleModalDisplay }: ModalProps) => {
 
   const [checked, setChecked] = useState([] as Member[]);
   const [markAllIMembers, setMarkAllMembers] = useState(false);
-  const { membersExamPrint, setMembersExamPrint } = useContext(AuthContext);
+  const { setMembersExamPrint } = useContext(AuthContext);
   const [members, setMembers] = useState([] as Member[]);
 
   useEffect(() => {
@@ -36,17 +36,15 @@ export const PrintExamsMembersModal = ({ handleModalDisplay }: ModalProps) => {
 
     (async () => {
       const {
-        data: { sucess, members, message },
-      } = await recognizerApi.get(
-        `/members/show/${'ffa8f1d6-4563-4d67-ab40-5ce48d4c0f98'}`
-      );
+        data: { success, members, message },
+      } = await recognizerApi.get(`/members/show/${groupId}`);
       if (message) {
         toast.error(
           message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
         );
       } else {
         setMembers(members);
-        toast.info(sucess);
+        toast.info(success);
       }
     })();
   }, []);
@@ -56,7 +54,7 @@ export const PrintExamsMembersModal = ({ handleModalDisplay }: ModalProps) => {
     const newChecked = [...checked];
 
     if (currentIndex === -1) {
-      newChecked.push(member as never);
+      newChecked.push(member);
     } else {
       newChecked.splice(currentIndex, 1);
     }
@@ -65,10 +63,10 @@ export const PrintExamsMembersModal = ({ handleModalDisplay }: ModalProps) => {
   };
 
   const handleMembers = async () => {
-    if (!markAllIMembers) setMembersExamPrint(checked);
-    else setMembersExamPrint(members);
+    if (markAllIMembers) setMembersExamPrint(members);
+    else setMembersExamPrint(checked);
 
-    if (membersExamPrint.length > 0) {
+    if (markAllIMembers || checked.length > 0) {
       navigate(`/grupos/${groupId}/${examId}/imprimir`);
     } else {
       toast.error('Selecione pelo menos um integrante para prosseguir');
