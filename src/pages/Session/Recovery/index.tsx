@@ -44,11 +44,11 @@ export const Recovery = () => {
       if (!authenticated) return;
 
       const {
-        data: { sucess, message },
+        data: { success, message },
       } = await recognizerApi.get('/user/verification-code');
 
-      if (sucess) {
-        toast.info(sucess);
+      if (success) {
+        toast.info(success);
       } else {
         toast.error(
           message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
@@ -65,14 +65,14 @@ export const Recovery = () => {
     const url = authenticated ? '/user/recovery' : '/user/recovery-logged-out';
 
     const {
-      data: { sucess, message },
+      data: { success, message },
     } = await recognizerApi.patch(url, {
       code,
       password,
     });
 
-    if (sucess) {
-      toast.info(sucess);
+    if (success) {
+      toast.info(success);
 
       if (!authenticated) navigate('/sessao/acessar');
       else navigate('/perfil');

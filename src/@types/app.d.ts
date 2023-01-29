@@ -18,8 +18,6 @@ interface Groups {
   name: string;
   user: Users;
   userId: string;
-  exams: Exams[];
-  members: Members[];
 }
 
 interface Users {
@@ -41,23 +39,20 @@ interface Exams {
   _count: { Answers: number; MembersHasExams: number };
 }
 
-interface Answers {
-  id: string;
-  template: string;
-  templatePicture: string;
-  members: Members;
-  membersId: string;
-  exams: Exams;
-  examsId: string;
-}
+// interface Answers {
+//   id: string;
+//   template: string;
+//   templatePicture: string;
+//   members: Members;
+//   membersId: string;
+//   exams: Exams;
+//   examsId: string;
+// }
 
 interface Members {
   id: string;
   name: string;
   externalId?: string;
-  groups: Groups[];
-  exams: Exams[];
-  answers: Answers[];
 }
 
 export interface RegisteredUsers {

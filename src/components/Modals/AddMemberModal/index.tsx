@@ -7,13 +7,18 @@ import { BaseModal, ModalProps } from '../../base/BaseModal';
 import { ModalFormContainer } from '../../base/BaseModal/styles';
 import { NewMemberField } from './components/NewMemberField';
 import { NewMemberListLimiter, NewMembersList } from './styles';
+import { createMembers } from '../../../services/axios/requests/members';
+import { useParams } from 'react-router-dom';
 
-export const AddMemberModal = ({ handleModalDisplay }: ModalProps) => {
+export const AddMemberModal = ({ handleModalDisplay, reload }: ModalProps) => {
+  const { groupId } = useParams();
+
   const AddMemberSchema = zod.object({
     newMembers: zod
       .object({
         name: zod.string().min(3, { message: 'Insira um nome válido!' }),
         externalId: zod.string(),
+        groupId: zod.string().default(groupId ?? ''),
       })
       .array()
       .min(1, `Você deve adicionar pelo menos 1 membro`),
@@ -49,8 +54,10 @@ export const AddMemberModal = ({ handleModalDisplay }: ModalProps) => {
     handleModalDisplay!();
   };
 
-  const handleCreateFormSubmit = ({ newMembers }: AddMemberFormData) => {
+  const handleCreateFormSubmit = async ({ newMembers }: AddMemberFormData) => {
     console.log(newMembers);
+    await createMembers(newMembers);
+    reload && reload();
     handleClearForm();
   };
 

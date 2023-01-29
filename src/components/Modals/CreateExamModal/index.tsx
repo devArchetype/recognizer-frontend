@@ -13,7 +13,7 @@ import { NewAnswersList, NewAnswersListLimiter } from './styles';
 import { useParams } from 'react-router-dom';
 import { createExam } from '../../../services/axios/requests/exams';
 
-export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
+export const CreateExamModal = ({ handleModalDisplay, reload }: ModalProps) => {
   const { groupId } = useParams();
 
   const answersAmount = {
@@ -79,7 +79,7 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
     handleModalDisplay!();
   };
 
-  const handleCreateFormSubmit = ({
+  const handleCreateFormSubmit = async ({
     name,
     date,
     description,
@@ -90,8 +90,8 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
       number: String(index),
     }));
 
-    console.log(updatedAnsers);
-    createExam(name, date, description, updatedAnsers, groupId);
+    await createExam(name, date, description, updatedAnsers, groupId);
+    reload && reload();
     handleClearForm();
   };
 
@@ -99,7 +99,7 @@ export const CreateExamModal = ({ handleModalDisplay }: ModalProps) => {
 
   useEffect(() => {
     answersListRef.current && autoAnimate(answersListRef.current);
-  }, [answersListRef]);p
+  }, [answersListRef]);
 
   return (
     <BaseModal

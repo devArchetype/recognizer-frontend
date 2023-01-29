@@ -30,6 +30,7 @@ interface ModalTriggerProps {
 
 export interface ModalProps {
   handleModalDisplay?: () => void;
+  reload?: () => void;
 }
 
 export const ModalTrigger = ({ trigger, modal }: ModalTriggerProps) => {

@@ -1,6 +1,6 @@
 import autoAnimate from '@formkit/auto-animate';
 import { FilePlus, Trash, UserPlus } from 'phosphor-react';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { ExamCard } from '../../components/Cards/ExamCard';
@@ -18,20 +18,32 @@ import {
   GroupsMembers,
   GroupsTest,
 } from './styles';
-import { getExams } from '../../services/axios/requests/group';
+import { getExams } from '../../services/axios/requests/exams';
 import { Exams, Members } from '../../@types/app';
+import { getMembers } from '../../services/axios/requests/members';
+import { findCurrentGroup } from '../../utils/findDataInLocalStorage';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const Group = () => {
   const navigate = useNavigate();
+  const { groups } = useContext(AuthContext);
   const { groupId } = useParams();
+  const heading = findCurrentGroup(groups, groupId ?? '');
 
   const [members, setMembers] = useState<Members[]>([]);
   const [exams, setExams] = useState<Exams[]>([]);
 
+  const loadExams = async () => {
+    setExams(await getExams(groupId));
+  };
+
+  const loadMembers = async () => {
+    setMembers(await getMembers(groupId));
+  };
+
   useEffect(() => {
-    (async () => {
-      setExams(await getExams(groupId));
-    })();
+    loadExams();
+    loadMembers();
   }, []);
 
   const [filteredExams, setFilteredExams] = useState<Exams[]>([]);
@@ -58,7 +70,7 @@ export const Group = () => {
   };
 
   return (
-    <GroupPageContainer heading="Grupo A">
+    <GroupPageContainer heading={heading}>
       <ExamSection
         heading="Provas"
         actions={
@@ -72,7 +84,7 @@ export const Group = () => {
 
             <ModalTrigger
               trigger={<Button label={'Criar Prova'} icon={<FilePlus />} />}
-              modal={<CreateExamModal />}
+              modal={<CreateExamModal reload={loadExams} />}
             />
             <Button
               label={'Apagar grupo'}
@@ -111,7 +123,7 @@ export const Group = () => {
               })}
         </GroupsTest>
       </ExamSection>
-      {/* <PageSection
+      <PageSection
         heading="Integrantes"
         actions={
           <>
@@ -124,25 +136,33 @@ export const Group = () => {
 
             <ModalTrigger
               trigger={<Button label={'Novo integrante'} icon={<UserPlus />} />}
-              modal={<AddMemberModal />}
+              modal={<AddMemberModal reload={loadMembers} />}
             />
           </>
         }
       >
         <GroupsMembers ref={membersListRef}>
           {hasFilteredMembers
-            ? filteredMembers.map(({ id, name, registration }) => {
+            ? filteredMembers.map(({ id, name, externalId }) => {
                 return (
-                  <MemberCard key={id} name={name} memberId={registration} />
+                  <MemberCard
+                    key={id}
+                    name={name}
+                    memberId={externalId || id}
+                  />
                 );
               })
-            : members.map(({ id, name, registration }) => {
+            : members.map(({ id, name, externalId }) => {
                 return (
-                  <MemberCard key={id} name={name} memberId={registration} />
+                  <MemberCard
+                    key={id}
+                    name={name}
+                    memberId={externalId || id}
+                  />
                 );
               })}
         </GroupsMembers>
-      </PageSection> */}
+      </PageSection>
     </GroupPageContainer>
   );
 };

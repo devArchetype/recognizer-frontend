@@ -13,6 +13,7 @@
     ],
     "no-use-before-define": "off",
     "react-hooks/exhaustive-deps": "off",
-    "camelcase": "off"
+    "camelcase": "off",
+    "react-hooks/rules-of-hooks": "off"
   }
 }
