@@ -25,7 +25,9 @@ export const Groups = () => {
     setGroups(groups);
   };
 
-  loadGroups();
+  useEffect(() => {
+    loadGroups();
+  }, []);
 
   const goupsListRef = useRef(null);
 
