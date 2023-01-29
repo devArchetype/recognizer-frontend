@@ -43,11 +43,7 @@ export const createGroup = async (groupName: string) => {
 
 export const deleteGroup = async (groupId: string): Promise<boolean> => {
   try {
-    const response = await recognizerApi.delete('/group/delete', {
-      data: {
-        id: groupId,
-      },
-    });
+    const response = await recognizerApi.delete(`/group/delete/${groupId}`);
 
     const { success, message } = response.data;
 
