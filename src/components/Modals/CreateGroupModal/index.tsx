@@ -7,7 +7,10 @@ import { InputField } from '../../InputField';
 import { BaseModal, ModalProps } from '../../base/BaseModal';
 import { ModalFormContainer } from '../../base/BaseModal/styles';
 
-export const CreateGroupModal = ({ handleModalDisplay }: ModalProps) => {
+export const CreateGroupModal = ({
+  handleModalDisplay,
+  reload,
+}: ModalProps) => {
   const CreateGroupSchema = zod.object({
     name: zod.string().min(3, { message: 'Insira um nome válido!' }),
   });
@@ -27,8 +30,9 @@ export const CreateGroupModal = ({ handleModalDisplay }: ModalProps) => {
     handleModalDisplay!();
   };
 
-  const handleCreateFormSubmit = ({ name }: CreateGroupFormData) => {
-    createGroup(name);
+  const handleCreateFormSubmit = async ({ name }: CreateGroupFormData) => {
+    await createGroup(name);
+    reload && reload();
     handleClearForm();
   };
 

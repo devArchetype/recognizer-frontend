@@ -1,7 +1,6 @@
 import autoAnimate from '@formkit/auto-animate';
 import { PlusCircle } from 'phosphor-react';
-import { useEffect, useRef, useState } from 'react';
-import { useQuery } from 'react-query';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Group } from '../../@types/app';
 import { Button } from '../../components/Button';
 import { GroupCard } from '../../components/Cards/GroupCard';
@@ -12,18 +11,22 @@ import { ModalTrigger } from '../../components/base/BaseModal';
 import { PageSection } from '../../layouts/PageSection';
 import { getGroups } from '../../services/axios/requests/groups';
 import { GroupsList, GroupsPageContainer } from './styles';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const Groups = () => {
+  const { setGroups } = useContext(AuthContext);
   const [filteredGroups, setFilteredGroups] = useState<Group[]>([]);
   const hasFilteredGroups = filteredGroups.length !== 0;
+  const [groupsList, setGroupsList] = useState<Group[]>([]);
 
-  const {
-    data: groupsList,
-    isFetching,
-    // isError,
-  } = useQuery<Group[]>('GROUPS_LIST', getGroups);
+  const loadGroups = async () => {
+    const groups = await getGroups();
+    setGroupsList(groups);
+    setGroups(groups);
+  };
 
-  const hasGroupsList = !isFetching && groupsList;
+  loadGroups();
+
   const goupsListRef = useRef(null);
 
   useEffect(() => {
@@ -38,13 +41,13 @@ export const Groups = () => {
           <>
             <FilterField
               placeholder="Filtrar integrantes"
-              itemsList={hasGroupsList ? groupsList : []}
+              itemsList={groupsList || []}
               onFilter={setFilteredGroups}
               filter="name"
             />
             <ModalTrigger
               trigger={<Button label={'Novo grupo'} icon={<PlusCircle />} />}
-              modal={<CreateGroupModal />}
+              modal={<CreateGroupModal reload={loadGroups} />}
             />
           </>
         }
@@ -62,7 +65,7 @@ export const Groups = () => {
                 />
               );
             })
-          ) : hasGroupsList ? (
+          ) : groupsList ? (
             groupsList.map(({ id, name, _count }) => {
               return (
                 <GroupCard

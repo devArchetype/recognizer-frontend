@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { LoginProps, RegisterProps, User } from '../@types/auth';
 import { useLocalStorage } from '../hooks/useStorage';
 import { recognizerApi } from '../services/axios/instances';
+import { Group } from '../@types/app';
 
 interface AuthContextType {
   user: User;
@@ -12,6 +13,8 @@ interface AuthContextType {
   authenticated: boolean;
   membersExamPrint: Member[];
   setMembersExamPrint: (members: Member[]) => void;
+  groups: Group[];
+  setGroups: (members: Group[]) => void;
   registerUser: ({
     name,
     email,
@@ -45,10 +48,11 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   );
   const [user, setUser] = useLocalStorage('user', {} as User);
   const [token, setToken] = useLocalStorage('token', '');
-  const [membersExamPrint, setMembersExamPrint] = useLocalStorage(
+  const [membersExamPrint, setMembersExamPrint] = useLocalStorage<Member[]>(
     'membersExamPrint',
-    [] as Member[]
+    []
   );
+  const [groups, setGroups] = useLocalStorage<Group[]>('groups', []);
 
   // const [hashKeepSession, sethashKeepSession] = useLocalStorage(
   //   'hashKeepSession',
@@ -72,7 +76,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     }
 
     const {
-      data: { sucess, message },
+      data: { success, message },
     } = await recognizerApi.post('/user/store', {
       name,
       email,
@@ -83,9 +87,9 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       toast.error(
         message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
       );
-    } else if (sucess) {
+    } else if (success) {
       navigate('/sessao/acessar');
-      toast.info(sucess);
+      toast.info(success);
     }
   };
 
@@ -157,6 +161,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         logout,
         membersExamPrint,
         setMembersExamPrint,
+        groups,
+        setGroups,
       }}
     >
       {children}

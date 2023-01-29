@@ -56,16 +56,16 @@ export const Profile = () => {
   const handleUpdateSubmit = async () => {
     try {
       const {
-        data: { user, sucess, message },
+        data: { user, success, message },
       } = await recognizerApi.put('/user/update', {
         name,
         email,
         avatar,
       });
 
-      if (sucess) {
+      if (success) {
         setUser(user as User);
-        toast.info(sucess);
+        toast.info(success);
       } else {
         toast.error(
           message || 'Ops, algum erro aconteceu! Tente novamente mais tarde.'
