@@ -35,6 +35,15 @@ export const Container = styled(Dialog.Content)`
   border-radius: ${(props) => props.theme.rounded.base};
   box-shadow: ${(props) => props.theme.shadow.base};
   background-color: ${(props) => props.theme.color['base-100']};
+  text-align: center;
+
+  .dz-ui-header.header-extra-styles {
+    justify-content: center !important;
+  }
+
+  .label-dropzone {
+    font-size: ${(props) => props.theme.text.xxl};
+  }
 `;
 
 export const Header = styled.header`

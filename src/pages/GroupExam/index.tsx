@@ -76,11 +76,11 @@ export const GroupExam = () => {
         actions={
           <>
             <ModalTrigger
-              trigger={<Button type="button" label={'Imprimir provas'} />}
+              trigger={<Button type="button" label={'Imprimir Gabaritos'} />}
               modal={<PrintExamsMembersModal />}
             />
             <ModalTrigger
-              trigger={<Button type="button" label={'Inserir provas'} />}
+              trigger={<Button type="button" label={'Inserir Gabaritos'} />}
               modal={<UploadExamsModal />}
             />
             <Button
