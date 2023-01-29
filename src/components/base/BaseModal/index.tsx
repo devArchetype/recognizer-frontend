@@ -18,6 +18,7 @@ interface BaseModalProps {
   formId?: string;
   saveButtonLabel?: string;
   cancelButtonLabel?: string;
+  saveButton?: boolean;
   onCancel?: () => void;
   onSave?: () => void;
   onClickButton?: () => void;
@@ -62,6 +63,7 @@ export const BaseModal = ({
   formId,
   saveButtonLabel = 'Salvar',
   cancelButtonLabel = 'Cancelar',
+  saveButton = true,
   onCancel,
   onSave,
   onClickButton,
@@ -97,14 +99,16 @@ export const BaseModal = ({
           variant="secondary"
           onClick={handleCancel}
         />
-        <Button
-          type={hasForm ? 'submit' : 'button'}
-          form={hasForm ? formId : undefined}
-          label={saveButtonLabel}
-          title={saveButtonLabel}
-          variant="primary"
-          onClick={onClickButton || handleSave}
-        />
+        {saveButton && (
+          <Button
+            type={hasForm ? 'submit' : 'button'}
+            form={hasForm ? formId : undefined}
+            label={saveButtonLabel}
+            title={saveButtonLabel}
+            variant="primary"
+            onClick={onClickButton || handleSave}
+          />
+        )}
       </Footer>
     </Container>
   );

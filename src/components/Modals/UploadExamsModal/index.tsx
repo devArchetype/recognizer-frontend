@@ -1,13 +1,17 @@
-import { useState } from 'react';
-import { BaseModal } from '../../base/BaseModal';
+import { useEffect, useState } from 'react';
+import { BaseModal, ModalProps } from '../../base/BaseModal';
 import {
   Dropzone,
   FileItem,
   FileValidated,
   FullScreenPreview,
 } from '@dropzone-ui/react';
+import { toast } from 'react-toastify';
+import { BASE_URL } from '../../../services/axios/instances';
+import { useParams } from 'react-router-dom';
 
-export const UploadExamsModal = () => {
+export const UploadExamsModal = ({ handleModalDisplay }: ModalProps) => {
+  const { examId } = useParams();
   const [files, setFiles] = useState<FileValidated[]>([]);
   const [imgSource, setImgSource] = useState<string | undefined>(undefined);
 
@@ -19,8 +23,22 @@ export const UploadExamsModal = () => {
     setFiles(files.filter((x) => x.id !== id));
   };
 
+  const handleClearForm = () => {
+    handleModalDisplay!();
+  };
+
+  useEffect(() => {
+    toast.warning(
+      'Insira uma foto do gabarito que contenha somente a folha com as responstas!'
+    );
+  }, []);
+
   return (
-    <BaseModal heading="Insira os Gabaritos">
+    <BaseModal
+      heading="Insira os Gabaritos"
+      saveButton={false}
+      onCancel={handleClearForm}
+    >
       <Dropzone
         style={{ borderWidth: '2px' }}
         method="POST"
@@ -30,13 +48,13 @@ export const UploadExamsModal = () => {
         accept="image/*"
         color="#4338CA"
         maxFileSize={3150000}
-        url=""
+        url={`${BASE_URL}/Answers/store/${examId}`}
         headerClassName={'header-extra-styles'}
         footer={false}
         localization="PT-pt"
       >
         {files.length <= 0 && (
-          <h3 className="label-dropzone">Drop your files here</h3>
+          <h3 className="label-dropzone">Solte seus arquivos aqui</h3>
         )}
 
         {files.map((file) => (
