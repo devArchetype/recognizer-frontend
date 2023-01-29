@@ -90,13 +90,17 @@ export const BaseModal = ({
         </Dialog.Close>
       </Header>
       <Content>{children}</Content>
+    
       <Footer>
-        <Button
-          label={cancelButtonLabel}
-          title={cancelButtonLabel}
-          variant="secondary"
-          onClick={handleCancel}
-        />
+        {cancelButtonLabel !== 'false' && (
+          <Button
+            label={cancelButtonLabel}
+            title={cancelButtonLabel}
+            variant="secondary"
+            onClick={handleCancel}
+          />
+        )}
+        {saveButtonLabel !== 'false' && (
         <Button
           type={hasForm ? 'submit' : 'button'}
           form={hasForm ? formId : undefined}
@@ -105,7 +109,9 @@ export const BaseModal = ({
           variant="primary"
           onClick={onClickButton || handleSave}
         />
+        )}
       </Footer>
+
     </Container>
   );
 };

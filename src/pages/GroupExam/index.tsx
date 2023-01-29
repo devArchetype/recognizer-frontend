@@ -1,6 +1,7 @@
 import autoAnimate from '@formkit/auto-animate';
-import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { FilePlus, Trash, UserPlus } from 'phosphor-react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { MemberCard } from '../../components/Cards/MemberCard';
 import { FilterField } from '../../components/FilterField';
@@ -11,23 +12,53 @@ import { ModalTrigger } from '../../components/base/BaseModal';
 import { PageSection } from '../../layouts/PageSection';
 import examsData from './data.json';
 import { DateDetailsContent, ExamsList, ExamsPageContainer } from './styles';
-
+import { getExam } from '../../services/axios/requests/exam';
+import { getMembers } from '../../services/axios/requests/exam';
+import { useQuery } from 'react-query';
+import { AuthContext } from '../../contexts/AuthContext';
+import { findCurrentGroup } from '../../utils/findDataInLocalStorage';
+import { deleteExam } from '../../services/axios/requests/exam';
 export const GroupExam = () => {
+ 
   const { groupId, examId } = useParams();
+  const navigate = useNavigate();
+  const {
+    data: exam
+  } = useQuery<typeof examsData>('EXAM', () => getExam(examId), {});
+  
 
-  const [filteredMembers, setFilteredMembers] = useState<typeof examsData>([]);
+  const {
+    data: membersData
+  } = useQuery<any>('MEMBERS', () => getMembers(examId), {});
+
+  const [filteredMembers, setFilteredMembers] = useState<any>([  ]);
   const hasFilteredMembers = filteredMembers.length !== 0;
 
   const membersListRef = useRef(null);
+
+  const { groups } = useContext(AuthContext);
+  const groupName = findCurrentGroup(groups, groupId ?? '');
+
+  const examsDataToUse = membersData || examsData;
+
+  var examDateFormat  = new Date(exam?.examDate);
+  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  var DateFormated = examDateFormat.toLocaleDateString('pt-BR', options);
 
   useEffect(() => {
     membersListRef.current && autoAnimate(membersListRef.current);
   }, [membersListRef]);
 
-  const examName = 'Prova A';
-  const group = 'Grupo A';
-  const dateDetails = '11 de Novembro de 2022';
-
+  const examName = exam?.name;
+  const group = groupName;
+  const dateDetails = DateFormated;
+  const description = exam?.description;
+  
+  const handleDeleteExam = () => {
+    deleteExam(examId!).then((deleted) => {
+      deleted && navigate('/grupos/'+groupId);
+    });
+  };
   return (
     <ExamsPageContainer heading={`${group} - ${examName}`}>
       <PageSection
@@ -41,6 +72,13 @@ export const GroupExam = () => {
             <ModalTrigger
               trigger={<Button type="button" label={'Inserir provas'} />}
               modal={<UploadExamsModal />}
+            
+            />
+            <Button
+              label={'Apagar grupo'}
+              icon={<Trash />}
+              onClick={handleDeleteExam}
+              confirm
             />
           </>
         }
@@ -48,14 +86,7 @@ export const GroupExam = () => {
         <DateDetailsContent>
           <h3>{dateDetails}</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            corporis quibusdam, quis quia iste aspernatur id eveniet nam quaerat
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            temporibus ratione odio, magni voluptatum rem suscipit pariatur
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            temporibus ratione odio, magni voluptatum rem suscipit pariatur
-            corporis quibusdam, quis quia iste aspernatur id eveniet nam quaerat
-            ipsam placeat sit.
+            {description}
           </p>
         </DateDetailsContent>
       </PageSection>
@@ -66,7 +97,7 @@ export const GroupExam = () => {
           <>
             <FilterField
               placeholder="Filtrar integrantes"
-              itemsList={examsData}
+              itemsList={examsDataToUse}
               onFilter={setFilteredMembers}
               filter="name"
             />
@@ -74,35 +105,36 @@ export const GroupExam = () => {
               trigger={<Button type="button" label={'Ver Gabarito'} />}
               modal={<CheckExamTemplateModal />}
             />
-
-            <Button type="button" label={'Exportar'} />
           </>
         }
       >
         <ExamsList ref={membersListRef}>
+         
           {hasFilteredMembers
-            ? filteredMembers.map(({ id, name, registration }) => {
+            ? filteredMembers.map(({ id, name, externalId }) => {
                 return (
                   <MemberCard
                     key={id}
                     name={name}
-                    memberId={registration}
-                    target={`/grupos/${groupId}/${examId}/${registration}/`}
+                    memberId={externalId}
+                    target={`/grupos/${groupId}/${examId}/${externalId}/`}
                   />
                 );
               })
-            : examsData.map(({ id, name, registration }) => {
+            : examsDataToUse.map(({ id, name, externalId }) => {
                 return (
                   <MemberCard
                     key={id}
                     name={name}
-                    memberId={registration}
-                    target={`/grupos/${groupId}/${examId}/${registration}/`}
+                    memberId={externalId}
+                    target={`/grupos/${groupId}/${examId}/${externalId}/`}
                   />
                 );
               })}
+          
         </ExamsList>
       </PageSection>
+
     </ExamsPageContainer>
   );
 };
