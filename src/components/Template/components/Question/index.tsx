@@ -15,11 +15,16 @@ export interface QuestionProps {
     alternatives: string[];
   };
   empty: boolean;
+  borderRadius?: boolean;
 }
 
-export const Question = ({ question, empty }: QuestionProps) => {
+export const Question = ({
+  question,
+  empty,
+  borderRadius = true,
+}: QuestionProps) => {
   return (
-    <QuestionContainer>
+    <QuestionContainer borderRadius={borderRadius}>
       <NumberContainer>
         <NumberText>Questão {question.number}</NumberText>
         <NumberTextShort>Ex.</NumberTextShort>

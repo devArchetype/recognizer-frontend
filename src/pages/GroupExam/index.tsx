@@ -1,5 +1,5 @@
 import autoAnimate from '@formkit/auto-animate';
-import { FilePlus, Trash, UserPlus } from 'phosphor-react';
+import { Trash } from 'phosphor-react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button';
@@ -12,26 +12,30 @@ import { ModalTrigger } from '../../components/base/BaseModal';
 import { PageSection } from '../../layouts/PageSection';
 import examsData from './data.json';
 import { DateDetailsContent, ExamsList, ExamsPageContainer } from './styles';
-import { getExam } from '../../services/axios/requests/exam';
-import { getMembers } from '../../services/axios/requests/exam';
+import {
+  getExam,
+  getMembers,
+  deleteExam,
+} from '../../services/axios/requests/exam';
 import { useQuery } from 'react-query';
 import { AuthContext } from '../../contexts/AuthContext';
 import { findCurrentGroup } from '../../utils/findDataInLocalStorage';
-import { deleteExam } from '../../services/axios/requests/exam';
 export const GroupExam = () => {
- 
   const { groupId, examId } = useParams();
   const navigate = useNavigate();
-  const {
-    data: exam
-  } = useQuery<typeof examsData>('EXAM', () => getExam(examId), {});
-  
+  const { data: exam } = useQuery<typeof examsData>(
+    'EXAM',
+    () => getExam(examId),
+    {}
+  );
 
-  const {
-    data: membersData
-  } = useQuery<any>('MEMBERS', () => getMembers(examId), {});
+  const { data: membersData } = useQuery<any>(
+    'MEMBERS',
+    () => getMembers(examId),
+    {}
+  );
 
-  const [filteredMembers, setFilteredMembers] = useState<any>([  ]);
+  const [filteredMembers, setFilteredMembers] = useState<any>([]);
   const hasFilteredMembers = filteredMembers.length !== 0;
 
   const membersListRef = useRef(null);
@@ -41,9 +45,15 @@ export const GroupExam = () => {
 
   const examsDataToUse = membersData || examsData;
 
-  var examDateFormat  = new Date(exam?.examDate);
-  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  var DateFormated = examDateFormat.toLocaleDateString('pt-BR', options);
+  const examDateFormat = new Date(exam?.examDate);
+
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  const DateFormated = examDateFormat.toLocaleDateString('pt-BR', options);
 
   useEffect(() => {
     membersListRef.current && autoAnimate(membersListRef.current);
@@ -53,10 +63,10 @@ export const GroupExam = () => {
   const group = groupName;
   const dateDetails = DateFormated;
   const description = exam?.description;
-  
+
   const handleDeleteExam = () => {
     deleteExam(examId!).then((deleted) => {
-      deleted && navigate('/grupos/'+groupId);
+      deleted && navigate('/grupos/' + groupId);
     });
   };
   return (
@@ -72,10 +82,9 @@ export const GroupExam = () => {
             <ModalTrigger
               trigger={<Button type="button" label={'Inserir provas'} />}
               modal={<UploadExamsModal />}
-            
             />
             <Button
-              label={'Apagar grupo'}
+              label={'Apagar Prova'}
               icon={<Trash />}
               onClick={handleDeleteExam}
               confirm
@@ -85,9 +94,7 @@ export const GroupExam = () => {
       >
         <DateDetailsContent>
           <h3>{dateDetails}</h3>
-          <p>
-            {description}
-          </p>
+          <p>{description}</p>
         </DateDetailsContent>
       </PageSection>
 
@@ -109,7 +116,6 @@ export const GroupExam = () => {
         }
       >
         <ExamsList ref={membersListRef}>
-         
           {hasFilteredMembers
             ? filteredMembers.map(({ id, name, externalId }) => {
                 return (
@@ -131,10 +137,8 @@ export const GroupExam = () => {
                   />
                 );
               })}
-          
         </ExamsList>
       </PageSection>
-
     </ExamsPageContainer>
   );
 };

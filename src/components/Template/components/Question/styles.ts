@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const QuestionContainer = styled.div`
+interface QuestionConatinerProsp {
+  borderRadius: boolean;
+}
+
+export const QuestionContainer = styled.div<QuestionConatinerProsp>`
   position: relative;
   cursor: default;
   width: 100%;
@@ -11,7 +15,8 @@ export const QuestionContainer = styled.div`
   flex-wrap: wrap;
   overflow: hidden;
   padding: ${(props) => props.theme.spacing.xs};
-  border-radius: ${(props) => props.theme.rounded.base};
+  border-radius: ${(props) =>
+    props.borderRadius ? props.theme.rounded.base : 0};
   box-shadow: ${(props) => props.theme.shadow.base};
   background-color: ${(props) => props.theme.color['base-light']};
 
