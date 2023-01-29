@@ -48,7 +48,7 @@ export const UploadExamsModal = ({ handleModalDisplay }: ModalProps) => {
         accept="image/*"
         color="#4338CA"
         maxFileSize={3150000}
-        url={`${BASE_URL}/Answers/store/${examId}`}
+        url={`${BASE_URL}/answers/store/${examId}`}
         headerClassName={'header-extra-styles'}
         footer={false}
         localization="PT-pt"
