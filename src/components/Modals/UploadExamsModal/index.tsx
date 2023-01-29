@@ -1,28 +1,23 @@
-import { useDropzone } from 'react-dropzone';
-
 import { BaseModal } from '../../base/BaseModal';
 
-export const UploadExamsModal = () => {
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+import { Uploader } from 'uploader';
+import { UploadDropzone } from 'react-uploader';
 
-  const files = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ));
+export const UploadExamsModal = () => {
+  const uploader = Uploader({
+    apiKey: 'free',
+  });
+  const options = { multi: true };
+
   return (
     <BaseModal heading="Inserir provas">
-      {' '}
-      <section className="container">
-        <div {...getRootProps({ className: 'dropzone' })}>
-          <input {...getInputProps()} />
-          <p>Drag 'n' drop some files here, or click to select files</p>
-        </div>
-        <aside>
-          <h4>Files</h4>
-          <ul>{files}</ul>
-        </aside>
-      </section>
+      <UploadDropzone
+        uploader={uploader}
+        options={options}
+        onUpdate={(files) => alert(files.map((x) => x.fileUrl).join('\n'))}
+        width="100%"
+        height="400px"
+      />
     </BaseModal>
   );
 };
