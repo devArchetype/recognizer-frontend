@@ -1,4 +1,5 @@
 import { Header } from './components/Header';
+import { AboutSection } from './sections/AboutSection';
 import { ContactSection } from './sections/ContactSection';
 import { HomeSection } from './sections/HomeSection';
 import { SubscriptionSection } from './sections/SubscriptionSection';
@@ -11,6 +12,7 @@ export const Home = () => {
 
       <MainContainer>
         <HomeSection />
+        <AboutSection />
         <SubscriptionSection />
         <ContactSection />
       </MainContainer>
