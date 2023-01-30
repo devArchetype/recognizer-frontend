@@ -2,16 +2,14 @@ import { toast } from 'react-toastify';
 
 import { recognizerApi } from '../instances';
 
-
-export const getExam = async ( examId: any )=> {
+export const getExam = async (examId: any) => {
   try {
-    
-    const response = await recognizerApi.get('/exam/show/'+examId);
+    const response = await recognizerApi.get('/exam/show/' + examId);
 
     const { success, exam } = response.data;
     if (success) {
       return exam;
-    }else{
+    } else {
       toast.error('Erro ao carregar prova');
       return [];
     }
@@ -19,15 +17,14 @@ export const getExam = async ( examId: any )=> {
     console.log(e);
   }
 };
-export const getMembers = async ( examId: any )=> {
+export const getMembers = async (examId: any) => {
   try {
-    
-    const response = await recognizerApi.get('/exam/members/'+examId);
+    const response = await recognizerApi.get('/exam/members/' + examId);
 
     const { success, members } = response.data;
     if (success) {
       return members;
-    }else{
+    } else {
       toast.error('Erro ao carregar membros da prova');
       return [];
     }
@@ -36,10 +33,9 @@ export const getMembers = async ( examId: any )=> {
   }
 };
 
-
 export const deleteExam = async (id: string): Promise<boolean> => {
   try {
-    const response = await recognizerApi.delete('/exam/delete/'+id);
+    const response = await recognizerApi.delete('/exam/delete/' + id);
 
     const { success, message } = response.data;
 

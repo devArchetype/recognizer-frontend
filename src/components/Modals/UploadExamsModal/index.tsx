@@ -6,9 +6,10 @@ import {
   FileValidated,
   FullScreenPreview,
 } from '@dropzone-ui/react';
+
 import { toast } from 'react-toastify';
-import { BASE_URL } from '../../../services/axios/instances';
 import { useParams } from 'react-router-dom';
+import { createAnswer } from '../../../services/axios/requests/answers';
 
 export const UploadExamsModal = ({ handleModalDisplay }: ModalProps) => {
   const { examId } = useParams();
@@ -33,22 +34,25 @@ export const UploadExamsModal = ({ handleModalDisplay }: ModalProps) => {
     );
   }, []);
 
+  const handleAnswers = async () => {
+    await createAnswer(examId, files);
+    setFiles([]);
+  };
+
   return (
     <BaseModal
       heading="Insira os Gabaritos"
-      saveButton={false}
       onCancel={handleClearForm}
+      onClickButton={handleAnswers}
     >
       <Dropzone
         style={{ borderWidth: '2px' }}
-        method="POST"
         textColor="red"
         onChange={updateFiles}
         value={files}
         accept="image/*"
         color="#4338CA"
         maxFileSize={3150000}
-        url={`${BASE_URL}/answers/store/${examId}`}
         headerClassName={'header-extra-styles'}
         footer={false}
         localization="PT-pt"
