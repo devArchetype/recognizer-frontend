@@ -19,6 +19,7 @@ export const HomeSection = () => {
         <img
           src="/images/demonstration.svg"
           alt="Demonstração em imagem do visual da aplicação Recognizer"
+          loading="lazy"
         />
       </ImageContainer>
 

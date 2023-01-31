@@ -86,6 +86,7 @@ export const ContactSection = () => {
           <img
             src="/images/saly-16.svg"
             alt="Garota sentada de baixo de uma árvore com passaros à volta lendo um livro"
+            loading="lazy"
           />
         </ImageContainer>
       </SectionContent>

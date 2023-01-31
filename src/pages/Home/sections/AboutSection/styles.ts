@@ -4,7 +4,11 @@ export const DescriptionContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: ${(props) => props.theme.spacing.md};
+  gap: ${(props) => props.theme.spacing.sm};
+
+  @media ${(props) => props.theme.screen.sm} {
+    gap: ${(props) => props.theme.spacing.md};
+  }
 `;
 
 export const SectionContainer = styled.div`
@@ -12,28 +16,34 @@ export const SectionContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: ${(props) => props.theme.spacing.xxl};
-  border-radius: ${(props) => props.theme.rounded.base};
+  justify-content: center;
+  gap: ${(props) => props.theme.spacing.sm};
 
   &.text-right {
     flex-direction: row-reverse;
   }
 
   img {
-    width: 13rem;
-    height: 100%;
-    object-fit: cover;
-  }
-  p {
-    text-align: justify;
-    max-width: 50%;
+    width: 10rem;
+    width: 10rem;
   }
 
-  @media (max-width: 860px) {
-    justify-content: center;
+  p {
+    width: 100%;
+    text-align: justify;
+  }
+
+  @media ${(props) => props.theme.screen.sm} {
+    gap: ${(props) => props.theme.spacing.xxl};
+
     p {
-      width: 100%;
-      min-width: 73vw;
+      max-width: 50%;
+      text-align: auto;
+    }
+
+    img {
+      width: 13rem;
+      width: 13rem;
     }
   }
 `;

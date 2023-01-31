@@ -16,6 +16,7 @@ export const AboutSection = () => {
           <img
             src="/images/blood-report.svg"
             alt="Prova com escritos e símbolo de A+"
+            loading="lazy"
           />
           <p>
             Com essa aplicação, o gabarito pode ser gerado e, posteriormente,
@@ -25,7 +26,11 @@ export const AboutSection = () => {
         </SectionContainer>
 
         <SectionContainer className="text-right">
-          <img src="/images/frame-6-1.svg" alt="Bloco de notas" />
+          <img
+            src="/images/frame-6-1.svg"
+            alt="Bloco de notas"
+            loading="lazy"
+          />
           <p>
             Além disso, a plataforma propõe-se a fornecer, aos utilizadores, uma
             interface para o gerenciamento de tais correções, disponibilizando
@@ -41,6 +46,7 @@ export const AboutSection = () => {
           <img
             src="/images/saly-42.svg"
             alt="Computador com números binarios sendo exibidos na tela"
+            loading="lazy"
           />
           <p>
             Dessa maneira abre uma série de possibilidades aos usuários, que

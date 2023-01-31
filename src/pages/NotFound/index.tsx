@@ -14,7 +14,7 @@ export const NotFound = () => {
       <Dialog>
         <Column>
           <Logo />
-          <img src="/images/not-found.svg" alt="Erro 404" />
+          <img src="/images/not-found.svg" alt="Erro 404" loading="lazy" />
         </Column>
         <Column>
           <h1>Oops... Página não encontrada!</h1>
