@@ -24,7 +24,9 @@ export const Header = () => {
   return (
     <HeaderContainer isScrolling={isScrolling}>
       <HeaderWrapper>
-        <Logo />
+        <a href="#home">
+          <Logo />
+        </a>
 
         <nav>
           <Menu display={displayMenu} onItemClick={handleDisplayMenu} />

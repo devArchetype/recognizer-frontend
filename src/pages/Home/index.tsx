@@ -1,3 +1,4 @@
+import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { ContactSection } from './sections/ContactSection';
 import { HomeSection } from './sections/HomeSection';
@@ -14,6 +15,8 @@ export const Home = () => {
         <SubscriptionSection />
         <ContactSection />
       </MainContainer>
+
+      <Footer />
     </HomeContainer>
   );
 };

@@ -1,20 +1,21 @@
 import { BaseModal, ModalProps } from '../../base/BaseModal';
 
+import Checkbox from '@mui/material/Checkbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Checkbox from '@mui/material/Checkbox';
-import { useContext, useEffect, useState } from 'react';
 import { User } from 'phosphor-react';
-import { Switch } from '../../Switch';
+import { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { recognizerApi } from '../../../services/axios/instances';
-import { toast } from 'react-toastify';
+import { Switch } from '../../Switch';
 
-import { SwitchContainer } from './styles';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useTheme } from 'styled-components';
+import { SwitchContainer } from './styles';
 
 type Member = {
   id: string;
@@ -23,6 +24,8 @@ type Member = {
 };
 
 export const PrintExamsMembersModal = ({ handleModalDisplay }: ModalProps) => {
+  const theme = useTheme();
+
   const { groupId, examId } = useParams();
   const navigate = useNavigate();
 
@@ -62,6 +65,10 @@ export const PrintExamsMembersModal = ({ handleModalDisplay }: ModalProps) => {
     setChecked(newChecked);
   };
 
+  const handleSelectAllMembers = () => {
+    setMarkAllMembers((prevState) => !prevState);
+  };
+
   const handleMembers = async () => {
     if (markAllIMembers) setMembersExamPrint(members);
     else setMembersExamPrint(checked);
@@ -85,14 +92,15 @@ export const PrintExamsMembersModal = ({ handleModalDisplay }: ModalProps) => {
     >
       <SwitchContainer>
         <Switch
-          label="Marcar Todos"
+          label="Marcar todos"
           srLabel={false}
           leftLabel
-          onChange={(event) => setMarkAllMembers(event.target.checked)}
+          checked={markAllIMembers}
+          onChange={handleSelectAllMembers}
         />
       </SwitchContainer>
 
-      <List dense sx={{ width: '100%', bgcolor: 'background.paper' }}>
+      <List dense sx={{ width: '100%', bgcolor: theme.color['base-100'] }}>
         {members.map((member) => {
           const labelId = `checkbox-list-secondary-label-${member.id}`;
           return (

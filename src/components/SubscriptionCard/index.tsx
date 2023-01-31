@@ -54,7 +54,7 @@ export const SubscriptionCard = () => {
               return (
                 <DetailItem key={`${detail}_${index}`}>
                   <span>
-                    <Check />
+                    <Check weight="bold" />
                   </span>
                   <p>{detail}</p>
                 </DetailItem>

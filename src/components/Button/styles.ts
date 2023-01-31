@@ -3,7 +3,7 @@ import { SrOnly } from '../../styles/utils';
 
 interface ButtonProps {
   iconLeft: boolean;
-  variant: 'primary' | 'secondary' | 'tertiary' | 'line' | 'icon' | 'danger';
+  variant: 'primary' | 'secondary' | 'tertiary' | 'line' | 'icon';
 }
 
 export const ButtonContainer = styled.button<ButtonProps>`
@@ -56,32 +56,6 @@ export const ButtonContainer = styled.button<ButtonProps>`
 
           &:hover {
             background-color: ${(props) => props.theme.color['base-200']};
-          }
-        `;
-      }
-      case 'danger': {
-        return css`
-          position: relative;
-          padding: ${(props) => props.theme.spacing.xxs};
-          color: #ff0000;
-          background-color: transparent;
-
-          &::before {
-            content: '';
-            width: 0%;
-            height: 2px;
-            position: absolute;
-            inset: ${iconLeft ? 'auto 0 0 auto' : 'auto auto 0 0'};
-            transition: 0.2s;
-            background-color: #ff0000;
-          }
-
-          &:hover {
-            color: #ff4500;
-
-            &::before {
-              width: 100%;
-            }
           }
         `;
       }

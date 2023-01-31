@@ -1,9 +1,13 @@
+import { SignOut } from 'phosphor-react';
 import { useContext } from 'react';
+import { Button } from '../../../../components/Button';
 import { Switch } from '../../../../components/Switch';
+import { AuthContext } from '../../../../contexts/AuthContext';
 import { PreferencesContext } from '../../../../contexts/PreferencesContext';
 import { PageSection } from '../../../../layouts/PageSection';
 
 export const General = () => {
+  const { logout } = useContext(AuthContext);
   const { isDark, toggleTheme } = useContext(PreferencesContext);
 
   const label = isDark ? 'Alterar para tema claro' : 'Alterar para tema escuro';
@@ -18,11 +22,21 @@ export const General = () => {
       </p>
       <Switch
         label={label}
-        srLabel
         title={label}
-        onChange={toggleTheme}
+        srLabel={false}
         checked={isDark}
+        leftLabel
+        onChange={toggleTheme}
       />
+      <div>
+        <Button
+          label="Sair"
+          type="button"
+          variant="line"
+          icon={<SignOut />}
+          onClick={logout}
+        />
+      </div>
     </PageSection>
   );
 };

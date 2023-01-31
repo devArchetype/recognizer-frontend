@@ -87,6 +87,7 @@ export const DetailItem = styled.li`
 
   span {
     line-height: 0;
-    font-size: ${(props) => props.theme.text.xl};
+    font-size: ${(props) => props.theme.text.lg};
+    color: ${(props) => props.theme.color['success-base']};
   }
 `;
