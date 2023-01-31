@@ -23,6 +23,7 @@ export const ToggleGroup = ({
       type="single"
       value={value}
       onValueChange={onValueChange}
+      di
     >
       {items.map(({ label, value }, index) => {
         return (

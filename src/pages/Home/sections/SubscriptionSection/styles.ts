@@ -11,7 +11,8 @@ export const SectionContent = styled.div`
 
 export const CardsListContainer = styled.ul`
   display: flex;
-  align-items: center;
-  gap: ${(props) => props.theme.spacing.lg};
+  align-items: start;
+  justify-content: stretch;
   flex-wrap: wrap;
+  gap: ${(props) => props.theme.spacing.lg};
 `;

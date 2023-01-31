@@ -1,7 +1,9 @@
-import { CaretRight, Check, CircleWavy } from 'phosphor-react';
+import { CaretRight, Check, CircleWavy, CircleWavyCheck } from 'phosphor-react';
 import { useNavigate } from 'react-router-dom';
+import { SubscriptionTier } from '../../@types/tier';
 import { Button } from '../Button';
 import {
+  CardBadge,
   CardContent,
   Description,
   DetailItem,
@@ -14,18 +16,30 @@ import {
 
 interface SubscriptionCardProps {
   name: string;
-  badge: 'gray' | 'purple' | 'yellow';
+  badge: string;
+  tier: SubscriptionTier;
   price: number;
   description: string;
   details: string[];
+  disabled: boolean;
 }
 
-export const SubscriptionCard = () => {
-  const details = [
-    'Alguma funcionalidade',
-    'Alguma funcionalidade',
-    'Alguma funcionalidade',
-  ];
+export const SubscriptionCard = ({
+  name,
+  badge,
+  tier,
+  price,
+  description,
+  details,
+  disabled,
+}: SubscriptionCardProps) => {
+  const hasBadge = !!badge;
+
+  const tierIcon = {
+    FREE: <CircleWavy />,
+    PRO: <CircleWavyCheck />,
+    PREMIUM: <CircleWavyCheck weight="fill" />,
+  };
 
   const navigate = useNavigate();
 
@@ -35,20 +49,17 @@ export const SubscriptionCard = () => {
 
   return (
     <SubscriptionCardContainer>
-      <CardContent>
-        <Heading>
-          <div>
-            <CircleWavy />
-          </div>
-          <strong>Grátis</strong>
+      {hasBadge && <CardBadge>{badge}</CardBadge>}
+
+      <CardContent disabled={disabled}>
+        <Heading tier={tier}>
+          <div>{tierIcon[tier]}</div>
+          <strong>{name}</strong>
         </Heading>
-        <Description>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-          ex porro.
-        </Description>
-        <Price>00</Price>
+        <Description>{description}</Description>
+        <Price>{String(price).padStart(2, '0')}</Price>
         <DetailsContainer>
-          <strong>O plano grátis inclui:</strong>
+          <strong>O plano {name} inclui:</strong>
           <DetailsList>
             {details.map((detail, index) => {
               return (

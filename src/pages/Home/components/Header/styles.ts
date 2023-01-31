@@ -8,6 +8,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
   position: fixed;
   inset: 0 0 auto 0;
   transition: all 200ms;
+  z-index: 30;
   background-color: ${({ theme, isScrolling }) =>
     isScrolling ? theme.color['base-light'] : 'transparent'};
   box-shadow: ${({ theme, isScrolling }) =>
