@@ -7,26 +7,24 @@ export const createAnswer = async (
   filesNotAccept: FileValidated[]
 ) => {
   try {
-    const files = new FormData();
-    filesNotAccept.forEach((file) => {
-      files.append('files', file.file);
+    filesNotAccept.forEach(async (fileA) => {
+      const file = new FormData();
+      file.append('file', fileA.file);
+
+      const response = await recognizerApi.post(
+        `/answers/store/${examId}`,
+        file,
+        { headers: { 'Content-Type': 'multipart/form-data' } }
+      );
+
+      const { message } = response.data;
+
+      if (message) {
+        toast.error(message);
+      }
     });
 
-    const response = await recognizerApi.post(
-      `/answers/store/${examId}`,
-      files,
-      { headers: { 'Content-Type': 'multipart/form-data' } }
-    );
-
-    const { success, message } = response.data;
-
-    if (message) {
-      toast.error(message);
-    }
-
-    if (success) {
-      toast.info(success);
-    }
+    toast.info('Gabaritos corrigindo...');
   } catch (e) {
     console.log(e);
   }
@@ -36,7 +34,6 @@ export const getAnswer = async (answerId: string | undefined) => {
   try {
     const answerData = await recognizerApi.get('/answer/index/' + answerId);
     const { success, answer, message } = answerData.data;
-    console.log(answer);
 
     if (success) {
       return answer;
