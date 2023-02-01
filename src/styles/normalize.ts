@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -137,5 +137,10 @@ export const normalize = css`
     padding: 0;
     outline: none;
     text-decoration: none;
+    scroll-behavior: smooth;
+    border: none;
+    outline: none;
+    background: none;
+    transition: all 50ms;
   }
-`
+`;

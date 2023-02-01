@@ -2,5 +2,19 @@
   "extends": "@rocketseat/eslint-config/react",
   "globals": {
     "JSX": true
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true
+        // "parser": "flow"
+      }
+    ],
+    "no-use-before-define": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "camelcase": "off",
+    "react-hooks/rules-of-hooks": "off",
+    "array-callback-return": "off"
   }
 }
