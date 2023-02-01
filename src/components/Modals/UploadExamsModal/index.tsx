@@ -52,10 +52,11 @@ export const UploadExamsModal = ({ handleModalDisplay }: ModalProps) => {
         value={files}
         accept="image/*"
         color="#4338CA"
-        maxFileSize={3150000}
+        maxFileSize={2150000}
         headerClassName={'header-extra-styles'}
         footer={false}
         localization="PT-pt"
+        maxFiles={30}
       >
         {files.length <= 0 && (
           <h3 className="label-dropzone">Solte seus arquivos aqui</h3>

@@ -24,7 +24,7 @@ export const createAnswer = async (
       }
     });
 
-    toast.info('Gabaritos corrigindo...');
+    toast.info('Gabaritos corrigidos!');
   } catch (e) {
     console.log(e);
   }
