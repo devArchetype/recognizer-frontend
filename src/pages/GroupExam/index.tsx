@@ -10,32 +10,26 @@ import { UploadExamsModal } from '../../components/Modals/UploadExamsModal';
 import { PrintExamsMembersModal } from '../../components/Modals/PrintExamsMembersModal';
 import { ModalTrigger } from '../../components/base/BaseModal';
 import { PageSection } from '../../layouts/PageSection';
-import examsData from './data.json';
 import { DateDetailsContent, ExamsList, ExamsPageContainer } from './styles';
 import {
   getExam,
-  getMembers,
   deleteExam,
+  getMembersWithAnswers,
 } from '../../services/axios/requests/exam';
 import { useQuery } from 'react-query';
 import { AuthContext } from '../../contexts/AuthContext';
 import { findCurrentGroup } from '../../utils/findDataInLocalStorage';
+import { Members } from '../../@types/app';
+
 export const GroupExam = () => {
   const { groupId, examId } = useParams();
+  const [membersData, setMembersData] = useState<Members[] | undefined>([]);
   const navigate = useNavigate();
-  const { data: exam } = useQuery<typeof examsData>(
-    'EXAM',
-    () => getExam(examId),
-    {}
-  );
+  const { data: exam } = useQuery('EXAM', () => getExam(examId), {});
 
-  const { data: membersData } = useQuery<any>(
-    'MEMBERS',
-    () => getMembers(examId),
-    {}
-  );
+  // console.log(membersData);
 
-  const [filteredMembers, setFilteredMembers] = useState<any>([]);
+  const [filteredMembers, setFilteredMembers] = useState<Members[]>([]);
   const hasFilteredMembers = filteredMembers.length !== 0;
 
   const membersListRef = useRef(null);
@@ -43,19 +37,21 @@ export const GroupExam = () => {
   const { groups } = useContext(AuthContext);
   const groupName = findCurrentGroup(groups, groupId ?? '');
 
-  const examsDataToUse = membersData || examsData;
+  const examsDataToUse: Members[] = membersData || [];
 
   const examDateFormat = new Date(exam?.examDate);
-
-  const options = {
+  const DateFormated = examDateFormat.toLocaleDateString('pt-BR', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  };
-  const DateFormated = examDateFormat.toLocaleDateString('pt-BR', options);
+  });
 
   useEffect(() => {
+    (async () => {
+      setMembersData(await getMembersWithAnswers(examId));
+    })();
+
     membersListRef.current && autoAnimate(membersListRef.current);
   }, [membersListRef]);
 
@@ -69,6 +65,7 @@ export const GroupExam = () => {
       deleted && navigate('/grupos/' + groupId);
     });
   };
+
   return (
     <ExamsPageContainer heading={`${group} - ${examName}`}>
       <PageSection
@@ -117,23 +114,23 @@ export const GroupExam = () => {
       >
         <ExamsList ref={membersListRef}>
           {hasFilteredMembers
-            ? filteredMembers.map(({ id, name, externalId }) => {
+            ? filteredMembers.map(({ id, name, externalId, answerId }) => {
                 return (
                   <MemberCard
                     key={id}
                     name={name}
-                    memberId={externalId}
-                    target={`/grupos/${groupId}/${examId}/${externalId}/`}
+                    memberId={externalId ?? ''}
+                    target={`/grupos/${groupId}/${examId}/${answerId}/`}
                   />
                 );
               })
-            : examsDataToUse.map(({ id, name, externalId }) => {
+            : examsDataToUse.map(({ id, name, externalId, answerId }) => {
                 return (
                   <MemberCard
                     key={id}
                     name={name}
-                    memberId={externalId}
-                    target={`/grupos/${groupId}/${examId}/${externalId}/`}
+                    memberId={externalId ?? ''}
+                    target={`/grupos/${groupId}/${examId}/${answerId}/`}
                   />
                 );
               })}

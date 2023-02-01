@@ -53,6 +53,15 @@ interface Members {
   id: string;
   name: string;
   externalId?: string;
+  answerId?: string;
+}
+
+interface Answers {
+  id: string;
+  template: string;
+  templatePicture: string;
+  membersId: string;
+  examsId: string;
 }
 
 export interface RegisteredUsers {

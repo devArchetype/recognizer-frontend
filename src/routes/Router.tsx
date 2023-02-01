@@ -36,8 +36,9 @@ export const Router = () => {
           <Route path="/grupos/:groupId/" element={<Group />} />
 
           <Route path="/grupos/:groupId/:examId/" element={<GroupExam />} />
+
           <Route
-            path="/grupos/:groupId/:examId/:memberId/"
+            path="/grupos/:groupId/:examId/:answerId/"
             element={<MemberExam />}
           />
 
