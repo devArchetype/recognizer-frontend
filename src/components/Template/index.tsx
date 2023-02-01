@@ -1,43 +1,47 @@
 import { TemplateSection } from './styles';
-import { Question } from './components/Question';
+import { Question, QuestionProps } from './components/Question';
 
 interface TemplateProps {
-  data?: object[];
+  answer: string;
+  template: string;
   empty: boolean;
 }
 
-export const Template = ({ data, empty }: TemplateProps) => {
-  const dataExample = [];
-  for (let i = 1; i <= 5; i++) {
-    dataExample.push({
-      number: i,
-      isRight: 'A',
-      marked: 'A',
-      alternatives: ['A', 'B', 'C', 'D', 'E'],
-    });
-    dataExample.push({
-      number: i,
-      isRight: 'B',
-      marked: 'C',
-      alternatives: ['A', 'B', 'C', 'D', 'E'],
-    });
-    dataExample.push({
-      number: i,
-      isRight: 'E',
-      marked: 'E',
-      // alternatives: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
-      alternatives: ['A', 'B', 'C', 'D', 'E'],
-    });
-    dataExample.push({
-      number: i,
-      isRight: 'C',
-      marked: 'D',
-      alternatives: ['A', 'B', 'C', 'D', 'E'],
-    });
-  }
+export interface QuestionType {
+  number: number;
+  isRight: string;
+  marked: string;
+  alternatives: string[];
+}
 
-  const questions = dataExample.map(function (question, index) {
-    return <Question question={question} empty={empty} key={index} />;
+export const Template = ({ answer, template, empty }: TemplateProps) => {
+  const getTemplate = () => {
+    const questions: QuestionType[] = [];
+
+    if (answer && template) {
+      const templateQuestions = JSON.parse(answer);
+      const exam = JSON.parse(template);
+
+      for (const question of exam) {
+        const key = Number(question.number) + 1;
+        const answer = templateQuestions[key];
+
+        questions.push({
+          number: key,
+          isRight: question.answer,
+          marked: answer,
+          alternatives: ['A', 'B', 'C', 'D', 'E'],
+        } as QuestionType);
+      }
+    }
+
+    return questions;
+  };
+
+  const questions = getTemplate().map((question, index) => {
+    return (
+      <Question question={question as QuestionType} empty={empty} key={index} />
+    );
   });
 
   return <TemplateSection>{questions}</TemplateSection>;

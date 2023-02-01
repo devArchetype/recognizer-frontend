@@ -31,3 +31,20 @@ export const createAnswer = async (
     console.log(e);
   }
 };
+
+export const getAnswer = async (answerId: string | undefined) => {
+  try {
+    const answerData = await recognizerApi.get('/answer/index/' + answerId);
+    const { success, answer, message } = answerData.data;
+    console.log(answer);
+
+    if (success) {
+      return answer;
+    } else {
+      toast.error(message);
+      return [];
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};

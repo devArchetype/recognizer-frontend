@@ -62,6 +62,8 @@ interface Answers {
   templatePicture: string;
   membersId: string;
   examsId: string;
+  Exams: Exams;
+  Members: Members;
 }
 
 export interface RegisteredUsers {

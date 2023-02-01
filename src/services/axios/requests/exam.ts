@@ -45,7 +45,6 @@ export const getMembersWithAnswers = async (examId: string | undefined) => {
 
     const membersFilter: Members[] = [];
     for (const member of members) {
-      // eslint-disable-next-line array-callback-return
       const answerId = member.Answers.filter((answer: Answers) => {
         if (answer.examsId === examId) return answer.id;
       });

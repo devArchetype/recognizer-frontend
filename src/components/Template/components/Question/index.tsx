@@ -6,14 +6,10 @@ import {
 } from './styles';
 
 import { Alternative } from '../Alternative';
+import { QuestionType } from '../..';
 
 export interface QuestionProps {
-  question: {
-    number: number;
-    isRight: string;
-    marked: string;
-    alternatives: string[];
-  };
+  question: QuestionType;
   empty: boolean;
   borderRadius?: boolean;
 }
