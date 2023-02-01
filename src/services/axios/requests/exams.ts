@@ -6,7 +6,7 @@ export const createExam = async (
   name: string,
   date: Date,
   description: string,
-  updatedAnsers: object[],
+  updatedAnswers: object[],
   groupId: string | undefined
 ) => {
   try {
@@ -14,7 +14,7 @@ export const createExam = async (
       name,
       date,
       description,
-      updatedAnsers,
+      updatedAnsers: updatedAnswers,
       groupId,
     });
 

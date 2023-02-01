@@ -1,25 +1,33 @@
 import { Printer } from 'phosphor-react';
+import { useContext } from 'react';
+import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
+import { Exams } from '../../@types/app';
 import { Button } from '../../components/Button';
+import { Loading } from '../../components/Loading';
 import { PrintTemplate } from '../../components/PrintTemplate';
+import { AuthContext } from '../../contexts/AuthContext';
+import { getExam } from '../../services/axios/requests/exam';
 import {
   Container,
   PrintContainer,
   PrintExamContainer,
   PrintMessage,
 } from './styles';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
 
 export const PrintExam = () => {
-  const { membersExamPrint } = useContext(AuthContext);
+  const { membersExamPrint, user } = useContext(AuthContext);
+  const { examId } = useParams();
 
-  const data = {
-    questionsAmount: 20,
-    answersAmount: 5,
-    examDate: new Date(),
-    examName: 'II Prova GAAL',
-    members: membersExamPrint,
+  const fetchExamData = () => {
+    return getExam(examId);
   };
+
+  const { data: examData, isLoading } = useQuery<Exams>(
+    'EXAM_DATA',
+    fetchExamData
+  );
+  const hasExamAndMembers = !isLoading && examData;
 
   const handleDisplayPrintScreen = () => {
     window.print();
@@ -40,22 +48,26 @@ export const PrintExam = () => {
           />
         </PrintMessage>
       </Container>
-      <PrintContainer>
-        {data.members.map(({ id, name, externalId = id }) => {
-          return (
-            <PrintTemplate
-              key={id}
-              memberId={externalId}
-              memberName={name}
-              questionsAmount={data.questionsAmount}
-              answersAmount={data.answersAmount}
-              examDate={data.examDate}
-              examName={data.examName}
-              userName={name}
-            />
-          );
-        })}
-      </PrintContainer>
+      {hasExamAndMembers ? (
+        <PrintContainer>
+          {membersExamPrint.map(({ id, name, externalId = id }) => {
+            return (
+              <PrintTemplate
+                key={id}
+                memberId={externalId}
+                memberName={name}
+                questionsAmount={JSON.parse(examData.template).length}
+                answersAmount={5}
+                examDate={new Date(examData.examDate)}
+                examName={examData.name}
+                userName={user.name}
+              />
+            );
+          })}
+        </PrintContainer>
+      ) : (
+        <Loading />
+      )}
     </PrintExamContainer>
   );
 };

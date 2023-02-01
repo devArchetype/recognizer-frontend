@@ -1,8 +1,8 @@
-import { BaseModal } from '../../base/BaseModal';
-import { useParams } from 'react-router-dom';
-import { Question } from '../../Template/components/Question';
-import { getExam } from '../../../services/axios/requests/exam';
 import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
+import { getExam } from '../../../services/axios/requests/exam';
+import { Question } from '../../Template/components/Question';
+import { BaseModal } from '../../base/BaseModal';
 
 export const CheckExamTemplateModal = () => {
   const { examId } = useParams();
@@ -38,8 +38,8 @@ export const CheckExamTemplateModal = () => {
   return (
     <BaseModal
       heading="Gabarito da prova"
-      cancelButtonLabel="false"
-      saveButtonLabel="false"
+      cancelButtonLabel="Cancel"
+      saveButtonLabel="Save"
     >
       <p>Prova: {exam?.name}</p>
       <br />

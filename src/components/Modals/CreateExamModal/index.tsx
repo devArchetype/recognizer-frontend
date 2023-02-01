@@ -3,15 +3,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Article, CalendarPlus, TextAlignLeft } from 'phosphor-react';
 import { useEffect, useId, useRef } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 import * as zod from 'zod';
+import { createExam } from '../../../services/axios/requests/exams';
 import { InputField } from '../../InputField';
 import { TextareaField } from '../../TextareaField';
 import { BaseModal, ModalProps } from '../../base/BaseModal';
 import { ModalFormContainer } from '../../base/BaseModal/styles';
 import { NewAnswerField } from './components/NewAnswerField';
 import { NewAnswersList, NewAnswersListLimiter } from './styles';
-import { useParams } from 'react-router-dom';
-import { createExam } from '../../../services/axios/requests/exams';
 
 export const CreateExamModal = ({ handleModalDisplay, reload }: ModalProps) => {
   const { groupId } = useParams();
@@ -85,12 +85,12 @@ export const CreateExamModal = ({ handleModalDisplay, reload }: ModalProps) => {
     description,
     newAnswers,
   }: CreateExamFormData) => {
-    const updatedAnsers = newAnswers.map(({ answer, number }, index) => ({
+    const updatedAnswers = newAnswers.map(({ answer, number }, index) => ({
       answer: answer.toUpperCase(),
       number: String(index),
     }));
 
-    await createExam(name, date, description, updatedAnsers, groupId);
+    await createExam(name, date, description, updatedAnswers, groupId);
     reload && reload();
     handleClearForm();
   };

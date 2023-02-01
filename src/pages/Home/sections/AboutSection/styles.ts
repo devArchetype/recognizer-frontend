@@ -11,6 +11,7 @@ export const DescriptionContainer = styled.div`
   }
 `;
 
+
 export const SectionContainer = styled.div`
   width: 100%;
   display: flex;
@@ -25,7 +26,8 @@ export const SectionContainer = styled.div`
 
   img {
     width: 10rem;
-    width: 10rem;
+    height: 10rem;
+    filter: drop-shadow(4px 2px 4px rgba(0, 0, 0, 0.3));
   }
 
   p {
@@ -43,7 +45,7 @@ export const SectionContainer = styled.div`
 
     img {
       width: 13rem;
-      width: 13rem;
+      height: 13rem;
     }
   }
 `;

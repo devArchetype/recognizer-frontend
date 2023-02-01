@@ -18,6 +18,8 @@ export const PrintTemplateContainer = styled.article`
     flex-direction: column;
     gap: ${(props) => props.theme.spacing.md};
     background-color: transparent;
+    display: relative;
+    z-index: 9999;
   }
 `;
 

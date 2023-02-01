@@ -33,7 +33,7 @@ interface Exams {
   id: string;
   name: string;
   description: string | null;
-  examDate: Date | null;
+  examDate: Date;
   template: string;
   groupId: string;
   _count: { Answers: number; MembersHasExams: number };
