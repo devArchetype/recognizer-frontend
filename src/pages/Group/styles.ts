@@ -11,7 +11,7 @@ export const MembersSection = styled(PageSection)``;
 
 export const GroupsTest = styled.ul`
   display: flex;
-  flex-direction: column;
+  flex-direction: column;J
   gap: ${(props) => props.theme.spacing.sm};
 `;
 
