@@ -98,29 +98,29 @@ export const Group = () => {
         <GroupsTest ref={examsListRef}>
           {hasFilteredExams
             ? filteredExams.map(({ id, name, groupId, _count, examDate }) => {
-                return (
-                  <ExamCard
-                    key={id}
-                    id={id}
-                    groupId={groupId!}
-                    name={name}
-                    membersAmount={_count.MembersHasExams}
-                    examDate={String(examDate)}
-                  />
-                );
-              })
+              return (
+                <ExamCard
+                  key={id}
+                  id={id}
+                  groupId={groupId!}
+                  name={name}
+                  membersAmount={_count.MembersHasExams}
+                  examDate={String(examDate)}
+                />
+              );
+            })
             : exams.map(({ id, name, groupId, _count, examDate }) => {
-                return (
-                  <ExamCard
-                    key={id}
-                    id={id}
-                    groupId={groupId!}
-                    name={name}
-                    membersAmount={_count.MembersHasExams}
-                    examDate={String(examDate)}
-                  />
-                );
-              })}
+              return (
+                <ExamCard
+                  key={id}
+                  id={id}
+                  groupId={groupId!}
+                  name={name}
+                  membersAmount={_count.MembersHasExams}
+                  examDate={String(examDate)}
+                />
+              );
+            })}
         </GroupsTest>
       </ExamSection>
       <PageSection
@@ -144,23 +144,23 @@ export const Group = () => {
         <GroupsMembers ref={membersListRef}>
           {hasFilteredMembers
             ? filteredMembers.map(({ id, name, externalId }) => {
-                return (
-                  <MemberCard
-                    key={id}
-                    name={name}
-                    memberId={externalId || id}
-                  />
-                );
-              })
+              return (
+                <MemberCard
+                  key={id}
+                  name={name}
+                  memberId={externalId || id}
+                />
+              );
+            })
             : members.map(({ id, name, externalId }) => {
-                return (
-                  <MemberCard
-                    key={id}
-                    name={name}
-                    memberId={externalId || id}
-                  />
-                );
-              })}
+              return (
+                <MemberCard
+                  key={id}
+                  name={name}
+                  memberId={externalId || id}
+                />
+              );
+            })}
         </GroupsMembers>
       </PageSection>
     </GroupPageContainer>

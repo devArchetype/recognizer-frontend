@@ -7,6 +7,8 @@ export const createAnswer = async (
   filesNotAccept: FileValidated[]
 ) => {
   try {
+    let messagePrint = '';
+
     filesNotAccept.forEach(async (fileA) => {
       const file = new FormData();
       file.append('file', fileA.file);
@@ -17,14 +19,18 @@ export const createAnswer = async (
         { headers: { 'Content-Type': 'multipart/form-data' } }
       );
 
-      const { message } = response.data;
+      const { success, message } = response.data;
 
       if (message) {
-        toast.error(message);
+        messagePrint = message;
+      }
+
+      if (success) {
+        messagePrint = success;
       }
     });
 
-    toast.info('Gabaritos corrigidos!');
+    toast.info(messagePrint || 'Gabaritos corrigidos!');
   } catch (e) {
     console.log(e);
   }

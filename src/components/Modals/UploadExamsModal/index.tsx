@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { createAnswer } from '../../../services/axios/requests/answers';
 
-export const UploadExamsModal = ({ handleModalDisplay }: ModalProps) => {
+export const UploadExamsModal = ({ handleModalDisplay, reload }: ModalProps) => {
   const { examId } = useParams();
   const [files, setFiles] = useState<FileValidated[]>([]);
   const [imgSource, setImgSource] = useState<string | undefined>(undefined);
@@ -37,6 +37,8 @@ export const UploadExamsModal = ({ handleModalDisplay }: ModalProps) => {
   const handleAnswers = async () => {
     await createAnswer(examId, files);
     setFiles([]);
+    reload && reload();
+    handleClearForm();
   };
 
   return (

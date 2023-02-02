@@ -27,8 +27,6 @@ export const GroupExam = () => {
   const navigate = useNavigate();
   const { data: exam } = useQuery('EXAM', () => getExam(examId), {});
 
-  // console.log(membersData);
-
   const [filteredMembers, setFilteredMembers] = useState<Members[]>([]);
   const hasFilteredMembers = filteredMembers.length !== 0;
 
@@ -36,8 +34,6 @@ export const GroupExam = () => {
 
   const { groups } = useContext(AuthContext);
   const groupName = findCurrentGroup(groups, groupId ?? '');
-
-  const examsDataToUse: Members[] = membersData || [];
 
   const examDateFormat = new Date(exam?.examDate);
   const DateFormated = examDateFormat.toLocaleDateString('pt-BR', {
@@ -47,10 +43,12 @@ export const GroupExam = () => {
     day: 'numeric',
   });
 
+  const loadMembers = async () => {
+    setMembersData(await getMembersWithAnswers(examId));
+  };
+
   useEffect(() => {
-    (async () => {
-      setMembersData(await getMembersWithAnswers(examId));
-    })();
+    loadMembers();
 
     membersListRef.current && autoAnimate(membersListRef.current);
   }, [membersListRef]);
@@ -78,7 +76,7 @@ export const GroupExam = () => {
             />
             <ModalTrigger
               trigger={<Button type="button" label={'Inserir Gabaritos'} />}
-              modal={<UploadExamsModal />}
+              modal={<UploadExamsModal reload={loadMembers} />}
             />
             <Button
               label={'Apagar Prova'}
@@ -101,7 +99,7 @@ export const GroupExam = () => {
           <>
             <FilterField
               placeholder="Filtrar integrantes"
-              itemsList={examsDataToUse}
+              itemsList={membersData || []}
               onFilter={setFilteredMembers}
               filter="name"
             />
@@ -115,25 +113,25 @@ export const GroupExam = () => {
         <ExamsList ref={membersListRef}>
           {hasFilteredMembers
             ? filteredMembers.map(({ id, name, externalId, answerId }) => {
-                return (
-                  <MemberCard
-                    key={id}
-                    name={name}
-                    memberId={externalId ?? ''}
-                    target={`/grupos/${groupId}/${examId}/${answerId}/`}
-                  />
-                );
-              })
-            : examsDataToUse.map(({ id, name, externalId, answerId }) => {
-                return (
-                  <MemberCard
-                    key={id}
-                    name={name}
-                    memberId={externalId ?? ''}
-                    target={`/grupos/${groupId}/${examId}/${answerId}/`}
-                  />
-                );
-              })}
+              return (
+                <MemberCard
+                  key={id}
+                  name={name}
+                  memberId={externalId ?? ''}
+                  target={`/grupos/${groupId}/${examId}/${answerId}/`}
+                />
+              );
+            })
+            : membersData?.map(({ id, name, externalId, answerId }) => {
+              return (
+                <MemberCard
+                  key={id}
+                  name={name}
+                  memberId={externalId ?? ''}
+                  target={`/grupos/${groupId}/${examId}/${answerId}/`}
+                />
+              );
+            })}
         </ExamsList>
       </PageSection>
     </ExamsPageContainer>
