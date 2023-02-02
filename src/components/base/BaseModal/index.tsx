@@ -22,6 +22,7 @@ interface BaseModalProps {
   onCancel?: () => void;
   onSave?: () => void;
   onClickButton?: () => void;
+  hiddeButton?: boolean;
 }
 
 interface ModalTriggerProps {
@@ -67,6 +68,7 @@ export const BaseModal = ({
   onCancel,
   onSave,
   onClickButton,
+  hiddeButton = false,
 }: BaseModalProps) => {
   const hasForm = !!formId;
 
@@ -93,24 +95,26 @@ export const BaseModal = ({
       </Header>
       <Content>{children}</Content>
 
-      <Footer>
-        <Button
-          label={cancelButtonLabel}
-          title={cancelButtonLabel}
-          variant="secondary"
-          onClick={handleCancel}
-        />
-        {saveButton && (
+      {hiddeButton || (
+        <Footer>
           <Button
-            type={hasForm ? 'submit' : 'button'}
-            form={hasForm ? formId : undefined}
-            label={saveButtonLabel}
-            title={saveButtonLabel}
-            variant="primary"
-            onClick={onClickButton || handleSave}
+            label={cancelButtonLabel}
+            title={cancelButtonLabel}
+            variant="secondary"
+            onClick={handleCancel}
           />
-        )}
-      </Footer>
+          {saveButton && (
+            <Button
+              type={hasForm ? 'submit' : 'button'}
+              form={hasForm ? formId : undefined}
+              label={saveButtonLabel}
+              title={saveButtonLabel}
+              variant="primary"
+              onClick={onClickButton || handleSave}
+            />
+          )}
+        </Footer>
+      )}
     </Container>
   );
 };

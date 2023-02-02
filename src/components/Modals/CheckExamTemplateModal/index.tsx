@@ -38,8 +38,10 @@ export const CheckExamTemplateModal = () => {
   return (
     <BaseModal
       heading="Gabarito da prova"
+      
       cancelButtonLabel="Cancel"
       saveButtonLabel="Save"
+      hiddeButton={true}
     >
       <p>Prova: {exam?.name}</p>
       <br />
